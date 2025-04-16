@@ -1,0 +1,454 @@
+
+# 1 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\varinit.c"
+
+# 8 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\types.h"
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned long ulong;
+
+# 44
+typedef union sc {
+char c[2];
+uchar uc[2];
+short s;
+ushort us;
+} mini_variant;
+
+
+
+typedef union ulp {
+char c[4];
+uchar uc[4];
+short s[2];
+ushort us[2];
+long l;
+unsigned long ul;
+void *vp;
+const void *cvp;
+volatile void *vvp;
+char *cp;
+const char *ccp;
+uchar *ucp;
+const uchar *cucp;
+short *sp;
+const short *csp;
+ushort *usp;
+const ushort *cusp;
+long *lp;
+const long *clp;
+ulong *unlp;
+const ulong *culp;
+void (*func)();
+} variant;
+
+# 90
+union parm {
+
+# 96
+signed char value[9];
+
+
+
+struct {
+uchar speed;
+uchar elev;
+
+
+
+signed char spin;
+signed char horiz;
+
+
+uchar twolnrw;
+
+uchar feed;
+
+# 120
+uchar col;
+uchar row;
+
+uchar width;
+};
+};
+
+# 142
+struct limit {
+signed char minimum;
+signed char maximum;
+signed char incr;
+};
+
+
+
+struct motor_status {
+unsigned cap1:1;
+unsigned cap2:1;
+unsigned HaveCmd:1;
+unsigned InCmd:1;
+unsigned CmdErr:1;
+unsigned TickInt:1;
+unsigned WaitResp:1;
+unsigned a2dStarted:1;
+};
+
+# 174
+struct persprog {
+
+
+
+signed char shot[30];
+signed char method[30];
+
+
+
+char feed[30];
+
+char reserved;
+};
+
+# 15 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\state_mach.h"
+struct state_mach {
+uchar *cur_state;
+uchar *prev_state;
+
+
+const uchar *pxtbl;
+
+const uchar state_ct;
+};
+
+# 34
+struct button_def {
+long style ;
+char *text ;
+int id;
+int x;
+int y;
+int w;
+int h;
+int flags;
+};
+
+# 7 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h"
+far void show_lcd(void);
+void clear_lcd(char mask);
+void DisableSlaveSPI(void);
+void EnableSlaveSPI(void);
+char SEERead(unsigned int addr);
+void SEEWrite(unsigned int addr, char data);
+
+
+char save_prog(signed char progno, struct persprog* ppers);
+
+# 417
+static const unsigned int RPM_NONE = 0x0000;
+static const unsigned int RPM_START = 0x0001;
+static const unsigned int RPM_SHOTNUM = 0x0002;
+static const unsigned int RPM_SHOTLOCN = 0x0004;
+static const unsigned int RPM_SHOTSPEED = 0x0008;
+static const unsigned int RPM_SHOTSPIN = 0x0010;
+static const unsigned int RPM_SHOTFEED = 0x0020;
+static const unsigned int RPM_EDITLOCN = 0x0040;
+static const unsigned int RPM_EDITSPEED = 0x0080;
+static const unsigned int RPM_EDITSPIN = 0x0100;
+static const unsigned int RPM_EDITFEED = 0x0200;
+static const unsigned int RPM_SHOTTABLES = 0x0400;
+
+
+static const unsigned int RPM_DWNLDDRL = 0x0800;
+
+# 543
+struct t_parm {
+const struct limit limits;
+const char** prompt;
+const char field_size;
+const char field_locn;
+const char text_size;
+const char text_start;
+const char line;
+};
+
+struct el04_loc {
+uchar speed;
+ushort top;
+ushort bottom;
+ushort elev;
+signed short sweep;
+signed char spin;
+};
+
+# 588
+struct ee_hdr {
+char vers[8];
+ushort ops_size;
+char npresets;
+char parm_size;
+char npersprog;
+char pers_size;
+char num_methods;
+char num_locs;
+char additional_locs;
+char ndrills[3];
+
+
+ushort elev_correction;
+ushort sweep_correction;
+
+
+char rsrved[9];
+
+};
+
+
+struct shot {
+ushort top;
+ushort bot;
+ushort y;
+ushort x;
+ushort yLo;
+ushort xLeft;
+ushort feedrate;
+ushort sweeprate;
+};
+
+
+
+struct rand_info {
+char range;
+char incr;
+char start;
+char max;
+};
+
+# 738
+struct power_button {
+uchar count;
+uchar previous;
+uchar current;
+uchar previous_debounced;
+uchar debounced;
+};
+
+# 775
+struct moterr {
+unsigned LoBat:1;
+unsigned Reserved1:1;
+unsigned Reserved2:1;
+unsigned TopPeriod:1;
+unsigned BotPeriod:1;
+unsigned TopCurSense:1;
+unsigned BotCurSense:1;
+unsigned FeedCurSense:1;
+unsigned SweepCurSense:1;
+unsigned ElevCurSense:1;
+unsigned TopCnt:1;
+unsigned BotCnt:1;
+unsigned Reserved:1;
+unsigned SweepCnt:1;
+unsigned ElevCnt:1;
+};
+
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.31\include\string.h"
+typedef int ptrdiff_t;
+typedef unsigned size_t;
+typedef unsigned short wchar_t;
+
+
+extern int errno;
+
+# 22
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+# 35
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
+# 15 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\varinit.c"
+extern char dashes;
+extern char abort_key;
+extern char aborted_mode;
+
+
+
+extern uchar num_methods[];
+
+
+extern uchar loaded_progno;
+extern uchar cur_st;
+extern uchar prev_st;
+extern signed char program_ix;
+extern signed char ppshot_ix;
+extern signed char ppparm_ix;
+extern char lcd_changed;
+extern uchar play_state;
+extern uchar lcd_updated;
+extern long play_mode;
+extern char remote_enabled;
+extern char lob_on;
+extern union parm manual;
+extern char man_parm;
+
+
+extern unsigned char preset_type;
+
+extern char preset_ix[16];
+extern union parm preset[16];
+extern char idle_fpass;
+extern char man1shot;
+extern unsigned short dpb_thrash;
+extern volatile struct power_button power;
+extern int main_ostate;
+
+
+
+extern unsigned long home_ticks;
+
+
+extern unsigned long batt_ticks;
+extern unsigned char batt_cnt;
+extern unsigned char BatAvgCnt;
+extern char homeshown;
+extern unsigned long loop_delay;
+extern unsigned long repeat;
+extern unsigned short keyhold;
+
+# 68
+extern const struct el04_loc court_locs[][50];
+extern const struct el04_loc court_locs_CLUB[][50];
+extern unsigned long ee_progstart;
+extern const struct ee_hdr flash_header;
+
+
+extern char rem_feed_chg;
+
+extern unsigned char model_type;
+
+
+
+
+extern unsigned int RemotePgmMode;
+
+
+
+
+extern char BatLevelDisplay;
+extern unsigned char BatLevelDisplayTmr;
+extern int BatPercent;
+extern unsigned char PlayLEDPass;
+
+
+
+
+void varinit(void)
+{
+int i = 0;
+char j;
+
+
+
+const struct el04_loc *locp;
+
+
+
+
+dashes = 0;
+cur_st = 1;
+abort_key = 0x00;
+aborted_mode = 0;
+rem_feed_chg = 0;
+prev_st = -1;
+program_ix = 0;
+ppshot_ix = 0;
+ppparm_ix = 0;
+lcd_changed = 0;
+play_state = 2U;
+lcd_updated = 0;
+play_mode = 0;
+remote_enabled = 0;
+lob_on=0;
+
+# 129
+man_parm = 0;
+
+
+if (model_type == 0U || model_type == 1U)
+preset_type = 0;
+
+
+else preset_type = 16;
+
+# 145
+preset_ix[0] = 6;
+preset_ix[1] = 7;
+preset_ix[2] = 8;
+preset_ix[3] = 0;
+
+# 173
+idle_fpass = 1;
+man1shot = 0;
+dpb_thrash = 0;
+memset((char*)&power,1,sizeof(power));
+power.count = 0;
+main_ostate = -1;
+loaded_progno = 12;
+home_ticks = 0;
+batt_ticks = 0;
+batt_cnt = 0;
+BatAvgCnt = 0;
+homeshown = 0;
+loop_delay = 0;
+
+
+
+for (i=0; i<18; i++) {
+locp = &court_locs[i][0];
+for (j=0; j<50; j++) {
+if (locp->speed == 0U) {
+num_methods[i] = j;
+break;
+}
+locp++;
+}
+}
+
+# 212
+keyhold = 0;
+repeat = 0;
+ee_progstart = sizeof(flash_header) + flash_header.ops_size;
+ee_progstart += flash_header.npresets * flash_header.parm_size;
+
+
+RemotePgmMode = 0;
+
+
+BatLevelDisplay = 0;
+BatLevelDisplayTmr = 0;;
+BatPercent = 0;
+PlayLEDPass = 0;
+
+}

@@ -1,0 +1,1782 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"15 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\state_mach.h
+[s S8 `*uc 1 `*uc 1 `*Cuc 1 `Cuc 1 ]
+[n S8 state_mach cur_state prev_state pxtbl state_ct ]
+[; ;types.h: 8: typedef unsigned char uchar;
+[; ;types.h: 9: typedef unsigned short ushort;
+[; ;types.h: 10: typedef unsigned long ulong;
+[; ;types.h: 44: typedef union sc {
+[; ;types.h: 45: char c[2];
+[; ;types.h: 46: uchar uc[2];
+[; ;types.h: 47: short s;
+[; ;types.h: 48: ushort us;
+[; ;types.h: 49: } mini_variant;
+[; ;types.h: 53: typedef union ulp {
+[; ;types.h: 54: char c[4];
+[; ;types.h: 55: uchar uc[4];
+[; ;types.h: 56: short s[2];
+[; ;types.h: 57: ushort us[2];
+[; ;types.h: 58: long l;
+[; ;types.h: 59: unsigned long ul;
+[; ;types.h: 60: void *vp;
+[; ;types.h: 61: const void *cvp;
+[; ;types.h: 62: volatile void *vvp;
+[; ;types.h: 63: char *cp;
+[; ;types.h: 64: const char *ccp;
+[; ;types.h: 65: uchar *ucp;
+[; ;types.h: 66: const uchar *cucp;
+[; ;types.h: 67: short *sp;
+[; ;types.h: 68: const short *csp;
+[; ;types.h: 69: ushort *usp;
+[; ;types.h: 70: const ushort *cusp;
+[; ;types.h: 71: long *lp;
+[; ;types.h: 72: const long *clp;
+[; ;types.h: 73: ulong *unlp;
+[; ;types.h: 74: const ulong *culp;
+[; ;types.h: 75: void (*func)();
+[; ;types.h: 76: } variant;
+[; ;types.h: 90: union parm {
+[; ;types.h: 96: signed char value[9];
+[; ;types.h: 100: struct {
+[; ;types.h: 101: uchar speed;
+[; ;types.h: 102: uchar elev;
+[; ;types.h: 106: signed char spin;
+[; ;types.h: 107: signed char horiz;
+[; ;types.h: 110: uchar twolnrw;
+[; ;types.h: 112: uchar feed;
+[; ;types.h: 120: uchar col;
+[; ;types.h: 121: uchar row;
+[; ;types.h: 123: uchar width;
+[; ;types.h: 124: };
+[; ;types.h: 125: };
+[; ;types.h: 142: struct limit {
+[; ;types.h: 143: signed char minimum;
+[; ;types.h: 144: signed char maximum;
+[; ;types.h: 145: signed char incr;
+[; ;types.h: 146: };
+[; ;types.h: 150: struct motor_status {
+[; ;types.h: 151: unsigned cap1:1;
+[; ;types.h: 152: unsigned cap2:1;
+[; ;types.h: 153: unsigned HaveCmd:1;
+[; ;types.h: 154: unsigned InCmd:1;
+[; ;types.h: 155: unsigned CmdErr:1;
+[; ;types.h: 156: unsigned TickInt:1;
+[; ;types.h: 157: unsigned WaitResp:1;
+[; ;types.h: 158: unsigned a2dStarted:1;
+[; ;types.h: 159: };
+[; ;types.h: 174: struct persprog {
+[; ;types.h: 178: signed char shot[30];
+[; ;types.h: 179: signed char method[30];
+[; ;types.h: 183: char feed[30];
+[; ;types.h: 185: char reserved;
+[; ;types.h: 186: };
+[; ;state_mach.h: 15: struct state_mach {
+[; ;state_mach.h: 16: uchar *cur_state;
+[; ;state_mach.h: 17: uchar *prev_state;
+[; ;state_mach.h: 20: const uchar *pxtbl;
+[; ;state_mach.h: 22: const uchar state_ct;
+[; ;state_mach.h: 23: };
+[; ;state_mach.h: 34: struct button_def {
+[; ;state_mach.h: 35: long style ;
+[; ;state_mach.h: 36: char *text ;
+[; ;state_mach.h: 37: int id;
+[; ;state_mach.h: 38: int x;
+[; ;state_mach.h: 39: int y;
+[; ;state_mach.h: 40: int w;
+[; ;state_mach.h: 41: int h;
+[; ;state_mach.h: 42: int flags;
+[; ;state_mach.h: 43: };
+[; ;lob.h: 7: far void show_lcd(void);
+[; ;lob.h: 8: void clear_lcd(char mask);
+[; ;lob.h: 9: void DisableSlaveSPI(void);
+[; ;lob.h: 10: void EnableSlaveSPI(void);
+[; ;lob.h: 11: char SEERead(unsigned int addr);
+[; ;lob.h: 12: void SEEWrite(unsigned int addr, char data);
+[; ;lob.h: 15: char save_prog(signed char progno, struct persprog* ppers);
+"417 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[v _RPM_NONE `Cui ~T0 @X0 1 s ]
+[i _RPM_NONE
+-> -> 0 `i `ui
+]
+[; ;lob.h: 417: static const unsigned int RPM_NONE = 0x0000;
+"418
+[v _RPM_START `Cui ~T0 @X0 1 s ]
+[i _RPM_START
+-> -> 1 `i `ui
+]
+[; ;lob.h: 418: static const unsigned int RPM_START = 0x0001;
+"419
+[v _RPM_SHOTNUM `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTNUM
+-> -> 2 `i `ui
+]
+[; ;lob.h: 419: static const unsigned int RPM_SHOTNUM = 0x0002;
+"420
+[v _RPM_SHOTLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTLOCN
+-> -> 4 `i `ui
+]
+[; ;lob.h: 420: static const unsigned int RPM_SHOTLOCN = 0x0004;
+"421
+[v _RPM_SHOTSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPEED
+-> -> 8 `i `ui
+]
+[; ;lob.h: 421: static const unsigned int RPM_SHOTSPEED = 0x0008;
+"422
+[v _RPM_SHOTSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPIN
+-> -> 16 `i `ui
+]
+[; ;lob.h: 422: static const unsigned int RPM_SHOTSPIN = 0x0010;
+"423
+[v _RPM_SHOTFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTFEED
+-> -> 32 `i `ui
+]
+[; ;lob.h: 423: static const unsigned int RPM_SHOTFEED = 0x0020;
+"424
+[v _RPM_EDITLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITLOCN
+-> -> 64 `i `ui
+]
+[; ;lob.h: 424: static const unsigned int RPM_EDITLOCN = 0x0040;
+"425
+[v _RPM_EDITSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPEED
+-> -> 128 `i `ui
+]
+[; ;lob.h: 425: static const unsigned int RPM_EDITSPEED = 0x0080;
+"426
+[v _RPM_EDITSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPIN
+-> -> 256 `i `ui
+]
+[; ;lob.h: 426: static const unsigned int RPM_EDITSPIN = 0x0100;
+"427
+[v _RPM_EDITFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITFEED
+-> -> 512 `i `ui
+]
+[; ;lob.h: 427: static const unsigned int RPM_EDITFEED = 0x0200;
+"428
+[v _RPM_SHOTTABLES `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTTABLES
+-> -> 1024 `i `ui
+]
+[; ;lob.h: 428: static const unsigned int RPM_SHOTTABLES = 0x0400;
+"431
+[v _RPM_DWNLDDRL `Cui ~T0 @X0 1 s ]
+[i _RPM_DWNLDDRL
+-> -> 2048 `i `ui
+]
+[; ;lob.h: 431: static const unsigned int RPM_DWNLDDRL = 0x0800;
+[; ;lob.h: 543: struct t_parm {
+[; ;lob.h: 544: const struct limit limits;
+[; ;lob.h: 545: const char** prompt;
+[; ;lob.h: 546: const char field_size;
+[; ;lob.h: 547: const char field_locn;
+[; ;lob.h: 548: const char text_size;
+[; ;lob.h: 549: const char text_start;
+[; ;lob.h: 550: const char line;
+[; ;lob.h: 551: };
+[; ;lob.h: 553: struct el04_loc {
+[; ;lob.h: 554: uchar speed;
+[; ;lob.h: 555: ushort top;
+[; ;lob.h: 556: ushort bottom;
+[; ;lob.h: 557: ushort elev;
+[; ;lob.h: 558: signed short sweep;
+[; ;lob.h: 559: signed char spin;
+[; ;lob.h: 560: };
+[; ;lob.h: 588: struct ee_hdr {
+[; ;lob.h: 589: char vers[8];
+[; ;lob.h: 590: ushort ops_size;
+[; ;lob.h: 591: char npresets;
+[; ;lob.h: 592: char parm_size;
+[; ;lob.h: 593: char npersprog;
+[; ;lob.h: 594: char pers_size;
+[; ;lob.h: 595: char num_methods;
+[; ;lob.h: 596: char num_locs;
+[; ;lob.h: 597: char additional_locs;
+[; ;lob.h: 598: char ndrills[3];
+[; ;lob.h: 601: ushort elev_correction;
+[; ;lob.h: 602: ushort sweep_correction;
+[; ;lob.h: 605: char rsrved[9];
+[; ;lob.h: 607: };
+[; ;lob.h: 610: struct shot {
+[; ;lob.h: 611: ushort top;
+[; ;lob.h: 612: ushort bot;
+[; ;lob.h: 613: ushort y;
+[; ;lob.h: 614: ushort x;
+[; ;lob.h: 615: ushort yLo;
+[; ;lob.h: 616: ushort xLeft;
+[; ;lob.h: 617: ushort feedrate;
+[; ;lob.h: 618: ushort sweeprate;
+[; ;lob.h: 619: };
+[; ;lob.h: 623: struct rand_info {
+[; ;lob.h: 624: char range;
+[; ;lob.h: 625: char incr;
+[; ;lob.h: 626: char start;
+[; ;lob.h: 627: char max;
+[; ;lob.h: 628: };
+[; ;lob.h: 738: struct power_button {
+[; ;lob.h: 739: uchar count;
+[; ;lob.h: 740: uchar previous;
+[; ;lob.h: 741: uchar current;
+[; ;lob.h: 742: uchar previous_debounced;
+[; ;lob.h: 743: uchar debounced;
+[; ;lob.h: 744: };
+[; ;lob.h: 775: struct moterr {
+[; ;lob.h: 776: unsigned LoBat:1;
+[; ;lob.h: 777: unsigned Reserved1:1;
+[; ;lob.h: 778: unsigned Reserved2:1;
+[; ;lob.h: 779: unsigned TopPeriod:1;
+[; ;lob.h: 780: unsigned BotPeriod:1;
+[; ;lob.h: 781: unsigned TopCurSense:1;
+[; ;lob.h: 782: unsigned BotCurSense:1;
+[; ;lob.h: 783: unsigned FeedCurSense:1;
+[; ;lob.h: 784: unsigned SweepCurSense:1;
+[; ;lob.h: 785: unsigned ElevCurSense:1;
+[; ;lob.h: 786: unsigned TopCnt:1;
+[; ;lob.h: 787: unsigned BotCnt:1;
+[; ;lob.h: 788: unsigned Reserved:1;
+[; ;lob.h: 789: unsigned SweepCnt:1;
+[; ;lob.h: 790: unsigned ElevCnt:1;
+[; ;lob.h: 791: };
+"34 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobstate.c
+[v _xtbl `Cuc ~T0 @X0 -> 384 `i e ]
+[i _xtbl
+:U ..
+"38
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 1 `i `uc
+-> -> 7 `i `uc
+"39
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"40
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"41
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 5 `i `uc
+-> -> 7 `i `uc
+"42
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"43
+-> -> 0 `i `uc
+-> -> 4 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 4 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"44
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"45
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"46
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"47
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"48
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"49
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"50
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"51
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"52
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"53
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"54
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"55
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"56
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"57
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"58
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"59
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"60
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"61
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"62
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"63
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"64
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"65
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"66
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"67
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"68
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"69
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"70
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"71
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"72
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"73
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"74
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"75
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"76
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"77
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"78
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"79
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"80
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"81
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"82
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"83
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"84
+-> -> 0 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"85
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+..
+]
+[; ;lobstate.c: 34: const uchar xtbl[384] = {
+[; ;lobstate.c: 38: 0,1, 2, 3, 4, 5, 1, 7,
+[; ;lobstate.c: 39: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 40: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 41: 0,1, 5, 5, 5, 6,5, 7,
+[; ;lobstate.c: 42: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 43: 0,4,6, 6, 4, 6,6,6,
+[; ;lobstate.c: 44: 0,2,2, 6, 6, 6,6,6,
+[; ;lobstate.c: 45: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 46: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 47: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 48: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 49: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 50: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 51: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 52: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 53: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 54: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 55: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 56: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 57: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 58: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 59: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 60: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 61: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 62: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 63: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 64: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 65: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 66: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 67: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 68: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 69: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 70: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 71: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 72: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 73: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 74: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 75: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 76: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 77: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 78: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 79: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 80: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 81: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 82: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 83: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 84: 0,7, 7, 7, 7, 5, 6,7,
+[; ;lobstate.c: 85: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 86: };
+"92
+[v _xtbl_EL04 `Cuc ~T0 @X0 -> 384 `i e ]
+[i _xtbl_EL04
+:U ..
+"96
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 1 `i `uc
+-> -> 7 `i `uc
+"97
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"98
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"99
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 5 `i `uc
+-> -> 7 `i `uc
+"100
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"101
+-> -> 0 `i `uc
+-> -> 4 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 4 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"102
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"103
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"105
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"107
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"109
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"110
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"111
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"112
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"113
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"114
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"115
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"116
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"117
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"118
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"120
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"122
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"124
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"125
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"126
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"127
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"128
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"129
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"130
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"131
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"132
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"133
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"135
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"137
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"139
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"140
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"141
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"142
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"143
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"144
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"145
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"146
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"147
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"148
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"149
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"150
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"151
+-> -> 0 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"152
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+..
+]
+[; ;lobstate.c: 92: const uchar xtbl_EL04[384] = {
+[; ;lobstate.c: 96: 0,1, 2, 3, 4, 5, 1, 7,
+[; ;lobstate.c: 97: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 98: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 99: 0,1, 5, 5, 5, 6,5, 7,
+[; ;lobstate.c: 100: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 101: 0,4,6, 6, 4, 6,6,6,
+[; ;lobstate.c: 102: 0,2,2, 6, 6, 6,6,6,
+[; ;lobstate.c: 103: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 105: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 107: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 109: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 110: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 111: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 112: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 113: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 114: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 115: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 116: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 117: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 118: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 120: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 122: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 124: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 125: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 126: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 127: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 128: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 129: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 130: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 131: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 132: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 133: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 135: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 137: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 139: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 140: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 141: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 142: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 143: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 144: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 145: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 146: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 147: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 148: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 149: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 150: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 151: 0,7, 7, 7, 7, 5, 6,7,
+[; ;lobstate.c: 152: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 153: };
+"160
+[v _xtbl_EL05LE2 `Cuc ~T0 @X0 -> 384 `i e ]
+[i _xtbl_EL05LE2
+:U ..
+"163
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 1 `i `uc
+-> -> 7 `i `uc
+"164
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"165
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"166
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 5 `i `uc
+-> -> 7 `i `uc
+"167
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"168
+-> -> 0 `i `uc
+-> -> 4 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 4 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"169
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+-> -> 2 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"170
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"171
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"172
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"173
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"174
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"176
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"177
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"178
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"179
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"180
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"181
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"183
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"184
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"185
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"186
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"187
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"188
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"190
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"191
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"192
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"193
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"194
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"195
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"197
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"198
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"199
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"200
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"201
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"202
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"204
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 3 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+-> -> 6 `i `uc
+"205
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"206
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"207
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"208
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"209
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"210
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"211
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"212
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"213
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"214
+-> -> 0 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 7 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+"215
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 2 `i `uc
+-> -> 3 `i `uc
+-> -> 4 `i `uc
+-> -> 5 `i `uc
+-> -> 6 `i `uc
+-> -> 7 `i `uc
+..
+]
+[; ;lobstate.c: 160: const uchar xtbl_EL05LE2[384] = {
+[; ;lobstate.c: 163: 0,1, 2, 3, 4, 5, 1, 7,
+[; ;lobstate.c: 164: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 165: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 166: 0,1, 5, 5, 5, 6,5, 7,
+[; ;lobstate.c: 167: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 168: 0,4,6, 6, 4, 6,6,6,
+[; ;lobstate.c: 169: 0,2,2, 6, 6, 6,6,6,
+[; ;lobstate.c: 170: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 171: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 172: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 173: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 174: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 176: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 177: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 178: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 179: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 180: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 181: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 183: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 184: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 185: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 186: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 187: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 188: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 190: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 191: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 192: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 193: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 194: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 195: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 197: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 198: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 199: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 200: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 201: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 202: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 204: 0,3,6, 3, 6, 6,6,6,
+[; ;lobstate.c: 205: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 206: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 207: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 208: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 209: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 210: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 211: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 212: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 213: 0,1, 2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 214: 0,7, 7, 7, 7, 5, 6,7,
+[; ;lobstate.c: 215: 0,1 ,2, 3, 4, 5, 6,7,
+[; ;lobstate.c: 216: };
+[; ;lobstate.c: 221: extern char (*lobfuncs[8])(int cmd);
+"224
+[v _cur_st `uc ~T0 @X0 1 e ]
+[; ;lobstate.c: 224: uchar cur_st;
+"225
+[v _prev_st `uc ~T0 @X0 1 e ]
+[; ;lobstate.c: 225: uchar prev_st;
+"232
+[v _lobmach `CS8 ~T0 @X0 1 e ]
+[i _lobmach
+:U ..
+:U ..
+"235
+&U _cur_st
+"236
+&U _prev_st
+"237
+&U *U + &U _xtbl * -> -> -> 0 `i `ui `ux -> -> # *U &U _xtbl `ui `ux
+"238
+-> -> 8 `i `uc
+..
+..
+]
+[; ;lobstate.c: 232: const struct state_mach lobmach = {
+[; ;lobstate.c: 235: &cur_st,
+[; ;lobstate.c: 236: &prev_st,
+[; ;lobstate.c: 237: &xtbl[0],
+[; ;lobstate.c: 238: 8,
+[; ;lobstate.c: 241: };
+"247
+[v _lobmach_EL04 `CS8 ~T0 @X0 1 e ]
+[i _lobmach_EL04
+:U ..
+:U ..
+"250
+&U _cur_st
+"251
+&U _prev_st
+"252
+&U *U + &U _xtbl_EL04 * -> -> -> 0 `i `ui `ux -> -> # *U &U _xtbl_EL04 `ui `ux
+"253
+-> -> 8 `i `uc
+..
+..
+]
+[; ;lobstate.c: 247: const struct state_mach lobmach_EL04 = {
+[; ;lobstate.c: 250: &cur_st,
+[; ;lobstate.c: 251: &prev_st,
+[; ;lobstate.c: 252: &xtbl_EL04[0],
+[; ;lobstate.c: 253: 8,
+[; ;lobstate.c: 256: };
+"260
+[v _lobmach_EL05LE2 `CS8 ~T0 @X0 1 e ]
+[i _lobmach_EL05LE2
+:U ..
+:U ..
+"263
+&U _cur_st
+"264
+&U _prev_st
+"265
+&U *U + &U _xtbl_EL05LE2 * -> -> -> 0 `i `ui `ux -> -> # *U &U _xtbl_EL05LE2 `ui `ux
+"266
+-> -> 8 `i `uc
+..
+..
+]
+[; ;lobstate.c: 260: const struct state_mach lobmach_EL05LE2 = {
+[; ;lobstate.c: 263: &cur_st,
+[; ;lobstate.c: 264: &prev_st,
+[; ;lobstate.c: 265: &xtbl_EL05LE2[0],
+[; ;lobstate.c: 266: 8,
+[; ;lobstate.c: 269: };

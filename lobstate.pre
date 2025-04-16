@@ -1,0 +1,474 @@
+
+# 1 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobstate.c"
+
+# 8 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\types.h"
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned long ulong;
+
+# 44
+typedef union sc {
+char c[2];
+uchar uc[2];
+short s;
+ushort us;
+} mini_variant;
+
+
+
+typedef union ulp {
+char c[4];
+uchar uc[4];
+short s[2];
+ushort us[2];
+long l;
+unsigned long ul;
+void *vp;
+const void *cvp;
+volatile void *vvp;
+char *cp;
+const char *ccp;
+uchar *ucp;
+const uchar *cucp;
+short *sp;
+const short *csp;
+ushort *usp;
+const ushort *cusp;
+long *lp;
+const long *clp;
+ulong *unlp;
+const ulong *culp;
+void (*func)();
+} variant;
+
+# 90
+union parm {
+
+# 96
+signed char value[9];
+
+
+
+struct {
+uchar speed;
+uchar elev;
+
+
+
+signed char spin;
+signed char horiz;
+
+
+uchar twolnrw;
+
+uchar feed;
+
+# 120
+uchar col;
+uchar row;
+
+uchar width;
+};
+};
+
+# 142
+struct limit {
+signed char minimum;
+signed char maximum;
+signed char incr;
+};
+
+
+
+struct motor_status {
+unsigned cap1:1;
+unsigned cap2:1;
+unsigned HaveCmd:1;
+unsigned InCmd:1;
+unsigned CmdErr:1;
+unsigned TickInt:1;
+unsigned WaitResp:1;
+unsigned a2dStarted:1;
+};
+
+# 174
+struct persprog {
+
+
+
+signed char shot[30];
+signed char method[30];
+
+
+
+char feed[30];
+
+char reserved;
+};
+
+# 15 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\state_mach.h"
+struct state_mach {
+uchar *cur_state;
+uchar *prev_state;
+
+
+const uchar *pxtbl;
+
+const uchar state_ct;
+};
+
+# 34
+struct button_def {
+long style ;
+char *text ;
+int id;
+int x;
+int y;
+int w;
+int h;
+int flags;
+};
+
+# 7 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h"
+far void show_lcd(void);
+void clear_lcd(char mask);
+void DisableSlaveSPI(void);
+void EnableSlaveSPI(void);
+char SEERead(unsigned int addr);
+void SEEWrite(unsigned int addr, char data);
+
+
+char save_prog(signed char progno, struct persprog* ppers);
+
+# 417
+static const unsigned int RPM_NONE = 0x0000;
+static const unsigned int RPM_START = 0x0001;
+static const unsigned int RPM_SHOTNUM = 0x0002;
+static const unsigned int RPM_SHOTLOCN = 0x0004;
+static const unsigned int RPM_SHOTSPEED = 0x0008;
+static const unsigned int RPM_SHOTSPIN = 0x0010;
+static const unsigned int RPM_SHOTFEED = 0x0020;
+static const unsigned int RPM_EDITLOCN = 0x0040;
+static const unsigned int RPM_EDITSPEED = 0x0080;
+static const unsigned int RPM_EDITSPIN = 0x0100;
+static const unsigned int RPM_EDITFEED = 0x0200;
+static const unsigned int RPM_SHOTTABLES = 0x0400;
+
+
+static const unsigned int RPM_DWNLDDRL = 0x0800;
+
+# 543
+struct t_parm {
+const struct limit limits;
+const char** prompt;
+const char field_size;
+const char field_locn;
+const char text_size;
+const char text_start;
+const char line;
+};
+
+struct el04_loc {
+uchar speed;
+ushort top;
+ushort bottom;
+ushort elev;
+signed short sweep;
+signed char spin;
+};
+
+# 588
+struct ee_hdr {
+char vers[8];
+ushort ops_size;
+char npresets;
+char parm_size;
+char npersprog;
+char pers_size;
+char num_methods;
+char num_locs;
+char additional_locs;
+char ndrills[3];
+
+
+ushort elev_correction;
+ushort sweep_correction;
+
+
+char rsrved[9];
+
+};
+
+
+struct shot {
+ushort top;
+ushort bot;
+ushort y;
+ushort x;
+ushort yLo;
+ushort xLeft;
+ushort feedrate;
+ushort sweeprate;
+};
+
+
+
+struct rand_info {
+char range;
+char incr;
+char start;
+char max;
+};
+
+# 738
+struct power_button {
+uchar count;
+uchar previous;
+uchar current;
+uchar previous_debounced;
+uchar debounced;
+};
+
+# 775
+struct moterr {
+unsigned LoBat:1;
+unsigned Reserved1:1;
+unsigned Reserved2:1;
+unsigned TopPeriod:1;
+unsigned BotPeriod:1;
+unsigned TopCurSense:1;
+unsigned BotCurSense:1;
+unsigned FeedCurSense:1;
+unsigned SweepCurSense:1;
+unsigned ElevCurSense:1;
+unsigned TopCnt:1;
+unsigned BotCnt:1;
+unsigned Reserved:1;
+unsigned SweepCnt:1;
+unsigned ElevCnt:1;
+};
+
+# 34 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobstate.c"
+const uchar xtbl[384] = {
+
+
+
+0,1, 2, 3, 4, 5, 1, 7,
+0,1, 2, 3, 4, 5, 6,7,
+0,3,6, 3, 6, 6,6,6,
+0,1, 5, 5, 5, 6,5, 7,
+0,1, 2, 3, 4, 5, 6,7,
+0,4,6, 6, 4, 6,6,6,
+0,2,2, 6, 6, 6,6,6,
+0,1, 2, 3, 4, 5, 6,7,
+0,1, 2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1, 2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1, 2, 3, 4, 5, 6,7,
+0,7, 7, 7, 7, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+};
+
+# 92
+const uchar xtbl_EL04[384] = {
+
+
+
+0,1, 2, 3, 4, 5, 1, 7,
+0,1, 2, 3, 4, 5, 6,7,
+0,3,6, 3, 6, 6,6,6,
+0,1, 5, 5, 5, 6,5, 7,
+0,1, 2, 3, 4, 5, 6,7,
+0,4,6, 6, 4, 6,6,6,
+0,2,2, 6, 6, 6,6,6,
+0,3,6, 3, 6, 6,6,6,
+
+0,3,6, 3, 6, 6,6,6,
+
+0,3,6, 3, 6, 6,6,6,
+
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,3,6, 3, 6, 6,6,6,
+
+0,3,6, 3, 6, 6,6,6,
+
+0,3,6, 3, 6, 6,6,6,
+
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,3,6, 3, 6, 6,6,6,
+
+0,3,6, 3, 6, 6,6,6,
+
+0,3,6, 3, 6, 6,6,6,
+
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1, 2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1, 2, 3, 4, 5, 6,7,
+0,7, 7, 7, 7, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+};
+
+# 160
+const uchar xtbl_EL05LE2[384] = {
+
+
+0,1, 2, 3, 4, 5, 1, 7,
+0,1, 2, 3, 4, 5, 6,7,
+0,3,6, 3, 6, 6,6,6,
+0,1, 5, 5, 5, 6,5, 7,
+0,1, 2, 3, 4, 5, 6,7,
+0,4,6, 6, 4, 6,6,6,
+0,2,2, 6, 6, 6,6,6,
+0,1, 2, 3, 4, 5, 6,7,
+0,1, 2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+
+0,3,6, 3, 6, 6,6,6,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+
+0,3,6, 3, 6, 6,6,6,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+
+0,3,6, 3, 6, 6,6,6,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+
+0,3,6, 3, 6, 6,6,6,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+
+0,3,6, 3, 6, 6,6,6,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1, 2, 3, 4, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+0,1, 2, 3, 4, 5, 6,7,
+0,7, 7, 7, 7, 5, 6,7,
+0,1 ,2, 3, 4, 5, 6,7,
+};
+
+
+
+
+extern char (*lobfuncs[8])(int cmd);
+
+
+uchar cur_st;
+uchar prev_st;
+
+# 232
+const struct state_mach lobmach = {
+
+
+&cur_st,
+&prev_st,
+&xtbl[0],
+8,
+
+
+};
+
+# 247
+const struct state_mach lobmach_EL04 = {
+
+
+&cur_st,
+&prev_st,
+&xtbl_EL04[0],
+8,
+
+
+};
+
+
+
+const struct state_mach lobmach_EL05LE2 = {
+
+
+&cur_st,
+&prev_st,
+&xtbl_EL05LE2[0],
+8,
+
+
+};
+

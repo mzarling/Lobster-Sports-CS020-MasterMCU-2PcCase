@@ -1,0 +1,2539 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"142 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\types.h
+[s S5 `c 1 `c 1 `c 1 ]
+[n S5 limit minimum maximum incr ]
+"543 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S8 `CS5 1 `**Cuc 1 `Cuc 1 `Cuc 1 `Cuc 1 `Cuc 1 `Cuc 1 ]
+[n S8 t_parm limits prompt field_size field_locn text_size text_start line ]
+"58 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _model_type `uc ~T0 @X0 0 e ]
+"38 C:\Program Files (x86)\Microchip\xc8\v1.31\include\string.h
+[v _strncpy `(*uc ~T0 @X0 0 ef3`*uc`*Cuc`ui ]
+"55
+[v _strlen `(ui ~T0 @X0 0 ef1`*Cuc ]
+"39 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _lcd_updated `uc ~T0 @X0 0 e ]
+"16 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\diag.h
+[v _dumphex `(v ~T0 @X0 0 ef1`uc ]
+"38 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _play_mode `l ~T0 @X0 0 e ]
+"28
+[v _preset_type `uc ~T0 @X0 0 e ]
+"100 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\types.h
+[s S4 `uc 1 `uc 1 `c 1 `c 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S4 . speed elev spin horiz twolnrw feed col row width ]
+"90
+[u S3 `c -> 9 `i `S4 1 ]
+[n S3 parm value . ]
+"24 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _preset `S3 ~T0 @X0 -> 0 `x e ]
+"248
+[v _is_available `(uc ~T0 @X0 0 ef3`uc`uc`c ]
+"623 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S12 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S12 rand_info range incr start max ]
+"34 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _pre_rand `CS12 ~T0 @X0 -> 0 `x e ]
+"35
+[v _abort_shot `(v ~T0 @X0 0 ef ]
+"30
+[v _play_state `uc ~T0 @X0 0 e ]
+"8 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[v _clear_lcd `(v ~T0 @X0 0 ef1`uc ]
+[v F293 `uc ~T0 @X0 -> 17 `i t ]
+"43 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _lcd_line `F293 ~T0 @X0 -> 0 `x e ]
+"36 C:\Program Files (x86)\Microchip\xc8\v1.31\include\string.h
+[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
+"127 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _preparm1base `Cuc ~T0 @X0 -> 0 `x e ]
+"249
+[v _isLocAvail `(uc ~T0 @X0 0 ef3`uc`uc`c ]
+"553 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S9 `uc 1 `us 1 `us 1 `us 1 `s 1 `c 1 ]
+[n S9 el04_loc speed top bottom elev sweep spin ]
+[v F295 `CS9 ~T0 @X0 -> 50 `i t ]
+"49 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _court_locs `F295 ~T0 @X0 -> 0 `x e ]
+[; ;types.h: 8: typedef unsigned char uchar;
+[; ;types.h: 9: typedef unsigned short ushort;
+[; ;types.h: 10: typedef unsigned long ulong;
+[; ;types.h: 44: typedef union sc {
+[; ;types.h: 45: char c[2];
+[; ;types.h: 46: uchar uc[2];
+[; ;types.h: 47: short s;
+[; ;types.h: 48: ushort us;
+[; ;types.h: 49: } mini_variant;
+[; ;types.h: 53: typedef union ulp {
+[; ;types.h: 54: char c[4];
+[; ;types.h: 55: uchar uc[4];
+[; ;types.h: 56: short s[2];
+[; ;types.h: 57: ushort us[2];
+[; ;types.h: 58: long l;
+[; ;types.h: 59: unsigned long ul;
+[; ;types.h: 60: void *vp;
+[; ;types.h: 61: const void *cvp;
+[; ;types.h: 62: volatile void *vvp;
+[; ;types.h: 63: char *cp;
+[; ;types.h: 64: const char *ccp;
+[; ;types.h: 65: uchar *ucp;
+[; ;types.h: 66: const uchar *cucp;
+[; ;types.h: 67: short *sp;
+[; ;types.h: 68: const short *csp;
+[; ;types.h: 69: ushort *usp;
+[; ;types.h: 70: const ushort *cusp;
+[; ;types.h: 71: long *lp;
+[; ;types.h: 72: const long *clp;
+[; ;types.h: 73: ulong *unlp;
+[; ;types.h: 74: const ulong *culp;
+[; ;types.h: 75: void (*func)();
+[; ;types.h: 76: } variant;
+[; ;types.h: 90: union parm {
+[; ;types.h: 96: signed char value[9];
+[; ;types.h: 100: struct {
+[; ;types.h: 101: uchar speed;
+[; ;types.h: 102: uchar elev;
+[; ;types.h: 106: signed char spin;
+[; ;types.h: 107: signed char horiz;
+[; ;types.h: 110: uchar twolnrw;
+[; ;types.h: 112: uchar feed;
+[; ;types.h: 120: uchar col;
+[; ;types.h: 121: uchar row;
+[; ;types.h: 123: uchar width;
+[; ;types.h: 124: };
+[; ;types.h: 125: };
+[; ;types.h: 142: struct limit {
+[; ;types.h: 143: signed char minimum;
+[; ;types.h: 144: signed char maximum;
+[; ;types.h: 145: signed char incr;
+[; ;types.h: 146: };
+[; ;types.h: 150: struct motor_status {
+[; ;types.h: 151: unsigned cap1:1;
+[; ;types.h: 152: unsigned cap2:1;
+[; ;types.h: 153: unsigned HaveCmd:1;
+[; ;types.h: 154: unsigned InCmd:1;
+[; ;types.h: 155: unsigned CmdErr:1;
+[; ;types.h: 156: unsigned TickInt:1;
+[; ;types.h: 157: unsigned WaitResp:1;
+[; ;types.h: 158: unsigned a2dStarted:1;
+[; ;types.h: 159: };
+[; ;types.h: 174: struct persprog {
+[; ;types.h: 178: signed char shot[30];
+[; ;types.h: 179: signed char method[30];
+[; ;types.h: 183: char feed[30];
+[; ;types.h: 185: char reserved;
+[; ;types.h: 186: };
+[; ;string.h: 4: typedef int ptrdiff_t;
+[; ;string.h: 5: typedef unsigned size_t;
+[; ;string.h: 6: typedef unsigned short wchar_t;
+[; ;string.h: 9: extern int errno;
+[; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 24: extern void * memset(void *, int, size_t);
+[; ;string.h: 35: extern char * strcat(char *, const char *);
+[; ;string.h: 36: extern char * strcpy(char *, const char *);
+[; ;string.h: 37: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 38: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strdup(const char *);
+[; ;string.h: 40: extern char * strtok(char *, const char *);
+[; ;string.h: 43: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 44: extern int strcmp(const char *, const char *);
+[; ;string.h: 45: extern int stricmp(const char *, const char *);
+[; ;string.h: 46: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 47: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 49: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 50: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 51: extern size_t strspn(const char *, const char *);
+[; ;string.h: 52: extern char * strstr(const char *, const char *);
+[; ;string.h: 53: extern char * stristr(const char *, const char *);
+[; ;string.h: 54: extern char * strerror(int);
+[; ;string.h: 55: extern size_t strlen(const char *);
+[; ;string.h: 56: extern char * strchr(const char *, int);
+[; ;string.h: 57: extern char * strichr(const char *, int);
+[; ;string.h: 58: extern char * strrchr(const char *, int);
+[; ;string.h: 59: extern char * strrichr(const char *, int);
+[; ;lob.h: 7: far void show_lcd(void);
+[; ;lob.h: 8: void clear_lcd(char mask);
+[; ;lob.h: 9: void DisableSlaveSPI(void);
+[; ;lob.h: 10: void EnableSlaveSPI(void);
+[; ;lob.h: 11: char SEERead(unsigned int addr);
+[; ;lob.h: 12: void SEEWrite(unsigned int addr, char data);
+[; ;lob.h: 15: char save_prog(signed char progno, struct persprog* ppers);
+"417 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[v _RPM_NONE `Cui ~T0 @X0 1 s ]
+[i _RPM_NONE
+-> -> 0 `i `ui
+]
+[; ;lob.h: 417: static const unsigned int RPM_NONE = 0x0000;
+"418
+[v _RPM_START `Cui ~T0 @X0 1 s ]
+[i _RPM_START
+-> -> 1 `i `ui
+]
+[; ;lob.h: 418: static const unsigned int RPM_START = 0x0001;
+"419
+[v _RPM_SHOTNUM `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTNUM
+-> -> 2 `i `ui
+]
+[; ;lob.h: 419: static const unsigned int RPM_SHOTNUM = 0x0002;
+"420
+[v _RPM_SHOTLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTLOCN
+-> -> 4 `i `ui
+]
+[; ;lob.h: 420: static const unsigned int RPM_SHOTLOCN = 0x0004;
+"421
+[v _RPM_SHOTSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPEED
+-> -> 8 `i `ui
+]
+[; ;lob.h: 421: static const unsigned int RPM_SHOTSPEED = 0x0008;
+"422
+[v _RPM_SHOTSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPIN
+-> -> 16 `i `ui
+]
+[; ;lob.h: 422: static const unsigned int RPM_SHOTSPIN = 0x0010;
+"423
+[v _RPM_SHOTFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTFEED
+-> -> 32 `i `ui
+]
+[; ;lob.h: 423: static const unsigned int RPM_SHOTFEED = 0x0020;
+"424
+[v _RPM_EDITLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITLOCN
+-> -> 64 `i `ui
+]
+[; ;lob.h: 424: static const unsigned int RPM_EDITLOCN = 0x0040;
+"425
+[v _RPM_EDITSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPEED
+-> -> 128 `i `ui
+]
+[; ;lob.h: 425: static const unsigned int RPM_EDITSPEED = 0x0080;
+"426
+[v _RPM_EDITSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPIN
+-> -> 256 `i `ui
+]
+[; ;lob.h: 426: static const unsigned int RPM_EDITSPIN = 0x0100;
+"427
+[v _RPM_EDITFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITFEED
+-> -> 512 `i `ui
+]
+[; ;lob.h: 427: static const unsigned int RPM_EDITFEED = 0x0200;
+"428
+[v _RPM_SHOTTABLES `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTTABLES
+-> -> 1024 `i `ui
+]
+[; ;lob.h: 428: static const unsigned int RPM_SHOTTABLES = 0x0400;
+"431
+[v _RPM_DWNLDDRL `Cui ~T0 @X0 1 s ]
+[i _RPM_DWNLDDRL
+-> -> 2048 `i `ui
+]
+[; ;lob.h: 431: static const unsigned int RPM_DWNLDDRL = 0x0800;
+[; ;lob.h: 543: struct t_parm {
+[; ;lob.h: 544: const struct limit limits;
+[; ;lob.h: 545: const char** prompt;
+[; ;lob.h: 546: const char field_size;
+[; ;lob.h: 547: const char field_locn;
+[; ;lob.h: 548: const char text_size;
+[; ;lob.h: 549: const char text_start;
+[; ;lob.h: 550: const char line;
+[; ;lob.h: 551: };
+[; ;lob.h: 553: struct el04_loc {
+[; ;lob.h: 554: uchar speed;
+[; ;lob.h: 555: ushort top;
+[; ;lob.h: 556: ushort bottom;
+[; ;lob.h: 557: ushort elev;
+[; ;lob.h: 558: signed short sweep;
+[; ;lob.h: 559: signed char spin;
+[; ;lob.h: 560: };
+[; ;lob.h: 588: struct ee_hdr {
+[; ;lob.h: 589: char vers[8];
+[; ;lob.h: 590: ushort ops_size;
+[; ;lob.h: 591: char npresets;
+[; ;lob.h: 592: char parm_size;
+[; ;lob.h: 593: char npersprog;
+[; ;lob.h: 594: char pers_size;
+[; ;lob.h: 595: char num_methods;
+[; ;lob.h: 596: char num_locs;
+[; ;lob.h: 597: char additional_locs;
+[; ;lob.h: 598: char ndrills[3];
+[; ;lob.h: 601: ushort elev_correction;
+[; ;lob.h: 602: ushort sweep_correction;
+[; ;lob.h: 605: char rsrved[9];
+[; ;lob.h: 607: };
+[; ;lob.h: 610: struct shot {
+[; ;lob.h: 611: ushort top;
+[; ;lob.h: 612: ushort bot;
+[; ;lob.h: 613: ushort y;
+[; ;lob.h: 614: ushort x;
+[; ;lob.h: 615: ushort yLo;
+[; ;lob.h: 616: ushort xLeft;
+[; ;lob.h: 617: ushort feedrate;
+[; ;lob.h: 618: ushort sweeprate;
+[; ;lob.h: 619: };
+[; ;lob.h: 623: struct rand_info {
+[; ;lob.h: 624: char range;
+[; ;lob.h: 625: char incr;
+[; ;lob.h: 626: char start;
+[; ;lob.h: 627: char max;
+[; ;lob.h: 628: };
+[; ;lob.h: 738: struct power_button {
+[; ;lob.h: 739: uchar count;
+[; ;lob.h: 740: uchar previous;
+[; ;lob.h: 741: uchar current;
+[; ;lob.h: 742: uchar previous_debounced;
+[; ;lob.h: 743: uchar debounced;
+[; ;lob.h: 744: };
+[; ;lob.h: 775: struct moterr {
+[; ;lob.h: 776: unsigned LoBat:1;
+[; ;lob.h: 777: unsigned Reserved1:1;
+[; ;lob.h: 778: unsigned Reserved2:1;
+[; ;lob.h: 779: unsigned TopPeriod:1;
+[; ;lob.h: 780: unsigned BotPeriod:1;
+[; ;lob.h: 781: unsigned TopCurSense:1;
+[; ;lob.h: 782: unsigned BotCurSense:1;
+[; ;lob.h: 783: unsigned FeedCurSense:1;
+[; ;lob.h: 784: unsigned SweepCurSense:1;
+[; ;lob.h: 785: unsigned ElevCurSense:1;
+[; ;lob.h: 786: unsigned TopCnt:1;
+[; ;lob.h: 787: unsigned BotCnt:1;
+[; ;lob.h: 788: unsigned Reserved:1;
+[; ;lob.h: 789: unsigned SweepCnt:1;
+[; ;lob.h: 790: unsigned ElevCnt:1;
+[; ;lob.h: 791: };
+[; ;diag.h: 8: void dumprsDIAG(unsigned long ix, const char* cp);
+[; ;diag.h: 10: void dumpsDIAG(unsigned long ix,char* cp);
+[; ;diag.h: 13: void putrsDIAG(const char *data);
+[; ;diag.h: 15: void putsDIAG(char *data);
+[; ;diag.h: 16: void dumphex(unsigned char c);
+[; ;diag.h: 17: void dump2port(unsigned uc);
+[; ;diag.h: 18: void dumphex2port(unsigned char c);
+[; ;diag.h: 19: void dumpaddr(unsigned int addr);
+[; ;diag.h: 20: void dumplong(unsigned long addr);
+[; ;diag.h: 21: void dumpshort(unsigned long addr);
+[; ;diag.h: 22: unsigned long atoh(char *cptr);
+[; ;delays.h: 13: void Delay1TCYx(unsigned char);
+[; ;delays.h: 19: void Delay10TCYx(unsigned char);
+[; ;delays.h: 25: void Delay100TCYx(unsigned char);
+[; ;delays.h: 31: void Delay1KTCYx(unsigned char);
+[; ;delays.h: 37: void Delay10KTCYx(unsigned char);
+[; ;lobparm.c: 24: extern union parm preset[16];
+[; ;lobparm.c: 25: extern char man_parm;
+[; ;lobparm.c: 28: extern unsigned char preset_type;
+[; ;lobparm.c: 30: extern uchar play_state;
+[; ;lobparm.c: 34: extern const struct rand_info pre_rand[];
+[; ;lobparm.c: 35: extern void abort_shot(void);
+[; ;lobparm.c: 38: extern long play_mode;
+[; ;lobparm.c: 39: extern uchar lcd_updated;
+[; ;lobparm.c: 43: extern char lcd_line[][17];
+[; ;lobparm.c: 49: extern const struct el04_loc court_locs[][50];
+[; ;lobparm.c: 50: extern const struct el04_loc court_locs_CLUB[][50];
+[; ;lobparm.c: 54: extern char FirstShot;
+[; ;lobparm.c: 58: extern unsigned char model_type;
+[v F301 `*Cuc ~T0 @X0 -> 2 `i t ]
+"80 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobparm.c
+[v _parm_fmt `F301 ~T0 @X0 -> 0 `x e ]
+[i _parm_fmt
+:U ..
+:U ..
+"84
+:s 1C
+:s 2C
+..
+:U ..
+"86
+:s 3C
+:s 4C
+..
+:U ..
+"90
+:s 5C
+:s 6C
+..
+:U ..
+"91
+:s 7C
+:s 8C
+..
+:U ..
+"92
+:s 9C
+:s 10C
+..
+:U ..
+"94
+:s 11C
+:s 12C
+..
+:U ..
+"101
+:s 13C
+:s 14C
+..
+:U ..
+"102
+:s 15C
+:s 16C
+..
+:U ..
+"103
+:s 17C
+:s 18C
+..
+:U ..
+"105
+:s 19C
+:s 20C
+..
+:U ..
+"106
+:s 21C
+:s 22C
+..
+:U ..
+"107
+:s 23C
+:s 24C
+..
+:U ..
+"108
+:s 25C
+:s 26C
+..
+:U ..
+"110
+:s 27C
+:s 28C
+..
+:U ..
+"111
+:s 29C
+:s 30C
+..
+:U ..
+"113
+:s 31C
+:s 32C
+..
+:U ..
+"115
+:s 33C
+:s 34C
+..
+:U ..
+"116
+:s 35C
+:s 36C
+..
+:U ..
+"117
+:s 37C
+:s 38C
+..
+:U ..
+"118
+:s 39C
+:s 40C
+..
+:U ..
+"119
+:s 41C
+:s 42C
+..
+:U ..
+"120
+:s 43C
+:s 44C
+..
+:U ..
+"122
+:s 45C
+:s 46C
+..
+..
+]
+[; ;lobparm.c: 80: const char *parm_fmt[][2] = {
+[; ;lobparm.c: 84: { "SPEED:      MPH ", "SPEED: >    MPH<" },
+[; ;lobparm.c: 86: { "ELEV:           ", "ELEV:  >    <   " },
+[; ;lobparm.c: 90: { "SPIN:   ", "SPIN>  <" },
+[; ;lobparm.c: 91: { "ANGLE:  ", "ANGLE>  " },
+[; ;lobparm.c: 92: { "        ", ">      <" },
+[; ;lobparm.c: 94: { "FEED:       SEC ", "FEED:  >    SEC<" },
+[; ;lobparm.c: 101: { "RND SWEEP:      ", "RND SWEEP>     <" },
+[; ;lobparm.c: 102: { "RND DEPTH:      ", "RND DEPTH>     <" },
+[; ;lobparm.c: 103: { "2-LINE:         ", "2-LINE:>       <" },
+[; ;lobparm.c: 105: { "FULLY RANDOM    ", "FULLY RANDOM  ><" },
+[; ;lobparm.c: 106: { "GRINDER         ", "GRINDER       ><" },
+[; ;lobparm.c: 107: { "POWER BASELINER ", "POWER BASELINE><" },
+[; ;lobparm.c: 108: { "ALL-COURTER     ", "ALL-COURTER   ><" },
+[; ;lobparm.c: 110: { "APPROACH        ", "APPROACH      ><" },
+[; ;lobparm.c: 111: { "ATTACK/DEFEND   ", "ATTACK/DEFEND ><" },
+[; ;lobparm.c: 113: { "FOREHAND PLUS   ", "FOREHAND PLUS ><" },
+[; ;lobparm.c: 115: { "BEGINNER        ", "BEGINNER      ><" },
+[; ;lobparm.c: 116: { "INTERMEDIATE    ", "INTERMEDIATE  ><" },
+[; ;lobparm.c: 117: { "ADVANCED        ", "ADVANCED      ><" },
+[; ;lobparm.c: 118: { "MOONBALLER      ", "MOONBALLER    ><" },
+[; ;lobparm.c: 119: { "SLICER          ", "SLICER        ><" },
+[; ;lobparm.c: 120: { "LEFTY           ", "LEFTY         ><" },
+[; ;lobparm.c: 122: { "INVALID         ", "INVALID         " },
+[; ;lobparm.c: 123: };
+[; ;lobparm.c: 127: extern const char preparm1base[];
+"134
+[v _preset_sub `*Cuc ~T0 @X0 -> 0 `x e ]
+[i _preset_sub
+:U ..
+"137
+:s 47C
+:s 48C
+:s 49C
+:s 50C
+:s 51C
+:s 52C
+"142
+:s 53C
+:s 54C
+:s 55C
+:s 56C
+"145
+:s 57C
+:s 58C
+:s 59C
+"146
+:s 60C
+:s 61C
+:s 62C
+:s 63C
+:s 64C
+:s 65C
+:s 66C
+"153
+:s 67C
+:s 68C
+:s 69C
+:s 70C
+..
+]
+[; ;lobparm.c: 134: const char* preset_sub[] = {
+[; ;lobparm.c: 137: "LINE 1","LINE 2","LINE 3","LINE 4","LINE 5","LINE 6",
+[; ;lobparm.c: 142: "ROW A", "RANDOM", "ROW C", "ROW B",
+[; ;lobparm.c: 145: " WIDE ","MEDIUM","NARROW",
+[; ;lobparm.c: 146: "   SPIN -3   ", "   SPIN -2   ", "   SPIN -1   ", "   SPIN 0    ", "   SPIN +1   ", "   SPIN +2   ", "   SPIN +3   ",
+[; ;lobparm.c: 153: "ROW: A", "RANDOM", "ROW: C", "ROW: B",
+[; ;lobparm.c: 156: };
+"165
+[v _preset_sub2 `*Cuc ~T0 @X0 -> 0 `x e ]
+[i _preset_sub2
+:U ..
+"169
+:s 71C
+:s 72C
+:s 73C
+:s 74C
+:s 75C
+:s 76C
+"175
+:s 77C
+:s 78C
+:s 79C
+:s 80C
+"178
+:s 81C
+:s 82C
+:s 83C
+"179
+:s 84C
+:s 85C
+:s 86C
+:s 87C
+:s 88C
+:s 89C
+:s 90C
+"181
+:s 91C
+:s 92C
+:s 93C
+:s 94C
+..
+]
+[; ;lobparm.c: 165: const char* preset_sub2[] = {
+[; ;lobparm.c: 169: " LEFT ","","CENTER","","","RIGHT ",
+[; ;lobparm.c: 175: "DEEP", "RANDOM", "SHORT", "MID",
+[; ;lobparm.c: 178: " WIDE ","MEDIUM","NARROW",
+[; ;lobparm.c: 179: "   SPIN -3   ", "   SPIN -2   ", "   SPIN -1   ", "   SPIN 0    ", "   SPIN +1   ", "   SPIN +2   ", "   SPIN +3   ",
+[; ;lobparm.c: 181: "ROW: A", "RANDOM", "ROW: C", "ROW: B",
+[; ;lobparm.c: 183: };
+"200
+[v _parameters `S8 ~T0 @X0 -> 0 `x e ]
+[i _parameters
+:U ..
+:U ..
+:U ..
+:U ..
+"202
+-> -> 25 `i `c
+-> -> 70 `i `c
+-> -> 5 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 0 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 0 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 2 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"203
+-> -> 2 `i `c
+-> -> 80 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 1 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 1 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 2 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"204
+-> -U -> 3 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 2 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 2 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -U -> 1 `i `uc
+-> -> 5 `i `uc
+-> -> 8 `i `uc
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"205
+-> -U -> 3 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 3 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 3 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -U -> 1 `i `uc
+-> -> 14 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"209
+-> -> 0 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 4 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 4 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 16 `i `uc
+-> -> 9 `i `uc
+-> -> 8 `i `uc
+-> -> 8 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"212
+-> -> 1 `i `c
+-> -> 9 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 5 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 5 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 2 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"215
+-> -> 0 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 7 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 7 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 16 `i `uc
+-> -> 10 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"216
+-> -> 0 `i `c
+-> -> 5 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 6 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 6 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 16 `i `uc
+-> -> 10 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"217
+-> -> 0 `i `c
+-> -> 2 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 8 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 8 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 16 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"218
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 8 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 8 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"219
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 9 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 9 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"220
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 10 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 10 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"221
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 11 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 11 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"222
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 12 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 12 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"223
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 13 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 13 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"224
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 14 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 14 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"226
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 15 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 15 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"227
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 16 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 16 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"228
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 17 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 17 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"229
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 18 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 18 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"230
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 19 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 19 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"231
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> -> 20 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> -> 20 `i `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 0 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[; ;lobparm.c: 200: struct t_parm parameters[] = {
+[; ;lobparm.c: 202: { { 25, 70, 5 }, &parm_fmt[0U][0], 2, 9, 16, 0, 0 },
+[; ;lobparm.c: 203: { { 2, 80, 1 }, &parm_fmt[1U][0], 2, 9, 16, 0, 0 },
+[; ;lobparm.c: 204: { { -3, 3, 1 }, &parm_fmt[2U][0], -1, 5, 8, 0, 2 },
+[; ;lobparm.c: 205: { { -3, 3, 1 }, &parm_fmt[3U][0], -1, 14, 8, 8, 2 },
+[; ;lobparm.c: 209: { { 0, 3, 1 }, &parm_fmt[4U][0],0x10, 9, 8, 8, 2 },
+[; ;lobparm.c: 212: { { 1, 9, 1 }, &parm_fmt[5U][0], 2, 9, 16, 0, 0 },
+[; ;lobparm.c: 215: { { 0, 3, 1 }, &parm_fmt[7U][0],0x10,10,16, 0, 0 },
+[; ;lobparm.c: 216: { { 0, 5, 1 }, &parm_fmt[6U][0],0x10,10,16, 0, 0 },
+[; ;lobparm.c: 217: { { 0, 2, 1 }, &parm_fmt[8U][0],0x10, 9,16, 0, 0 },
+[; ;lobparm.c: 218: { { 0, 0, 0 }, &parm_fmt[8][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 219: { { 0, 0, 0 }, &parm_fmt[9][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 220: { { 0, 0, 0 }, &parm_fmt[10][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 221: { { 0, 0, 0 }, &parm_fmt[11][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 222: { { 0, 0, 0 }, &parm_fmt[12][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 223: { { 0, 0, 0 }, &parm_fmt[13][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 224: { { 0, 0, 0 }, &parm_fmt[14][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 226: { { 0, 0, 0 }, &parm_fmt[15][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 227: { { 0, 0, 0 }, &parm_fmt[16][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 228: { { 0, 0, 0 }, &parm_fmt[17][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 229: { { 0, 0, 0 }, &parm_fmt[18][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 230: { { 0, 0, 0 }, &parm_fmt[19][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 231: { { 0, 0, 0 }, &parm_fmt[20][0], 0, 9, 16, 0, 0 },
+[; ;lobparm.c: 233: };
+"237
+[v _speed_trans `Cuc ~T0 @X0 -> 0 `x e ]
+[i _speed_trans
+:U ..
+"242
+-> -> 0 `i `uc
+-> -> 15 `i `uc
+-> -> 20 `i `uc
+-> -> 25 `i `uc
+-> -> 30 `i `uc
+-> -> 35 `i `uc
+-> -> 40 `i `uc
+-> -> 45 `i `uc
+-> -> 50 `i `uc
+-> -> 55 `i `uc
+-> -> 60 `i `uc
+-> -> 65 `i `uc
+-> -> 70 `i `uc
+-> -> 75 `i `uc
+-> -> 80 `i `uc
+"243
+-> -> 90 `i `uc
+..
+]
+[; ;lobparm.c: 237: const char speed_trans[] = {
+[; ;lobparm.c: 242: 0, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65, 70, 75, 80, 90
+[; ;lobparm.c: 243: };
+[; ;lobparm.c: 248: char is_available(char locno, uchar spd, signed char spn);
+[; ;lobparm.c: 249: char isLocAvail(char locNo, uchar spd, signed char spn);
+"252
+[v _dashes `uc ~T0 @X0 1 e ]
+[i _dashes
+-> -> 0 `i `uc
+]
+[; ;lobparm.c: 252: char dashes = 0;
+"265
+[v _chartoa `(v ~T0 @X0 1 ef3`Cc`*uc`c ]
+"268
+{
+[; ;lobparm.c: 265: void chartoa(const signed char c, char* cp, signed char ndig)
+[; ;lobparm.c: 268: {
+[e :U _chartoa ]
+"265
+[v _c `Cc ~T0 @X0 1 r1 ]
+[v _cp `*uc ~T0 @X0 1 r2 ]
+[v _ndig `c ~T0 @X0 1 r3 ]
+"268
+[f ]
+"272
+[v _x `c ~T0 @X0 1 a ]
+[; ;lobparm.c: 272: signed char x = c;
+[e = _x _c ]
+[; ;lobparm.c: 275: if ((ndig > 15) && !(ndig & 0xc0)) {
+"275
+[e $ ! && > -> _ndig `i -> 15 `i ! != & -> _ndig `i -> 192 `i -> 0 `i 16  ]
+{
+[; ;lobparm.c: 276: if ((((ndig) & 0xf0) == ((uchar)0x20)))
+"276
+[e $ ! == & -> _ndig `i -> 240 `i -> -> -> 32 `i `uc `i 17  ]
+[; ;lobparm.c: 277: x = c + 3;
+"277
+[e = _x -> + -> _c `i -> 3 `i `c ]
+[e $U 18  ]
+"278
+[e :U 17 ]
+[; ;lobparm.c: 278: else
+[; ;lobparm.c: 281: x = c;
+"281
+[e = _x _c ]
+[e :U 18 ]
+[; ;lobparm.c: 285: if ((model_type != 2U) && (model_type != 5U))
+"285
+[e $ ! && != -> _model_type `ui -> 2 `ui != -> _model_type `ui -> 5 `ui 19  ]
+[; ;lobparm.c: 292: strncpy(cp,(char*)preset_sub[x],strlen((char*)preset_sub[x]));
+"292
+[e ( _strncpy (3 , , _cp -> -> *U + &U _preset_sub * -> -> _x `uc `ux -> -> # *U &U _preset_sub `ui `ux `*uc `*Cuc ( _strlen (1 -> -> *U + &U _preset_sub * -> -> _x `uc `ux -> -> # *U &U _preset_sub `ui `ux `*uc `*Cuc ]
+[e $U 20  ]
+"293
+[e :U 19 ]
+[; ;lobparm.c: 293: else
+[; ;lobparm.c: 294: strncpy(cp,(char*)preset_sub2[x],strlen((char*)preset_sub2[x]));
+"294
+[e ( _strncpy (3 , , _cp -> -> *U + &U _preset_sub2 * -> -> _x `uc `ux -> -> # *U &U _preset_sub2 `ui `ux `*uc `*Cuc ( _strlen (1 -> -> *U + &U _preset_sub2 * -> -> _x `uc `ux -> -> # *U &U _preset_sub2 `ui `ux `*uc `*Cuc ]
+[e :U 20 ]
+"297
+}
+[; ;lobparm.c: 297: } else {
+[e $U 21  ]
+[e :U 16 ]
+{
+[; ;lobparm.c: 298: if (ndig < 0) {
+"298
+[e $ ! < -> _ndig `i -> 0 `i 22  ]
+{
+[; ;lobparm.c: 299: if (x < 0) {
+"299
+[e $ ! < -> _x `i -> 0 `i 23  ]
+{
+[; ;lobparm.c: 300: *cp++ = '-';
+"300
+[e = *U ++ _cp * -> -> 1 `i `x -> -> # *U _cp `i `x -> -> 45 `ui `uc ]
+[; ;lobparm.c: 301: x = -x;
+"301
+[e = _x -> -U -> _x `i `c ]
+"302
+}
+[; ;lobparm.c: 302: } else if (x) {
+[e $U 24  ]
+[e :U 23 ]
+[e $ ! != -> _x `i -> -> -> 0 `i `c `i 25  ]
+{
+[; ;lobparm.c: 303: *cp++ = '+';
+"303
+[e = *U ++ _cp * -> -> 1 `i `x -> -> # *U _cp `i `x -> -> 43 `ui `uc ]
+"304
+}
+[; ;lobparm.c: 304: } else {
+[e $U 26  ]
+[e :U 25 ]
+{
+[; ;lobparm.c: 305: *cp++ = ' ';
+"305
+[e = *U ++ _cp * -> -> 1 `i `x -> -> # *U _cp `i `x -> -> 32 `ui `uc ]
+"306
+}
+[e :U 26 ]
+[e :U 24 ]
+[; ;lobparm.c: 306: }
+[; ;lobparm.c: 307: ndig = -ndig;
+"307
+[e = _ndig -> -U -> _ndig `i `c ]
+"308
+}
+[e :U 22 ]
+[; ;lobparm.c: 308: }
+[; ;lobparm.c: 309: if (ndig > 3) {
+"309
+[e $ ! > -> _ndig `i -> 3 `i 27  ]
+{
+[; ;lobparm.c: 310: *cp++ = '?';
+"310
+[e = *U ++ _cp * -> -> 1 `i `x -> -> # *U _cp `i `x -> -> 63 `ui `uc ]
+"311
+}
+[; ;lobparm.c: 311: } else {
+[e $U 28  ]
+[e :U 27 ]
+{
+[; ;lobparm.c: 312: cp += ndig - 1;
+"312
+[e =+ _cp * -> - -> _ndig `i -> 1 `i `x -> -> # *U _cp `i `x ]
+[; ;lobparm.c: 313: while (ndig--) {
+"313
+[e $U 29  ]
+[e :U 30 ]
+{
+[; ;lobparm.c: 314: *cp-- = (x % 10) + '0';
+"314
+[e = *U -- _cp * -> -> 1 `i `x -> -> # *U _cp `i `x -> + -> % -> _x `i -> 10 `i `ui -> 48 `ui `uc ]
+[; ;lobparm.c: 315: x = x / 10;
+"315
+[e = _x -> / -> _x `i -> 10 `i `c ]
+"316
+}
+[e :U 29 ]
+"313
+[e $ != -> -- _ndig -> -> 1 `i `c `i -> -> -> 0 `i `c `i 30  ]
+[e :U 31 ]
+"317
+}
+[e :U 28 ]
+"318
+}
+[e :U 21 ]
+[; ;lobparm.c: 316: }
+[; ;lobparm.c: 317: }
+[; ;lobparm.c: 318: }
+[; ;lobparm.c: 319: }
+"319
+[e :UE 15 ]
+}
+"330
+[v _lob_parm `(uc ~T0 @X0 1 ef4`uc`*uc`*c`um ]
+{
+[; ;lobparm.c: 330: char lob_parm(char cmd, uchar *pix, signed char* pparm, unsigned short long mask) {
+[e :U _lob_parm ]
+[v _cmd `uc ~T0 @X0 1 r1 ]
+[v _pix `*uc ~T0 @X0 1 r2 ]
+[v _pparm `*c ~T0 @X0 1 r3 ]
+[v _mask `um ~T0 @X0 1 r4 ]
+[f ]
+"333
+[v _i `us ~T0 @X0 1 a ]
+"334
+[v _cmsk `um ~T0 @X0 1 a ]
+[v _tmsk `um ~T0 @X0 1 a ]
+"335
+[v _ln `us ~T0 @X0 1 a ]
+[v _j `us ~T0 @X0 1 a ]
+[v _k `us ~T0 @X0 1 a ]
+"339
+[v _newval `c ~T0 @X0 1 a ]
+"342
+[v _premode `us ~T0 @X0 1 a ]
+"343
+[v _botMenu `uc ~T0 @X0 1 a ]
+[; ;lobparm.c: 333: ushort i;
+[; ;lobparm.c: 334: unsigned short long cmsk, tmsk;
+[; ;lobparm.c: 335: ushort ln,j, k;
+[; ;lobparm.c: 339: signed char newval;
+[; ;lobparm.c: 342: ushort premode;
+[; ;lobparm.c: 343: char botMenu = (mask < (1U << 6U)) ? 5U : (5U+1);
+[e = _botMenu -> ? < _mask -> << -> 1 `ui -> 6 `ui `um : -> 5 `ui + -> 5 `ui -> -> 1 `i `ui `uc ]
+[; ;lobparm.c: 352: tmsk = mask;
+"352
+[e = _tmsk _mask ]
+[; ;lobparm.c: 353: cmd = cmd & 0x7f;
+"353
+[e = _cmd -> & -> _cmd `i -> 127 `i `uc ]
+[; ;lobparm.c: 354: if (cmd == 0x01) {
+"354
+[e $ ! == -> _cmd `i -> 1 `i 33  ]
+{
+[; ;lobparm.c: 355: if ((mask & 255) == (1U << 5U))
+"355
+[e $ ! == & _mask -> -> -> 255 `i `m `um -> << -> 1 `ui -> 5 `ui `um 34  ]
+[; ;lobparm.c: 356: return(0);
+"356
+[e ) -> -> 0 `i `uc ]
+[e $UE 32  ]
+[e :U 34 ]
+[; ;lobparm.c: 357: dashes = 0;
+"357
+[e = _dashes -> -> 0 `i `uc ]
+[; ;lobparm.c: 358: lcd_updated = 1;
+"358
+[e = _lcd_updated -> -> 1 `i `uc ]
+[; ;lobparm.c: 359: if (*pix >= botMenu) {
+"359
+[e $ ! >= -> *U _pix `i -> _botMenu `i 35  ]
+{
+[; ;lobparm.c: 360: *pix = -1;
+"360
+[e = *U _pix -> -U -> 1 `i `uc ]
+[; ;lobparm.c: 361: do {
+"361
+[e :U 38 ]
+{
+[; ;lobparm.c: 362: (*pix)++;
+"362
+[e ++ *U _pix -> -> 1 `i `uc ]
+"364
+}
+[; ;lobparm.c: 364: } while (!(tmsk & (1UL << *pix)));
+[e $ ! != & -> _tmsk `ul << -> 1 `ul *U _pix -> -> 0 `i `ul 38  ]
+[e :U 37 ]
+[; ;lobparm.c: 365: dumphex(*pix);
+"365
+[e ( _dumphex (1 *U _pix ]
+"366
+}
+[; ;lobparm.c: 366: } else if (tmsk >> (*pix + 1)) {
+[e $U 39  ]
+[e :U 35 ]
+[e $ ! != >> _tmsk + -> *U _pix `i -> 1 `i -> -> 0 `i `um 40  ]
+{
+[; ;lobparm.c: 367: do {
+"367
+[e :U 43 ]
+{
+[; ;lobparm.c: 368: (*pix)++;
+"368
+[e ++ *U _pix -> -> 1 `i `uc ]
+"370
+}
+[; ;lobparm.c: 370: } while (!(tmsk & (1UL << *pix)));
+[e $ ! != & -> _tmsk `ul << -> 1 `ul *U _pix -> -> 0 `i `ul 43  ]
+[e :U 42 ]
+[; ;lobparm.c: 371: dumphex(*pix);
+"371
+[e ( _dumphex (1 *U _pix ]
+"372
+}
+[e :U 40 ]
+"373
+[e :U 39 ]
+}
+[; ;lobparm.c: 372: }
+[; ;lobparm.c: 373: } else if (cmd == 0x2d) {
+[e $U 44  ]
+[e :U 33 ]
+[e $ ! == -> _cmd `i -> 45 `i 45  ]
+{
+[; ;lobparm.c: 374: if ((mask & 255) == (1U << 5U))
+"374
+[e $ ! == & _mask -> -> -> 255 `i `m `um -> << -> 1 `ui -> 5 `ui `um 46  ]
+[; ;lobparm.c: 375: return(0);
+"375
+[e ) -> -> 0 `i `uc ]
+[e $UE 32  ]
+[e :U 46 ]
+[; ;lobparm.c: 376: dashes = 0;
+"376
+[e = _dashes -> -> 0 `i `uc ]
+[; ;lobparm.c: 377: lcd_updated = 1;
+"377
+[e = _lcd_updated -> -> 1 `i `uc ]
+[; ;lobparm.c: 378: if (*pix == 0U) {
+"378
+[e $ ! == -> *U _pix `ui -> 0 `ui 47  ]
+{
+[; ;lobparm.c: 379: *pix = 8U+1;
+"379
+[e = *U _pix -> + -> 8 `ui -> -> 1 `i `ui `uc ]
+[; ;lobparm.c: 380: do {
+"380
+[e :U 50 ]
+{
+[; ;lobparm.c: 381: (*pix)--;
+"381
+[e -- *U _pix -> -> 1 `i `uc ]
+"383
+}
+[; ;lobparm.c: 383: } while (!(mask & (1UL << *pix)));
+[e $ ! != & -> _mask `ul << -> 1 `ul *U _pix -> -> 0 `i `ul 50  ]
+[e :U 49 ]
+[; ;lobparm.c: 384: dumphex(*pix);
+"384
+[e ( _dumphex (1 *U _pix ]
+"385
+}
+[; ;lobparm.c: 385: } else if (*pix && (tmsk & ((1 << (*pix + 1)) - 1))) {
+[e $U 51  ]
+[e :U 47 ]
+[e $ ! && != -> *U _pix `i -> -> -> 0 `i `uc `i != & _tmsk -> -> - << -> 1 `i + -> *U _pix `i -> 1 `i -> 1 `i `m `um -> -> 0 `i `um 52  ]
+{
+[; ;lobparm.c: 386: do {
+"386
+[e :U 55 ]
+{
+[; ;lobparm.c: 387: (*pix)--;
+"387
+[e -- *U _pix -> -> 1 `i `uc ]
+"389
+}
+[; ;lobparm.c: 389: } while (!(tmsk & (1UL << *pix)));
+[e $ ! != & -> _tmsk `ul << -> 1 `ul *U _pix -> -> 0 `i `ul 55  ]
+[e :U 54 ]
+[; ;lobparm.c: 390: dumphex(*pix);
+"390
+[e ( _dumphex (1 *U _pix ]
+"391
+}
+[e :U 52 ]
+"392
+[e :U 51 ]
+}
+[; ;lobparm.c: 391: }
+[; ;lobparm.c: 392: } else if (cmd == 0x2b) {
+[e $U 56  ]
+[e :U 45 ]
+[e $ ! == -> _cmd `i -> 43 `i 57  ]
+{
+[; ;lobparm.c: 393: lcd_updated = 1;
+"393
+[e = _lcd_updated -> -> 1 `i `uc ]
+[; ;lobparm.c: 394: if ((play_mode & 2) && ((*pix == 0U) || (*pix == 2U))) {
+"394
+[e $ ! && != & _play_mode -> -> 2 `i `l -> -> 0 `i `l || == -> *U _pix `ui -> 0 `ui == -> *U _pix `ui -> 2 `ui 58  ]
+{
+[; ;lobparm.c: 395: newval = pparm[*pix] - parameters[*pix].limits.incr;
+"395
+[e = _newval -> - -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 2 `i `c ]
+[; ;lobparm.c: 396: if (newval >= parameters[*pix].limits.minimum) {
+"396
+[e $ ! >= -> _newval `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 0 `i 59  ]
+{
+[; ;lobparm.c: 398: if (preset_type == 0)
+"398
+[e $ ! == -> _preset_type `i -> 0 `i 60  ]
+[; ;lobparm.c: 399: premode = 0;
+"399
+[e = _premode -> -> 0 `i `us ]
+[e $U 61  ]
+"400
+[e :U 60 ]
+[; ;lobparm.c: 400: else if (preset_type == 1U)
+[e $ ! == -> _preset_type `ui -> 1 `ui 62  ]
+[; ;lobparm.c: 401: premode = 7;
+"401
+[e = _premode -> -> 7 `i `us ]
+[e $U 63  ]
+"402
+[e :U 62 ]
+[; ;lobparm.c: 402: else if (preset_type == 2) {
+[e $ ! == -> _preset_type `i -> 2 `i 64  ]
+{
+[; ;lobparm.c: 403: if (preset[2].twolnrw == 0)
+"403
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 0 `i 65  ]
+[; ;lobparm.c: 404: premode = 13;
+"404
+[e = _premode -> -> 13 `i `us ]
+[e $U 66  ]
+"405
+[e :U 65 ]
+[; ;lobparm.c: 405: else if (preset[2].twolnrw == 1)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 1 `i 67  ]
+[; ;lobparm.c: 406: premode = 16;
+"406
+[e = _premode -> -> 16 `i `us ]
+[e $U 68  ]
+"407
+[e :U 67 ]
+[; ;lobparm.c: 407: else if (preset[2].twolnrw == 2)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 2 `i 69  ]
+[; ;lobparm.c: 408: premode = 19;
+"408
+[e = _premode -> -> 19 `i `us ]
+[e $U 70  ]
+"409
+[e :U 69 ]
+[; ;lobparm.c: 409: else if (preset[2].twolnrw == 3)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 3 `i 71  ]
+[; ;lobparm.c: 410: premode = 22;
+"410
+[e = _premode -> -> 22 `i `us ]
+[e :U 71 ]
+"411
+[e :U 70 ]
+[e :U 68 ]
+[e :U 66 ]
+}
+[; ;lobparm.c: 411: }
+[e $U 72  ]
+"412
+[e :U 64 ]
+[; ;lobparm.c: 412: else if (preset_type == 3)
+[e $ ! == -> _preset_type `i -> 3 `i 73  ]
+[; ;lobparm.c: 413: premode = 25;
+"413
+[e = _premode -> -> 25 `i `us ]
+[e :U 73 ]
+"414
+[e :U 72 ]
+[e :U 63 ]
+[e :U 61 ]
+[; ;lobparm.c: 414: premode += ((preset_type == 3) ? 0 : preset[preset_type].value[preset_type+6]);
+[e =+ _premode -> ? == -> _preset_type `i -> 3 `i : -> 0 `i -> *U + &U . *U + &U _preset * -> _preset_type `ux -> -> # *U &U _preset `ui `ux 0 * -> -> + -> _preset_type `i -> 6 `i `ui `ux -> -> # *U &U . *U + &U _preset * -> _preset_type `ux -> -> # *U &U _preset `ui `ux 0 `ui `ux `i `us ]
+[; ;lobparm.c: 415: if (is_available(pre_rand[premode].start, (*pix==0U)?newval:pparm[0U], (*pix==2U)?newval:pparm[2U])) {
+"415
+[e $ ! != -> ( _is_available (3 , , . *U + &U _pre_rand * -> _premode `ux -> -> # *U &U _pre_rand `ui `ux 2 -> ? == -> *U _pix `ui -> 0 `ui : -> _newval `i -> *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux `i `uc -> ? == -> *U _pix `ui -> 2 `ui : -> _newval `i -> *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i `c `i -> -> -> 0 `i `uc `i 74  ]
+{
+[; ;lobparm.c: 416: pparm[*pix] = newval;
+"416
+[e = *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux _newval ]
+[; ;lobparm.c: 417: dashes = 0;
+"417
+[e = _dashes -> -> 0 `i `uc ]
+[; ;lobparm.c: 418: if (preset_type <= 1U) {
+"418
+[e $ ! <= -> _preset_type `ui -> 1 `ui 75  ]
+{
+[; ;lobparm.c: 419: abort_shot();
+"419
+[e ( _abort_shot ..  ]
+[; ;lobparm.c: 420: play_state = 2U;
+"420
+[e = _play_state -> -> 2 `ui `uc ]
+"421
+}
+[e :U 75 ]
+"422
+}
+[; ;lobparm.c: 421: }
+[; ;lobparm.c: 422: } else {
+[e $U 76  ]
+[e :U 74 ]
+{
+[; ;lobparm.c: 423: dashes = 1 << (*pix);
+"423
+[e = _dashes -> << -> 1 `i *U _pix `uc ]
+"424
+}
+[e :U 76 ]
+"425
+}
+[e :U 59 ]
+"428
+}
+[; ;lobparm.c: 424: }
+[; ;lobparm.c: 425: }
+[; ;lobparm.c: 428: } else if ((play_mode & 8) && (*pix == 2U) && (pparm[0U] == 70)) {
+[e $U 77  ]
+[e :U 58 ]
+[e $ ! && && != & _play_mode -> -> 8 `i `l -> -> 0 `i `l == -> *U _pix `ui -> 2 `ui == -> *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux `i -> 70 `i 78  ]
+{
+[; ;lobparm.c: 429: dashes = 1 << (*pix);
+"429
+[e = _dashes -> << -> 1 `i *U _pix `uc ]
+"432
+}
+[; ;lobparm.c: 432: } else {
+[e $U 79  ]
+[e :U 78 ]
+{
+[; ;lobparm.c: 433: dec1:
+"433
+[e :U 80 ]
+[; ;lobparm.c: 435: pparm[*pix] -= parameters[*pix].limits.incr;
+"435
+[e =- *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 2 ]
+[; ;lobparm.c: 437: if ((*pix <= 5U) && (*pix != 4U)) {
+"437
+[e $ ! && <= -> *U _pix `ui -> 5 `ui != -> *U _pix `ui -> 4 `ui 81  ]
+{
+[; ;lobparm.c: 447: if (pparm[*pix] < parameters[*pix].limits.minimum) {
+"447
+[e $ ! < -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 0 `i 82  ]
+{
+[; ;lobparm.c: 448: pparm[*pix] = parameters[*pix].limits.minimum;
+"448
+[e = *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 0 ]
+"449
+}
+[e :U 82 ]
+"451
+}
+[; ;lobparm.c: 449: }
+[; ;lobparm.c: 451: } else {
+[e $U 83  ]
+[e :U 81 ]
+{
+[; ;lobparm.c: 452: if (pparm[*pix] < parameters[*pix].limits.minimum)
+"452
+[e $ ! < -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 0 `i 84  ]
+[; ;lobparm.c: 453: pparm[*pix] = parameters[*pix].limits.maximum;
+"453
+[e = *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 1 ]
+[e :U 84 ]
+"454
+}
+[e :U 83 ]
+[; ;lobparm.c: 454: }
+[; ;lobparm.c: 457: if (*pix == 7U && ((model_type == 2U) || (model_type == 5U))) {
+"457
+[e $ ! && == -> *U _pix `ui -> 7 `ui || == -> _model_type `ui -> 2 `ui == -> _model_type `ui -> 5 `ui 85  ]
+{
+[; ;lobparm.c: 460: if ((pparm[*pix] == 1) || (pparm[*pix] == 3) || (pparm[*pix] == 4)) {
+"460
+[e $ ! || || == -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> 1 `i == -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> 3 `i == -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> 4 `i 86  ]
+{
+[; ;lobparm.c: 462: goto dec1;
+"462
+[e $U 80  ]
+"463
+}
+[e :U 86 ]
+"464
+}
+[e :U 85 ]
+"465
+}
+[e :U 79 ]
+[e :U 77 ]
+[; ;lobparm.c: 463: }
+[; ;lobparm.c: 464: }
+[; ;lobparm.c: 465: }
+[; ;lobparm.c: 468: if (((*pix >= 6U) && (*pix != 8U)) || (*pix == 4U)) {
+"468
+[e $ ! || && >= -> *U _pix `ui -> 6 `ui != -> *U _pix `ui -> 8 `ui == -> *U _pix `ui -> 4 `ui 87  ]
+{
+[; ;lobparm.c: 473: if (preset_type == 0)
+"473
+[e $ ! == -> _preset_type `i -> 0 `i 88  ]
+[; ;lobparm.c: 474: premode = 0;
+"474
+[e = _premode -> -> 0 `i `us ]
+[e $U 89  ]
+"475
+[e :U 88 ]
+[; ;lobparm.c: 475: else if (preset_type == 1U)
+[e $ ! == -> _preset_type `ui -> 1 `ui 90  ]
+[; ;lobparm.c: 476: premode = 7;
+"476
+[e = _premode -> -> 7 `i `us ]
+[e $U 91  ]
+"477
+[e :U 90 ]
+[; ;lobparm.c: 477: else if (preset_type == 2) {
+[e $ ! == -> _preset_type `i -> 2 `i 92  ]
+{
+[; ;lobparm.c: 478: if (preset[2].twolnrw == 0)
+"478
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 0 `i 93  ]
+[; ;lobparm.c: 479: premode = 13;
+"479
+[e = _premode -> -> 13 `i `us ]
+[e $U 94  ]
+"480
+[e :U 93 ]
+[; ;lobparm.c: 480: else if (preset[2].twolnrw == 1)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 1 `i 95  ]
+[; ;lobparm.c: 481: premode = 16;
+"481
+[e = _premode -> -> 16 `i `us ]
+[e $U 96  ]
+"482
+[e :U 95 ]
+[; ;lobparm.c: 482: else if (preset[2].twolnrw == 2)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 2 `i 97  ]
+[; ;lobparm.c: 483: premode = 19;
+"483
+[e = _premode -> -> 19 `i `us ]
+[e $U 98  ]
+"484
+[e :U 97 ]
+[; ;lobparm.c: 484: else if (preset[2].twolnrw == 3)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 3 `i 99  ]
+[; ;lobparm.c: 485: premode = 22;
+"485
+[e = _premode -> -> 22 `i `us ]
+[e :U 99 ]
+"486
+[e :U 98 ]
+[e :U 96 ]
+[e :U 94 ]
+}
+[e :U 92 ]
+"487
+[e :U 91 ]
+[e :U 89 ]
+[; ;lobparm.c: 486: }
+[; ;lobparm.c: 487: premode += ((preset_type == 3) ? 0 : preset[preset_type].value[preset_type+6]);
+[e =+ _premode -> ? == -> _preset_type `i -> 3 `i : -> 0 `i -> *U + &U . *U + &U _preset * -> _preset_type `ux -> -> # *U &U _preset `ui `ux 0 * -> -> + -> _preset_type `i -> 6 `i `ui `ux -> -> # *U &U . *U + &U _preset * -> _preset_type `ux -> -> # *U &U _preset `ui `ux 0 `ui `ux `i `us ]
+[; ;lobparm.c: 488: if (!(is_available(pre_rand[premode].start, pparm[0U], pparm[2U]))) {
+"488
+[e $ ! ! != -> ( _is_available (3 , , . *U + &U _pre_rand * -> _premode `ux -> -> # *U &U _pre_rand `ui `ux 2 -> *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux `uc *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i -> -> -> 0 `i `uc `i 100  ]
+{
+[; ;lobparm.c: 516: newval = pparm[0U];
+"516
+[e = _newval *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux ]
+[; ;lobparm.c: 517: while ((newval >= parameters[0U].limits.minimum)
+[; ;lobparm.c: 518: && (!(is_available(pre_rand[premode].start, newval, pparm[2U])))) {
+"518
+[e $U 101  ]
+[e :U 102 ]
+{
+[; ;lobparm.c: 519: newval = newval - parameters[0U].limits.incr;
+"519
+[e = _newval -> - -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 2 `i `c ]
+"520
+}
+[e :U 101 ]
+"517
+[e $ && >= -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 0 `i ! != -> ( _is_available (3 , , . *U + &U _pre_rand * -> _premode `ux -> -> # *U &U _pre_rand `ui `ux 2 -> _newval `uc *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i -> -> -> 0 `i `uc `i 102  ]
+[e :U 103 ]
+[; ;lobparm.c: 520: }
+[; ;lobparm.c: 521: if (newval < parameters[0U].limits.minimum) {
+"521
+[e $ ! < -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 0 `i 104  ]
+{
+[; ;lobparm.c: 522: newval = pparm[0U];
+"522
+[e = _newval *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux ]
+[; ;lobparm.c: 523: while ((newval <= parameters[0U].limits.maximum)
+[; ;lobparm.c: 524: && (!(is_available(pre_rand[premode].start, newval, pparm[2U])))) {
+"524
+[e $U 105  ]
+[e :U 106 ]
+{
+[; ;lobparm.c: 525: newval = newval + parameters[0U].limits.incr;
+"525
+[e = _newval -> + -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 2 `i `c ]
+"526
+}
+[e :U 105 ]
+"523
+[e $ && <= -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 1 `i ! != -> ( _is_available (3 , , . *U + &U _pre_rand * -> _premode `ux -> -> # *U &U _pre_rand `ui `ux 2 -> _newval `uc *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i -> -> -> 0 `i `uc `i 106  ]
+[e :U 107 ]
+"527
+}
+[e :U 104 ]
+[; ;lobparm.c: 526: }
+[; ;lobparm.c: 527: }
+[; ;lobparm.c: 528: pparm[0U] = newval;
+"528
+[e = *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux _newval ]
+"529
+}
+[e :U 100 ]
+[; ;lobparm.c: 529: }
+[; ;lobparm.c: 531: abort_shot();
+"531
+[e ( _abort_shot ..  ]
+[; ;lobparm.c: 532: play_state = 2U;
+"532
+[e = _play_state -> -> 2 `ui `uc ]
+"533
+}
+[e :U 87 ]
+"534
+}
+[; ;lobparm.c: 533: }
+[; ;lobparm.c: 534: } else if (cmd == 0x04) {
+[e $U 108  ]
+[e :U 57 ]
+[e $ ! == -> _cmd `i -> 4 `i 109  ]
+{
+[; ;lobparm.c: 535: lcd_updated = 1;
+"535
+[e = _lcd_updated -> -> 1 `i `uc ]
+[; ;lobparm.c: 536: if ((play_mode & 2) && ((*pix == 0U) || (*pix == 2U))) {
+"536
+[e $ ! && != & _play_mode -> -> 2 `i `l -> -> 0 `i `l || == -> *U _pix `ui -> 0 `ui == -> *U _pix `ui -> 2 `ui 110  ]
+{
+[; ;lobparm.c: 537: newval = pparm[*pix] + parameters[*pix].limits.incr;
+"537
+[e = _newval -> + -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 2 `i `c ]
+[; ;lobparm.c: 538: if (newval <= parameters[*pix].limits.maximum) {
+"538
+[e $ ! <= -> _newval `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 1 `i 111  ]
+{
+[; ;lobparm.c: 540: if (preset_type == 0)
+"540
+[e $ ! == -> _preset_type `i -> 0 `i 112  ]
+[; ;lobparm.c: 541: premode = 0;
+"541
+[e = _premode -> -> 0 `i `us ]
+[e $U 113  ]
+"542
+[e :U 112 ]
+[; ;lobparm.c: 542: else if (preset_type == 1U)
+[e $ ! == -> _preset_type `ui -> 1 `ui 114  ]
+[; ;lobparm.c: 543: premode = 7;
+"543
+[e = _premode -> -> 7 `i `us ]
+[e $U 115  ]
+"544
+[e :U 114 ]
+[; ;lobparm.c: 544: else if (preset_type == 2) {
+[e $ ! == -> _preset_type `i -> 2 `i 116  ]
+{
+[; ;lobparm.c: 545: if (preset[2].twolnrw == 0)
+"545
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 0 `i 117  ]
+[; ;lobparm.c: 546: premode = 13;
+"546
+[e = _premode -> -> 13 `i `us ]
+[e $U 118  ]
+"547
+[e :U 117 ]
+[; ;lobparm.c: 547: else if (preset[2].twolnrw == 1)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 1 `i 119  ]
+[; ;lobparm.c: 548: premode = 16;
+"548
+[e = _premode -> -> 16 `i `us ]
+[e $U 120  ]
+"549
+[e :U 119 ]
+[; ;lobparm.c: 549: else if (preset[2].twolnrw == 2)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 2 `i 121  ]
+[; ;lobparm.c: 550: premode = 19;
+"550
+[e = _premode -> -> 19 `i `us ]
+[e $U 122  ]
+"551
+[e :U 121 ]
+[; ;lobparm.c: 551: else if (preset[2].twolnrw == 3)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 3 `i 123  ]
+[; ;lobparm.c: 552: premode = 22;
+"552
+[e = _premode -> -> 22 `i `us ]
+[e :U 123 ]
+"553
+[e :U 122 ]
+[e :U 120 ]
+[e :U 118 ]
+}
+[; ;lobparm.c: 553: }
+[e $U 124  ]
+"554
+[e :U 116 ]
+[; ;lobparm.c: 554: else if (preset_type == 3)
+[e $ ! == -> _preset_type `i -> 3 `i 125  ]
+[; ;lobparm.c: 555: premode = 25;
+"555
+[e = _premode -> -> 25 `i `us ]
+[e :U 125 ]
+"556
+[e :U 124 ]
+[e :U 115 ]
+[e :U 113 ]
+[; ;lobparm.c: 556: premode += ((preset_type == 3) ? 0 : preset[preset_type].value[preset_type+6]);
+[e =+ _premode -> ? == -> _preset_type `i -> 3 `i : -> 0 `i -> *U + &U . *U + &U _preset * -> _preset_type `ux -> -> # *U &U _preset `ui `ux 0 * -> -> + -> _preset_type `i -> 6 `i `ui `ux -> -> # *U &U . *U + &U _preset * -> _preset_type `ux -> -> # *U &U _preset `ui `ux 0 `ui `ux `i `us ]
+[; ;lobparm.c: 557: if (is_available(pre_rand[premode].start, (*pix==0U)?newval:pparm[0U], (*pix==2U)?newval:pparm[2U])) {
+"557
+[e $ ! != -> ( _is_available (3 , , . *U + &U _pre_rand * -> _premode `ux -> -> # *U &U _pre_rand `ui `ux 2 -> ? == -> *U _pix `ui -> 0 `ui : -> _newval `i -> *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux `i `uc -> ? == -> *U _pix `ui -> 2 `ui : -> _newval `i -> *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i `c `i -> -> -> 0 `i `uc `i 126  ]
+{
+[; ;lobparm.c: 560: if ((preset_type == 1U || (preset_type == 2 && preset[2].twolnrw == 1))
+[; ;lobparm.c: 561: && *pix==0U && newval >= parameters[*pix].limits.maximum) {
+"561
+[e $ ! && && || == -> _preset_type `ui -> 1 `ui && == -> _preset_type `i -> 2 `i == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 1 `i == -> *U _pix `ui -> 0 `ui >= -> _newval `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 1 `i 127  ]
+{
+[; ;lobparm.c: 562: dashes = 1 << (*pix);
+"562
+[e = _dashes -> << -> 1 `i *U _pix `uc ]
+"563
+}
+[; ;lobparm.c: 563: }
+[e $U 128  ]
+"564
+[e :U 127 ]
+[; ;lobparm.c: 564: else {
+{
+[; ;lobparm.c: 565: pparm[*pix] = newval;
+"565
+[e = *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux _newval ]
+[; ;lobparm.c: 566: dashes = 0;
+"566
+[e = _dashes -> -> 0 `i `uc ]
+[; ;lobparm.c: 567: if (preset_type <= 1U) {
+"567
+[e $ ! <= -> _preset_type `ui -> 1 `ui 129  ]
+{
+[; ;lobparm.c: 568: abort_shot();
+"568
+[e ( _abort_shot ..  ]
+[; ;lobparm.c: 569: play_state = 2U;
+"569
+[e = _play_state -> -> 2 `ui `uc ]
+"570
+}
+[e :U 129 ]
+"571
+}
+[e :U 128 ]
+"572
+}
+[; ;lobparm.c: 570: }
+[; ;lobparm.c: 571: }
+[; ;lobparm.c: 572: } else {
+[e $U 130  ]
+[e :U 126 ]
+{
+[; ;lobparm.c: 573: dashes = 1 << (*pix);
+"573
+[e = _dashes -> << -> 1 `i *U _pix `uc ]
+"574
+}
+[e :U 130 ]
+"575
+}
+[e :U 111 ]
+"578
+}
+[; ;lobparm.c: 574: }
+[; ;lobparm.c: 575: }
+[; ;lobparm.c: 578: } else if ((play_mode & 8) && (*pix == 2U) && (pparm[0U] == 70)) {
+[e $U 131  ]
+[e :U 110 ]
+[e $ ! && && != & _play_mode -> -> 8 `i `l -> -> 0 `i `l == -> *U _pix `ui -> 2 `ui == -> *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux `i -> 70 `i 132  ]
+{
+[; ;lobparm.c: 579: dashes = 1 << (*pix);
+"579
+[e = _dashes -> << -> 1 `i *U _pix `uc ]
+"585
+}
+[; ;lobparm.c: 585: } else if ((play_mode & 8) && (*pix == 0U)
+[e $U 133  ]
+[e :U 132 ]
+[; ;lobparm.c: 586: && (pparm[*pix] + parameters[*pix].limits.incr == 70) && (pparm[2U] !=0)) {
+"586
+[e $ ! && && && != & _play_mode -> -> 8 `i `l -> -> 0 `i `l == -> *U _pix `ui -> 0 `ui == + -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 2 `i -> 70 `i != -> *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i -> 0 `i 134  ]
+{
+[; ;lobparm.c: 588: pparm[*pix] += parameters[*pix].limits.incr;
+"588
+[e =+ *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 2 ]
+[; ;lobparm.c: 589: pparm[2U] = 0;
+"589
+[e = *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux -> -> 0 `i `c ]
+"592
+}
+[; ;lobparm.c: 592: } else {
+[e $U 135  ]
+[e :U 134 ]
+{
+[; ;lobparm.c: 594: inc1:
+"594
+[e :U 136 ]
+[; ;lobparm.c: 596: pparm[*pix] += parameters[*pix].limits.incr;
+"596
+[e =+ *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 2 ]
+[; ;lobparm.c: 598: if ((*pix <= 5U) && (*pix != 4U)) {
+"598
+[e $ ! && <= -> *U _pix `ui -> 5 `ui != -> *U _pix `ui -> 4 `ui 137  ]
+{
+[; ;lobparm.c: 599: if (pparm[*pix] > parameters[*pix].limits.maximum)
+"599
+[e $ ! > -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 1 `i 138  ]
+[; ;lobparm.c: 600: pparm[*pix] = parameters[*pix].limits.maximum;
+"600
+[e = *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 1 ]
+[e :U 138 ]
+"601
+}
+[; ;lobparm.c: 601: } else {
+[e $U 139  ]
+[e :U 137 ]
+{
+[; ;lobparm.c: 602: if (pparm[*pix] > parameters[*pix].limits.maximum)
+"602
+[e $ ! > -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 1 `i 140  ]
+[; ;lobparm.c: 603: pparm[*pix] = parameters[*pix].limits.minimum;
+"603
+[e = *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux . . *U + &U _parameters * -> *U _pix `ux -> -> # *U &U _parameters `ui `ux 0 0 ]
+[e :U 140 ]
+"604
+}
+[e :U 139 ]
+[; ;lobparm.c: 604: }
+[; ;lobparm.c: 607: if (*pix == 7U && ((model_type == 2U) || (model_type == 5U))){
+"607
+[e $ ! && == -> *U _pix `ui -> 7 `ui || == -> _model_type `ui -> 2 `ui == -> _model_type `ui -> 5 `ui 141  ]
+{
+[; ;lobparm.c: 610: if ((pparm[*pix] == 1) || (pparm[*pix] == 3) || (pparm[*pix] == 4)) {
+"610
+[e $ ! || || == -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> 1 `i == -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> 3 `i == -> *U + _pparm * -> *U _pix `ux -> -> # *U _pparm `ui `ux `i -> 4 `i 142  ]
+{
+[; ;lobparm.c: 612: goto inc1;
+"612
+[e $U 136  ]
+"613
+}
+[e :U 142 ]
+"614
+}
+[e :U 141 ]
+"615
+}
+[e :U 135 ]
+[e :U 133 ]
+[e :U 131 ]
+[; ;lobparm.c: 613: }
+[; ;lobparm.c: 614: }
+[; ;lobparm.c: 615: }
+[; ;lobparm.c: 626: if (((*pix >= 6U) && (*pix != 8U)) || (*pix == 4U)) {
+"626
+[e $ ! || && >= -> *U _pix `ui -> 6 `ui != -> *U _pix `ui -> 8 `ui == -> *U _pix `ui -> 4 `ui 143  ]
+{
+[; ;lobparm.c: 631: if (preset_type == 0)
+"631
+[e $ ! == -> _preset_type `i -> 0 `i 144  ]
+[; ;lobparm.c: 632: premode = 0;
+"632
+[e = _premode -> -> 0 `i `us ]
+[e $U 145  ]
+"633
+[e :U 144 ]
+[; ;lobparm.c: 633: else if (preset_type == 1U)
+[e $ ! == -> _preset_type `ui -> 1 `ui 146  ]
+[; ;lobparm.c: 634: premode = 7;
+"634
+[e = _premode -> -> 7 `i `us ]
+[e $U 147  ]
+"635
+[e :U 146 ]
+[; ;lobparm.c: 635: else if (preset_type == 2) {
+[e $ ! == -> _preset_type `i -> 2 `i 148  ]
+{
+[; ;lobparm.c: 636: if (preset[2].twolnrw == 0)
+"636
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 0 `i 149  ]
+[; ;lobparm.c: 637: premode = 13;
+"637
+[e = _premode -> -> 13 `i `us ]
+[e $U 150  ]
+"638
+[e :U 149 ]
+[; ;lobparm.c: 638: else if (preset[2].twolnrw == 1)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 1 `i 151  ]
+[; ;lobparm.c: 639: premode = 16;
+"639
+[e = _premode -> -> 16 `i `us ]
+[e $U 152  ]
+"640
+[e :U 151 ]
+[; ;lobparm.c: 640: else if (preset[2].twolnrw == 2)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 2 `i 153  ]
+[; ;lobparm.c: 641: premode = 19;
+"641
+[e = _premode -> -> 19 `i `us ]
+[e $U 154  ]
+"642
+[e :U 153 ]
+[; ;lobparm.c: 642: else if (preset[2].twolnrw == 3)
+[e $ ! == -> . . *U + &U _preset * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset `ui `ux 1 4 `i -> 3 `i 155  ]
+[; ;lobparm.c: 643: premode = 22;
+"643
+[e = _premode -> -> 22 `i `us ]
+[e :U 155 ]
+"644
+[e :U 154 ]
+[e :U 152 ]
+[e :U 150 ]
+}
+[e :U 148 ]
+"645
+[e :U 147 ]
+[e :U 145 ]
+[; ;lobparm.c: 644: }
+[; ;lobparm.c: 645: premode += ((preset_type == 3) ? 0 : preset[preset_type].value[preset_type+6]);
+[e =+ _premode -> ? == -> _preset_type `i -> 3 `i : -> 0 `i -> *U + &U . *U + &U _preset * -> _preset_type `ux -> -> # *U &U _preset `ui `ux 0 * -> -> + -> _preset_type `i -> 6 `i `ui `ux -> -> # *U &U . *U + &U _preset * -> _preset_type `ux -> -> # *U &U _preset `ui `ux 0 `ui `ux `i `us ]
+[; ;lobparm.c: 646: if (!(is_available(pre_rand[premode].start, pparm[0U], pparm[2U]))) {
+"646
+[e $ ! ! != -> ( _is_available (3 , , . *U + &U _pre_rand * -> _premode `ux -> -> # *U &U _pre_rand `ui `ux 2 -> *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux `uc *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i -> -> -> 0 `i `uc `i 156  ]
+{
+[; ;lobparm.c: 674: newval = pparm[0U];
+"674
+[e = _newval *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux ]
+[; ;lobparm.c: 675: while ((newval <= parameters[0U].limits.maximum)
+[; ;lobparm.c: 676: && (!(is_available(pre_rand[premode].start, newval, pparm[2U])))) {
+"676
+[e $U 157  ]
+[e :U 158 ]
+{
+[; ;lobparm.c: 677: newval = newval + parameters[0U].limits.incr;
+"677
+[e = _newval -> + -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 2 `i `c ]
+"678
+}
+[e :U 157 ]
+"675
+[e $ && <= -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 1 `i ! != -> ( _is_available (3 , , . *U + &U _pre_rand * -> _premode `ux -> -> # *U &U _pre_rand `ui `ux 2 -> _newval `uc *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i -> -> -> 0 `i `uc `i 158  ]
+[e :U 159 ]
+[; ;lobparm.c: 678: }
+[; ;lobparm.c: 679: if (newval > parameters[0U].limits.maximum) {
+"679
+[e $ ! > -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 1 `i 160  ]
+{
+[; ;lobparm.c: 680: newval = pparm[0U];
+"680
+[e = _newval *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux ]
+[; ;lobparm.c: 681: while ((newval >= parameters[0U].limits.minimum)
+[; ;lobparm.c: 682: && (!(is_available(pre_rand[premode].start, newval, pparm[2U])))) {
+"682
+[e $U 161  ]
+[e :U 162 ]
+{
+[; ;lobparm.c: 683: newval = newval - parameters[0U].limits.incr;
+"683
+[e = _newval -> - -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 2 `i `c ]
+"684
+}
+[e :U 161 ]
+"681
+[e $ && >= -> _newval `i -> . . *U + &U _parameters * -> -> 0 `ui `ux -> -> # *U &U _parameters `ui `ux 0 0 `i ! != -> ( _is_available (3 , , . *U + &U _pre_rand * -> _premode `ux -> -> # *U &U _pre_rand `ui `ux 2 -> _newval `uc *U + _pparm * -> -> 2 `ui `ux -> -> # *U _pparm `ui `ux `i -> -> -> 0 `i `uc `i 162  ]
+[e :U 163 ]
+"685
+}
+[e :U 160 ]
+[; ;lobparm.c: 684: }
+[; ;lobparm.c: 685: }
+[; ;lobparm.c: 686: pparm[0U] = newval;
+"686
+[e = *U + _pparm * -> -> 0 `ui `ux -> -> # *U _pparm `ui `ux _newval ]
+"687
+}
+[e :U 156 ]
+[; ;lobparm.c: 687: }
+[; ;lobparm.c: 688: abort_shot();
+"688
+[e ( _abort_shot ..  ]
+[; ;lobparm.c: 689: play_state = 2U;
+"689
+[e = _play_state -> -> 2 `ui `uc ]
+"690
+}
+[e :U 143 ]
+"691
+}
+[e :U 109 ]
+"692
+[e :U 108 ]
+[e :U 56 ]
+[e :U 44 ]
+[; ;lobparm.c: 690: }
+[; ;lobparm.c: 691: }
+[; ;lobparm.c: 692: if (mask & (((1U << 6U)|(1U << 7U)|0x100|0x200)|(0x400|0x800|0x1000|0x2000|0x4000|0x8000|0x10000|0x20000|0x40000|0x80000|0x100000|0x200000))) {
+[e $ ! != & -> _mask `l | -> | | | << -> 1 `ui -> 6 `ui << -> 1 `ui -> 7 `ui -> -> 256 `i `ui -> -> 512 `i `ui `l | | | | | | -> | -> | | | | -> 1024 `i -> 2048 `i -> 4096 `i -> 8192 `i -> 16384 `i `ui -> 32768 `ui `l -> 65536 `l -> 131072 `l -> 262144 `l -> 524288 `l -> 1048576 `l -> 2097152 `l -> -> 0 `i `l 164  ]
+{
+[; ;lobparm.c: 693: ln = 1;
+"693
+[e = _ln -> -> 1 `i `us ]
+[; ;lobparm.c: 694: if ((mask & (0x200|(0x400|0x800|0x1000|0x2000|0x4000|0x8000|0x10000|0x20000|0x40000|0x80000|0x100000|0x200000))) && lcd_updated) {
+"694
+[e $ ! && != & -> _mask `l | -> -> 512 `i `l | | | | | | -> | -> | | | | -> 1024 `i -> 2048 `i -> 4096 `i -> 8192 `i -> 16384 `i `ui -> 32768 `ui `l -> 65536 `l -> 131072 `l -> 262144 `l -> 524288 `l -> 1048576 `l -> 2097152 `l -> -> 0 `i `l != -> _lcd_updated `i -> -> -> 0 `i `uc `i 165  ]
+{
+[; ;lobparm.c: 695: clear_lcd(0xf);
+"695
+[e ( _clear_lcd (1 -> -> 15 `i `uc ]
+"696
+}
+[e :U 165 ]
+"697
+}
+[; ;lobparm.c: 696: }
+[; ;lobparm.c: 697: } else {
+[e $U 166  ]
+[e :U 164 ]
+{
+[; ;lobparm.c: 698: ln = 0;
+"698
+[e = _ln -> -> 0 `i `us ]
+"699
+}
+[e :U 166 ]
+[; ;lobparm.c: 699: }
+[; ;lobparm.c: 701: for (i=0,cmsk=1; i<=(ushort)(16+5); i++) {
+"701
+{
+[e ; = _i -> -> 0 `i `us = _cmsk -> -> -> 1 `i `m `um ]
+[e $ <= -> _i `ui -> -> + -> 16 `i -> 5 `i `us `ui 167  ]
+[e $U 168  ]
+[e :U 167 ]
+{
+[; ;lobparm.c: 702: if (tmsk & cmsk) {
+"702
+[e $ ! != & _tmsk _cmsk -> -> 0 `i `um 170  ]
+{
+[; ;lobparm.c: 703: if (cmsk & (0x200|(0x400|0x800|0x1000|0x2000|0x4000|0x8000|0x10000|0x20000|0x40000|0x80000|0x100000|0x200000))) {
+"703
+[e $ ! != & -> _cmsk `l | -> -> 512 `i `l | | | | | | -> | -> | | | | -> 1024 `i -> 2048 `i -> 4096 `i -> 8192 `i -> 16384 `i `ui -> 32768 `ui `l -> 65536 `l -> 131072 `l -> 262144 `l -> 524288 `l -> 1048576 `l -> 2097152 `l -> -> 0 `i `l 171  ]
+{
+[; ;lobparm.c: 704: ln = 0;
+"704
+[e = _ln -> -> 0 `i `us ]
+"705
+}
+[e :U 171 ]
+[; ;lobparm.c: 705: }
+[; ;lobparm.c: 711: if ((play_mode & 8) || ((play_mode & 2) && (preset_type == 2))) {
+"711
+[e $ ! || != & _play_mode -> -> 8 `i `l -> -> 0 `i `l && != & _play_mode -> -> 2 `i `l -> -> 0 `i `l == -> _preset_type `i -> 2 `i 172  ]
+{
+[; ;lobparm.c: 712: if (i == 5U)
+"712
+[e $ ! == -> _i `ui -> 5 `ui 173  ]
+[; ;lobparm.c: 713: k = 3;
+"713
+[e = _k -> -> 3 `i `us ]
+[e $U 174  ]
+"714
+[e :U 173 ]
+[; ;lobparm.c: 714: else
+[; ;lobparm.c: 715: k = (parameters[i].line != 0) ? parameters[i].line : ln & 3;
+"715
+[e = _k -> ? != -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 6 `i -> 0 `i : -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 6 `ui & -> _ln `ui -> -> 3 `i `ui `us ]
+[e :U 174 ]
+[; ;lobparm.c: 716: if ((play_mode & 2) && (preset_type == 2)) {
+"716
+[e $ ! && != & _play_mode -> -> 2 `i `l -> -> 0 `i `l == -> _preset_type `i -> 2 `i 175  ]
+{
+[; ;lobparm.c: 717: if (i == 8U)
+"717
+[e $ ! == -> _i `ui -> 8 `ui 176  ]
+[; ;lobparm.c: 718: k = 0;
+"718
+[e = _k -> -> 0 `i `us ]
+[e :U 176 ]
+"719
+}
+[e :U 175 ]
+"720
+}
+[; ;lobparm.c: 719: }
+[; ;lobparm.c: 720: } else {
+[e $U 177  ]
+[e :U 172 ]
+{
+[; ;lobparm.c: 721: k = ln & 3;
+"721
+[e = _k -> & -> _ln `ui -> -> 3 `i `ui `us ]
+"722
+}
+[e :U 177 ]
+[; ;lobparm.c: 722: }
+[; ;lobparm.c: 723: strncpy(&lcd_line[k][parameters[i].text_start],
+[; ;lobparm.c: 727: (char*)parm_fmt[i][(*pix == i) ? 1 : 0],parameters[i].text_size);
+"727
+[e ( _strncpy (3 , , &U *U + &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 5 `ux -> -> # *U &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> *U + &U *U + &U _parm_fmt * -> _i `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> ? == -> *U _pix `ui -> _i `ui : -> 1 `i -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> _i `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux `*uc `*Cuc -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 4 `ui ]
+[; ;lobparm.c: 730: ln++;
+"730
+[e ++ _ln -> -> 1 `i `us ]
+[; ;lobparm.c: 731: if (!(play_mode & 8) && (i == 2U)) {
+"731
+[e $ ! && ! != & _play_mode -> -> 8 `i `l -> -> 0 `i `l == -> _i `ui -> 2 `ui 178  ]
+{
+[; ;lobparm.c: 732: strcpy(&lcd_line[k][8],"        ");
+"732
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 8 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 95C ]
+"733
+}
+[e :U 178 ]
+[; ;lobparm.c: 733: }
+[; ;lobparm.c: 734: if (i == 4U) {
+"734
+[e $ ! == -> _i `ui -> 4 `ui 179  ]
+{
+[; ;lobparm.c: 735: chartoa(preparm1base[11]+pparm[i],&lcd_line[k][parameters[i].field_locn],parameters[i].field_size);
+"735
+[e ( _chartoa (3 , , -> + -> *U + &U _preparm1base * -> -> -> 11 `i `ui `ux -> -> # *U &U _preparm1base `ui `ux `i -> *U + _pparm * -> _i `ux -> -> # *U _pparm `ui `ux `i `c &U *U + &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 3 `ux -> -> # *U &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 2 `c ]
+"736
+}
+[; ;lobparm.c: 736: } else if (i > 5U) {
+[e $U 180  ]
+[e :U 179 ]
+[e $ ! > -> _i `ui -> 5 `ui 181  ]
+{
+[; ;lobparm.c: 738: chartoa(preparm1base[i-5U]+pparm[i],&lcd_line[k][parameters[i].field_locn],parameters[i].field_size);
+"738
+[e ( _chartoa (3 , , -> + -> *U + &U _preparm1base * -> - -> _i `ui -> 5 `ui `ux -> -> # *U &U _preparm1base `ui `ux `i -> *U + _pparm * -> _i `ux -> -> # *U _pparm `ui `ux `i `c &U *U + &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 3 `ux -> -> # *U &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 2 `c ]
+"739
+}
+[; ;lobparm.c: 739: } else if (parameters[i].field_size) {
+[e $U 182  ]
+[e :U 181 ]
+[e $ ! != -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 2 `i -> -> -> 0 `i `Cuc `i 183  ]
+{
+[; ;lobparm.c: 740: if (dashes & (1<<i)) {
+"740
+[e $ ! != & -> _dashes `i << -> 1 `i _i -> 0 `i 184  ]
+{
+[; ;lobparm.c: 741: strncpy(&lcd_line[k][parameters[i].field_locn],"--",2);
+"741
+[e ( _strncpy (3 , , &U *U + &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 3 `ux -> -> # *U &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 96C -> -> 2 `i `ui ]
+"742
+}
+[; ;lobparm.c: 742: } else {
+[e $U 185  ]
+[e :U 184 ]
+{
+[; ;lobparm.c: 743: if (i == 0U) {
+"743
+[e $ ! == -> _i `ui -> 0 `ui 186  ]
+{
+[; ;lobparm.c: 747: chartoa(speed_trans[pparm[i]/5],&lcd_line[k][parameters[i].field_locn],parameters[i].field_size);
+"747
+[e ( _chartoa (3 , , -> *U + &U _speed_trans * -> -> / -> *U + _pparm * -> _i `ux -> -> # *U _pparm `ui `ux `i -> 5 `i `ui `ux -> -> # *U &U _speed_trans `ui `ux `c &U *U + &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 3 `ux -> -> # *U &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 2 `c ]
+"748
+}
+[; ;lobparm.c: 748: } else {
+[e $U 187  ]
+[e :U 186 ]
+{
+[; ;lobparm.c: 751: if ((i == 5U) && (pparm[i] == 1)) {
+"751
+[e $ ! && == -> _i `ui -> 5 `ui == -> *U + _pparm * -> _i `ux -> -> # *U _pparm `ui `ux `i -> 1 `i 188  ]
+{
+[; ;lobparm.c: 752: strncpy(&lcd_line[k][parameters[i].field_locn-1],"Random ",7);
+"752
+[e ( _strncpy (3 , , &U *U + &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> - -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 3 `i -> 1 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 97C -> -> 7 `i `ui ]
+"753
+}
+[; ;lobparm.c: 753: }
+[e $U 189  ]
+"754
+[e :U 188 ]
+[; ;lobparm.c: 754: else
+[; ;lobparm.c: 756: {
+"756
+{
+[; ;lobparm.c: 757: chartoa(pparm[i],&lcd_line[k][parameters[i].field_locn],parameters[i].field_size);
+"757
+[e ( _chartoa (3 , , *U + _pparm * -> _i `ux -> -> # *U _pparm `ui `ux &U *U + &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 3 `ux -> -> # *U &U *U + &U _lcd_line * -> _k `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> . *U + &U _parameters * -> _i `ux -> -> # *U &U _parameters `ui `ux 2 `c ]
+"758
+}
+[e :U 189 ]
+"759
+}
+[e :U 187 ]
+"760
+}
+[e :U 185 ]
+"761
+}
+[e :U 183 ]
+"762
+[e :U 182 ]
+[e :U 180 ]
+}
+[e :U 170 ]
+[; ;lobparm.c: 758: }
+[; ;lobparm.c: 759: }
+[; ;lobparm.c: 760: }
+[; ;lobparm.c: 761: }
+[; ;lobparm.c: 762: }
+[; ;lobparm.c: 763: cmsk <<= 1;
+"763
+[e =<< _cmsk -> 1 `i ]
+"764
+}
+"701
+[e ++ _i -> -> 1 `i `us ]
+[e $ <= -> _i `ui -> -> + -> 16 `i -> 5 `i `us `ui 167  ]
+[e :U 168 ]
+"764
+}
+[; ;lobparm.c: 764: }
+[; ;lobparm.c: 765: return(0);
+"765
+[e ) -> -> 0 `i `uc ]
+[e $UE 32  ]
+[; ;lobparm.c: 766: }
+"766
+[e :UE 32 ]
+}
+"776
+[v _is_available `(uc ~T0 @X0 1 ef3`uc`uc`c ]
+"779
+{
+[; ;lobparm.c: 776: char is_available(char locno, uchar spd, signed char spn)
+[; ;lobparm.c: 779: {
+[e :U _is_available ]
+"776
+[v _locno `uc ~T0 @X0 1 r1 ]
+[v _spd `uc ~T0 @X0 1 r2 ]
+[v _spn `c ~T0 @X0 1 r3 ]
+"779
+[f ]
+"780
+[v _rc `uc ~T0 @X0 1 a ]
+[; ;lobparm.c: 780: char rc = 0;
+[e = _rc -> -> 0 `i `uc ]
+[; ;lobparm.c: 782: rc = isLocAvail(locno, spd, spn);
+"782
+[e = _rc ( _isLocAvail (3 , , _locno _spd _spn ]
+[; ;lobparm.c: 783: if (preset_type == 1U) {
+"783
+[e $ ! == -> _preset_type `ui -> 1 `ui 191  ]
+{
+[; ;lobparm.c: 784: if (!rc)
+"784
+[e $ ! ! != -> _rc `i -> -> -> 0 `i `uc `i 192  ]
+[; ;lobparm.c: 785: rc = isLocAvail(locno+6, spd, spn);
+"785
+[e = _rc ( _isLocAvail (3 , , -> + -> _locno `i -> 6 `i `uc _spd _spn ]
+[e :U 192 ]
+[; ;lobparm.c: 786: if (!rc)
+"786
+[e $ ! ! != -> _rc `i -> -> -> 0 `i `uc `i 193  ]
+[; ;lobparm.c: 787: rc = isLocAvail(locno+12, spd, spn);
+"787
+[e = _rc ( _isLocAvail (3 , , -> + -> _locno `i -> 12 `i `uc _spd _spn ]
+[e :U 193 ]
+"788
+}
+[e :U 191 ]
+[; ;lobparm.c: 788: }
+[; ;lobparm.c: 789: return rc;
+"789
+[e ) _rc ]
+[e $UE 190  ]
+[; ;lobparm.c: 790: }
+"790
+[e :UE 190 ]
+}
+"798
+[v _isLocAvail `(uc ~T0 @X0 1 ef3`uc`uc`c ]
+"800
+{
+[; ;lobparm.c: 798: char isLocAvail(char locNo, uchar spd, signed char spn)
+[; ;lobparm.c: 800: {
+[e :U _isLocAvail ]
+"798
+[v _locNo `uc ~T0 @X0 1 r1 ]
+[v _spd `uc ~T0 @X0 1 r2 ]
+[v _spn `c ~T0 @X0 1 r3 ]
+"800
+[f ]
+"804
+[v _locp `*CS9 ~T0 @X0 1 a ]
+"807
+[v _method `c ~T0 @X0 1 a ]
+[; ;lobparm.c: 804: const struct el04_loc* locp;
+[; ;lobparm.c: 807: signed char method;
+[; ;lobparm.c: 809: for (method=0; method<50; method++) {
+"809
+{
+[e = _method -> -> 0 `i `c ]
+[e $ < -> _method `i -> 50 `i 195  ]
+[e $U 196  ]
+[e :U 195 ]
+{
+[; ;lobparm.c: 816: locp = &court_locs[locNo][method];
+"816
+[e = _locp &U *U + &U *U + &U _court_locs * -> _locNo `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> -> _method `uc `ux -> -> # *U &U *U + &U _court_locs * -> _locNo `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux ]
+[; ;lobparm.c: 831: if ((spn == locp->spin) && (spd == locp->speed)) {
+"831
+[e $ ! && == -> _spn `i -> . *U _locp 5 `i == -> _spd `i -> . *U _locp 0 `i 198  ]
+{
+[; ;lobparm.c: 832: break;
+"832
+[e $U 196  ]
+"833
+}
+[e :U 198 ]
+"834
+}
+"809
+[e ++ _method -> -> 1 `i `c ]
+[e $ < -> _method `i -> 50 `i 195  ]
+[e :U 196 ]
+"834
+}
+[; ;lobparm.c: 833: }
+[; ;lobparm.c: 834: }
+[; ;lobparm.c: 839: return ((method < 50) ? 1 : 0);
+"839
+[e ) -> ? < -> _method `i -> 50 `i : -> 1 `i -> 0 `i `uc ]
+[e $UE 194  ]
+[; ;lobparm.c: 840: }
+"840
+[e :UE 194 ]
+}
+"850
+[v _getLocAvail `(uc ~T0 @X0 1 ef4`uc`uc`c`*uc ]
+"853
+{
+[; ;lobparm.c: 850: char getLocAvail(char locNo, uchar spd, signed char spn, char* pmeth)
+[; ;lobparm.c: 853: {
+[e :U _getLocAvail ]
+"850
+[v _locNo `uc ~T0 @X0 1 r1 ]
+[v _spd `uc ~T0 @X0 1 r2 ]
+[v _spn `c ~T0 @X0 1 r3 ]
+[v _pmeth `*uc ~T0 @X0 1 r4 ]
+"853
+[f ]
+"857
+[v _locp `*CS9 ~T0 @X0 1 a ]
+"860
+[v _method `c ~T0 @X0 1 a ]
+[; ;lobparm.c: 857: const struct el04_loc* locp;
+[; ;lobparm.c: 860: signed char method;
+[; ;lobparm.c: 862: for (method=0; method<50; method++) {
+"862
+{
+[e = _method -> -> 0 `i `c ]
+[e $ < -> _method `i -> 50 `i 200  ]
+[e $U 201  ]
+[e :U 200 ]
+{
+[; ;lobparm.c: 869: locp = &court_locs[locNo][method];
+"869
+[e = _locp &U *U + &U *U + &U _court_locs * -> _locNo `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> -> _method `uc `ux -> -> # *U &U *U + &U _court_locs * -> _locNo `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux ]
+[; ;lobparm.c: 874: if ((spn == locp->spin) && (spd == locp->speed)) {
+"874
+[e $ ! && == -> _spn `i -> . *U _locp 5 `i == -> _spd `i -> . *U _locp 0 `i 203  ]
+{
+[; ;lobparm.c: 875: *pmeth = method;
+"875
+[e = *U _pmeth -> _method `uc ]
+[; ;lobparm.c: 876: break;
+"876
+[e $U 201  ]
+"877
+}
+[e :U 203 ]
+"878
+}
+"862
+[e ++ _method -> -> 1 `i `c ]
+[e $ < -> _method `i -> 50 `i 200  ]
+[e :U 201 ]
+"878
+}
+[; ;lobparm.c: 877: }
+[; ;lobparm.c: 878: }
+[; ;lobparm.c: 879: return ((method < 50) ? 1 : 0);
+"879
+[e ) -> ? < -> _method `i -> 50 `i : -> 1 `i -> 0 `i `uc ]
+[e $UE 199  ]
+[; ;lobparm.c: 880: }
+"880
+[e :UE 199 ]
+}
+[a 59C 78 65 82 82 79 87 0 ]
+[a 83C 78 65 82 82 79 87 0 ]
+[a 79C 83 72 79 82 84 0 ]
+[a 73C 67 69 78 84 69 82 0 ]
+[a 77C 68 69 69 80 0 ]
+[a 58C 77 69 68 73 85 77 0 ]
+[a 82C 77 69 68 73 85 77 0 ]
+[a 54C 82 65 78 68 79 77 0 ]
+[a 68C 82 65 78 68 79 77 0 ]
+[a 78C 82 65 78 68 79 77 0 ]
+[a 92C 82 65 78 68 79 77 0 ]
+[a 80C 77 73 68 0 ]
+[a 55C 82 79 87 32 67 0 ]
+[a 69C 82 79 87 58 32 67 0 ]
+[a 93C 82 79 87 58 32 67 0 ]
+[a 56C 82 79 87 32 66 0 ]
+[a 70C 82 79 87 58 32 66 0 ]
+[a 94C 82 79 87 58 32 66 0 ]
+[a 53C 82 79 87 32 65 0 ]
+[a 67C 82 79 87 58 32 65 0 ]
+[a 91C 82 79 87 58 32 65 0 ]
+[a 2C 83 80 69 69 68 58 32 62 32 32 32 32 77 80 72 60 0 ]
+[a 12C 70 69 69 68 58 32 32 62 32 32 32 32 83 69 67 60 0 ]
+[a 24C 80 79 87 69 82 32 66 65 83 69 76 73 78 69 62 60 0 ]
+[a 32C 70 79 82 69 72 65 78 68 32 80 76 85 83 32 62 60 0 ]
+[a 30C 65 84 84 65 67 75 47 68 69 70 69 78 68 32 62 60 0 ]
+[a 20C 70 85 76 76 89 32 82 65 78 68 79 77 32 32 62 60 0 ]
+[a 36C 73 78 84 69 82 77 69 68 73 65 84 69 32 32 62 60 0 ]
+[a 26C 65 76 76 45 67 79 85 82 84 69 82 32 32 32 62 60 0 ]
+[a 40C 77 79 79 78 66 65 76 76 69 82 32 32 32 32 62 60 0 ]
+[a 34C 66 69 71 73 78 78 69 82 32 32 32 32 32 32 62 60 0 ]
+[a 28C 65 80 80 82 79 65 67 72 32 32 32 32 32 32 62 60 0 ]
+[a 38C 65 68 86 65 78 67 69 68 32 32 32 32 32 32 62 60 0 ]
+[a 22C 71 82 73 78 68 69 82 32 32 32 32 32 32 32 62 60 0 ]
+[a 42C 83 76 73 67 69 82 32 32 32 32 32 32 32 32 62 60 0 ]
+[a 44C 76 69 70 84 89 32 32 32 32 32 32 32 32 32 62 60 0 ]
+[a 6C 83 80 73 78 62 32 32 60 0 ]
+[a 14C 82 78 68 32 83 87 69 69 80 62 32 32 32 32 32 60 0 ]
+[a 16C 82 78 68 32 68 69 80 84 72 62 32 32 32 32 32 60 0 ]
+[a 10C 62 32 32 32 32 32 32 60 0 ]
+[a 18C 50 45 76 73 78 69 58 62 32 32 32 32 32 32 32 60 0 ]
+[a 52C 76 73 78 69 32 54 0 ]
+[a 51C 76 73 78 69 32 53 0 ]
+[a 50C 76 73 78 69 32 52 0 ]
+[a 49C 76 73 78 69 32 51 0 ]
+[a 48C 76 73 78 69 32 50 0 ]
+[a 47C 76 73 78 69 32 49 0 ]
+[a 96C 45 45 0 ]
+[a 97C 82 97 110 100 111 109 32 0 ]
+[a 76C 82 73 71 72 84 32 0 ]
+[a 71C 32 76 69 70 84 32 0 ]
+[a 23C 80 79 87 69 82 32 66 65 83 69 76 73 78 69 82 32 0 ]
+[a 1C 83 80 69 69 68 58 32 32 32 32 32 32 77 80 72 32 0 ]
+[a 57C 32 87 73 68 69 32 0 ]
+[a 81C 32 87 73 68 69 32 0 ]
+[a 11C 70 69 69 68 58 32 32 32 32 32 32 32 83 69 67 32 0 ]
+[a 8C 65 78 71 76 69 62 32 32 0 ]
+[a 7C 65 78 71 76 69 58 32 32 0 ]
+[a 31C 70 79 82 69 72 65 78 68 32 80 76 85 83 32 32 32 0 ]
+[a 29C 65 84 84 65 67 75 47 68 69 70 69 78 68 32 32 32 0 ]
+[a 4C 69 76 69 86 58 32 32 62 32 32 32 32 60 32 32 32 0 ]
+[a 5C 83 80 73 78 58 32 32 32 0 ]
+[a 60C 32 32 32 83 80 73 78 32 45 51 32 32 32 0 ]
+[a 84C 32 32 32 83 80 73 78 32 45 51 32 32 32 0 ]
+[a 66C 32 32 32 83 80 73 78 32 43 51 32 32 32 0 ]
+[a 90C 32 32 32 83 80 73 78 32 43 51 32 32 32 0 ]
+[a 61C 32 32 32 83 80 73 78 32 45 50 32 32 32 0 ]
+[a 85C 32 32 32 83 80 73 78 32 45 50 32 32 32 0 ]
+[a 65C 32 32 32 83 80 73 78 32 43 50 32 32 32 0 ]
+[a 89C 32 32 32 83 80 73 78 32 43 50 32 32 32 0 ]
+[a 62C 32 32 32 83 80 73 78 32 45 49 32 32 32 0 ]
+[a 86C 32 32 32 83 80 73 78 32 45 49 32 32 32 0 ]
+[a 64C 32 32 32 83 80 73 78 32 43 49 32 32 32 0 ]
+[a 88C 32 32 32 83 80 73 78 32 43 49 32 32 32 0 ]
+[a 19C 70 85 76 76 89 32 82 65 78 68 79 77 32 32 32 32 0 ]
+[a 35C 73 78 84 69 82 77 69 68 73 65 84 69 32 32 32 32 0 ]
+[a 63C 32 32 32 83 80 73 78 32 48 32 32 32 32 0 ]
+[a 87C 32 32 32 83 80 73 78 32 48 32 32 32 32 0 ]
+[a 25C 65 76 76 45 67 79 85 82 84 69 82 32 32 32 32 32 0 ]
+[a 39C 77 79 79 78 66 65 76 76 69 82 32 32 32 32 32 32 0 ]
+[a 13C 82 78 68 32 83 87 69 69 80 58 32 32 32 32 32 32 0 ]
+[a 15C 82 78 68 32 68 69 80 84 72 58 32 32 32 32 32 32 0 ]
+[a 33C 66 69 71 73 78 78 69 82 32 32 32 32 32 32 32 32 0 ]
+[a 27C 65 80 80 82 79 65 67 72 32 32 32 32 32 32 32 32 0 ]
+[a 37C 65 68 86 65 78 67 69 68 32 32 32 32 32 32 32 32 0 ]
+[a 21C 71 82 73 78 68 69 82 32 32 32 32 32 32 32 32 32 0 ]
+[a 45C 73 78 86 65 76 73 68 32 32 32 32 32 32 32 32 32 0 ]
+[a 46C 73 78 86 65 76 73 68 32 32 32 32 32 32 32 32 32 0 ]
+[a 17C 50 45 76 73 78 69 58 32 32 32 32 32 32 32 32 32 0 ]
+[a 41C 83 76 73 67 69 82 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 43C 76 69 70 84 89 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 3C 69 76 69 86 58 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 9C 32 32 32 32 32 32 32 32 0 ]
+[a 95C 32 32 32 32 32 32 32 32 0 ]
+[a 72C 0 ]
+[a 74C 0 ]
+[a 75C 0 ]

@@ -1,0 +1,548 @@
+;############################################################################
+;# TITLE   "RTC General Purpose Library Checking Software"
+;#
+;#
+;#      Program:        RTCtest.ASM
+;#      Version:        1.0
+;#      Revision Date:  10/07/2002
+;#      Author:         Abdelwahab Fassi-Fihri
+;#
+;#
+;# Program demonstrates use of RTC general purpose library module.
+;############################################################################
+
+
+;#define        PIC16
+
+
+
+        list p=16f877
+        include <P16f877.INC>
+        include "16RTCInt.inc"
+
+        errorlevel      -302
+        errorlevel      -305
+
+; Defines external functions
+        extern  InitLCD
+        extern  putcLCD
+        extern  clrLCD
+        extern  L1homeLCD
+        extern  L2homeLCD
+
+; Variables used in this program;
+        UDATA
+
+#ifdef        RTC_CLOCKON
+   #ifdef       RTC_DAYMONTHYEARON
+      #ifdef      RTC_CENTURYON
+Time     res           15
+      #else
+Time     res           12
+      #endif
+   #else
+Time     res           6
+   #endif
+#endif
+
+
+
+
+
+#define  SecsH         Time
+#define  SecsL         Time+1
+#define  MinsH         Time+2
+#define  MinsL         Time+3
+#define  HoursH        Time+4
+#define  HoursL        Time+5
+
+
+#ifdef   RTC_DAYMONTHYEARON
+#define  DaysH         Time+6
+#define  DaysL         Time+7
+#define  MonthsH       Time+8
+#define  MonthsL       Time+9
+#define  YearsH        Time+10
+#define  YearsL        Time+11
+#endif
+
+
+#ifdef   RTC_CENTURYON
+#define  CenturiesL    Time+12
+#define  CenturiesH    Time+13
+#define  CenturiesH2   Time+14
+#endif
+
+
+Tempx       RES 01
+ISR_STAT    RES 02                      ;For saving STATUS value
+#define     ISR_PCLATH  ISR_STAT+1      ;For saving PCLATH
+
+         UDATA_SHR
+ISR_W       RES 01      ;For Saving W reg. value
+
+
+
+STARThere    CODE    0x00
+             pagesel START
+             goto    START
+
+
+
+
+INTserv      CODE    0x04            ;
+;             goto    ISRoutine
+             nop                     ;this is necessary because the Linker file only allows 1 instruction
+                                     ;if we use the goto instruction, the code might go to the wrong location
+                                     ;depending on PCLATH.  So using a nop allows the code to go to the next
+                                     ;location.  This is important for context saving.
+InteruptServiceLocation     CODE    0x05
+ISRoutine
+;context savings (very important)
+                movwf   ISR_W                ;save Wreg in ISR_W
+                swapf   STATUS,W
+                banksel ISR_STAT
+                movwf   ISR_STAT             ;put STATUSreg (swapped) into ISR_STAT
+                movf    PCLATH,W
+                movwf   ISR_PCLATH           ;put PCLATH into ISR_PCLATH
+
+;call the interrupt function
+                pagesel     RTCIntISR
+                call        RTCIntISR        ;Call general purpose RTC interrupt service routine
+
+
+;restore context
+                banksel ISR_STAT
+                movf    ISR_PCLATH,W        ;put ISR_PCLATH back into PCLATH
+                movwf   PCLATH
+                swapf   ISR_STAT,W
+                movwf   STATUS              ;swap ISR_STAT back into STATUSreg
+                swapf   ISR_W,f             ;swap ISR_W into itself
+                swapf   ISR_W,W             ;swap ISR_W into Wreg.
+                retfie
+
+
+
+
+Main    CODE    
+
+START
+
+_initialize
+
+                pagesel   InitLCD
+                call      InitLCD                       ;Initialize LCD display
+                call      clrLCD                        ;clear LCD display
+                call      L1homeLCD             ;Go to the first caracter in the first line
+                pagesel   RTCIntInit
+                call      RTCIntInit           ;Initialize RTC
+
+
+
+
+                mRTCintSetTime   .23, .59, .57   ;This is a macro to set the time  .hours,.minutes,.seconds
+;or the following sequence can be used to set the time
+;               mRTCIntSetHours         .16
+;               mRTCIntSetMinutes       .40
+;               mRTCIntSetSeconds       .30       ;or just clear seconds by using   mRTCIntClearSeconds
+
+
+#ifdef          RTC_DAYMONTHYEARON
+                mRTCintSetDate     .02,.28,.20,.03  ;This a macro to set the date  .month,.day,.century,.year
+;or the following sequence can be used to set the date
+;               mRTCIntSetDay            .28
+;               mRTCIntSetMonth          .02
+;               mRTCIntSetYear           .03
+
+;#ifdef         RTC_CENTURYON
+;               mRTCIntSetCentury        .20
+;#endif
+#endif
+
+
+
+#ifdef          RTC_USERDOWON                  ;This is used when automatic DOW is not selected to allow user input of DOW
+                mRTCIntSetDOW     .05          ;set the Day of the week manually: sunday=0, monday=1, ... ,saturday=6
+#endif
+
+
+#ifdef          RTC_DAYMONTHYEARON
+                call      RTCIntCheckLeapYear  ;check if this is a leap year or not
+#endif
+                pagesel    CheckvRTCStatus
+CheckvRTCStatus
+                banksel    vRTCStatus
+                btfss      vRTCStatus,Secf                   ;check if one second has elapsed
+                goto       CheckvRTCStatus
+                bcf        vRTCStatus,Secf
+
+                call      Bin2BCD                            ; Call binary 2 bcd conversion
+
+                pagesel   L1homeLCD
+                call      L1homeLCD
+
+                banksel   HoursH
+                movf      HoursH,w
+                call      putcLCD
+
+                movf      HoursL,w
+                call      putcLCD
+
+                movlw     ':'
+                call      putcLCD
+
+                movf      MinsH,w
+                call      putcLCD
+
+                movf      MinsL,w
+                call      putcLCD
+
+                movlw     ':'
+                call      putcLCD
+
+                movf      SecsH,w
+                call      putcLCD
+
+                movf      SecsL,w
+                call      putcLCD
+
+
+#ifdef  RTC_DAYMONTHYEARON
+                call      L2homeLCD
+        #ifdef  RTC_DOWON
+                banksel   vDOW
+                movlw     LOW DOWconvH                    ;get low 8-bits of address
+                addwf     vDOW,w                          ;add the 8-bit address to vMonth-1
+                movlw     HIGH DOWconvH                   ;This is to change the PCLATH address to make sure ;the table read in "MONTHTBL" WORKS.
+                btfsc     STATUS,C                        ;check if the page crossed
+                addlw     .1                              ;if yes then increment the high address
+                movwf     PCLATH
+                movf      vDOW,w
+                call      DOWconvH
+                banksel   Tempx
+                movwf     Tempx
+
+                movf      Tempx,w
+                pagesel   putcLCD
+                call      putcLCD
+
+                banksel   vDOW
+                movlw     LOW DOWconvL                    ;get low 8-bits of address
+                addwf     vDOW,w                            ;add the 8-bit address to vMonth-1
+                movlw     HIGH DOWconvL                   ;This is to change the PCLATH address to make sure ;the table read in "MONTHTBL" WORKS.
+                btfsc     STATUS,C                          ;check if the page crossed
+                addlw     .1                                ;if yes then increment the high address
+                movwf     PCLATH
+                movf      vDOW,w
+                call      DOWconvL
+                banksel   Tempx
+                movwf     Tempx
+
+                pagesel   putcLCD
+                movf      Tempx,w
+                call      putcLCD
+
+                movlw     '-'
+                call      putcLCD
+
+                movlw     '-'
+                call      putcLCD
+        #endif
+        #ifdef  RTC_USERDOWON
+                banksel   vDOW
+                movlw     LOW DOWconvH                    ;get low 8-bits of address
+                addwf     vDOW,w                          ;add the 8-bit address to vMonth-1
+                movlw     HIGH DOWconvH                   ;This is to change the PCLATH address to make sure ;the table read in "MONTHTBL" WORKS.
+                btfsc     STATUS,C                        ;check if the page crossed
+                addlw     .1                              ;if yes then increment the high address
+                movwf     PCLATH
+                movf      vDOW,w
+                call      DOWconvH
+                banksel   Tempx
+                movwf     Tempx
+
+                movf      Tempx,w
+                pagesel   putcLCD
+                call      putcLCD
+
+                banksel   vDOW
+                movlw     LOW DOWconvL                    ;get low 8-bits of address
+                addwf     vDOW,w                            ;add the 8-bit address to vMonth-1
+                movlw     HIGH DOWconvL                   ;This is to change the PCLATH address to make sure ;the table read in "MONTHTBL" WORKS.
+                btfsc     STATUS,C                          ;check if the page crossed
+                addlw     .1                                ;if yes then increment the high address
+                movwf     PCLATH
+                movf      vDOW,w
+                call      DOWconvL
+                banksel   Tempx
+                movwf     Tempx
+
+                pagesel   putcLCD
+                movf      Tempx,w
+                call      putcLCD
+
+                movlw     '-'
+                call      putcLCD
+
+                movlw     '-'
+                call      putcLCD
+#endif
+
+
+                pagesel   putcLCD
+                movf      MonthsH,w
+                call      putcLCD
+
+                movf      MonthsL,w
+                call      putcLCD
+
+                movlw     '-'
+                call      putcLCD
+
+                movf      DaysH,w
+                call      putcLCD
+
+                movf      DaysL,w
+                call      putcLCD
+
+                movlw     '-'
+                call      putcLCD
+
+  #ifdef      RTC_CENTURYON
+
+                movlw     0x30
+                subwf     CenturiesH2,w
+                pagesel   NoCenturyH2
+                btfsc     STATUS,Z
+                goto      NoCenturyH2
+                movf      CenturiesH2,w
+                pagesel   putcLCD
+                call      putcLCD
+NoCenturyH2
+                pagesel   putcLCD
+                movf      CenturiesH,w
+                call      putcLCD
+
+                movf      CenturiesL,w
+                call      putcLCD
+  #endif
+                movf      YearsH,w
+                call      putcLCD
+                movf      YearsL,w
+                call      putcLCD
+#endif
+                pagesel   CheckvRTCStatus
+                goto      CheckvRTCStatus
+
+
+;*****************************************************
+;* Bin2BCD - converts vDay, vMonth, & vYear  *
+;* to ASCII equivalents.  Stored in DaysH:DaysL,     *
+;* MonthsH:MonthsL, and YearsH:YearsL.               *
+;*****************************************************
+
+Bin2BCD
+                banksel SecsH
+                clrf    SecsH           ; Initialize variables
+                banksel vSec
+                movf    vSec,W          ; for seconds
+                banksel SecsL
+                movwf   SecsL
+                pagesel SecTenth
+SecTenth                          ; Loop to subtract 10
+                movlw   .10             ; from low byte and
+                subwf   SecsL,W         ; increment high byte
+                btfss   STATUS,C        ; while low byte is > 0
+                goto    Next
+                movwf   SecsL
+                incf    SecsH,F
+                goto    SecTenth
+
+
+Next
+                clrf    MinsH           ; Initialize variables
+                banksel vMin
+                movf    vMin,W          ; for minutes
+                banksel MinsL
+                movwf   MinsL
+MinTenth                          ; Loop to subtract 10
+                movlw   .10             ; from low byte and
+                subwf   MinsL,W         ; increment high byte
+                btfss   STATUS,C        ; while low byte is > 0
+                goto    Next2
+                movwf   MinsL
+                incf    MinsH,F
+                goto    MinTenth
+
+
+Next2
+                clrf    HoursH
+                banksel vHour
+                movf    vHour,w
+                banksel HoursL
+                movwf   HoursL
+HourTenth
+                movlw   .10             ; from low byte and
+                subwf   HoursL,W         ; increment high byte
+                btfss   STATUS,C        ; while low byte is > 0
+#ifdef  RTC_DAYMONTHYEARON
+                goto    Next3
+#else
+                goto    Over
+#endif
+                movwf   HoursL
+                incf    HoursH,F
+                goto    HourTenth
+
+#ifdef  RTC_DAYMONTHYEARON
+Next3
+                clrf    DaysH
+                banksel vDay
+                movf    vDay,w
+                banksel DaysL
+                movwf   DaysL
+DayTenth
+                movlw   .10             ; from low byte and
+                subwf   DaysL,W         ; increment high byte
+                btfss   STATUS,C        ; while low byte is > 0
+                goto    Next4
+                movwf   DaysL
+                incf    DaysH,F
+                goto    DayTenth
+
+
+Next4
+                clrf    MonthsH
+                banksel vMonth
+                movf    vMonth,w
+                banksel MonthsL
+                movwf   MonthsL
+MonthTenth
+                movlw   .10             ; from low byte and
+                subwf   MonthsL,W         ; increment high byte
+                btfss   STATUS,C        ; while low byte is > 0
+                goto    Next5
+                movwf   MonthsL
+                incf    MonthsH,F
+                goto    MonthTenth
+
+
+Next5
+                clrf    YearsH
+                banksel vYear
+                movf    vYear,w
+                banksel YearsL
+                movwf   YearsL
+YearTenth
+                movlw   .10             ; from low byte and
+                subwf   YearsL,W         ; increment high byte
+                btfss   STATUS,C        ; while low byte is > 0
+#ifdef  RTC_CENTURYON
+                goto    Next6
+#else
+                goto    Over
+#endif
+                movwf   YearsL
+                incf    YearsH,F
+                goto    YearTenth
+#endif
+
+#ifdef  RTC_CENTURYON
+Next6
+                clrf    CenturiesH2
+                clrf    CenturiesH
+                banksel vCentury
+                movf    vCentury,w
+                banksel CenturiesL
+                movwf   CenturiesL
+CenturyTenth
+                movlw   .10             ; from low byte and
+                subwf   CenturiesL,W         ; increment high byte
+                btfss   STATUS,C        ; while low byte is > 0
+                goto    CenturyHundreth
+                movwf   CenturiesL
+                incf    CenturiesH,F
+                goto    CenturyTenth
+CenturyHundreth
+                movlw   .10             ; from low byte and
+                subwf   CenturiesH,W         ; increment high byte
+                btfss   STATUS,C        ; while low byte is > 0
+                goto    Over
+                movwf   CenturiesH
+                incf    CenturiesH2,F
+                goto    CenturyHundreth
+#endif
+
+Over
+                movlw   0x30            ; Add 0x30 ('0') to all
+                addwf   SecsH,F         ; ASCII equivalent
+                addwf   SecsL,F         ; '0' to '9'
+                addwf   MinsH,F
+                addwf   MinsL,F
+                addwf   HoursH,F        ; ASCII equivalent
+                addwf   HoursL,F        ; '0' to '9'
+
+#ifdef  RTC_DAYMONTHYEARON
+                addwf   DaysH,F         ; ASCII equivalent
+                addwf   DaysL,F         ; '0' to '9'
+                addwf   MonthsH,F       ; ASCII equivalent
+                addwf   MonthsL,F       ; '0' to '9'
+                addwf   YearsH,F        ; ASCII equivalent
+                addwf   YearsL,F        ; '0' to '9'
+#endif
+
+#ifdef  RTC_CENTURYON
+                addwf   CenturiesH2,F
+                addwf   CenturiesH,F
+                addwf   CenturiesL,F
+#endif
+
+                return
+
+
+#ifdef  RTC_DOWON
+DayofWeekASCTab  CODE
+DOWconvH
+                addwf     PCL                         ; Number of Days per month
+                retlw     'S'                         ; Sunday
+                retlw     'M'                         ; Monday
+                retlw     'T'                         ; Tuesday
+                retlw     'W'                         ; Wednesday
+                retlw     'T'                         ; Thursday
+                retlw     'F'                         ; Friday
+                retlw     'S'                         ; Saturday
+DOWconvL
+                addwf     PCL                         ; Number of Days per month
+                retlw     'u'                         ; Sunday
+                retlw     'o'                         ; Monday
+                retlw     'u'                         ; Tuesday
+                retlw     'e'                         ; Wednesday
+                retlw     'h'                         ; Thursday
+                retlw     'r'                         ; Friday
+                retlw     'a'                         ; Saturday
+#endif
+
+#ifdef  RTC_USERDOWON
+DayofWeekASCTab  CODE
+DOWconvH
+                addwf     PCL                         ; Number of Days per month
+                retlw     'S'                         ; Sunday
+                retlw     'M'                         ; Monday
+                retlw     'T'                         ; Tuesday
+                retlw     'W'                         ; Wednesday
+                retlw     'T'                         ; Thursday
+                retlw     'F'                         ; Friday
+                retlw     'S'                         ; Saturday
+DOWconvL
+                addwf     PCL                         ; Number of Days per month
+                retlw     'u'                         ; Sunday
+                retlw     'o'                         ; Monday
+                retlw     'u'                         ; Tuesday
+                retlw     'e'                         ; Wednesday
+                retlw     'h'                         ; Thursday
+                retlw     'r'                         ; Friday
+                retlw     'a'                         ; Saturday
+#endif
+
+
+        END

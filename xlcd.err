@@ -1,0 +1,33 @@
+Error[1105] C:\EL04\temp\xlcd.c 76 : symbol 'XLCD_RSPIN_TRIS' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 76 : lvalue required
+Error[1105] C:\EL04\temp\xlcd.c 77 : symbol 'XLCD_ENPIN_TRIS' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 77 : lvalue required
+Error[1105] C:\EL04\temp\xlcd.c 79 : symbol 'XLCD_RWPIN_TRIS' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 79 : lvalue required
+Error[1105] C:\EL04\temp\xlcd.c 82 : symbol 'XLCD_RSPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 82 : lvalue required
+Error[1105] C:\EL04\temp\xlcd.c 83 : symbol 'XLCD_ENPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 83 : lvalue required
+Error[1105] C:\EL04\temp\xlcd.c 85 : symbol 'XLCD_RWPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 85 : lvalue required
+Warning[2058] C:\EL04\temp\xlcd.c 92 : call of function without prototype
+Error[1105] C:\EL04\temp\xlcd.c 106 : symbol 'XLCD_ENPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 106 : lvalue required
+Warning[2058] C:\EL04\temp\xlcd.c 107 : call of function without prototype
+Error[1105] C:\EL04\temp\xlcd.c 108 : symbol 'XLCD_ENPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 108 : lvalue required
+Warning[2058] C:\EL04\temp\xlcd.c 110 : call of function without prototype
+Error[1105] C:\EL04\temp\xlcd.c 124 : symbol 'XLCD_ENPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 124 : lvalue required
+Warning[2058] C:\EL04\temp\xlcd.c 125 : call of function without prototype
+Error[1105] C:\EL04\temp\xlcd.c 126 : symbol 'XLCD_ENPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 126 : lvalue required
+Warning[2058] C:\EL04\temp\xlcd.c 129 : call of function without prototype
+Error[1105] C:\EL04\temp\xlcd.c 144 : symbol 'XLCD_ENPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 144 : lvalue required
+Warning[2058] C:\EL04\temp\xlcd.c 145 : call of function without prototype
+Error[1105] C:\EL04\temp\xlcd.c 146 : symbol 'XLCD_ENPIN' has not been defined
+Error[1101] C:\EL04\temp\xlcd.c 146 : lvalue required
+Warning[2058] C:\EL04\temp\xlcd.c 202 : call of function without prototype
+Warning[2058] C:\EL04\temp\xlcd.c 203 : call of function without prototype
+Error[1109] C:\EL04\temp\xlcd.c 272 : type mismatch in redeclaration of 'XLCDCommand'

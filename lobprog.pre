@@ -1,0 +1,1101 @@
+
+# 1 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobprog.c"
+
+# 8 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\types.h"
+typedef unsigned char uchar;
+typedef unsigned short ushort;
+typedef unsigned long ulong;
+
+# 44
+typedef union sc {
+char c[2];
+uchar uc[2];
+short s;
+ushort us;
+} mini_variant;
+
+
+
+typedef union ulp {
+char c[4];
+uchar uc[4];
+short s[2];
+ushort us[2];
+long l;
+unsigned long ul;
+void *vp;
+const void *cvp;
+volatile void *vvp;
+char *cp;
+const char *ccp;
+uchar *ucp;
+const uchar *cucp;
+short *sp;
+const short *csp;
+ushort *usp;
+const ushort *cusp;
+long *lp;
+const long *clp;
+ulong *unlp;
+const ulong *culp;
+void (*func)();
+} variant;
+
+# 90
+union parm {
+
+# 96
+signed char value[9];
+
+
+
+struct {
+uchar speed;
+uchar elev;
+
+
+
+signed char spin;
+signed char horiz;
+
+
+uchar twolnrw;
+
+uchar feed;
+
+# 120
+uchar col;
+uchar row;
+
+uchar width;
+};
+};
+
+# 142
+struct limit {
+signed char minimum;
+signed char maximum;
+signed char incr;
+};
+
+
+
+struct motor_status {
+unsigned cap1:1;
+unsigned cap2:1;
+unsigned HaveCmd:1;
+unsigned InCmd:1;
+unsigned CmdErr:1;
+unsigned TickInt:1;
+unsigned WaitResp:1;
+unsigned a2dStarted:1;
+};
+
+# 174
+struct persprog {
+
+
+
+signed char shot[30];
+signed char method[30];
+
+
+
+char feed[30];
+
+char reserved;
+};
+
+# 7 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h"
+far void show_lcd(void);
+void clear_lcd(char mask);
+void DisableSlaveSPI(void);
+void EnableSlaveSPI(void);
+char SEERead(unsigned int addr);
+void SEEWrite(unsigned int addr, char data);
+
+
+char save_prog(signed char progno, struct persprog* ppers);
+
+# 417
+static const unsigned int RPM_NONE = 0x0000;
+static const unsigned int RPM_START = 0x0001;
+static const unsigned int RPM_SHOTNUM = 0x0002;
+static const unsigned int RPM_SHOTLOCN = 0x0004;
+static const unsigned int RPM_SHOTSPEED = 0x0008;
+static const unsigned int RPM_SHOTSPIN = 0x0010;
+static const unsigned int RPM_SHOTFEED = 0x0020;
+static const unsigned int RPM_EDITLOCN = 0x0040;
+static const unsigned int RPM_EDITSPEED = 0x0080;
+static const unsigned int RPM_EDITSPIN = 0x0100;
+static const unsigned int RPM_EDITFEED = 0x0200;
+static const unsigned int RPM_SHOTTABLES = 0x0400;
+
+
+static const unsigned int RPM_DWNLDDRL = 0x0800;
+
+# 543
+struct t_parm {
+const struct limit limits;
+const char** prompt;
+const char field_size;
+const char field_locn;
+const char text_size;
+const char text_start;
+const char line;
+};
+
+struct el04_loc {
+uchar speed;
+ushort top;
+ushort bottom;
+ushort elev;
+signed short sweep;
+signed char spin;
+};
+
+# 588
+struct ee_hdr {
+char vers[8];
+ushort ops_size;
+char npresets;
+char parm_size;
+char npersprog;
+char pers_size;
+char num_methods;
+char num_locs;
+char additional_locs;
+char ndrills[3];
+
+
+ushort elev_correction;
+ushort sweep_correction;
+
+
+char rsrved[9];
+
+};
+
+
+struct shot {
+ushort top;
+ushort bot;
+ushort y;
+ushort x;
+ushort yLo;
+ushort xLeft;
+ushort feedrate;
+ushort sweeprate;
+};
+
+
+
+struct rand_info {
+char range;
+char incr;
+char start;
+char max;
+};
+
+# 738
+struct power_button {
+uchar count;
+uchar previous;
+uchar current;
+uchar previous_debounced;
+uchar debounced;
+};
+
+# 775
+struct moterr {
+unsigned LoBat:1;
+unsigned Reserved1:1;
+unsigned Reserved2:1;
+unsigned TopPeriod:1;
+unsigned BotPeriod:1;
+unsigned TopCurSense:1;
+unsigned BotCurSense:1;
+unsigned FeedCurSense:1;
+unsigned SweepCurSense:1;
+unsigned ElevCurSense:1;
+unsigned TopCnt:1;
+unsigned BotCnt:1;
+unsigned Reserved:1;
+unsigned SweepCnt:1;
+unsigned ElevCnt:1;
+};
+
+# 4 "C:\Program Files (x86)\Microchip\xc8\v1.31\include\string.h"
+typedef int ptrdiff_t;
+typedef unsigned size_t;
+typedef unsigned short wchar_t;
+
+
+extern int errno;
+
+# 22
+extern void * memcpy(void *, const void *, size_t);
+extern void * memmove(void *, const void *, size_t);
+extern void * memset(void *, int, size_t);
+
+# 35
+extern char * strcat(char *, const char *);
+extern char * strcpy(char *, const char *);
+extern char * strncat(char *, const char *, size_t);
+extern char * strncpy(char *, const char *, size_t);
+extern char * strdup(const char *);
+extern char * strtok(char *, const char *);
+
+
+extern int memcmp(const void *, const void *, size_t);
+extern int strcmp(const char *, const char *);
+extern int stricmp(const char *, const char *);
+extern int strncmp(const char *, const char *, size_t);
+extern int strnicmp(const char *, const char *, size_t);
+extern void * memchr(const void *, int, size_t);
+extern size_t strcspn(const char *, const char *);
+extern char * strpbrk(const char *, const char *);
+extern size_t strspn(const char *, const char *);
+extern char * strstr(const char *, const char *);
+extern char * stristr(const char *, const char *);
+extern char * strerror(int);
+extern size_t strlen(const char *);
+extern char * strchr(const char *, int);
+extern char * strichr(const char *, int);
+extern char * strrchr(const char *, int);
+extern char * strrichr(const char *, int);
+
+# 8 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\diag.h"
+void dumprsDIAG(unsigned long ix, const char* cp);
+
+void dumpsDIAG(unsigned long ix,char* cp);
+
+
+void putrsDIAG(const char *data);
+
+void putsDIAG(char *data);
+void dumphex(unsigned char c);
+void dump2port(unsigned uc);
+void dumphex2port(unsigned char c);
+void dumpaddr(unsigned int addr);
+void dumplong(unsigned long addr);
+void dumpshort(unsigned long addr);
+unsigned long atoh(char *cptr);
+
+# 13 "C:\Program Files (x86)\Microchip\xc8\v1.31\include\plib\delays.h"
+void Delay1TCYx(unsigned char);
+
+# 19
+void Delay10TCYx(unsigned char);
+
+# 25
+void Delay100TCYx(unsigned char);
+
+# 31
+void Delay1KTCYx(unsigned char);
+
+# 37
+void Delay10KTCYx(unsigned char);
+
+# 25 "D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobprog.c"
+char load_prog(signed char progno, struct persprog* ppers);
+char save_prog(signed char progno, struct persprog* ppers);
+
+
+
+
+void chartoa(const signed char c, char* cp, signed char ndig);
+
+
+
+
+char getLocAvail(char locNo, uchar spd, signed char spn, char* pmeth);
+
+
+char pp_dashes = 0;
+char pp_odashes = 0;
+char lcd_update_wait = 0;
+
+
+void remote_programming (void);
+
+
+extern void BuildCmd(int code, int cnt, long* args);
+
+
+
+extern const char preparm1base[];
+
+
+
+
+extern char lcd_line[][17];
+
+
+extern struct shot CurShot,NextShot;
+
+
+extern ushort CurShotState;
+
+extern long play_mode;
+extern uchar lcd_updated;
+
+# 71
+extern const struct el04_loc court_locs[][50];
+extern const struct el04_loc court_locs_CLUB[][50];
+
+
+extern const char *parm_fmt[7][2];
+
+
+extern struct t_parm parameters[];
+extern signed short eladj;
+
+
+
+extern const char speed_trans[];
+
+
+
+extern unsigned char model_type;
+
+
+extern unsigned int RemotePgmMode;
+
+
+char prog_chgd=0;
+signed char program_ix;
+signed char ppshot_ix;
+signed char ppparm_ix;
+struct persprog act_program;
+char lcd_changed;
+char priorState = 0;
+char curState = 0;
+
+# 106
+const char key2loc[] = {
+
+# 119
+0, 0, 0, 0, 0, 0, 0, 6,
+0, 0, 0, 0, 0, 5, 0, 0,
+0, 0, 0, 4, 0, 0, 0, 0,
+0, 3, 0, 0, 0, 0, 0, 2,
+0, 0, 0, 0, 0, 1, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+
+
+
+0, 0, 0, 0, 0, 0, 0, 6,
+18,12, 0, 0, 0, 5,17,11,
+0, 0, 0, 4,16,10, 0, 0,
+0, 3,15, 9, 0, 0, 0, 2,
+14, 8, 0, 0, 0, 1,13, 7,
+0, 0, 0, 0, 0, 0, 0, 0,
+
+
+
+
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+
+
+
+0, 0, 0, 0, 0, 0, 0, 6,
+18,12, 0, 0, 0, 5,17,11,
+0, 0, 0, 4,16,10, 0, 0,
+0, 3,15, 9, 0, 0, 0, 2,
+14, 8, 0, 0, 0, 1,13, 7,
+0, 0, 0, 0, 0, 0, 0, 0,
+
+
+
+
+0, 0, 0, 0, 0, 0, 0, 6,
+18,12, 0, 0, 0, 5,17,11,
+0, 0, 0, 4,16,10, 0, 0,
+0, 3,15, 9, 0, 0, 0, 2,
+14, 8, 0, 0, 0, 1,13, 7,
+0, 0, 0, 0, 0, 0, 0, 0,
+
+
+
+
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+0, 0, 0, 0, 0, 0, 0, 0,
+
+};
+
+# 181
+const char *pp_fmt[][2] = {
+
+
+
+{ "SPEED:      MPH ", "SPEED: >    MPH<" },
+{ "SPIN:   ", "SPIN>  <" },
+{ "FEED:   ", "FEED>  <" },
+{ "","" },
+{ "","" },
+
+
+
+
+{ "P#   PLAY TO RUN", "P#> <PLAY TO RUN" },
+
+
+{ "SHOT:   ", "SHOT> < " },
+{ "P#  SHOT#  LOC ?", "P#  SHOT#  LOC# " },
+{ "EDIT:NO ", "EDIT>NO<" },
+{ " Next + Back -  ", ">NEXT + BACK - <" },
+};
+
+struct t_parm ppparams[] = {
+
+{ { 25, 70, 5 }, &parm_fmt[0U][0], 2, 9, 16, 0, 0 },
+{ { -3, 3, 1 }, &parm_fmt[2U][0], -1, 5, 8, 0, 2 },
+{ { 1, 9, 1 }, &parm_fmt[5U][0], 2, 9, 16, 0, 0 },
+{ { 0, 3, 1 }, &parm_fmt[7U][0],0x10,10,16, 0, 0 },
+};
+
+
+
+
+char get50mph0spin(char loc)
+{
+char i;
+
+# 240
+for (i=0; court_locs[loc][i].speed != 0U; i++) {
+if (court_locs[loc][i].speed != 50U) {
+} else if (court_locs[loc][i].spin != 0) {
+} else {
+break;
+}
+}
+return ((court_locs[loc][i].speed) ? i : 0);
+
+# 259
+}
+
+char get60mph0spin(char loc)
+{
+char i;
+
+# 309
+for (i=0; court_locs[loc][i].speed != 0U; i++) {
+if (court_locs[loc][i].speed != 60U) {
+} else if (court_locs[loc][i].spin != 0) {
+} else {
+break;
+}
+}
+if (!(court_locs[loc][i].speed)) {
+for (i=0; court_locs[loc][i].speed != 0U; i++) {
+if (court_locs[loc][i].speed != 50U) {
+} else if (court_locs[loc][i].spin != 0) {
+} else {
+break;
+}
+}
+}
+return ((court_locs[loc][i].speed) ? i : 0);
+
+# 346
+}
+
+uchar show_prog1(unsigned char field)
+{
+unsigned char i;
+unsigned char nused;
+
+putrsDIAG("\n\rSCRN1: P");
+dumphex(program_ix+1);
+
+
+
+if (field == 5) strcpy(&lcd_line[0][0],pp_fmt[5][1]);
+else strcpy(&lcd_line[0][0],pp_fmt[5][0]);
+
+# 368
+if (program_ix+1 < 10)
+chartoa(program_ix+1,&lcd_line[0][3],1);
+else
+chartoa(program_ix+1,&lcd_line[0][2],2);
+
+
+
+strcpy(&lcd_line[2][0],"LOCS            ");
+strcpy(&lcd_line[3][0],"                ");
+
+for (i=0,nused=6-1; i<6; i++) {
+if (act_program.shot[i] != 0) {
+
+
+if (i<4){
+if (act_program.shot[i]<10)
+chartoa(act_program.shot[i],&lcd_line[2][5 + 3*i],1);
+else chartoa(act_program.shot[i],&lcd_line[2][5 + 3*i],2);
+}
+else {
+if (act_program.shot[i]<10)
+chartoa(act_program.shot[i],&lcd_line[3][5+(3*(i-4))],1);
+else chartoa(act_program.shot[i],&lcd_line[3][5+(3*(i-4))],2);
+}
+
+} else {
+nused = i;
+break;
+}
+}
+
+
+putrsDIAG("S");
+dumphex(ppshot_ix+1);
+putrsDIAG("#");
+dumphex(nused);
+
+# 409
+if (field == 6) strcpy(&lcd_line[1][0],pp_fmt[6][1]);
+else strcpy(&lcd_line[1][0],pp_fmt[6][0]);
+
+
+
+chartoa(ppshot_ix+1,&lcd_line[1][5],1);
+
+
+
+
+if (field == 8) strcpy(&lcd_line[1][8],pp_fmt[8][1]);
+else strcpy(&lcd_line[1][8],pp_fmt[8][0]);
+
+
+
+
+lcd_updated = 1;
+priorState = curState;
+return(nused);
+}
+
+void show_prog2()
+{
+
+
+strcpy(&lcd_line[0][0], "P#  Shot#  Loc ?");
+
+
+
+if (program_ix+1 < 10)
+chartoa(program_ix+1,&lcd_line[0][2],1);
+else
+chartoa(program_ix+1,&lcd_line[0][2],2);
+
+chartoa(ppshot_ix+1, &lcd_line[0][9],1);
+if (act_program.shot[ppshot_ix] != 0) {
+
+
+if (act_program.shot[ppshot_ix]<10)
+chartoa(act_program.shot[ppshot_ix], &lcd_line[0][15],1);
+else chartoa(act_program.shot[ppshot_ix], &lcd_line[0][14],2);
+
+}
+strcpy(&lcd_line[1][0], "Press a location");
+strcpy(&lcd_line[2][0], "to Prgm shot, or");
+strcpy(&lcd_line[3][0], "Press - to erase");
+lcd_updated = 1;
+priorState = curState;
+}
+
+void show_prog3()
+{
+unsigned char loc;
+
+
+
+const struct el04_loc* locp;
+
+
+putrsDIAG("\n\rSCRN3: L#");
+loc = act_program.shot[ppshot_ix];
+
+# 476
+locp = &court_locs[loc-1][act_program.method[ppshot_ix]];
+
+# 481
+dumphex(loc);
+putrsDIAG(" M#");
+dumphex(act_program.method[ppshot_ix]);
+
+
+strcpy(&lcd_line[0][0], "P#  Shot#  Loc ?");
+
+chartoa(program_ix+1,&lcd_line[0][2],1);
+chartoa(ppshot_ix+1, &lcd_line[0][9],1);
+if (loc != 0) {
+
+
+if (loc<10)
+chartoa(loc, &lcd_line[0][15],1);
+else chartoa(loc, &lcd_line[0][14],2);
+
+}
+
+
+
+if (ppparm_ix == 0U) strcpy(&lcd_line[1][0],pp_fmt[0U][1]);
+else strcpy(&lcd_line[1][0],pp_fmt[0U][0]);
+
+
+if (pp_dashes == 1) {
+strncpy(&lcd_line[1][9],"--",2);
+}
+else chartoa(speed_trans[locp->speed / 5],&lcd_line[1][9],2);
+
+
+
+
+if (ppparm_ix == 2U) strcpy(&lcd_line[2][0],pp_fmt[2U/2][1]);
+else strcpy(&lcd_line[2][0],pp_fmt[2U/2][0]);
+
+
+if (pp_dashes == 2)
+strncpy(&lcd_line[2][5],"--",2);
+else chartoa(locp->spin,&lcd_line[2][5],-1);
+
+
+
+
+if (ppparm_ix == 5U) strcpy(&lcd_line[2][8],pp_fmt[5U/2][1]);
+else strcpy(&lcd_line[2][8],pp_fmt[5U/2][0]);
+
+
+
+
+chartoa(act_program.feed[ppshot_ix], &lcd_line[2][14],1);
+
+
+
+
+if (ppparm_ix == (5U+2)) strcpy(&lcd_line[3][0],pp_fmt[9][1]);
+else strcpy(&lcd_line[3][0],pp_fmt[9][0]);
+
+
+priorState = curState;
+if (!(pp_odashes && !pp_dashes))
+lcd_updated = 1;
+}
+
+
+
+uchar show_progRPM(unsigned char field) {
+unsigned char i;
+unsigned char nused;
+
+strcpy(&lcd_line[0][0],"* APP CONTROL * ");
+
+
+chartoa(program_ix+1,&lcd_line[1][15],1);
+strcpy(&lcd_line[1][0],"Program Drill#  ");
+
+if (program_ix+1 < 10)
+chartoa(program_ix+1,&lcd_line[1][14],1);
+else
+chartoa(program_ix+1,&lcd_line[1][14],2);
+
+strcpy(&lcd_line[2][0],"Locations:      ");
+strcpy(&lcd_line[3][0],"                ");
+for (i=0,nused=6-1; i<6; i++) {
+if (act_program.shot[i] != 0) {
+if (i<2){
+if (act_program.shot[i]<10)
+chartoa(act_program.shot[i],&lcd_line[2][11 + 3*i],1);
+else chartoa(act_program.shot[i],&lcd_line[2][11 + 3*i],2);
+}
+else {
+if (act_program.shot[i]<10)
+chartoa(act_program.shot[i],&lcd_line[3][5+(3*(i-2))],1);
+else chartoa(act_program.shot[i],&lcd_line[3][5+(3*(i-2))],2);
+}
+} else {
+nused = i;
+break;
+}
+}
+lcd_updated = 1;
+priorState = curState;
+return(nused);
+}
+
+# 589
+char lob_program(char cmd)
+{
+
+# 599
+signed char origix;
+char val, locno;
+
+
+
+unsigned char method;
+
+signed char val2;
+static char incr;
+static char parmena = 0;
+unsigned char i;
+static unsigned char nused;
+static unsigned char field;
+
+
+
+if (((cmd) & (0x80))) {
+eladj = 0;
+putrsDIAG("\n\rPers Prog ");
+play_mode = (play_mode & 0x11) | 4;
+BuildCmd('3',1,&play_mode);
+incr = 0;
+ppparm_ix = 0U;
+ppshot_ix = 0;
+load_prog(program_ix,&act_program);
+parmena = 0;
+if (priorState == 0) {
+field = 5;
+curState = 2;
+priorState = 5;
+} else {
+field = 5;
+curState = 2;
+priorState = 5;
+}
+}
+switch (curState) {
+case 2:
+if (curState != priorState) {
+
+
+if (!RemotePgmMode)
+nused = show_prog1(field);
+else nused = show_progRPM(field);
+
+
+
+if (nused == 0 && !RemotePgmMode) {
+
+curState = 3;
+break;
+}
+}
+
+if (!RemotePgmMode) {
+
+if ((cmd & 0x7f) == 0x2d) {
+putrsDIAG("MENUUP");
+dumphex(field);
+if (--field < 5) field = 8;
+else if (field == 7) field = 6;
+dumphex(field);
+priorState = 5;
+} else if ((cmd & 0x7f) == 0x01) {
+putrsDIAG("MENUDN");
+dumphex(field);
+if (++field > 8) field = 5;
+else if (field == 7) field = 8;
+dumphex(field);
+priorState = 5;
+} else if ((cmd & 0x7f) == 0x04) {
+putrsDIAG("PLUS");
+if (field == 5) {
+if (++program_ix >= 12) program_ix = 0;
+ppshot_ix = 0;
+
+
+load_prog(program_ix,&act_program);
+lcd_updated = 1;
+} else if (field == 6) {
+ppshot_ix += 1;
+if (ppshot_ix >= 6)
+ppshot_ix = 0;
+if (ppshot_ix >= (nused+1))
+ppshot_ix = 0;
+} else if (field == 8) {
+
+
+
+curState = 3;
+
+}
+priorState = 5;
+} else if ((cmd & 0x7f) == 0x2b) {
+putrsDIAG("MINUS");
+if (field == 5) {
+if (program_ix < 1) program_ix = 12-1;
+else program_ix--;
+ppshot_ix = 0;
+
+
+load_prog(program_ix,&act_program);
+lcd_updated = 1;
+} else if (field == 6) {
+if (ppshot_ix < 1) ppshot_ix = (nused == 6)? 6-1 : nused;
+else ppshot_ix--;
+} else if (field == 8) {
+
+curState = 3;
+}
+priorState = 5;
+}
+
+}
+
+break;
+case 3:
+if (curState != priorState) {
+putrsDIAG("\n\rSCRN2:");
+show_prog2();
+}
+if ((cmd >= 0x07) && (cmd <= 0x2a)) {
+
+
+if (key2loc[cmd + (model_type * 48)] != 0x00) {
+
+
+
+if (act_program.shot[ppshot_ix] != key2loc[(cmd + (model_type * 48))]) {
+
+
+prog_chgd = 1;
+
+# 736
+act_program.shot[ppshot_ix] = key2loc[(cmd + (model_type * 48))];
+
+act_program.method[ppshot_ix] = get60mph0spin(key2loc[(cmd + (model_type * 48))]-1);
+
+}
+putrsDIAG("L");
+dumphex(act_program.shot[ppshot_ix]);
+
+
+
+
+if ((act_program.feed[ppshot_ix] < 2) || (act_program.feed[ppshot_ix] > 12))
+act_program.feed[ppshot_ix] = 4;
+
+
+
+putrsDIAG("NUSED ");
+dumphex(nused);
+priorState = 5;
+curState = 4;
+}
+} else if ((cmd & 0x7f) == 0x2b) {
+prog_chgd = 1;
+for (val2=ppshot_ix; val2 < (6-1); val2++) {
+act_program.shot[val2] = act_program.shot[val2+1];
+act_program.method[val2] = act_program.method[val2+1];
+}
+act_program.shot[6-1] = 0;
+act_program.method[6-1] = 0;
+priorState = 5;
+curState = 2;
+}
+break;
+case 4:
+if (curState != priorState) {
+show_prog3();
+}
+
+act_program.shot[6] = 0;
+act_program.method[6] = 0;
+
+
+if (pp_odashes && !pp_dashes) {
+show_prog3();
+pp_odashes = 0;
+}
+
+if ((cmd & 0x7f) == 0x01) {
+
+
+
+
+if (ppparm_ix == 0U)
+ppparm_ix = 2U;
+else if (ppparm_ix == 2U)
+ppparm_ix = 5U;
+else if (ppparm_ix == 5U)
+ppparm_ix = 5U + 2;
+else if (ppparm_ix == 5U + 2)
+ppparm_ix = 0U;
+
+priorState = 5;
+} else if ((cmd & 0x7f) == 0x2d) {
+
+# 804
+if (ppparm_ix == 0U)
+ppparm_ix = 5U+2;
+else if (ppparm_ix == 2U)
+ppparm_ix = 0U;
+else if (ppparm_ix == 5U)
+ppparm_ix = 2U;
+else if (ppparm_ix == 5U+2)
+ppparm_ix = 5U;
+
+priorState = 5;
+} else if ((cmd & 0x7f) == 0x04) {
+if (ppparm_ix == 0U) {
+prog_chgd = 1;
+locno = act_program.shot[ppshot_ix];
+method = act_program.method[ppshot_ix];
+
+# 829
+val = court_locs[locno-1][method].speed;
+val2 = court_locs[locno-1][method].spin;
+
+# 836
+val += 5;
+if (val > 70)
+
+val = 70;
+if (getLocAvail(locno-1,val,val2,&method)) {
+act_program.method[ppshot_ix] = method;
+pp_dashes = 0;
+}
+else {
+pp_dashes = 1;
+pp_odashes = 1;
+}
+} else if (ppparm_ix == 2U) {
+prog_chgd = 1;
+locno = act_program.shot[ppshot_ix];
+method = act_program.method[ppshot_ix];
+
+# 862
+val = court_locs[locno-1][method].speed;
+val2 = court_locs[locno-1][method].spin;
+
+# 869
+val2 += 1;
+if (val2 > 3)
+
+val2 = 3;
+if (getLocAvail(locno-1,val,val2,&method)) {
+act_program.method[ppshot_ix] = method;
+pp_dashes = 0;
+}
+else {
+pp_dashes = 2;
+pp_odashes = 2;
+}
+} else if (ppparm_ix == 5U) {
+prog_chgd = 1;
+
+
+
+
+act_program.feed[ppshot_ix]++;
+if (act_program.feed[ppshot_ix] > 9)
+act_program.feed[ppshot_ix] = 9;
+
+} else if (ppparm_ix == (5U + 2)) {
+ppshot_ix++;
+if (ppshot_ix > (6-1)) {
+ppshot_ix = 0;
+curState = 2;
+} else {
+curState = 3;
+}
+}
+priorState = 5;
+} else if ((cmd & 0x7f) == 0x2b) {
+if (ppparm_ix == 0U) {
+prog_chgd = 1;
+locno = act_program.shot[ppshot_ix];
+method = act_program.method[ppshot_ix];
+
+# 916
+val = court_locs[locno-1][method].speed;
+val2 = court_locs[locno-1][method].spin;
+
+# 923
+putrsDIAG("S");
+dumphex(val);
+putrsDIAG("s");
+dumphex(val2);
+val -= 5;
+if (val < 25)
+
+val = 25;
+putrsDIAG("New");
+dumphex(val);
+if (getLocAvail(locno-1,val,val2,&method)) {
+act_program.method[ppshot_ix] = method;
+pp_dashes = 0;
+}
+else {
+pp_dashes = 1;
+pp_odashes = 1;
+}
+putrsDIAG("M");
+dumphex(method);
+} else if (ppparm_ix == 2U) {
+prog_chgd = 1;
+locno = act_program.shot[ppshot_ix];
+method = act_program.method[ppshot_ix];
+
+# 957
+val = court_locs[locno-1][method].speed;
+val2 = court_locs[locno-1][method].spin;
+
+# 964
+val2 -= 1;
+if (val2 < -3)
+
+val2 = -3;
+if (getLocAvail(locno-1,val,val2,&method)) {
+act_program.method[ppshot_ix] = method;
+pp_dashes = 0;
+}
+else {
+pp_dashes = 2;
+pp_odashes = 2;
+}
+} else if (ppparm_ix == 5U) {
+
+prog_chgd = 1;
+
+
+
+
+act_program.feed[ppshot_ix]--;
+if (act_program.feed[ppshot_ix] < 1+1)
+act_program.feed[ppshot_ix] = 1+1;
+
+} else if (ppparm_ix == (5U + 2)) {
+
+curState = 2;
+}
+priorState = 5;
+
+}
+
+# 1001
+break;
+default:
+putrsDIAG("INVPP state = ");
+dumphex(curState);
+break;
+}
+return(0);
+}
+
+
+
+void remote_programming (void) {
+
+}
+

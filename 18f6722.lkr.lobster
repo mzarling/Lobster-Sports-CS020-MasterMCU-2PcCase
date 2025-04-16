@@ -1,0 +1,35 @@
+// $Id: 18f6722.lkr,v 1.2 2004/09/13 22:07:05 curtiss Exp $
+// File: 18f6722.lkr
+// Sample linker script for the PIC18F6722 processor
+
+LIBPATH .
+
+FILES c018i.o
+FILES clib.lib
+FILES p18f6722.lib
+
+CODEPAGE   NAME=vectors    START=0x0            END=0x29           PROTECTED
+//CODEPAGE   NAME=page       START=0x2A           END=0xFFFF
+//CODEPAGE   NAME=hipage     START=0x10000        END=0x1FFFF
+CODEPAGE   NAME=page       START=0x2A           END=0x17FFF
+CODEPAGE   NAME=crtaddr    START=0x18000        END=0x1FFFF	   PROTECTED
+CODEPAGE   NAME=idlocs     START=0x200000       END=0x200007       PROTECTED
+CODEPAGE   NAME=config     START=0x300000       END=0x30000D       PROTECTED
+CODEPAGE   NAME=devid      START=0x3FFFFE       END=0x3FFFFF       PROTECTED
+CODEPAGE   NAME=eedata     START=0xF00000       END=0xF003FF       PROTECTED
+
+ACCESSBANK NAME=accessram  START=0x0            END=0x5F
+DATABANK   NAME=gpr0       START=0x60           END=0xFF
+DATABANK   NAME=gpr1       START=0x100          END=0x1FF
+DATABANK   NAME=gpr2       START=0x200          END=0x2FF
+DATABANK   NAME=udata      START=0x300          END=0xCFF
+DATABANK   NAME=gpr13      START=0xD00          END=0xEFF		   PROTECTED
+DATABANK   NAME=grp15      START=0xF00          END=0xF5F
+ACCESSBANK NAME=accesssfr  START=0xF60          END=0xFFF          PROTECTED
+
+SECTION    NAME=CONFIG     ROM=config
+SECTION    NAME=MYCODE     ROM=page
+//SECTION	   NAME=CRTABLES   ROM=hipage
+SECTION	   NAME=CRTABLES   ROM=crtaddr
+
+STACK SIZE=0x200 RAM=gpr13

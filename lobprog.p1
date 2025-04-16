@@ -1,0 +1,2696 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"174 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\types.h
+[s S7 `c -> 30 `i `c -> 30 `i `uc -> 30 `i `uc 1 ]
+[n S7 persprog shot method feed reserved ]
+"142
+[s S5 `c 1 `c 1 `c 1 ]
+[n S5 limit minimum maximum incr ]
+"543 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S8 `CS5 1 `**Cuc 1 `Cuc 1 `Cuc 1 `Cuc 1 `Cuc 1 `Cuc 1 ]
+[n S8 t_parm limits prompt field_size field_locn text_size text_start line ]
+[v F319 `*Cuc ~T0 @X0 -> 2 `i t ]
+"75 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobprog.c
+[v _parm_fmt `F319 ~T0 @X0 -> 0 `x e ]
+"553 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S9 `uc 1 `us 1 `us 1 `us 1 `s 1 `c 1 ]
+[n S9 el04_loc speed top bottom elev sweep spin ]
+[v F315 `CS9 ~T0 @X0 -> 50 `i t ]
+"71 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobprog.c
+[v _court_locs `F315 ~T0 @X0 -> 0 `x e ]
+"13 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\diag.h
+[v _putrsDIAG `(v ~T0 @X0 0 ef1`*Cuc ]
+"16
+[v _dumphex `(v ~T0 @X0 0 ef1`uc ]
+"36 C:\Program Files (x86)\Microchip\xc8\v1.31\include\string.h
+[v _strcpy `(*uc ~T0 @X0 0 ef2`*uc`*Cuc ]
+[v F308 `uc ~T0 @X0 -> 17 `i t ]
+"56 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobprog.c
+[v _lcd_line `F308 ~T0 @X0 -> 0 `x e ]
+"31
+[v _chartoa `(v ~T0 @X0 0 ef3`Cc`*uc`c ]
+"65
+[v _lcd_updated `uc ~T0 @X0 0 e ]
+"38 C:\Program Files (x86)\Microchip\xc8\v1.31\include\string.h
+[v _strncpy `(*uc ~T0 @X0 0 ef3`*uc`*Cuc`ui ]
+"83 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobprog.c
+[v _speed_trans `Cuc ~T0 @X0 -> 0 `x e ]
+"79
+[v _eladj `s ~T0 @X0 0 e ]
+"64
+[v _play_mode `l ~T0 @X0 0 e ]
+"47
+[v _BuildCmd `(v ~T0 @X0 0 ef3`i`i`*l ]
+"25
+[v _load_prog `(uc ~T0 @X0 0 ef2`c`*S7 ]
+"90
+[v _RemotePgmMode `ui ~T0 @X0 0 e ]
+"87
+[v _model_type `uc ~T0 @X0 0 e ]
+"36
+[v _getLocAvail `(uc ~T0 @X0 0 ef4`uc`uc`c`*uc ]
+[; ;types.h: 8: typedef unsigned char uchar;
+[; ;types.h: 9: typedef unsigned short ushort;
+[; ;types.h: 10: typedef unsigned long ulong;
+[; ;types.h: 44: typedef union sc {
+[; ;types.h: 45: char c[2];
+[; ;types.h: 46: uchar uc[2];
+[; ;types.h: 47: short s;
+[; ;types.h: 48: ushort us;
+[; ;types.h: 49: } mini_variant;
+[; ;types.h: 53: typedef union ulp {
+[; ;types.h: 54: char c[4];
+[; ;types.h: 55: uchar uc[4];
+[; ;types.h: 56: short s[2];
+[; ;types.h: 57: ushort us[2];
+[; ;types.h: 58: long l;
+[; ;types.h: 59: unsigned long ul;
+[; ;types.h: 60: void *vp;
+[; ;types.h: 61: const void *cvp;
+[; ;types.h: 62: volatile void *vvp;
+[; ;types.h: 63: char *cp;
+[; ;types.h: 64: const char *ccp;
+[; ;types.h: 65: uchar *ucp;
+[; ;types.h: 66: const uchar *cucp;
+[; ;types.h: 67: short *sp;
+[; ;types.h: 68: const short *csp;
+[; ;types.h: 69: ushort *usp;
+[; ;types.h: 70: const ushort *cusp;
+[; ;types.h: 71: long *lp;
+[; ;types.h: 72: const long *clp;
+[; ;types.h: 73: ulong *unlp;
+[; ;types.h: 74: const ulong *culp;
+[; ;types.h: 75: void (*func)();
+[; ;types.h: 76: } variant;
+[; ;types.h: 90: union parm {
+[; ;types.h: 96: signed char value[9];
+[; ;types.h: 100: struct {
+[; ;types.h: 101: uchar speed;
+[; ;types.h: 102: uchar elev;
+[; ;types.h: 106: signed char spin;
+[; ;types.h: 107: signed char horiz;
+[; ;types.h: 110: uchar twolnrw;
+[; ;types.h: 112: uchar feed;
+[; ;types.h: 120: uchar col;
+[; ;types.h: 121: uchar row;
+[; ;types.h: 123: uchar width;
+[; ;types.h: 124: };
+[; ;types.h: 125: };
+[; ;types.h: 142: struct limit {
+[; ;types.h: 143: signed char minimum;
+[; ;types.h: 144: signed char maximum;
+[; ;types.h: 145: signed char incr;
+[; ;types.h: 146: };
+[; ;types.h: 150: struct motor_status {
+[; ;types.h: 151: unsigned cap1:1;
+[; ;types.h: 152: unsigned cap2:1;
+[; ;types.h: 153: unsigned HaveCmd:1;
+[; ;types.h: 154: unsigned InCmd:1;
+[; ;types.h: 155: unsigned CmdErr:1;
+[; ;types.h: 156: unsigned TickInt:1;
+[; ;types.h: 157: unsigned WaitResp:1;
+[; ;types.h: 158: unsigned a2dStarted:1;
+[; ;types.h: 159: };
+[; ;types.h: 174: struct persprog {
+[; ;types.h: 178: signed char shot[30];
+[; ;types.h: 179: signed char method[30];
+[; ;types.h: 183: char feed[30];
+[; ;types.h: 185: char reserved;
+[; ;types.h: 186: };
+[; ;lob.h: 7: far void show_lcd(void);
+[; ;lob.h: 8: void clear_lcd(char mask);
+[; ;lob.h: 9: void DisableSlaveSPI(void);
+[; ;lob.h: 10: void EnableSlaveSPI(void);
+[; ;lob.h: 11: char SEERead(unsigned int addr);
+[; ;lob.h: 12: void SEEWrite(unsigned int addr, char data);
+[; ;lob.h: 15: char save_prog(signed char progno, struct persprog* ppers);
+"417 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[v _RPM_NONE `Cui ~T0 @X0 1 s ]
+[i _RPM_NONE
+-> -> 0 `i `ui
+]
+[; ;lob.h: 417: static const unsigned int RPM_NONE = 0x0000;
+"418
+[v _RPM_START `Cui ~T0 @X0 1 s ]
+[i _RPM_START
+-> -> 1 `i `ui
+]
+[; ;lob.h: 418: static const unsigned int RPM_START = 0x0001;
+"419
+[v _RPM_SHOTNUM `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTNUM
+-> -> 2 `i `ui
+]
+[; ;lob.h: 419: static const unsigned int RPM_SHOTNUM = 0x0002;
+"420
+[v _RPM_SHOTLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTLOCN
+-> -> 4 `i `ui
+]
+[; ;lob.h: 420: static const unsigned int RPM_SHOTLOCN = 0x0004;
+"421
+[v _RPM_SHOTSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPEED
+-> -> 8 `i `ui
+]
+[; ;lob.h: 421: static const unsigned int RPM_SHOTSPEED = 0x0008;
+"422
+[v _RPM_SHOTSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPIN
+-> -> 16 `i `ui
+]
+[; ;lob.h: 422: static const unsigned int RPM_SHOTSPIN = 0x0010;
+"423
+[v _RPM_SHOTFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTFEED
+-> -> 32 `i `ui
+]
+[; ;lob.h: 423: static const unsigned int RPM_SHOTFEED = 0x0020;
+"424
+[v _RPM_EDITLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITLOCN
+-> -> 64 `i `ui
+]
+[; ;lob.h: 424: static const unsigned int RPM_EDITLOCN = 0x0040;
+"425
+[v _RPM_EDITSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPEED
+-> -> 128 `i `ui
+]
+[; ;lob.h: 425: static const unsigned int RPM_EDITSPEED = 0x0080;
+"426
+[v _RPM_EDITSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPIN
+-> -> 256 `i `ui
+]
+[; ;lob.h: 426: static const unsigned int RPM_EDITSPIN = 0x0100;
+"427
+[v _RPM_EDITFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITFEED
+-> -> 512 `i `ui
+]
+[; ;lob.h: 427: static const unsigned int RPM_EDITFEED = 0x0200;
+"428
+[v _RPM_SHOTTABLES `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTTABLES
+-> -> 1024 `i `ui
+]
+[; ;lob.h: 428: static const unsigned int RPM_SHOTTABLES = 0x0400;
+"431
+[v _RPM_DWNLDDRL `Cui ~T0 @X0 1 s ]
+[i _RPM_DWNLDDRL
+-> -> 2048 `i `ui
+]
+[; ;lob.h: 431: static const unsigned int RPM_DWNLDDRL = 0x0800;
+[; ;lob.h: 543: struct t_parm {
+[; ;lob.h: 544: const struct limit limits;
+[; ;lob.h: 545: const char** prompt;
+[; ;lob.h: 546: const char field_size;
+[; ;lob.h: 547: const char field_locn;
+[; ;lob.h: 548: const char text_size;
+[; ;lob.h: 549: const char text_start;
+[; ;lob.h: 550: const char line;
+[; ;lob.h: 551: };
+[; ;lob.h: 553: struct el04_loc {
+[; ;lob.h: 554: uchar speed;
+[; ;lob.h: 555: ushort top;
+[; ;lob.h: 556: ushort bottom;
+[; ;lob.h: 557: ushort elev;
+[; ;lob.h: 558: signed short sweep;
+[; ;lob.h: 559: signed char spin;
+[; ;lob.h: 560: };
+[; ;lob.h: 588: struct ee_hdr {
+[; ;lob.h: 589: char vers[8];
+[; ;lob.h: 590: ushort ops_size;
+[; ;lob.h: 591: char npresets;
+[; ;lob.h: 592: char parm_size;
+[; ;lob.h: 593: char npersprog;
+[; ;lob.h: 594: char pers_size;
+[; ;lob.h: 595: char num_methods;
+[; ;lob.h: 596: char num_locs;
+[; ;lob.h: 597: char additional_locs;
+[; ;lob.h: 598: char ndrills[3];
+[; ;lob.h: 601: ushort elev_correction;
+[; ;lob.h: 602: ushort sweep_correction;
+[; ;lob.h: 605: char rsrved[9];
+[; ;lob.h: 607: };
+[; ;lob.h: 610: struct shot {
+[; ;lob.h: 611: ushort top;
+[; ;lob.h: 612: ushort bot;
+[; ;lob.h: 613: ushort y;
+[; ;lob.h: 614: ushort x;
+[; ;lob.h: 615: ushort yLo;
+[; ;lob.h: 616: ushort xLeft;
+[; ;lob.h: 617: ushort feedrate;
+[; ;lob.h: 618: ushort sweeprate;
+[; ;lob.h: 619: };
+[; ;lob.h: 623: struct rand_info {
+[; ;lob.h: 624: char range;
+[; ;lob.h: 625: char incr;
+[; ;lob.h: 626: char start;
+[; ;lob.h: 627: char max;
+[; ;lob.h: 628: };
+[; ;lob.h: 738: struct power_button {
+[; ;lob.h: 739: uchar count;
+[; ;lob.h: 740: uchar previous;
+[; ;lob.h: 741: uchar current;
+[; ;lob.h: 742: uchar previous_debounced;
+[; ;lob.h: 743: uchar debounced;
+[; ;lob.h: 744: };
+[; ;lob.h: 775: struct moterr {
+[; ;lob.h: 776: unsigned LoBat:1;
+[; ;lob.h: 777: unsigned Reserved1:1;
+[; ;lob.h: 778: unsigned Reserved2:1;
+[; ;lob.h: 779: unsigned TopPeriod:1;
+[; ;lob.h: 780: unsigned BotPeriod:1;
+[; ;lob.h: 781: unsigned TopCurSense:1;
+[; ;lob.h: 782: unsigned BotCurSense:1;
+[; ;lob.h: 783: unsigned FeedCurSense:1;
+[; ;lob.h: 784: unsigned SweepCurSense:1;
+[; ;lob.h: 785: unsigned ElevCurSense:1;
+[; ;lob.h: 786: unsigned TopCnt:1;
+[; ;lob.h: 787: unsigned BotCnt:1;
+[; ;lob.h: 788: unsigned Reserved:1;
+[; ;lob.h: 789: unsigned SweepCnt:1;
+[; ;lob.h: 790: unsigned ElevCnt:1;
+[; ;lob.h: 791: };
+[; ;string.h: 4: typedef int ptrdiff_t;
+[; ;string.h: 5: typedef unsigned size_t;
+[; ;string.h: 6: typedef unsigned short wchar_t;
+[; ;string.h: 9: extern int errno;
+[; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 24: extern void * memset(void *, int, size_t);
+[; ;string.h: 35: extern char * strcat(char *, const char *);
+[; ;string.h: 36: extern char * strcpy(char *, const char *);
+[; ;string.h: 37: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 38: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strdup(const char *);
+[; ;string.h: 40: extern char * strtok(char *, const char *);
+[; ;string.h: 43: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 44: extern int strcmp(const char *, const char *);
+[; ;string.h: 45: extern int stricmp(const char *, const char *);
+[; ;string.h: 46: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 47: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 49: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 50: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 51: extern size_t strspn(const char *, const char *);
+[; ;string.h: 52: extern char * strstr(const char *, const char *);
+[; ;string.h: 53: extern char * stristr(const char *, const char *);
+[; ;string.h: 54: extern char * strerror(int);
+[; ;string.h: 55: extern size_t strlen(const char *);
+[; ;string.h: 56: extern char * strchr(const char *, int);
+[; ;string.h: 57: extern char * strichr(const char *, int);
+[; ;string.h: 58: extern char * strrchr(const char *, int);
+[; ;string.h: 59: extern char * strrichr(const char *, int);
+[; ;diag.h: 8: void dumprsDIAG(unsigned long ix, const char* cp);
+[; ;diag.h: 10: void dumpsDIAG(unsigned long ix,char* cp);
+[; ;diag.h: 13: void putrsDIAG(const char *data);
+[; ;diag.h: 15: void putsDIAG(char *data);
+[; ;diag.h: 16: void dumphex(unsigned char c);
+[; ;diag.h: 17: void dump2port(unsigned uc);
+[; ;diag.h: 18: void dumphex2port(unsigned char c);
+[; ;diag.h: 19: void dumpaddr(unsigned int addr);
+[; ;diag.h: 20: void dumplong(unsigned long addr);
+[; ;diag.h: 21: void dumpshort(unsigned long addr);
+[; ;diag.h: 22: unsigned long atoh(char *cptr);
+[; ;delays.h: 13: void Delay1TCYx(unsigned char);
+[; ;delays.h: 19: void Delay10TCYx(unsigned char);
+[; ;delays.h: 25: void Delay100TCYx(unsigned char);
+[; ;delays.h: 31: void Delay1KTCYx(unsigned char);
+[; ;delays.h: 37: void Delay10KTCYx(unsigned char);
+[; ;lobprog.c: 25: char load_prog(signed char progno, struct persprog* ppers);
+[; ;lobprog.c: 26: char save_prog(signed char progno, struct persprog* ppers);
+[; ;lobprog.c: 31: void chartoa(const signed char c, char* cp, signed char ndig);
+[; ;lobprog.c: 36: char getLocAvail(char locNo, uchar spd, signed char spn, char* pmeth);
+"39 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lobprog.c
+[v _pp_dashes `uc ~T0 @X0 1 e ]
+[i _pp_dashes
+-> -> 0 `i `uc
+]
+[; ;lobprog.c: 39: char pp_dashes = 0;
+"40
+[v _pp_odashes `uc ~T0 @X0 1 e ]
+[i _pp_odashes
+-> -> 0 `i `uc
+]
+[; ;lobprog.c: 40: char pp_odashes = 0;
+"41
+[v _lcd_update_wait `uc ~T0 @X0 1 e ]
+[i _lcd_update_wait
+-> -> 0 `i `uc
+]
+[; ;lobprog.c: 41: char lcd_update_wait = 0;
+[; ;lobprog.c: 44: void remote_programming (void);
+[; ;lobprog.c: 47: extern void BuildCmd(int code, int cnt, long* args);
+[; ;lobprog.c: 51: extern const char preparm1base[];
+[; ;lobprog.c: 56: extern char lcd_line[][17];
+[; ;lobprog.c: 59: extern struct shot CurShot,NextShot;
+[; ;lobprog.c: 62: extern ushort CurShotState;
+[; ;lobprog.c: 64: extern long play_mode;
+[; ;lobprog.c: 65: extern uchar lcd_updated;
+[; ;lobprog.c: 71: extern const struct el04_loc court_locs[][50];
+[; ;lobprog.c: 72: extern const struct el04_loc court_locs_CLUB[][50];
+[; ;lobprog.c: 75: extern const char *parm_fmt[7][2];
+[; ;lobprog.c: 78: extern struct t_parm parameters[];
+[; ;lobprog.c: 79: extern signed short eladj;
+[; ;lobprog.c: 83: extern const char speed_trans[];
+[; ;lobprog.c: 87: extern unsigned char model_type;
+[; ;lobprog.c: 90: extern unsigned int RemotePgmMode;
+"93
+[v _prog_chgd `uc ~T0 @X0 1 e ]
+[i _prog_chgd
+-> -> 0 `i `uc
+]
+[; ;lobprog.c: 93: char prog_chgd=0;
+"94
+[v _program_ix `c ~T0 @X0 1 e ]
+[; ;lobprog.c: 94: signed char program_ix;
+"95
+[v _ppshot_ix `c ~T0 @X0 1 e ]
+[; ;lobprog.c: 95: signed char ppshot_ix;
+"96
+[v _ppparm_ix `c ~T0 @X0 1 e ]
+[; ;lobprog.c: 96: signed char ppparm_ix;
+"97
+[v _act_program `S7 ~T0 @X0 1 e ]
+[; ;lobprog.c: 97: struct persprog act_program;
+"98
+[v _lcd_changed `uc ~T0 @X0 1 e ]
+[; ;lobprog.c: 98: char lcd_changed;
+"99
+[v _priorState `uc ~T0 @X0 1 e ]
+[i _priorState
+-> -> 0 `i `uc
+]
+[; ;lobprog.c: 99: char priorState = 0;
+"100
+[v _curState `uc ~T0 @X0 1 e ]
+[i _curState
+-> -> 0 `i `uc
+]
+[; ;lobprog.c: 100: char curState = 0;
+"106
+[v _key2loc `Cuc ~T0 @X0 -> 0 `x e ]
+[i _key2loc
+:U ..
+"119
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 6 `i `uc
+"120
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 5 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"121
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 4 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"122
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+"123
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"124
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"128
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 6 `i `uc
+"129
+-> -> 18 `i `uc
+-> -> 12 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 5 `i `uc
+-> -> 17 `i `uc
+-> -> 11 `i `uc
+"130
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 4 `i `uc
+-> -> 16 `i `uc
+-> -> 10 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"131
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 15 `i `uc
+-> -> 9 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+"132
+-> -> 14 `i `uc
+-> -> 8 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 13 `i `uc
+-> -> 7 `i `uc
+"133
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"138
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"139
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"140
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"141
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"142
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"143
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"147
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 6 `i `uc
+"148
+-> -> 18 `i `uc
+-> -> 12 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 5 `i `uc
+-> -> 17 `i `uc
+-> -> 11 `i `uc
+"149
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 4 `i `uc
+-> -> 16 `i `uc
+-> -> 10 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"150
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 15 `i `uc
+-> -> 9 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+"151
+-> -> 14 `i `uc
+-> -> 8 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 13 `i `uc
+-> -> 7 `i `uc
+"152
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"157
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 6 `i `uc
+"158
+-> -> 18 `i `uc
+-> -> 12 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 5 `i `uc
+-> -> 17 `i `uc
+-> -> 11 `i `uc
+"159
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 4 `i `uc
+-> -> 16 `i `uc
+-> -> 10 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"160
+-> -> 0 `i `uc
+-> -> 3 `i `uc
+-> -> 15 `i `uc
+-> -> 9 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+"161
+-> -> 14 `i `uc
+-> -> 8 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 1 `i `uc
+-> -> 13 `i `uc
+-> -> 7 `i `uc
+"162
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"167
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"168
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"169
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"170
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"171
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+"172
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[; ;lobprog.c: 106: const char key2loc[] = {
+[; ;lobprog.c: 119: 0, 0, 0, 0, 0, 0, 0, 6,
+[; ;lobprog.c: 120: 0, 0, 0, 0, 0, 5, 0, 0,
+[; ;lobprog.c: 121: 0, 0, 0, 4, 0, 0, 0, 0,
+[; ;lobprog.c: 122: 0, 3, 0, 0, 0, 0, 0, 2,
+[; ;lobprog.c: 123: 0, 0, 0, 0, 0, 1, 0, 0,
+[; ;lobprog.c: 124: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 128: 0, 0, 0, 0, 0, 0, 0, 6,
+[; ;lobprog.c: 129: 18,12, 0, 0, 0, 5,17,11,
+[; ;lobprog.c: 130: 0, 0, 0, 4,16,10, 0, 0,
+[; ;lobprog.c: 131: 0, 3,15, 9, 0, 0, 0, 2,
+[; ;lobprog.c: 132: 14, 8, 0, 0, 0, 1,13, 7,
+[; ;lobprog.c: 133: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 138: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 139: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 140: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 141: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 142: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 143: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 147: 0, 0, 0, 0, 0, 0, 0, 6,
+[; ;lobprog.c: 148: 18,12, 0, 0, 0, 5,17,11,
+[; ;lobprog.c: 149: 0, 0, 0, 4,16,10, 0, 0,
+[; ;lobprog.c: 150: 0, 3,15, 9, 0, 0, 0, 2,
+[; ;lobprog.c: 151: 14, 8, 0, 0, 0, 1,13, 7,
+[; ;lobprog.c: 152: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 157: 0, 0, 0, 0, 0, 0, 0, 6,
+[; ;lobprog.c: 158: 18,12, 0, 0, 0, 5,17,11,
+[; ;lobprog.c: 159: 0, 0, 0, 4,16,10, 0, 0,
+[; ;lobprog.c: 160: 0, 3,15, 9, 0, 0, 0, 2,
+[; ;lobprog.c: 161: 14, 8, 0, 0, 0, 1,13, 7,
+[; ;lobprog.c: 162: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 167: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 168: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 169: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 170: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 171: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 172: 0, 0, 0, 0, 0, 0, 0, 0,
+[; ;lobprog.c: 174: };
+[v F335 `*Cuc ~T0 @X0 -> 2 `i t ]
+"181
+[v _pp_fmt `F335 ~T0 @X0 -> 0 `x e ]
+[i _pp_fmt
+:U ..
+:U ..
+"185
+:s 1C
+:s 2C
+..
+:U ..
+"186
+:s 3C
+:s 4C
+..
+:U ..
+"187
+:s 5C
+:s 6C
+..
+:U ..
+"188
+:s 7C
+:s 8C
+..
+:U ..
+"189
+:s 9C
+:s 10C
+..
+:U ..
+"194
+:s 11C
+:s 12C
+..
+:U ..
+"197
+:s 13C
+:s 14C
+..
+:U ..
+"198
+:s 15C
+:s 16C
+..
+:U ..
+"199
+:s 17C
+:s 18C
+..
+:U ..
+"200
+:s 19C
+:s 20C
+..
+..
+]
+[; ;lobprog.c: 181: const char *pp_fmt[][2] = {
+[; ;lobprog.c: 185: { "SPEED:      MPH ", "SPEED: >    MPH<" },
+[; ;lobprog.c: 186: { "SPIN:   ", "SPIN>  <" },
+[; ;lobprog.c: 187: { "FEED:   ", "FEED>  <" },
+[; ;lobprog.c: 188: { "","" },
+[; ;lobprog.c: 189: { "","" },
+[; ;lobprog.c: 194: { "P#   PLAY TO RUN", "P#> <PLAY TO RUN" },
+[; ;lobprog.c: 197: { "SHOT:   ", "SHOT> < " },
+[; ;lobprog.c: 198: { "P#  SHOT#  LOC ?", "P#  SHOT#  LOC# " },
+[; ;lobprog.c: 199: { "EDIT:NO ", "EDIT>NO<" },
+[; ;lobprog.c: 200: { " Next + Back -  ", ">NEXT + BACK - <" },
+[; ;lobprog.c: 201: };
+"203
+[v _ppparams `S8 ~T0 @X0 -> 0 `x e ]
+[i _ppparams
+:U ..
+:U ..
+:U ..
+:U ..
+"205
+-> -> 25 `i `c
+-> -> 70 `i `c
+-> -> 5 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 0 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 0 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 2 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"206
+-> -U -> 3 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 2 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 2 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -U -> 1 `i `uc
+-> -> 5 `i `uc
+-> -> 8 `i `uc
+-> -> 0 `i `uc
+-> -> 2 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"207
+-> -> 1 `i `c
+-> -> 9 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 5 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 5 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 2 `i `uc
+-> -> 9 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+:U ..
+:U ..
+:U ..
+"208
+-> -> 0 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+..
+&U *U + &U *U + &U _parm_fmt * -> -> 7 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _parm_fmt * -> -> 7 `ui `ux -> * -> # *U &U *U &U _parm_fmt `ui -> -> 2 `i `ui `ux `ui `ux
+-> -> 16 `i `uc
+-> -> 10 `i `uc
+-> -> 16 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+..
+]
+[; ;lobprog.c: 203: struct t_parm ppparams[] = {
+[; ;lobprog.c: 205: { { 25, 70, 5 }, &parm_fmt[0U][0], 2, 9, 16, 0, 0 },
+[; ;lobprog.c: 206: { { -3, 3, 1 }, &parm_fmt[2U][0], -1, 5, 8, 0, 2 },
+[; ;lobprog.c: 207: { { 1, 9, 1 }, &parm_fmt[5U][0], 2, 9, 16, 0, 0 },
+[; ;lobprog.c: 208: { { 0, 3, 1 }, &parm_fmt[7U][0],0x10,10,16, 0, 0 },
+[; ;lobprog.c: 209: };
+"214
+[v _get50mph0spin `(uc ~T0 @X0 1 ef1`uc ]
+"215
+{
+[; ;lobprog.c: 214: char get50mph0spin(char loc)
+[; ;lobprog.c: 215: {
+[e :U _get50mph0spin ]
+"214
+[v _loc `uc ~T0 @X0 1 r1 ]
+"215
+[f ]
+"216
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lobprog.c: 216: char i;
+[; ;lobprog.c: 240: for (i=0; court_locs[loc][i].speed != 0U; i++) {
+"240
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 19  ]
+[e :U 16 ]
+{
+[; ;lobprog.c: 241: if (court_locs[loc][i].speed != 50U) {
+"241
+[e $ ! != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `ui -> 50 `ui 20  ]
+{
+"242
+}
+[; ;lobprog.c: 242: } else if (court_locs[loc][i].spin != 0) {
+[e $U 21  ]
+[e :U 20 ]
+[e $ ! != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 5 `i -> 0 `i 22  ]
+{
+"243
+}
+[; ;lobprog.c: 243: } else {
+[e $U 23  ]
+[e :U 22 ]
+{
+[; ;lobprog.c: 244: break;
+"244
+[e $U 17  ]
+"245
+}
+[e :U 23 ]
+[e :U 21 ]
+"246
+}
+"240
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 19 ]
+[e $ != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `ui -> 0 `ui 16  ]
+[e :U 17 ]
+"246
+}
+[; ;lobprog.c: 245: }
+[; ;lobprog.c: 246: }
+[; ;lobprog.c: 247: return ((court_locs[loc][i].speed) ? i : 0);
+"247
+[e ) -> ? != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `i -> -> -> 0 `i `Cuc `i : -> _i `i -> 0 `i `uc ]
+[e $UE 15  ]
+[; ;lobprog.c: 259: }
+"259
+[e :UE 15 ]
+}
+"261
+[v _get60mph0spin `(uc ~T0 @X0 1 ef1`uc ]
+"262
+{
+[; ;lobprog.c: 261: char get60mph0spin(char loc)
+[; ;lobprog.c: 262: {
+[e :U _get60mph0spin ]
+"261
+[v _loc `uc ~T0 @X0 1 r1 ]
+"262
+[f ]
+"263
+[v _i `uc ~T0 @X0 1 a ]
+[; ;lobprog.c: 263: char i;
+[; ;lobprog.c: 309: for (i=0; court_locs[loc][i].speed != 0U; i++) {
+"309
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 28  ]
+[e :U 25 ]
+{
+[; ;lobprog.c: 310: if (court_locs[loc][i].speed != 60U) {
+"310
+[e $ ! != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `ui -> 60 `ui 29  ]
+{
+"311
+}
+[; ;lobprog.c: 311: } else if (court_locs[loc][i].spin != 0) {
+[e $U 30  ]
+[e :U 29 ]
+[e $ ! != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 5 `i -> 0 `i 31  ]
+{
+"312
+}
+[; ;lobprog.c: 312: } else {
+[e $U 32  ]
+[e :U 31 ]
+{
+[; ;lobprog.c: 313: break;
+"313
+[e $U 26  ]
+"314
+}
+[e :U 32 ]
+[e :U 30 ]
+"315
+}
+"309
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 28 ]
+[e $ != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `ui -> 0 `ui 25  ]
+[e :U 26 ]
+"315
+}
+[; ;lobprog.c: 314: }
+[; ;lobprog.c: 315: }
+[; ;lobprog.c: 316: if (!(court_locs[loc][i].speed)) {
+"316
+[e $ ! ! != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `i -> -> -> 0 `i `Cuc `i 33  ]
+{
+[; ;lobprog.c: 317: for (i=0; court_locs[loc][i].speed != 0U; i++) {
+"317
+{
+[e = _i -> -> 0 `i `uc ]
+[e $U 37  ]
+[e :U 34 ]
+{
+[; ;lobprog.c: 318: if (court_locs[loc][i].speed != 50U) {
+"318
+[e $ ! != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `ui -> 50 `ui 38  ]
+{
+"319
+}
+[; ;lobprog.c: 319: } else if (court_locs[loc][i].spin != 0) {
+[e $U 39  ]
+[e :U 38 ]
+[e $ ! != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 5 `i -> 0 `i 40  ]
+{
+"320
+}
+[; ;lobprog.c: 320: } else {
+[e $U 41  ]
+[e :U 40 ]
+{
+[; ;lobprog.c: 321: break;
+"321
+[e $U 35  ]
+"322
+}
+[e :U 41 ]
+[e :U 39 ]
+"323
+}
+"317
+[e ++ _i -> -> 1 `i `uc ]
+[e :U 37 ]
+[e $ != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `ui -> 0 `ui 34  ]
+[e :U 35 ]
+"323
+}
+"324
+}
+[e :U 33 ]
+[; ;lobprog.c: 322: }
+[; ;lobprog.c: 323: }
+[; ;lobprog.c: 324: }
+[; ;lobprog.c: 325: return ((court_locs[loc][i].speed) ? i : 0);
+"325
+[e ) -> ? != -> . *U + &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _i `ux -> -> # *U &U *U + &U _court_locs * -> _loc `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 `i -> -> -> 0 `i `Cuc `i : -> _i `i -> 0 `i `uc ]
+[e $UE 24  ]
+[; ;lobprog.c: 346: }
+"346
+[e :UE 24 ]
+}
+"348
+[v _show_prog1 `(uc ~T0 @X0 1 ef1`uc ]
+"349
+{
+[; ;lobprog.c: 348: uchar show_prog1(unsigned char field)
+[; ;lobprog.c: 349: {
+[e :U _show_prog1 ]
+"348
+[v _field `uc ~T0 @X0 1 r1 ]
+"349
+[f ]
+"350
+[v _i `uc ~T0 @X0 1 a ]
+"351
+[v _nused `uc ~T0 @X0 1 a ]
+[; ;lobprog.c: 350: unsigned char i;
+[; ;lobprog.c: 351: unsigned char nused;
+[; ;lobprog.c: 353: putrsDIAG("\n\rSCRN1: P");
+"353
+[e ( _putrsDIAG (1 :s 21C ]
+[; ;lobprog.c: 354: dumphex(program_ix+1);
+"354
+[e ( _dumphex (1 -> + -> _program_ix `i -> 1 `i `uc ]
+[; ;lobprog.c: 358: if (field == 5) strcpy(&lcd_line[0][0],pp_fmt[5][1]);
+"358
+[e $ ! == -> _field `i -> 5 `i 43  ]
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> -> 5 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> -> 5 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e $U 44  ]
+"359
+[e :U 43 ]
+[; ;lobprog.c: 359: else strcpy(&lcd_line[0][0],pp_fmt[5][0]);
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> -> 5 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> -> 5 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e :U 44 ]
+[; ;lobprog.c: 368: if (program_ix+1 < 10)
+"368
+[e $ ! < + -> _program_ix `i -> 1 `i -> 10 `i 45  ]
+[; ;lobprog.c: 369: chartoa(program_ix+1,&lcd_line[0][3],1);
+"369
+[e ( _chartoa (3 , , -> + -> _program_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 3 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 46  ]
+"370
+[e :U 45 ]
+[; ;lobprog.c: 370: else
+[; ;lobprog.c: 371: chartoa(program_ix+1,&lcd_line[0][2],2);
+"371
+[e ( _chartoa (3 , , -> + -> _program_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 46 ]
+[; ;lobprog.c: 375: strcpy(&lcd_line[2][0],"LOCS            ");
+"375
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 22C ]
+[; ;lobprog.c: 376: strcpy(&lcd_line[3][0],"                ");
+"376
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 23C ]
+[; ;lobprog.c: 378: for (i=0,nused=6-1; i<6; i++) {
+"378
+{
+[e ; = _i -> -> 0 `i `uc = _nused -> - -> 6 `i -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 47  ]
+[e $U 48  ]
+[e :U 47 ]
+{
+[; ;lobprog.c: 379: if (act_program.shot[i] != 0) {
+"379
+[e $ ! != -> *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> 0 `i 50  ]
+{
+[; ;lobprog.c: 382: if (i<4){
+"382
+[e $ ! < -> _i `i -> 4 `i 51  ]
+{
+[; ;lobprog.c: 383: if (act_program.shot[i]<10)
+"383
+[e $ ! < -> *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> 10 `i 52  ]
+[; ;lobprog.c: 384: chartoa(act_program.shot[i],&lcd_line[2][5 + 3*i],1);
+"384
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> + -> 5 `i * -> 3 `i -> _i `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 53  ]
+"385
+[e :U 52 ]
+[; ;lobprog.c: 385: else chartoa(act_program.shot[i],&lcd_line[2][5 + 3*i],2);
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> + -> 5 `i * -> 3 `i -> _i `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 53 ]
+"386
+}
+[; ;lobprog.c: 386: }
+[e $U 54  ]
+"387
+[e :U 51 ]
+[; ;lobprog.c: 387: else {
+{
+[; ;lobprog.c: 388: if (act_program.shot[i]<10)
+"388
+[e $ ! < -> *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> 10 `i 55  ]
+[; ;lobprog.c: 389: chartoa(act_program.shot[i],&lcd_line[3][5+(3*(i-4))],1);
+"389
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> + -> 5 `i * -> 3 `i - -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 56  ]
+"390
+[e :U 55 ]
+[; ;lobprog.c: 390: else chartoa(act_program.shot[i],&lcd_line[3][5+(3*(i-4))],2);
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> + -> 5 `i * -> 3 `i - -> _i `i -> 4 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 56 ]
+"391
+}
+[e :U 54 ]
+"393
+}
+[; ;lobprog.c: 391: }
+[; ;lobprog.c: 393: } else {
+[e $U 57  ]
+[e :U 50 ]
+{
+[; ;lobprog.c: 394: nused = i;
+"394
+[e = _nused _i ]
+[; ;lobprog.c: 395: break;
+"395
+[e $U 48  ]
+"396
+}
+[e :U 57 ]
+"397
+}
+"378
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 47  ]
+[e :U 48 ]
+"397
+}
+[; ;lobprog.c: 396: }
+[; ;lobprog.c: 397: }
+[; ;lobprog.c: 400: putrsDIAG("S");
+"400
+[e ( _putrsDIAG (1 :s 24C ]
+[; ;lobprog.c: 401: dumphex(ppshot_ix+1);
+"401
+[e ( _dumphex (1 -> + -> _ppshot_ix `i -> 1 `i `uc ]
+[; ;lobprog.c: 402: putrsDIAG("#");
+"402
+[e ( _putrsDIAG (1 :s 25C ]
+[; ;lobprog.c: 403: dumphex(nused);
+"403
+[e ( _dumphex (1 _nused ]
+[; ;lobprog.c: 409: if (field == 6) strcpy(&lcd_line[1][0],pp_fmt[6][1]);
+"409
+[e $ ! == -> _field `i -> 6 `i 58  ]
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e $U 59  ]
+"410
+[e :U 58 ]
+[; ;lobprog.c: 410: else strcpy(&lcd_line[1][0],pp_fmt[6][0]);
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> -> 6 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e :U 59 ]
+[; ;lobprog.c: 414: chartoa(ppshot_ix+1,&lcd_line[1][5],1);
+"414
+[e ( _chartoa (3 , , -> + -> _ppshot_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[; ;lobprog.c: 419: if (field == 8) strcpy(&lcd_line[1][8],pp_fmt[8][1]);
+"419
+[e $ ! == -> _field `i -> 8 `i 60  ]
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 8 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> -> 8 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> -> 8 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e $U 61  ]
+"420
+[e :U 60 ]
+[; ;lobprog.c: 420: else strcpy(&lcd_line[1][8],pp_fmt[8][0]);
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 8 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> -> 8 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> -> 8 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e :U 61 ]
+[; ;lobprog.c: 425: lcd_updated = 1;
+"425
+[e = _lcd_updated -> -> 1 `i `uc ]
+[; ;lobprog.c: 426: priorState = curState;
+"426
+[e = _priorState _curState ]
+[; ;lobprog.c: 427: return(nused);
+"427
+[e ) _nused ]
+[e $UE 42  ]
+[; ;lobprog.c: 428: }
+"428
+[e :UE 42 ]
+}
+"430
+[v _show_prog2 `(v ~T0 @X0 1 ef ]
+"431
+{
+[; ;lobprog.c: 430: void show_prog2()
+[; ;lobprog.c: 431: {
+[e :U _show_prog2 ]
+[f ]
+[; ;lobprog.c: 434: strcpy(&lcd_line[0][0], "P#  Shot#  Loc ?");
+"434
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 26C ]
+[; ;lobprog.c: 438: if (program_ix+1 < 10)
+"438
+[e $ ! < + -> _program_ix `i -> 1 `i -> 10 `i 63  ]
+[; ;lobprog.c: 439: chartoa(program_ix+1,&lcd_line[0][2],1);
+"439
+[e ( _chartoa (3 , , -> + -> _program_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 64  ]
+"440
+[e :U 63 ]
+[; ;lobprog.c: 440: else
+[; ;lobprog.c: 441: chartoa(program_ix+1,&lcd_line[0][2],2);
+"441
+[e ( _chartoa (3 , , -> + -> _program_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 64 ]
+[; ;lobprog.c: 443: chartoa(ppshot_ix+1, &lcd_line[0][9],1);
+"443
+[e ( _chartoa (3 , , -> + -> _ppshot_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 9 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[; ;lobprog.c: 444: if (act_program.shot[ppshot_ix] != 0) {
+"444
+[e $ ! != -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> 0 `i 65  ]
+{
+[; ;lobprog.c: 447: if (act_program.shot[ppshot_ix]<10)
+"447
+[e $ ! < -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> 10 `i 66  ]
+[; ;lobprog.c: 448: chartoa(act_program.shot[ppshot_ix], &lcd_line[0][15],1);
+"448
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 15 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 67  ]
+"449
+[e :U 66 ]
+[; ;lobprog.c: 449: else chartoa(act_program.shot[ppshot_ix], &lcd_line[0][14],2);
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 14 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 67 ]
+"451
+}
+[e :U 65 ]
+[; ;lobprog.c: 451: }
+[; ;lobprog.c: 452: strcpy(&lcd_line[1][0], "Press a location");
+"452
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 27C ]
+[; ;lobprog.c: 453: strcpy(&lcd_line[2][0], "to Prgm shot, or");
+"453
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 28C ]
+[; ;lobprog.c: 454: strcpy(&lcd_line[3][0], "Press - to erase");
+"454
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 29C ]
+[; ;lobprog.c: 455: lcd_updated = 1;
+"455
+[e = _lcd_updated -> -> 1 `i `uc ]
+[; ;lobprog.c: 456: priorState = curState;
+"456
+[e = _priorState _curState ]
+[; ;lobprog.c: 457: }
+"457
+[e :UE 62 ]
+}
+"459
+[v _show_prog3 `(v ~T0 @X0 1 ef ]
+"460
+{
+[; ;lobprog.c: 459: void show_prog3()
+[; ;lobprog.c: 460: {
+[e :U _show_prog3 ]
+[f ]
+"461
+[v _loc `uc ~T0 @X0 1 a ]
+"465
+[v _locp `*CS9 ~T0 @X0 1 a ]
+[; ;lobprog.c: 461: unsigned char loc;
+[; ;lobprog.c: 465: const struct el04_loc* locp;
+[; ;lobprog.c: 468: putrsDIAG("\n\rSCRN3: L#");
+"468
+[e ( _putrsDIAG (1 :s 30C ]
+[; ;lobprog.c: 469: loc = act_program.shot[ppshot_ix];
+"469
+[e = _loc -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `uc ]
+[; ;lobprog.c: 476: locp = &court_locs[loc-1][act_program.method[ppshot_ix]];
+"476
+[e = _locp &U *U + &U *U + &U _court_locs * -> -> - -> _loc `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> -> *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux `uc `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _loc `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux ]
+[; ;lobprog.c: 481: dumphex(loc);
+"481
+[e ( _dumphex (1 _loc ]
+[; ;lobprog.c: 482: putrsDIAG(" M#");
+"482
+[e ( _putrsDIAG (1 :s 31C ]
+[; ;lobprog.c: 483: dumphex(act_program.method[ppshot_ix]);
+"483
+[e ( _dumphex (1 -> *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux `uc ]
+[; ;lobprog.c: 486: strcpy(&lcd_line[0][0], "P#  Shot#  Loc ?");
+"486
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 32C ]
+[; ;lobprog.c: 488: chartoa(program_ix+1,&lcd_line[0][2],1);
+"488
+[e ( _chartoa (3 , , -> + -> _program_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 2 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[; ;lobprog.c: 489: chartoa(ppshot_ix+1, &lcd_line[0][9],1);
+"489
+[e ( _chartoa (3 , , -> + -> _ppshot_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 9 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[; ;lobprog.c: 490: if (loc != 0) {
+"490
+[e $ ! != -> _loc `i -> 0 `i 69  ]
+{
+[; ;lobprog.c: 493: if (loc<10)
+"493
+[e $ ! < -> _loc `i -> 10 `i 70  ]
+[; ;lobprog.c: 494: chartoa(loc, &lcd_line[0][15],1);
+"494
+[e ( _chartoa (3 , , -> _loc `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 15 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 71  ]
+"495
+[e :U 70 ]
+[; ;lobprog.c: 495: else chartoa(loc, &lcd_line[0][14],2);
+[e ( _chartoa (3 , , -> _loc `c &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 14 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 71 ]
+"497
+}
+[e :U 69 ]
+[; ;lobprog.c: 497: }
+[; ;lobprog.c: 501: if (ppparm_ix == 0U) strcpy(&lcd_line[1][0],pp_fmt[0U][1]);
+"501
+[e $ ! == -> -> _ppparm_ix `i `ui -> 0 `ui 72  ]
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> 0 `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> 0 `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e $U 73  ]
+"502
+[e :U 72 ]
+[; ;lobprog.c: 502: else strcpy(&lcd_line[1][0],pp_fmt[0U][0]);
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> 0 `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> 0 `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e :U 73 ]
+[; ;lobprog.c: 505: if (pp_dashes == 1) {
+"505
+[e $ ! == -> _pp_dashes `i -> 1 `i 74  ]
+{
+[; ;lobprog.c: 506: strncpy(&lcd_line[1][9],"--",2);
+"506
+[e ( _strncpy (3 , , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 9 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 33C -> -> 2 `i `ui ]
+"507
+}
+[; ;lobprog.c: 507: }
+[e $U 75  ]
+"508
+[e :U 74 ]
+[; ;lobprog.c: 508: else chartoa(speed_trans[locp->speed / 5],&lcd_line[1][9],2);
+[e ( _chartoa (3 , , -> *U + &U _speed_trans * -> -> / -> . *U _locp 0 `i -> 5 `i `ui `ux -> -> # *U &U _speed_trans `ui `ux `c &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 9 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 75 ]
+[; ;lobprog.c: 513: if (ppparm_ix == 2U) strcpy(&lcd_line[2][0],pp_fmt[2U/2][1]);
+"513
+[e $ ! == -> -> _ppparm_ix `i `ui -> 2 `ui 76  ]
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> / -> 2 `ui -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> / -> 2 `ui -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e $U 77  ]
+"514
+[e :U 76 ]
+[; ;lobprog.c: 514: else strcpy(&lcd_line[2][0],pp_fmt[2U/2][0]);
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> / -> 2 `ui -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> / -> 2 `ui -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e :U 77 ]
+[; ;lobprog.c: 517: if (pp_dashes == 2)
+"517
+[e $ ! == -> _pp_dashes `i -> 2 `i 78  ]
+[; ;lobprog.c: 518: strncpy(&lcd_line[2][5],"--",2);
+"518
+[e ( _strncpy (3 , , &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 34C -> -> 2 `i `ui ]
+[e $U 79  ]
+"519
+[e :U 78 ]
+[; ;lobprog.c: 519: else chartoa(locp->spin,&lcd_line[2][5],-1);
+[e ( _chartoa (3 , , . *U _locp 5 &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 5 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -U -> 1 `i `c ]
+[e :U 79 ]
+[; ;lobprog.c: 524: if (ppparm_ix == 5U) strcpy(&lcd_line[2][8],pp_fmt[5U/2][1]);
+"524
+[e $ ! == -> -> _ppparm_ix `i `ui -> 5 `ui 80  ]
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 8 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> / -> 5 `ui -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> / -> 5 `ui -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e $U 81  ]
+"525
+[e :U 80 ]
+[; ;lobprog.c: 525: else strcpy(&lcd_line[2][8],pp_fmt[5U/2][0]);
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 8 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> / -> 5 `ui -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> / -> 5 `ui -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e :U 81 ]
+[; ;lobprog.c: 530: chartoa(act_program.feed[ppshot_ix], &lcd_line[2][14],1);
+"530
+[e ( _chartoa (3 , , -> *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux `c &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 14 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[; ;lobprog.c: 535: if (ppparm_ix == (5U+2)) strcpy(&lcd_line[3][0],pp_fmt[9][1]);
+"535
+[e $ ! == -> -> _ppparm_ix `i `ui + -> 5 `ui -> -> 2 `i `ui 82  ]
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> -> 9 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 1 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> -> 9 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e $U 83  ]
+"536
+[e :U 82 ]
+[; ;lobprog.c: 536: else strcpy(&lcd_line[3][0],pp_fmt[9][0]);
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux *U + &U *U + &U _pp_fmt * -> -> -> 9 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _pp_fmt * -> -> -> 9 `i `ui `ux -> * -> # *U &U *U &U _pp_fmt `ui -> -> 2 `i `ui `ux `ui `ux ]
+[e :U 83 ]
+[; ;lobprog.c: 539: priorState = curState;
+"539
+[e = _priorState _curState ]
+[; ;lobprog.c: 540: if (!(pp_odashes && !pp_dashes))
+"540
+[e $ ! ! && != -> _pp_odashes `i -> -> -> 0 `i `uc `i ! != -> _pp_dashes `i -> -> -> 0 `i `uc `i 84  ]
+[; ;lobprog.c: 541: lcd_updated = 1;
+"541
+[e = _lcd_updated -> -> 1 `i `uc ]
+[e :U 84 ]
+[; ;lobprog.c: 542: }
+"542
+[e :UE 68 ]
+}
+"546
+[v _show_progRPM `(uc ~T0 @X0 1 ef1`uc ]
+{
+[; ;lobprog.c: 546: uchar show_progRPM(unsigned char field) {
+[e :U _show_progRPM ]
+[v _field `uc ~T0 @X0 1 r1 ]
+[f ]
+"547
+[v _i `uc ~T0 @X0 1 a ]
+"548
+[v _nused `uc ~T0 @X0 1 a ]
+[; ;lobprog.c: 547: unsigned char i;
+[; ;lobprog.c: 548: unsigned char nused;
+[; ;lobprog.c: 550: strcpy(&lcd_line[0][0],"* APP CONTROL * ");
+"550
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 0 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 35C ]
+[; ;lobprog.c: 553: chartoa(program_ix+1,&lcd_line[1][15],1);
+"553
+[e ( _chartoa (3 , , -> + -> _program_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 15 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[; ;lobprog.c: 554: strcpy(&lcd_line[1][0],"Program Drill#  ");
+"554
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 36C ]
+[; ;lobprog.c: 556: if (program_ix+1 < 10)
+"556
+[e $ ! < + -> _program_ix `i -> 1 `i -> 10 `i 86  ]
+[; ;lobprog.c: 557: chartoa(program_ix+1,&lcd_line[1][14],1);
+"557
+[e ( _chartoa (3 , , -> + -> _program_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 14 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 87  ]
+"558
+[e :U 86 ]
+[; ;lobprog.c: 558: else
+[; ;lobprog.c: 559: chartoa(program_ix+1,&lcd_line[1][14],2);
+"559
+[e ( _chartoa (3 , , -> + -> _program_ix `i -> 1 `i `c &U *U + &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 14 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 1 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 87 ]
+[; ;lobprog.c: 561: strcpy(&lcd_line[2][0],"Locations:      ");
+"561
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 37C ]
+[; ;lobprog.c: 562: strcpy(&lcd_line[3][0],"                ");
+"562
+[e ( _strcpy (2 , &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux :s 38C ]
+[; ;lobprog.c: 563: for (i=0,nused=6-1; i<6; i++) {
+"563
+{
+[e ; = _i -> -> 0 `i `uc = _nused -> - -> 6 `i -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 88  ]
+[e $U 89  ]
+[e :U 88 ]
+{
+[; ;lobprog.c: 564: if (act_program.shot[i] != 0) {
+"564
+[e $ ! != -> *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> 0 `i 91  ]
+{
+[; ;lobprog.c: 565: if (i<2){
+"565
+[e $ ! < -> _i `i -> 2 `i 92  ]
+{
+[; ;lobprog.c: 566: if (act_program.shot[i]<10)
+"566
+[e $ ! < -> *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> 10 `i 93  ]
+[; ;lobprog.c: 567: chartoa(act_program.shot[i],&lcd_line[2][11 + 3*i],1);
+"567
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> + -> 11 `i * -> 3 `i -> _i `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 94  ]
+"568
+[e :U 93 ]
+[; ;lobprog.c: 568: else chartoa(act_program.shot[i],&lcd_line[2][11 + 3*i],2);
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> + -> 11 `i * -> 3 `i -> _i `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 2 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 94 ]
+"569
+}
+[; ;lobprog.c: 569: }
+[e $U 95  ]
+"570
+[e :U 92 ]
+[; ;lobprog.c: 570: else {
+{
+[; ;lobprog.c: 571: if (act_program.shot[i]<10)
+"571
+[e $ ! < -> *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> 10 `i 96  ]
+[; ;lobprog.c: 572: chartoa(act_program.shot[i],&lcd_line[3][5+(3*(i-2))],1);
+"572
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> + -> 5 `i * -> 3 `i - -> _i `i -> 2 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 1 `i `c ]
+[e $U 97  ]
+"573
+[e :U 96 ]
+[; ;lobprog.c: 573: else chartoa(act_program.shot[i],&lcd_line[3][5+(3*(i-2))],2);
+[e ( _chartoa (3 , , *U + &U . _act_program 0 * -> _i `ux -> -> # *U &U . _act_program 0 `ui `ux &U *U + &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux * -> -> + -> 5 `i * -> 3 `i - -> _i `i -> 2 `i `ui `ux -> -> # *U &U *U + &U _lcd_line * -> -> -> 3 `i `ui `ux -> * -> # *U &U *U &U _lcd_line `ui -> -> 17 `i `ui `ux `ui `ux -> -> 2 `i `c ]
+[e :U 97 ]
+"574
+}
+[e :U 95 ]
+"575
+}
+[; ;lobprog.c: 574: }
+[; ;lobprog.c: 575: } else {
+[e $U 98  ]
+[e :U 91 ]
+{
+[; ;lobprog.c: 576: nused = i;
+"576
+[e = _nused _i ]
+[; ;lobprog.c: 577: break;
+"577
+[e $U 89  ]
+"578
+}
+[e :U 98 ]
+"579
+}
+"563
+[e ++ _i -> -> 1 `i `uc ]
+[e $ < -> _i `i -> 6 `i 88  ]
+[e :U 89 ]
+"579
+}
+[; ;lobprog.c: 578: }
+[; ;lobprog.c: 579: }
+[; ;lobprog.c: 580: lcd_updated = 1;
+"580
+[e = _lcd_updated -> -> 1 `i `uc ]
+[; ;lobprog.c: 581: priorState = curState;
+"581
+[e = _priorState _curState ]
+[; ;lobprog.c: 582: return(nused);
+"582
+[e ) _nused ]
+[e $UE 85  ]
+[; ;lobprog.c: 583: }
+"583
+[e :UE 85 ]
+}
+"589
+[v _lob_program `(uc ~T0 @X0 1 ef1`uc ]
+"590
+{
+[; ;lobprog.c: 589: char lob_program(char cmd)
+[; ;lobprog.c: 590: {
+[e :U _lob_program ]
+"589
+[v _cmd `uc ~T0 @X0 1 r1 ]
+"590
+[f ]
+"599
+[v _origix `c ~T0 @X0 1 a ]
+"600
+[v _val `uc ~T0 @X0 1 a ]
+[v _locno `uc ~T0 @X0 1 a ]
+"604
+[v _method `uc ~T0 @X0 1 a ]
+"606
+[v _val2 `c ~T0 @X0 1 a ]
+"607
+[v F362 `uc ~T0 @X0 1 s incr ]
+"608
+[v F363 `uc ~T0 @X0 1 s parmena ]
+[i F363
+-> -> 0 `i `uc
+]
+"609
+[v _i `uc ~T0 @X0 1 a ]
+"610
+[v F365 `uc ~T0 @X0 1 s nused ]
+"611
+[v F366 `uc ~T0 @X0 1 s field ]
+[; ;lobprog.c: 599: signed char origix;
+[; ;lobprog.c: 600: char val, locno;
+[; ;lobprog.c: 604: unsigned char method;
+[; ;lobprog.c: 606: signed char val2;
+[; ;lobprog.c: 607: static char incr;
+[; ;lobprog.c: 608: static char parmena = 0;
+[; ;lobprog.c: 609: unsigned char i;
+[; ;lobprog.c: 610: static unsigned char nused;
+[; ;lobprog.c: 611: static unsigned char field;
+[; ;lobprog.c: 615: if (((cmd) & (0x80))) {
+"615
+[e $ ! != & -> _cmd `i -> 128 `i -> 0 `i 100  ]
+{
+[; ;lobprog.c: 616: eladj = 0;
+"616
+[e = _eladj -> -> 0 `i `s ]
+[; ;lobprog.c: 617: putrsDIAG("\n\rPers Prog ");
+"617
+[e ( _putrsDIAG (1 :s 39C ]
+[; ;lobprog.c: 618: play_mode = (play_mode & 0x11) | 4;
+"618
+[e = _play_mode | & _play_mode -> -> 17 `i `l -> -> 4 `i `l ]
+[; ;lobprog.c: 619: BuildCmd('3',1,&play_mode);
+"619
+[e ( _BuildCmd (3 , , -> -> 51 `ui `i -> 1 `i &U _play_mode ]
+[; ;lobprog.c: 620: incr = 0;
+"620
+[e = F362 -> -> 0 `i `uc ]
+[; ;lobprog.c: 621: ppparm_ix = 0U;
+"621
+[e = _ppparm_ix -> -> 0 `ui `c ]
+[; ;lobprog.c: 622: ppshot_ix = 0;
+"622
+[e = _ppshot_ix -> -> 0 `i `c ]
+[; ;lobprog.c: 623: load_prog(program_ix,&act_program);
+"623
+[e ( _load_prog (2 , _program_ix &U _act_program ]
+[; ;lobprog.c: 624: parmena = 0;
+"624
+[e = F363 -> -> 0 `i `uc ]
+[; ;lobprog.c: 625: if (priorState == 0) {
+"625
+[e $ ! == -> _priorState `i -> 0 `i 101  ]
+{
+[; ;lobprog.c: 626: field = 5;
+"626
+[e = F366 -> -> 5 `i `uc ]
+[; ;lobprog.c: 627: curState = 2;
+"627
+[e = _curState -> -> 2 `i `uc ]
+[; ;lobprog.c: 628: priorState = 5;
+"628
+[e = _priorState -> -> 5 `i `uc ]
+"629
+}
+[; ;lobprog.c: 629: } else {
+[e $U 102  ]
+[e :U 101 ]
+{
+[; ;lobprog.c: 630: field = 5;
+"630
+[e = F366 -> -> 5 `i `uc ]
+[; ;lobprog.c: 631: curState = 2;
+"631
+[e = _curState -> -> 2 `i `uc ]
+[; ;lobprog.c: 632: priorState = 5;
+"632
+[e = _priorState -> -> 5 `i `uc ]
+"633
+}
+[e :U 102 ]
+"634
+}
+[e :U 100 ]
+[; ;lobprog.c: 633: }
+[; ;lobprog.c: 634: }
+[; ;lobprog.c: 635: switch (curState) {
+"635
+[e $U 104  ]
+{
+[; ;lobprog.c: 636: case 2:
+"636
+[e :U 105 ]
+[; ;lobprog.c: 637: if (curState != priorState) {
+"637
+[e $ ! != -> _curState `i -> _priorState `i 106  ]
+{
+[; ;lobprog.c: 640: if (!RemotePgmMode)
+"640
+[e $ ! ! != _RemotePgmMode -> -> 0 `i `ui 107  ]
+[; ;lobprog.c: 641: nused = show_prog1(field);
+"641
+[e = F365 ( _show_prog1 (1 F366 ]
+[e $U 108  ]
+"642
+[e :U 107 ]
+[; ;lobprog.c: 642: else nused = show_progRPM(field);
+[e = F365 ( _show_progRPM (1 F366 ]
+[e :U 108 ]
+[; ;lobprog.c: 646: if (nused == 0 && !RemotePgmMode) {
+"646
+[e $ ! && == -> F365 `i -> 0 `i ! != _RemotePgmMode -> -> 0 `i `ui 109  ]
+{
+[; ;lobprog.c: 648: curState = 3;
+"648
+[e = _curState -> -> 3 `i `uc ]
+[; ;lobprog.c: 649: break;
+"649
+[e $U 103  ]
+"650
+}
+[e :U 109 ]
+"651
+}
+[e :U 106 ]
+[; ;lobprog.c: 650: }
+[; ;lobprog.c: 651: }
+[; ;lobprog.c: 653: if (!RemotePgmMode) {
+"653
+[e $ ! ! != _RemotePgmMode -> -> 0 `i `ui 110  ]
+{
+[; ;lobprog.c: 655: if ((cmd & 0x7f) == 0x2d) {
+"655
+[e $ ! == & -> _cmd `i -> 127 `i -> 45 `i 111  ]
+{
+[; ;lobprog.c: 656: putrsDIAG("MENUUP");
+"656
+[e ( _putrsDIAG (1 :s 40C ]
+[; ;lobprog.c: 657: dumphex(field);
+"657
+[e ( _dumphex (1 F366 ]
+[; ;lobprog.c: 658: if (--field < 5) field = 8;
+"658
+[e $ ! < -> =- F366 -> -> 1 `i `uc `i -> 5 `i 112  ]
+[e = F366 -> -> 8 `i `uc ]
+[e $U 113  ]
+"659
+[e :U 112 ]
+[; ;lobprog.c: 659: else if (field == 7) field = 6;
+[e $ ! == -> F366 `i -> 7 `i 114  ]
+[e = F366 -> -> 6 `i `uc ]
+[e :U 114 ]
+"660
+[e :U 113 ]
+[; ;lobprog.c: 660: dumphex(field);
+[e ( _dumphex (1 F366 ]
+[; ;lobprog.c: 661: priorState = 5;
+"661
+[e = _priorState -> -> 5 `i `uc ]
+"662
+}
+[; ;lobprog.c: 662: } else if ((cmd & 0x7f) == 0x01) {
+[e $U 115  ]
+[e :U 111 ]
+[e $ ! == & -> _cmd `i -> 127 `i -> 1 `i 116  ]
+{
+[; ;lobprog.c: 663: putrsDIAG("MENUDN");
+"663
+[e ( _putrsDIAG (1 :s 41C ]
+[; ;lobprog.c: 664: dumphex(field);
+"664
+[e ( _dumphex (1 F366 ]
+[; ;lobprog.c: 665: if (++field > 8) field = 5;
+"665
+[e $ ! > -> =+ F366 -> -> 1 `i `uc `i -> 8 `i 117  ]
+[e = F366 -> -> 5 `i `uc ]
+[e $U 118  ]
+"666
+[e :U 117 ]
+[; ;lobprog.c: 666: else if (field == 7) field = 8;
+[e $ ! == -> F366 `i -> 7 `i 119  ]
+[e = F366 -> -> 8 `i `uc ]
+[e :U 119 ]
+"667
+[e :U 118 ]
+[; ;lobprog.c: 667: dumphex(field);
+[e ( _dumphex (1 F366 ]
+[; ;lobprog.c: 668: priorState = 5;
+"668
+[e = _priorState -> -> 5 `i `uc ]
+"669
+}
+[; ;lobprog.c: 669: } else if ((cmd & 0x7f) == 0x04) {
+[e $U 120  ]
+[e :U 116 ]
+[e $ ! == & -> _cmd `i -> 127 `i -> 4 `i 121  ]
+{
+[; ;lobprog.c: 670: putrsDIAG("PLUS");
+"670
+[e ( _putrsDIAG (1 :s 42C ]
+[; ;lobprog.c: 671: if (field == 5) {
+"671
+[e $ ! == -> F366 `i -> 5 `i 122  ]
+{
+[; ;lobprog.c: 672: if (++program_ix >= 12) program_ix = 0;
+"672
+[e $ ! >= -> =+ _program_ix -> -> 1 `i `c `i -> 12 `i 123  ]
+[e = _program_ix -> -> 0 `i `c ]
+[e :U 123 ]
+[; ;lobprog.c: 673: ppshot_ix = 0;
+"673
+[e = _ppshot_ix -> -> 0 `i `c ]
+[; ;lobprog.c: 676: load_prog(program_ix,&act_program);
+"676
+[e ( _load_prog (2 , _program_ix &U _act_program ]
+[; ;lobprog.c: 677: lcd_updated = 1;
+"677
+[e = _lcd_updated -> -> 1 `i `uc ]
+"678
+}
+[; ;lobprog.c: 678: } else if (field == 6) {
+[e $U 124  ]
+[e :U 122 ]
+[e $ ! == -> F366 `i -> 6 `i 125  ]
+{
+[; ;lobprog.c: 679: ppshot_ix += 1;
+"679
+[e =+ _ppshot_ix -> -> 1 `i `c ]
+[; ;lobprog.c: 680: if (ppshot_ix >= 6)
+"680
+[e $ ! >= -> _ppshot_ix `i -> 6 `i 126  ]
+[; ;lobprog.c: 681: ppshot_ix = 0;
+"681
+[e = _ppshot_ix -> -> 0 `i `c ]
+[e :U 126 ]
+[; ;lobprog.c: 682: if (ppshot_ix >= (nused+1))
+"682
+[e $ ! >= -> _ppshot_ix `i + -> F365 `i -> 1 `i 127  ]
+[; ;lobprog.c: 683: ppshot_ix = 0;
+"683
+[e = _ppshot_ix -> -> 0 `i `c ]
+[e :U 127 ]
+"684
+}
+[; ;lobprog.c: 684: } else if (field == 8) {
+[e $U 128  ]
+[e :U 125 ]
+[e $ ! == -> F366 `i -> 8 `i 129  ]
+{
+[; ;lobprog.c: 688: curState = 3;
+"688
+[e = _curState -> -> 3 `i `uc ]
+"690
+}
+[e :U 129 ]
+"691
+[e :U 128 ]
+[e :U 124 ]
+[; ;lobprog.c: 690: }
+[; ;lobprog.c: 691: priorState = 5;
+[e = _priorState -> -> 5 `i `uc ]
+"692
+}
+[; ;lobprog.c: 692: } else if ((cmd & 0x7f) == 0x2b) {
+[e $U 130  ]
+[e :U 121 ]
+[e $ ! == & -> _cmd `i -> 127 `i -> 43 `i 131  ]
+{
+[; ;lobprog.c: 693: putrsDIAG("MINUS");
+"693
+[e ( _putrsDIAG (1 :s 43C ]
+[; ;lobprog.c: 694: if (field == 5) {
+"694
+[e $ ! == -> F366 `i -> 5 `i 132  ]
+{
+[; ;lobprog.c: 695: if (program_ix < 1) program_ix = 12-1;
+"695
+[e $ ! < -> _program_ix `i -> 1 `i 133  ]
+[e = _program_ix -> - -> 12 `i -> 1 `i `c ]
+[e $U 134  ]
+"696
+[e :U 133 ]
+[; ;lobprog.c: 696: else program_ix--;
+[e -- _program_ix -> -> 1 `i `c ]
+[e :U 134 ]
+[; ;lobprog.c: 697: ppshot_ix = 0;
+"697
+[e = _ppshot_ix -> -> 0 `i `c ]
+[; ;lobprog.c: 700: load_prog(program_ix,&act_program);
+"700
+[e ( _load_prog (2 , _program_ix &U _act_program ]
+[; ;lobprog.c: 701: lcd_updated = 1;
+"701
+[e = _lcd_updated -> -> 1 `i `uc ]
+"702
+}
+[; ;lobprog.c: 702: } else if (field == 6) {
+[e $U 135  ]
+[e :U 132 ]
+[e $ ! == -> F366 `i -> 6 `i 136  ]
+{
+[; ;lobprog.c: 703: if (ppshot_ix < 1) ppshot_ix = (nused == 6)? 6-1 : nused;
+"703
+[e $ ! < -> _ppshot_ix `i -> 1 `i 137  ]
+[e = _ppshot_ix -> ? == -> F365 `i -> 6 `i : - -> 6 `i -> 1 `i -> F365 `i `c ]
+[e $U 138  ]
+"704
+[e :U 137 ]
+[; ;lobprog.c: 704: else ppshot_ix--;
+[e -- _ppshot_ix -> -> 1 `i `c ]
+[e :U 138 ]
+"705
+}
+[; ;lobprog.c: 705: } else if (field == 8) {
+[e $U 139  ]
+[e :U 136 ]
+[e $ ! == -> F366 `i -> 8 `i 140  ]
+{
+[; ;lobprog.c: 707: curState = 3;
+"707
+[e = _curState -> -> 3 `i `uc ]
+"708
+}
+[e :U 140 ]
+"709
+[e :U 139 ]
+[e :U 135 ]
+[; ;lobprog.c: 708: }
+[; ;lobprog.c: 709: priorState = 5;
+[e = _priorState -> -> 5 `i `uc ]
+"710
+}
+[e :U 131 ]
+"712
+[e :U 130 ]
+[e :U 120 ]
+[e :U 115 ]
+}
+[e :U 110 ]
+[; ;lobprog.c: 710: }
+[; ;lobprog.c: 712: }
+[; ;lobprog.c: 714: break;
+"714
+[e $U 103  ]
+[; ;lobprog.c: 715: case 3:
+"715
+[e :U 141 ]
+[; ;lobprog.c: 716: if (curState != priorState) {
+"716
+[e $ ! != -> _curState `i -> _priorState `i 142  ]
+{
+[; ;lobprog.c: 717: putrsDIAG("\n\rSCRN2:");
+"717
+[e ( _putrsDIAG (1 :s 44C ]
+[; ;lobprog.c: 718: show_prog2();
+"718
+[e ( _show_prog2 ..  ]
+"719
+}
+[e :U 142 ]
+[; ;lobprog.c: 719: }
+[; ;lobprog.c: 720: if ((cmd >= 0x07) && (cmd <= 0x2a)) {
+"720
+[e $ ! && >= -> _cmd `i -> 7 `i <= -> _cmd `i -> 42 `i 143  ]
+{
+[; ;lobprog.c: 723: if (key2loc[cmd + (model_type * 48)] != 0x00) {
+"723
+[e $ ! != -> *U + &U _key2loc * -> -> + -> _cmd `i * -> _model_type `i -> 48 `i `ui `ux -> -> # *U &U _key2loc `ui `ux `i -> 0 `i 144  ]
+{
+[; ;lobprog.c: 727: if (act_program.shot[ppshot_ix] != key2loc[(cmd + (model_type * 48))]) {
+"727
+[e $ ! != -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `i -> *U + &U _key2loc * -> -> + -> _cmd `i * -> _model_type `i -> 48 `i `ui `ux -> -> # *U &U _key2loc `ui `ux `i 145  ]
+{
+[; ;lobprog.c: 730: prog_chgd = 1;
+"730
+[e = _prog_chgd -> -> 1 `i `uc ]
+[; ;lobprog.c: 736: act_program.shot[ppshot_ix] = key2loc[(cmd + (model_type * 48))];
+"736
+[e = *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux -> *U + &U _key2loc * -> -> + -> _cmd `i * -> _model_type `i -> 48 `i `ui `ux -> -> # *U &U _key2loc `ui `ux `c ]
+[; ;lobprog.c: 738: act_program.method[ppshot_ix] = get60mph0spin(key2loc[(cmd + (model_type * 48))]-1);
+"738
+[e = *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux -> ( _get60mph0spin (1 -> - -> *U + &U _key2loc * -> -> + -> _cmd `i * -> _model_type `i -> 48 `i `ui `ux -> -> # *U &U _key2loc `ui `ux `i -> 1 `i `uc `c ]
+"740
+}
+[e :U 145 ]
+[; ;lobprog.c: 740: }
+[; ;lobprog.c: 741: putrsDIAG("L");
+"741
+[e ( _putrsDIAG (1 :s 45C ]
+[; ;lobprog.c: 742: dumphex(act_program.shot[ppshot_ix]);
+"742
+[e ( _dumphex (1 -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `uc ]
+[; ;lobprog.c: 747: if ((act_program.feed[ppshot_ix] < 2) || (act_program.feed[ppshot_ix] > 12))
+"747
+[e $ ! || < -> *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux `i -> 2 `i > -> *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux `i -> 12 `i 146  ]
+[; ;lobprog.c: 748: act_program.feed[ppshot_ix] = 4;
+"748
+[e = *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux -> -> 4 `i `uc ]
+[e :U 146 ]
+[; ;lobprog.c: 752: putrsDIAG("NUSED ");
+"752
+[e ( _putrsDIAG (1 :s 46C ]
+[; ;lobprog.c: 753: dumphex(nused);
+"753
+[e ( _dumphex (1 F365 ]
+[; ;lobprog.c: 754: priorState = 5;
+"754
+[e = _priorState -> -> 5 `i `uc ]
+[; ;lobprog.c: 755: curState = 4;
+"755
+[e = _curState -> -> 4 `i `uc ]
+"756
+}
+[e :U 144 ]
+"757
+}
+[; ;lobprog.c: 756: }
+[; ;lobprog.c: 757: } else if ((cmd & 0x7f) == 0x2b) {
+[e $U 147  ]
+[e :U 143 ]
+[e $ ! == & -> _cmd `i -> 127 `i -> 43 `i 148  ]
+{
+[; ;lobprog.c: 758: prog_chgd = 1;
+"758
+[e = _prog_chgd -> -> 1 `i `uc ]
+[; ;lobprog.c: 759: for (val2=ppshot_ix; val2 < (6-1); val2++) {
+"759
+{
+[e = _val2 _ppshot_ix ]
+[e $ < -> _val2 `i - -> 6 `i -> 1 `i 149  ]
+[e $U 150  ]
+[e :U 149 ]
+{
+[; ;lobprog.c: 760: act_program.shot[val2] = act_program.shot[val2+1];
+"760
+[e = *U + &U . _act_program 0 * -> -> _val2 `uc `ux -> -> # *U &U . _act_program 0 `ui `ux *U + &U . _act_program 0 * -> -> + -> _val2 `i -> 1 `i `ui `ux -> -> # *U &U . _act_program 0 `ui `ux ]
+[; ;lobprog.c: 761: act_program.method[val2] = act_program.method[val2+1];
+"761
+[e = *U + &U . _act_program 1 * -> -> _val2 `uc `ux -> -> # *U &U . _act_program 1 `ui `ux *U + &U . _act_program 1 * -> -> + -> _val2 `i -> 1 `i `ui `ux -> -> # *U &U . _act_program 1 `ui `ux ]
+"762
+}
+"759
+[e ++ _val2 -> -> 1 `i `c ]
+[e $ < -> _val2 `i - -> 6 `i -> 1 `i 149  ]
+[e :U 150 ]
+"762
+}
+[; ;lobprog.c: 762: }
+[; ;lobprog.c: 763: act_program.shot[6-1] = 0;
+"763
+[e = *U + &U . _act_program 0 * -> -> - -> 6 `i -> 1 `i `ui `ux -> -> # *U &U . _act_program 0 `ui `ux -> -> 0 `i `c ]
+[; ;lobprog.c: 764: act_program.method[6-1] = 0;
+"764
+[e = *U + &U . _act_program 1 * -> -> - -> 6 `i -> 1 `i `ui `ux -> -> # *U &U . _act_program 1 `ui `ux -> -> 0 `i `c ]
+[; ;lobprog.c: 765: priorState = 5;
+"765
+[e = _priorState -> -> 5 `i `uc ]
+[; ;lobprog.c: 766: curState = 2;
+"766
+[e = _curState -> -> 2 `i `uc ]
+"767
+}
+[e :U 148 ]
+"768
+[e :U 147 ]
+[; ;lobprog.c: 767: }
+[; ;lobprog.c: 768: break;
+[e $U 103  ]
+[; ;lobprog.c: 769: case 4:
+"769
+[e :U 152 ]
+[; ;lobprog.c: 770: if (curState != priorState) {
+"770
+[e $ ! != -> _curState `i -> _priorState `i 153  ]
+{
+[; ;lobprog.c: 771: show_prog3();
+"771
+[e ( _show_prog3 ..  ]
+"772
+}
+[e :U 153 ]
+[; ;lobprog.c: 772: }
+[; ;lobprog.c: 774: act_program.shot[6] = 0;
+"774
+[e = *U + &U . _act_program 0 * -> -> -> 6 `i `ui `ux -> -> # *U &U . _act_program 0 `ui `ux -> -> 0 `i `c ]
+[; ;lobprog.c: 775: act_program.method[6] = 0;
+"775
+[e = *U + &U . _act_program 1 * -> -> -> 6 `i `ui `ux -> -> # *U &U . _act_program 1 `ui `ux -> -> 0 `i `c ]
+[; ;lobprog.c: 778: if (pp_odashes && !pp_dashes) {
+"778
+[e $ ! && != -> _pp_odashes `i -> -> -> 0 `i `uc `i ! != -> _pp_dashes `i -> -> -> 0 `i `uc `i 154  ]
+{
+[; ;lobprog.c: 779: show_prog3();
+"779
+[e ( _show_prog3 ..  ]
+[; ;lobprog.c: 780: pp_odashes = 0;
+"780
+[e = _pp_odashes -> -> 0 `i `uc ]
+"781
+}
+[e :U 154 ]
+[; ;lobprog.c: 781: }
+[; ;lobprog.c: 783: if ((cmd & 0x7f) == 0x01) {
+"783
+[e $ ! == & -> _cmd `i -> 127 `i -> 1 `i 155  ]
+{
+[; ;lobprog.c: 788: if (ppparm_ix == 0U)
+"788
+[e $ ! == -> -> _ppparm_ix `i `ui -> 0 `ui 156  ]
+[; ;lobprog.c: 789: ppparm_ix = 2U;
+"789
+[e = _ppparm_ix -> -> 2 `ui `c ]
+[e $U 157  ]
+"790
+[e :U 156 ]
+[; ;lobprog.c: 790: else if (ppparm_ix == 2U)
+[e $ ! == -> -> _ppparm_ix `i `ui -> 2 `ui 158  ]
+[; ;lobprog.c: 791: ppparm_ix = 5U;
+"791
+[e = _ppparm_ix -> -> 5 `ui `c ]
+[e $U 159  ]
+"792
+[e :U 158 ]
+[; ;lobprog.c: 792: else if (ppparm_ix == 5U)
+[e $ ! == -> -> _ppparm_ix `i `ui -> 5 `ui 160  ]
+[; ;lobprog.c: 793: ppparm_ix = 5U + 2;
+"793
+[e = _ppparm_ix -> + -> 5 `ui -> -> 2 `i `ui `c ]
+[e $U 161  ]
+"794
+[e :U 160 ]
+[; ;lobprog.c: 794: else if (ppparm_ix == 5U + 2)
+[e $ ! == -> -> _ppparm_ix `i `ui + -> 5 `ui -> -> 2 `i `ui 162  ]
+[; ;lobprog.c: 795: ppparm_ix = 0U;
+"795
+[e = _ppparm_ix -> -> 0 `ui `c ]
+[e :U 162 ]
+"797
+[e :U 161 ]
+[e :U 159 ]
+[e :U 157 ]
+[; ;lobprog.c: 797: priorState = 5;
+[e = _priorState -> -> 5 `i `uc ]
+"798
+}
+[; ;lobprog.c: 798: } else if ((cmd & 0x7f) == 0x2d) {
+[e $U 163  ]
+[e :U 155 ]
+[e $ ! == & -> _cmd `i -> 127 `i -> 45 `i 164  ]
+{
+[; ;lobprog.c: 804: if (ppparm_ix == 0U)
+"804
+[e $ ! == -> -> _ppparm_ix `i `ui -> 0 `ui 165  ]
+[; ;lobprog.c: 805: ppparm_ix = 5U+2;
+"805
+[e = _ppparm_ix -> + -> 5 `ui -> -> 2 `i `ui `c ]
+[e $U 166  ]
+"806
+[e :U 165 ]
+[; ;lobprog.c: 806: else if (ppparm_ix == 2U)
+[e $ ! == -> -> _ppparm_ix `i `ui -> 2 `ui 167  ]
+[; ;lobprog.c: 807: ppparm_ix = 0U;
+"807
+[e = _ppparm_ix -> -> 0 `ui `c ]
+[e $U 168  ]
+"808
+[e :U 167 ]
+[; ;lobprog.c: 808: else if (ppparm_ix == 5U)
+[e $ ! == -> -> _ppparm_ix `i `ui -> 5 `ui 169  ]
+[; ;lobprog.c: 809: ppparm_ix = 2U;
+"809
+[e = _ppparm_ix -> -> 2 `ui `c ]
+[e $U 170  ]
+"810
+[e :U 169 ]
+[; ;lobprog.c: 810: else if (ppparm_ix == 5U+2)
+[e $ ! == -> -> _ppparm_ix `i `ui + -> 5 `ui -> -> 2 `i `ui 171  ]
+[; ;lobprog.c: 811: ppparm_ix = 5U;
+"811
+[e = _ppparm_ix -> -> 5 `ui `c ]
+[e :U 171 ]
+"813
+[e :U 170 ]
+[e :U 168 ]
+[e :U 166 ]
+[; ;lobprog.c: 813: priorState = 5;
+[e = _priorState -> -> 5 `i `uc ]
+"814
+}
+[; ;lobprog.c: 814: } else if ((cmd & 0x7f) == 0x04) {
+[e $U 172  ]
+[e :U 164 ]
+[e $ ! == & -> _cmd `i -> 127 `i -> 4 `i 173  ]
+{
+[; ;lobprog.c: 815: if (ppparm_ix == 0U) {
+"815
+[e $ ! == -> -> _ppparm_ix `i `ui -> 0 `ui 174  ]
+{
+[; ;lobprog.c: 816: prog_chgd = 1;
+"816
+[e = _prog_chgd -> -> 1 `i `uc ]
+[; ;lobprog.c: 817: locno = act_program.shot[ppshot_ix];
+"817
+[e = _locno -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `uc ]
+[; ;lobprog.c: 818: method = act_program.method[ppshot_ix];
+"818
+[e = _method -> *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux `uc ]
+[; ;lobprog.c: 829: val = court_locs[locno-1][method].speed;
+"829
+[e = _val . *U + &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _method `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 ]
+[; ;lobprog.c: 830: val2 = court_locs[locno-1][method].spin;
+"830
+[e = _val2 . *U + &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _method `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 5 ]
+[; ;lobprog.c: 836: val += 5;
+"836
+[e =+ _val -> -> 5 `i `uc ]
+[; ;lobprog.c: 837: if (val > 70)
+"837
+[e $ ! > -> _val `i -> 70 `i 175  ]
+[; ;lobprog.c: 839: val = 70;
+"839
+[e = _val -> -> 70 `i `uc ]
+[e :U 175 ]
+[; ;lobprog.c: 840: if (getLocAvail(locno-1,val,val2,&method)) {
+"840
+[e $ ! != -> ( _getLocAvail (4 , , , -> - -> _locno `i -> 1 `i `uc _val _val2 &U _method `i -> -> -> 0 `i `uc `i 176  ]
+{
+[; ;lobprog.c: 841: act_program.method[ppshot_ix] = method;
+"841
+[e = *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux -> _method `c ]
+[; ;lobprog.c: 842: pp_dashes = 0;
+"842
+[e = _pp_dashes -> -> 0 `i `uc ]
+"843
+}
+[; ;lobprog.c: 843: }
+[e $U 177  ]
+"844
+[e :U 176 ]
+[; ;lobprog.c: 844: else {
+{
+[; ;lobprog.c: 845: pp_dashes = 1;
+"845
+[e = _pp_dashes -> -> 1 `i `uc ]
+[; ;lobprog.c: 846: pp_odashes = 1;
+"846
+[e = _pp_odashes -> -> 1 `i `uc ]
+"847
+}
+[e :U 177 ]
+"848
+}
+[; ;lobprog.c: 847: }
+[; ;lobprog.c: 848: } else if (ppparm_ix == 2U) {
+[e $U 178  ]
+[e :U 174 ]
+[e $ ! == -> -> _ppparm_ix `i `ui -> 2 `ui 179  ]
+{
+[; ;lobprog.c: 849: prog_chgd = 1;
+"849
+[e = _prog_chgd -> -> 1 `i `uc ]
+[; ;lobprog.c: 850: locno = act_program.shot[ppshot_ix];
+"850
+[e = _locno -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `uc ]
+[; ;lobprog.c: 851: method = act_program.method[ppshot_ix];
+"851
+[e = _method -> *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux `uc ]
+[; ;lobprog.c: 862: val = court_locs[locno-1][method].speed;
+"862
+[e = _val . *U + &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _method `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 ]
+[; ;lobprog.c: 863: val2 = court_locs[locno-1][method].spin;
+"863
+[e = _val2 . *U + &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _method `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 5 ]
+[; ;lobprog.c: 869: val2 += 1;
+"869
+[e =+ _val2 -> -> 1 `i `c ]
+[; ;lobprog.c: 870: if (val2 > 3)
+"870
+[e $ ! > -> _val2 `i -> 3 `i 180  ]
+[; ;lobprog.c: 872: val2 = 3;
+"872
+[e = _val2 -> -> 3 `i `c ]
+[e :U 180 ]
+[; ;lobprog.c: 873: if (getLocAvail(locno-1,val,val2,&method)) {
+"873
+[e $ ! != -> ( _getLocAvail (4 , , , -> - -> _locno `i -> 1 `i `uc _val _val2 &U _method `i -> -> -> 0 `i `uc `i 181  ]
+{
+[; ;lobprog.c: 874: act_program.method[ppshot_ix] = method;
+"874
+[e = *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux -> _method `c ]
+[; ;lobprog.c: 875: pp_dashes = 0;
+"875
+[e = _pp_dashes -> -> 0 `i `uc ]
+"876
+}
+[; ;lobprog.c: 876: }
+[e $U 182  ]
+"877
+[e :U 181 ]
+[; ;lobprog.c: 877: else {
+{
+[; ;lobprog.c: 878: pp_dashes = 2;
+"878
+[e = _pp_dashes -> -> 2 `i `uc ]
+[; ;lobprog.c: 879: pp_odashes = 2;
+"879
+[e = _pp_odashes -> -> 2 `i `uc ]
+"880
+}
+[e :U 182 ]
+"881
+}
+[; ;lobprog.c: 880: }
+[; ;lobprog.c: 881: } else if (ppparm_ix == 5U) {
+[e $U 183  ]
+[e :U 179 ]
+[e $ ! == -> -> _ppparm_ix `i `ui -> 5 `ui 184  ]
+{
+[; ;lobprog.c: 882: prog_chgd = 1;
+"882
+[e = _prog_chgd -> -> 1 `i `uc ]
+[; ;lobprog.c: 887: act_program.feed[ppshot_ix]++;
+"887
+[e ++ *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux -> -> 1 `i `uc ]
+[; ;lobprog.c: 888: if (act_program.feed[ppshot_ix] > 9)
+"888
+[e $ ! > -> *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux `i -> 9 `i 185  ]
+[; ;lobprog.c: 889: act_program.feed[ppshot_ix] = 9;
+"889
+[e = *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux -> -> 9 `i `uc ]
+[e :U 185 ]
+"891
+}
+[; ;lobprog.c: 891: } else if (ppparm_ix == (5U + 2)) {
+[e $U 186  ]
+[e :U 184 ]
+[e $ ! == -> -> _ppparm_ix `i `ui + -> 5 `ui -> -> 2 `i `ui 187  ]
+{
+[; ;lobprog.c: 892: ppshot_ix++;
+"892
+[e ++ _ppshot_ix -> -> 1 `i `c ]
+[; ;lobprog.c: 893: if (ppshot_ix > (6-1)) {
+"893
+[e $ ! > -> _ppshot_ix `i - -> 6 `i -> 1 `i 188  ]
+{
+[; ;lobprog.c: 894: ppshot_ix = 0;
+"894
+[e = _ppshot_ix -> -> 0 `i `c ]
+[; ;lobprog.c: 895: curState = 2;
+"895
+[e = _curState -> -> 2 `i `uc ]
+"896
+}
+[; ;lobprog.c: 896: } else {
+[e $U 189  ]
+[e :U 188 ]
+{
+[; ;lobprog.c: 897: curState = 3;
+"897
+[e = _curState -> -> 3 `i `uc ]
+"898
+}
+[e :U 189 ]
+"899
+}
+[e :U 187 ]
+"900
+[e :U 186 ]
+[e :U 183 ]
+[e :U 178 ]
+[; ;lobprog.c: 898: }
+[; ;lobprog.c: 899: }
+[; ;lobprog.c: 900: priorState = 5;
+[e = _priorState -> -> 5 `i `uc ]
+"901
+}
+[; ;lobprog.c: 901: } else if ((cmd & 0x7f) == 0x2b) {
+[e $U 190  ]
+[e :U 173 ]
+[e $ ! == & -> _cmd `i -> 127 `i -> 43 `i 191  ]
+{
+[; ;lobprog.c: 902: if (ppparm_ix == 0U) {
+"902
+[e $ ! == -> -> _ppparm_ix `i `ui -> 0 `ui 192  ]
+{
+[; ;lobprog.c: 903: prog_chgd = 1;
+"903
+[e = _prog_chgd -> -> 1 `i `uc ]
+[; ;lobprog.c: 904: locno = act_program.shot[ppshot_ix];
+"904
+[e = _locno -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `uc ]
+[; ;lobprog.c: 905: method = act_program.method[ppshot_ix];
+"905
+[e = _method -> *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux `uc ]
+[; ;lobprog.c: 916: val = court_locs[locno-1][method].speed;
+"916
+[e = _val . *U + &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _method `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 ]
+[; ;lobprog.c: 917: val2 = court_locs[locno-1][method].spin;
+"917
+[e = _val2 . *U + &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _method `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 5 ]
+[; ;lobprog.c: 923: putrsDIAG("S");
+"923
+[e ( _putrsDIAG (1 :s 47C ]
+[; ;lobprog.c: 924: dumphex(val);
+"924
+[e ( _dumphex (1 _val ]
+[; ;lobprog.c: 925: putrsDIAG("s");
+"925
+[e ( _putrsDIAG (1 :s 48C ]
+[; ;lobprog.c: 926: dumphex(val2);
+"926
+[e ( _dumphex (1 -> _val2 `uc ]
+[; ;lobprog.c: 927: val -= 5;
+"927
+[e =- _val -> -> 5 `i `uc ]
+[; ;lobprog.c: 928: if (val < 25)
+"928
+[e $ ! < -> _val `i -> 25 `i 193  ]
+[; ;lobprog.c: 930: val = 25;
+"930
+[e = _val -> -> 25 `i `uc ]
+[e :U 193 ]
+[; ;lobprog.c: 931: putrsDIAG("New");
+"931
+[e ( _putrsDIAG (1 :s 49C ]
+[; ;lobprog.c: 932: dumphex(val);
+"932
+[e ( _dumphex (1 _val ]
+[; ;lobprog.c: 933: if (getLocAvail(locno-1,val,val2,&method)) {
+"933
+[e $ ! != -> ( _getLocAvail (4 , , , -> - -> _locno `i -> 1 `i `uc _val _val2 &U _method `i -> -> -> 0 `i `uc `i 194  ]
+{
+[; ;lobprog.c: 934: act_program.method[ppshot_ix] = method;
+"934
+[e = *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux -> _method `c ]
+[; ;lobprog.c: 935: pp_dashes = 0;
+"935
+[e = _pp_dashes -> -> 0 `i `uc ]
+"936
+}
+[; ;lobprog.c: 936: }
+[e $U 195  ]
+"937
+[e :U 194 ]
+[; ;lobprog.c: 937: else {
+{
+[; ;lobprog.c: 938: pp_dashes = 1;
+"938
+[e = _pp_dashes -> -> 1 `i `uc ]
+[; ;lobprog.c: 939: pp_odashes = 1;
+"939
+[e = _pp_odashes -> -> 1 `i `uc ]
+"940
+}
+[e :U 195 ]
+[; ;lobprog.c: 940: }
+[; ;lobprog.c: 941: putrsDIAG("M");
+"941
+[e ( _putrsDIAG (1 :s 50C ]
+[; ;lobprog.c: 942: dumphex(method);
+"942
+[e ( _dumphex (1 _method ]
+"943
+}
+[; ;lobprog.c: 943: } else if (ppparm_ix == 2U) {
+[e $U 196  ]
+[e :U 192 ]
+[e $ ! == -> -> _ppparm_ix `i `ui -> 2 `ui 197  ]
+{
+[; ;lobprog.c: 944: prog_chgd = 1;
+"944
+[e = _prog_chgd -> -> 1 `i `uc ]
+[; ;lobprog.c: 945: locno = act_program.shot[ppshot_ix];
+"945
+[e = _locno -> *U + &U . _act_program 0 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 0 `ui `ux `uc ]
+[; ;lobprog.c: 946: method = act_program.method[ppshot_ix];
+"946
+[e = _method -> *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux `uc ]
+[; ;lobprog.c: 957: val = court_locs[locno-1][method].speed;
+"957
+[e = _val . *U + &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _method `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 0 ]
+[; ;lobprog.c: 958: val2 = court_locs[locno-1][method].spin;
+"958
+[e = _val2 . *U + &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> _method `ux -> -> # *U &U *U + &U _court_locs * -> -> - -> _locno `i -> 1 `i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux 5 ]
+[; ;lobprog.c: 964: val2 -= 1;
+"964
+[e =- _val2 -> -> 1 `i `c ]
+[; ;lobprog.c: 965: if (val2 < -3)
+"965
+[e $ ! < -> _val2 `i -U -> 3 `i 198  ]
+[; ;lobprog.c: 967: val2 = -3;
+"967
+[e = _val2 -> -U -> 3 `i `c ]
+[e :U 198 ]
+[; ;lobprog.c: 968: if (getLocAvail(locno-1,val,val2,&method)) {
+"968
+[e $ ! != -> ( _getLocAvail (4 , , , -> - -> _locno `i -> 1 `i `uc _val _val2 &U _method `i -> -> -> 0 `i `uc `i 199  ]
+{
+[; ;lobprog.c: 969: act_program.method[ppshot_ix] = method;
+"969
+[e = *U + &U . _act_program 1 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 1 `ui `ux -> _method `c ]
+[; ;lobprog.c: 970: pp_dashes = 0;
+"970
+[e = _pp_dashes -> -> 0 `i `uc ]
+"971
+}
+[; ;lobprog.c: 971: }
+[e $U 200  ]
+"972
+[e :U 199 ]
+[; ;lobprog.c: 972: else {
+{
+[; ;lobprog.c: 973: pp_dashes = 2;
+"973
+[e = _pp_dashes -> -> 2 `i `uc ]
+[; ;lobprog.c: 974: pp_odashes = 2;
+"974
+[e = _pp_odashes -> -> 2 `i `uc ]
+"975
+}
+[e :U 200 ]
+"976
+}
+[; ;lobprog.c: 975: }
+[; ;lobprog.c: 976: } else if (ppparm_ix == 5U) {
+[e $U 201  ]
+[e :U 197 ]
+[e $ ! == -> -> _ppparm_ix `i `ui -> 5 `ui 202  ]
+{
+[; ;lobprog.c: 978: prog_chgd = 1;
+"978
+[e = _prog_chgd -> -> 1 `i `uc ]
+[; ;lobprog.c: 983: act_program.feed[ppshot_ix]--;
+"983
+[e -- *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux -> -> 1 `i `uc ]
+[; ;lobprog.c: 984: if (act_program.feed[ppshot_ix] < 1+1)
+"984
+[e $ ! < -> *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux `i + -> 1 `i -> 1 `i 203  ]
+[; ;lobprog.c: 985: act_program.feed[ppshot_ix] = 1+1;
+"985
+[e = *U + &U . _act_program 2 * -> -> _ppshot_ix `uc `ux -> -> # *U &U . _act_program 2 `ui `ux -> + -> 1 `i -> 1 `i `uc ]
+[e :U 203 ]
+"987
+}
+[; ;lobprog.c: 987: } else if (ppparm_ix == (5U + 2)) {
+[e $U 204  ]
+[e :U 202 ]
+[e $ ! == -> -> _ppparm_ix `i `ui + -> 5 `ui -> -> 2 `i `ui 205  ]
+{
+[; ;lobprog.c: 989: curState = 2;
+"989
+[e = _curState -> -> 2 `i `uc ]
+"990
+}
+[e :U 205 ]
+"991
+[e :U 204 ]
+[e :U 201 ]
+[e :U 196 ]
+[; ;lobprog.c: 990: }
+[; ;lobprog.c: 991: priorState = 5;
+[e = _priorState -> -> 5 `i `uc ]
+"993
+}
+[e :U 191 ]
+"1001
+[e :U 190 ]
+[e :U 172 ]
+[e :U 163 ]
+[; ;lobprog.c: 993: }
+[; ;lobprog.c: 1001: break;
+[e $U 103  ]
+[; ;lobprog.c: 1002: default:
+"1002
+[e :U 206 ]
+[; ;lobprog.c: 1003: putrsDIAG("INVPP state = ");
+"1003
+[e ( _putrsDIAG (1 :s 51C ]
+[; ;lobprog.c: 1004: dumphex(curState);
+"1004
+[e ( _dumphex (1 _curState ]
+[; ;lobprog.c: 1005: break;
+"1005
+[e $U 103  ]
+"1006
+}
+[; ;lobprog.c: 1006: }
+[e $U 103  ]
+"635
+[e :U 104 ]
+[e [\ _curState , $ -> -> 2 `i `uc 105
+ , $ -> -> 3 `i `uc 141
+ , $ -> -> 4 `i `uc 152
+ 206 ]
+"1006
+[e :U 103 ]
+[; ;lobprog.c: 1007: return(0);
+"1007
+[e ) -> -> 0 `i `uc ]
+[e $UE 99  ]
+[; ;lobprog.c: 1008: }
+"1008
+[e :UE 99 ]
+}
+"1012
+[v _remote_programming `(v ~T0 @X0 1 ef ]
+{
+[; ;lobprog.c: 1012: void remote_programming (void) {
+[e :U _remote_programming ]
+[f ]
+[; ;lobprog.c: 1014: }
+"1014
+[e :UE 207 ]
+}
+[a 49C 78 101 119 0 ]
+[a 48C 115 0 ]
+[a 28C 116 111 32 80 114 103 109 32 115 104 111 116 44 32 111 114 0 ]
+[a 27C 80 114 101 115 115 32 97 32 108 111 99 97 116 105 111 110 0 ]
+[a 29C 80 114 101 115 115 32 45 32 116 111 32 101 114 97 115 101 0 ]
+[a 43C 77 73 78 85 83 0 ]
+[a 42C 80 76 85 83 0 ]
+[a 24C 83 0 ]
+[a 47C 83 0 ]
+[a 40C 77 69 78 85 85 80 0 ]
+[a 21C 10 13 83 67 82 78 49 58 32 80 0 ]
+[a 12C 80 35 62 32 60 80 76 65 89 32 84 79 32 82 85 78 0 ]
+[a 11C 80 35 32 32 32 80 76 65 89 32 84 79 32 82 85 78 0 ]
+[a 41C 77 69 78 85 68 78 0 ]
+[a 50C 77 0 ]
+[a 45C 76 0 ]
+[a 26C 80 35 32 32 83 104 111 116 35 32 32 76 111 99 32 63 0 ]
+[a 32C 80 35 32 32 83 104 111 116 35 32 32 76 111 99 32 63 0 ]
+[a 15C 80 35 32 32 83 72 79 84 35 32 32 76 79 67 32 63 0 ]
+[a 18C 69 68 73 84 62 78 79 60 0 ]
+[a 2C 83 80 69 69 68 58 32 62 32 32 32 32 77 80 72 60 0 ]
+[a 20C 62 78 69 88 84 32 43 32 66 65 67 75 32 45 32 60 0 ]
+[a 4C 83 80 73 78 62 32 32 60 0 ]
+[a 6C 70 69 69 68 62 32 32 60 0 ]
+[a 44C 10 13 83 67 82 78 50 58 0 ]
+[a 33C 45 45 0 ]
+[a 34C 45 45 0 ]
+[a 31C 32 77 35 0 ]
+[a 30C 10 13 83 67 82 78 51 58 32 76 35 0 ]
+[a 25C 35 0 ]
+[a 39C 10 13 80 101 114 115 32 80 114 111 103 32 0 ]
+[a 17C 69 68 73 84 58 78 79 32 0 ]
+[a 1C 83 80 69 69 68 58 32 32 32 32 32 32 77 80 72 32 0 ]
+[a 46C 78 85 83 69 68 32 0 ]
+[a 51C 73 78 86 80 80 32 115 116 97 116 101 32 61 32 0 ]
+[a 14C 83 72 79 84 62 32 60 32 0 ]
+[a 35C 42 32 65 80 80 32 67 79 78 84 82 79 76 32 42 32 0 ]
+[a 16C 80 35 32 32 83 72 79 84 35 32 32 76 79 67 35 32 0 ]
+[a 19C 32 78 101 120 116 32 43 32 66 97 99 107 32 45 32 32 0 ]
+[a 36C 80 114 111 103 114 97 109 32 68 114 105 108 108 35 32 32 0 ]
+[a 13C 83 72 79 84 58 32 32 32 0 ]
+[a 3C 83 80 73 78 58 32 32 32 0 ]
+[a 5C 70 69 69 68 58 32 32 32 0 ]
+[a 37C 76 111 99 97 116 105 111 110 115 58 32 32 32 32 32 32 0 ]
+[a 22C 76 79 67 83 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 23C 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 38C 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 32 0 ]
+[a 7C 0 ]
+[a 8C 0 ]
+[a 9C 0 ]
+[a 10C 0 ]

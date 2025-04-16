@@ -1,0 +1,1 @@
+ d1ktcy.d  d1ktcy.obj:  C:/Users/Michael/Documents/cs020_sw/Master_v1p220p34-XC8/EL04/main/../lcd/d1ktcy.asm

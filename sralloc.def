@@ -1,0 +1,6 @@
+//
+// Indicate use of a NEAR model. Some performance improvement. 
+#define NEAR_MODEL 1
+//
+// Set the heap size. The linker script must indicate the same.
+#define MAX_HEAP_SIZE 256

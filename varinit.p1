@@ -1,0 +1,627 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"553 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S11 `uc 1 `us 1 `us 1 `us 1 `s 1 `c 1 ]
+[n S11 el04_loc speed top bottom elev sweep spin ]
+"15 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\varinit.c
+[v _dashes `uc ~T0 @X0 0 e ]
+"25
+[v _cur_st `uc ~T0 @X0 0 e ]
+"16
+[v _abort_key `uc ~T0 @X0 0 e ]
+"17
+[v _aborted_mode `uc ~T0 @X0 0 e ]
+"74
+[v _rem_feed_chg `uc ~T0 @X0 0 e ]
+"26
+[v _prev_st `uc ~T0 @X0 0 e ]
+"27
+[v _program_ix `c ~T0 @X0 0 e ]
+"28
+[v _ppshot_ix `c ~T0 @X0 0 e ]
+"29
+[v _ppparm_ix `c ~T0 @X0 0 e ]
+"30
+[v _lcd_changed `uc ~T0 @X0 0 e ]
+"31
+[v _play_state `uc ~T0 @X0 0 e ]
+"32
+[v _lcd_updated `uc ~T0 @X0 0 e ]
+"33
+[v _play_mode `l ~T0 @X0 0 e ]
+"34
+[v _remote_enabled `uc ~T0 @X0 0 e ]
+"35
+[v _lob_on `uc ~T0 @X0 0 e ]
+"37
+[v _man_parm `uc ~T0 @X0 0 e ]
+"76
+[v _model_type `uc ~T0 @X0 0 e ]
+"40
+[v _preset_type `uc ~T0 @X0 0 e ]
+"42
+[v _preset_ix `uc ~T0 @X0 -> 0 `x e ]
+"44
+[v _idle_fpass `uc ~T0 @X0 0 e ]
+"45
+[v _man1shot `uc ~T0 @X0 0 e ]
+"46
+[v _dpb_thrash `us ~T0 @X0 0 e ]
+"24 C:\Program Files (x86)\Microchip\xc8\v1.31\include\string.h
+[v _memset `(*v ~T0 @X0 0 ef3`*v`i`ui ]
+"738 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S15 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S15 power_button count previous current previous_debounced debounced ]
+"47 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\varinit.c
+[v _power `VS15 ~T0 @X0 0 e ]
+"48
+[v _main_ostate `i ~T0 @X0 0 e ]
+"24
+[v _loaded_progno `uc ~T0 @X0 0 e ]
+"52
+[v _home_ticks `ul ~T0 @X0 0 e ]
+"55
+[v _batt_ticks `ul ~T0 @X0 0 e ]
+"56
+[v _batt_cnt `uc ~T0 @X0 0 e ]
+"57
+[v _BatAvgCnt `uc ~T0 @X0 0 e ]
+"58
+[v _homeshown `uc ~T0 @X0 0 e ]
+"59
+[v _loop_delay `ul ~T0 @X0 0 e ]
+[v F298 `CS11 ~T0 @X0 -> 50 `i t ]
+"68
+[v _court_locs `F298 ~T0 @X0 -> 0 `x e ]
+"21
+[v _num_methods `uc ~T0 @X0 -> 0 `x e ]
+"61
+[v _keyhold `us ~T0 @X0 0 e ]
+"60
+[v _repeat `ul ~T0 @X0 0 e ]
+"70
+[v _ee_progstart `ul ~T0 @X0 0 e ]
+"588 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S12 `uc -> 8 `i `us 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc -> 3 `i `us 1 `us 1 `uc -> 9 `i ]
+[n S12 ee_hdr vers ops_size npresets parm_size npersprog pers_size num_methods num_locs additional_locs ndrills elev_correction sweep_correction rsrved ]
+"71 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\varinit.c
+[v _flash_header `CS12 ~T0 @X0 0 e ]
+"81
+[v _RemotePgmMode `ui ~T0 @X0 0 e ]
+"86
+[v _BatLevelDisplay `uc ~T0 @X0 0 e ]
+"87
+[v _BatLevelDisplayTmr `uc ~T0 @X0 0 e ]
+"88
+[v _BatPercent `i ~T0 @X0 0 e ]
+"89
+[v _PlayLEDPass `uc ~T0 @X0 0 e ]
+[; ;types.h: 8: typedef unsigned char uchar;
+[; ;types.h: 9: typedef unsigned short ushort;
+[; ;types.h: 10: typedef unsigned long ulong;
+[; ;types.h: 44: typedef union sc {
+[; ;types.h: 45: char c[2];
+[; ;types.h: 46: uchar uc[2];
+[; ;types.h: 47: short s;
+[; ;types.h: 48: ushort us;
+[; ;types.h: 49: } mini_variant;
+[; ;types.h: 53: typedef union ulp {
+[; ;types.h: 54: char c[4];
+[; ;types.h: 55: uchar uc[4];
+[; ;types.h: 56: short s[2];
+[; ;types.h: 57: ushort us[2];
+[; ;types.h: 58: long l;
+[; ;types.h: 59: unsigned long ul;
+[; ;types.h: 60: void *vp;
+[; ;types.h: 61: const void *cvp;
+[; ;types.h: 62: volatile void *vvp;
+[; ;types.h: 63: char *cp;
+[; ;types.h: 64: const char *ccp;
+[; ;types.h: 65: uchar *ucp;
+[; ;types.h: 66: const uchar *cucp;
+[; ;types.h: 67: short *sp;
+[; ;types.h: 68: const short *csp;
+[; ;types.h: 69: ushort *usp;
+[; ;types.h: 70: const ushort *cusp;
+[; ;types.h: 71: long *lp;
+[; ;types.h: 72: const long *clp;
+[; ;types.h: 73: ulong *unlp;
+[; ;types.h: 74: const ulong *culp;
+[; ;types.h: 75: void (*func)();
+[; ;types.h: 76: } variant;
+[; ;types.h: 90: union parm {
+[; ;types.h: 96: signed char value[9];
+[; ;types.h: 100: struct {
+[; ;types.h: 101: uchar speed;
+[; ;types.h: 102: uchar elev;
+[; ;types.h: 106: signed char spin;
+[; ;types.h: 107: signed char horiz;
+[; ;types.h: 110: uchar twolnrw;
+[; ;types.h: 112: uchar feed;
+[; ;types.h: 120: uchar col;
+[; ;types.h: 121: uchar row;
+[; ;types.h: 123: uchar width;
+[; ;types.h: 124: };
+[; ;types.h: 125: };
+[; ;types.h: 142: struct limit {
+[; ;types.h: 143: signed char minimum;
+[; ;types.h: 144: signed char maximum;
+[; ;types.h: 145: signed char incr;
+[; ;types.h: 146: };
+[; ;types.h: 150: struct motor_status {
+[; ;types.h: 151: unsigned cap1:1;
+[; ;types.h: 152: unsigned cap2:1;
+[; ;types.h: 153: unsigned HaveCmd:1;
+[; ;types.h: 154: unsigned InCmd:1;
+[; ;types.h: 155: unsigned CmdErr:1;
+[; ;types.h: 156: unsigned TickInt:1;
+[; ;types.h: 157: unsigned WaitResp:1;
+[; ;types.h: 158: unsigned a2dStarted:1;
+[; ;types.h: 159: };
+[; ;types.h: 174: struct persprog {
+[; ;types.h: 178: signed char shot[30];
+[; ;types.h: 179: signed char method[30];
+[; ;types.h: 183: char feed[30];
+[; ;types.h: 185: char reserved;
+[; ;types.h: 186: };
+[; ;state_mach.h: 15: struct state_mach {
+[; ;state_mach.h: 16: uchar *cur_state;
+[; ;state_mach.h: 17: uchar *prev_state;
+[; ;state_mach.h: 20: const uchar *pxtbl;
+[; ;state_mach.h: 22: const uchar state_ct;
+[; ;state_mach.h: 23: };
+[; ;state_mach.h: 34: struct button_def {
+[; ;state_mach.h: 35: long style ;
+[; ;state_mach.h: 36: char *text ;
+[; ;state_mach.h: 37: int id;
+[; ;state_mach.h: 38: int x;
+[; ;state_mach.h: 39: int y;
+[; ;state_mach.h: 40: int w;
+[; ;state_mach.h: 41: int h;
+[; ;state_mach.h: 42: int flags;
+[; ;state_mach.h: 43: };
+[; ;lob.h: 7: far void show_lcd(void);
+[; ;lob.h: 8: void clear_lcd(char mask);
+[; ;lob.h: 9: void DisableSlaveSPI(void);
+[; ;lob.h: 10: void EnableSlaveSPI(void);
+[; ;lob.h: 11: char SEERead(unsigned int addr);
+[; ;lob.h: 12: void SEEWrite(unsigned int addr, char data);
+[; ;lob.h: 15: char save_prog(signed char progno, struct persprog* ppers);
+"417 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[v _RPM_NONE `Cui ~T0 @X0 1 s ]
+[i _RPM_NONE
+-> -> 0 `i `ui
+]
+[; ;lob.h: 417: static const unsigned int RPM_NONE = 0x0000;
+"418
+[v _RPM_START `Cui ~T0 @X0 1 s ]
+[i _RPM_START
+-> -> 1 `i `ui
+]
+[; ;lob.h: 418: static const unsigned int RPM_START = 0x0001;
+"419
+[v _RPM_SHOTNUM `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTNUM
+-> -> 2 `i `ui
+]
+[; ;lob.h: 419: static const unsigned int RPM_SHOTNUM = 0x0002;
+"420
+[v _RPM_SHOTLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTLOCN
+-> -> 4 `i `ui
+]
+[; ;lob.h: 420: static const unsigned int RPM_SHOTLOCN = 0x0004;
+"421
+[v _RPM_SHOTSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPEED
+-> -> 8 `i `ui
+]
+[; ;lob.h: 421: static const unsigned int RPM_SHOTSPEED = 0x0008;
+"422
+[v _RPM_SHOTSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPIN
+-> -> 16 `i `ui
+]
+[; ;lob.h: 422: static const unsigned int RPM_SHOTSPIN = 0x0010;
+"423
+[v _RPM_SHOTFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTFEED
+-> -> 32 `i `ui
+]
+[; ;lob.h: 423: static const unsigned int RPM_SHOTFEED = 0x0020;
+"424
+[v _RPM_EDITLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITLOCN
+-> -> 64 `i `ui
+]
+[; ;lob.h: 424: static const unsigned int RPM_EDITLOCN = 0x0040;
+"425
+[v _RPM_EDITSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPEED
+-> -> 128 `i `ui
+]
+[; ;lob.h: 425: static const unsigned int RPM_EDITSPEED = 0x0080;
+"426
+[v _RPM_EDITSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPIN
+-> -> 256 `i `ui
+]
+[; ;lob.h: 426: static const unsigned int RPM_EDITSPIN = 0x0100;
+"427
+[v _RPM_EDITFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITFEED
+-> -> 512 `i `ui
+]
+[; ;lob.h: 427: static const unsigned int RPM_EDITFEED = 0x0200;
+"428
+[v _RPM_SHOTTABLES `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTTABLES
+-> -> 1024 `i `ui
+]
+[; ;lob.h: 428: static const unsigned int RPM_SHOTTABLES = 0x0400;
+"431
+[v _RPM_DWNLDDRL `Cui ~T0 @X0 1 s ]
+[i _RPM_DWNLDDRL
+-> -> 2048 `i `ui
+]
+[; ;lob.h: 431: static const unsigned int RPM_DWNLDDRL = 0x0800;
+[; ;lob.h: 543: struct t_parm {
+[; ;lob.h: 544: const struct limit limits;
+[; ;lob.h: 545: const char** prompt;
+[; ;lob.h: 546: const char field_size;
+[; ;lob.h: 547: const char field_locn;
+[; ;lob.h: 548: const char text_size;
+[; ;lob.h: 549: const char text_start;
+[; ;lob.h: 550: const char line;
+[; ;lob.h: 551: };
+[; ;lob.h: 553: struct el04_loc {
+[; ;lob.h: 554: uchar speed;
+[; ;lob.h: 555: ushort top;
+[; ;lob.h: 556: ushort bottom;
+[; ;lob.h: 557: ushort elev;
+[; ;lob.h: 558: signed short sweep;
+[; ;lob.h: 559: signed char spin;
+[; ;lob.h: 560: };
+[; ;lob.h: 588: struct ee_hdr {
+[; ;lob.h: 589: char vers[8];
+[; ;lob.h: 590: ushort ops_size;
+[; ;lob.h: 591: char npresets;
+[; ;lob.h: 592: char parm_size;
+[; ;lob.h: 593: char npersprog;
+[; ;lob.h: 594: char pers_size;
+[; ;lob.h: 595: char num_methods;
+[; ;lob.h: 596: char num_locs;
+[; ;lob.h: 597: char additional_locs;
+[; ;lob.h: 598: char ndrills[3];
+[; ;lob.h: 601: ushort elev_correction;
+[; ;lob.h: 602: ushort sweep_correction;
+[; ;lob.h: 605: char rsrved[9];
+[; ;lob.h: 607: };
+[; ;lob.h: 610: struct shot {
+[; ;lob.h: 611: ushort top;
+[; ;lob.h: 612: ushort bot;
+[; ;lob.h: 613: ushort y;
+[; ;lob.h: 614: ushort x;
+[; ;lob.h: 615: ushort yLo;
+[; ;lob.h: 616: ushort xLeft;
+[; ;lob.h: 617: ushort feedrate;
+[; ;lob.h: 618: ushort sweeprate;
+[; ;lob.h: 619: };
+[; ;lob.h: 623: struct rand_info {
+[; ;lob.h: 624: char range;
+[; ;lob.h: 625: char incr;
+[; ;lob.h: 626: char start;
+[; ;lob.h: 627: char max;
+[; ;lob.h: 628: };
+[; ;lob.h: 738: struct power_button {
+[; ;lob.h: 739: uchar count;
+[; ;lob.h: 740: uchar previous;
+[; ;lob.h: 741: uchar current;
+[; ;lob.h: 742: uchar previous_debounced;
+[; ;lob.h: 743: uchar debounced;
+[; ;lob.h: 744: };
+[; ;lob.h: 775: struct moterr {
+[; ;lob.h: 776: unsigned LoBat:1;
+[; ;lob.h: 777: unsigned Reserved1:1;
+[; ;lob.h: 778: unsigned Reserved2:1;
+[; ;lob.h: 779: unsigned TopPeriod:1;
+[; ;lob.h: 780: unsigned BotPeriod:1;
+[; ;lob.h: 781: unsigned TopCurSense:1;
+[; ;lob.h: 782: unsigned BotCurSense:1;
+[; ;lob.h: 783: unsigned FeedCurSense:1;
+[; ;lob.h: 784: unsigned SweepCurSense:1;
+[; ;lob.h: 785: unsigned ElevCurSense:1;
+[; ;lob.h: 786: unsigned TopCnt:1;
+[; ;lob.h: 787: unsigned BotCnt:1;
+[; ;lob.h: 788: unsigned Reserved:1;
+[; ;lob.h: 789: unsigned SweepCnt:1;
+[; ;lob.h: 790: unsigned ElevCnt:1;
+[; ;lob.h: 791: };
+[; ;string.h: 4: typedef int ptrdiff_t;
+[; ;string.h: 5: typedef unsigned size_t;
+[; ;string.h: 6: typedef unsigned short wchar_t;
+[; ;string.h: 9: extern int errno;
+[; ;string.h: 22: extern void * memcpy(void *, const void *, size_t);
+[; ;string.h: 23: extern void * memmove(void *, const void *, size_t);
+[; ;string.h: 24: extern void * memset(void *, int, size_t);
+[; ;string.h: 35: extern char * strcat(char *, const char *);
+[; ;string.h: 36: extern char * strcpy(char *, const char *);
+[; ;string.h: 37: extern char * strncat(char *, const char *, size_t);
+[; ;string.h: 38: extern char * strncpy(char *, const char *, size_t);
+[; ;string.h: 39: extern char * strdup(const char *);
+[; ;string.h: 40: extern char * strtok(char *, const char *);
+[; ;string.h: 43: extern int memcmp(const void *, const void *, size_t);
+[; ;string.h: 44: extern int strcmp(const char *, const char *);
+[; ;string.h: 45: extern int stricmp(const char *, const char *);
+[; ;string.h: 46: extern int strncmp(const char *, const char *, size_t);
+[; ;string.h: 47: extern int strnicmp(const char *, const char *, size_t);
+[; ;string.h: 48: extern void * memchr(const void *, int, size_t);
+[; ;string.h: 49: extern size_t strcspn(const char *, const char *);
+[; ;string.h: 50: extern char * strpbrk(const char *, const char *);
+[; ;string.h: 51: extern size_t strspn(const char *, const char *);
+[; ;string.h: 52: extern char * strstr(const char *, const char *);
+[; ;string.h: 53: extern char * stristr(const char *, const char *);
+[; ;string.h: 54: extern char * strerror(int);
+[; ;string.h: 55: extern size_t strlen(const char *);
+[; ;string.h: 56: extern char * strchr(const char *, int);
+[; ;string.h: 57: extern char * strichr(const char *, int);
+[; ;string.h: 58: extern char * strrchr(const char *, int);
+[; ;string.h: 59: extern char * strrichr(const char *, int);
+[; ;varinit.c: 15: extern char dashes;
+[; ;varinit.c: 16: extern char abort_key;
+[; ;varinit.c: 17: extern char aborted_mode;
+[; ;varinit.c: 21: extern uchar num_methods[];
+[; ;varinit.c: 24: extern uchar loaded_progno;
+[; ;varinit.c: 25: extern uchar cur_st;
+[; ;varinit.c: 26: extern uchar prev_st;
+[; ;varinit.c: 27: extern signed char program_ix;
+[; ;varinit.c: 28: extern signed char ppshot_ix;
+[; ;varinit.c: 29: extern signed char ppparm_ix;
+[; ;varinit.c: 30: extern char lcd_changed;
+[; ;varinit.c: 31: extern uchar play_state;
+[; ;varinit.c: 32: extern uchar lcd_updated;
+[; ;varinit.c: 33: extern long play_mode;
+[; ;varinit.c: 34: extern char remote_enabled;
+[; ;varinit.c: 35: extern char lob_on;
+[; ;varinit.c: 36: extern union parm manual;
+[; ;varinit.c: 37: extern char man_parm;
+[; ;varinit.c: 40: extern unsigned char preset_type;
+[; ;varinit.c: 42: extern char preset_ix[16];
+[; ;varinit.c: 43: extern union parm preset[16];
+[; ;varinit.c: 44: extern char idle_fpass;
+[; ;varinit.c: 45: extern char man1shot;
+[; ;varinit.c: 46: extern unsigned short dpb_thrash;
+[; ;varinit.c: 47: extern volatile struct power_button power;
+[; ;varinit.c: 48: extern int main_ostate;
+[; ;varinit.c: 52: extern unsigned long home_ticks;
+[; ;varinit.c: 55: extern unsigned long batt_ticks;
+[; ;varinit.c: 56: extern unsigned char batt_cnt;
+[; ;varinit.c: 57: extern unsigned char BatAvgCnt;
+[; ;varinit.c: 58: extern char homeshown;
+[; ;varinit.c: 59: extern unsigned long loop_delay;
+[; ;varinit.c: 60: extern unsigned long repeat;
+[; ;varinit.c: 61: extern unsigned short keyhold;
+[; ;varinit.c: 68: extern const struct el04_loc court_locs[][50];
+[; ;varinit.c: 69: extern const struct el04_loc court_locs_CLUB[][50];
+[; ;varinit.c: 70: extern unsigned long ee_progstart;
+[; ;varinit.c: 71: extern const struct ee_hdr flash_header;
+[; ;varinit.c: 74: extern char rem_feed_chg;
+[; ;varinit.c: 76: extern unsigned char model_type;
+[; ;varinit.c: 81: extern unsigned int RemotePgmMode;
+[; ;varinit.c: 86: extern char BatLevelDisplay;
+[; ;varinit.c: 87: extern unsigned char BatLevelDisplayTmr;
+[; ;varinit.c: 88: extern int BatPercent;
+[; ;varinit.c: 89: extern unsigned char PlayLEDPass;
+"94 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\varinit.c
+[v _varinit `(v ~T0 @X0 1 ef ]
+"95
+{
+[; ;varinit.c: 94: void varinit(void)
+[; ;varinit.c: 95: {
+[e :U _varinit ]
+[f ]
+"96
+[v _i `i ~T0 @X0 1 a ]
+[; ;varinit.c: 96: int i = 0;
+[e = _i -> 0 `i ]
+"97
+[v _j `uc ~T0 @X0 1 a ]
+"101
+[v _locp `*CS11 ~T0 @X0 1 a ]
+[; ;varinit.c: 97: char j;
+[; ;varinit.c: 101: const struct el04_loc *locp;
+[; ;varinit.c: 106: dashes = 0;
+"106
+[e = _dashes -> -> 0 `i `uc ]
+[; ;varinit.c: 107: cur_st = 1;
+"107
+[e = _cur_st -> -> 1 `i `uc ]
+[; ;varinit.c: 108: abort_key = 0x00;
+"108
+[e = _abort_key -> -> 0 `i `uc ]
+[; ;varinit.c: 109: aborted_mode = 0;
+"109
+[e = _aborted_mode -> -> 0 `i `uc ]
+[; ;varinit.c: 110: rem_feed_chg = 0;
+"110
+[e = _rem_feed_chg -> -> 0 `i `uc ]
+[; ;varinit.c: 111: prev_st = -1;
+"111
+[e = _prev_st -> -U -> 1 `i `uc ]
+[; ;varinit.c: 112: program_ix = 0;
+"112
+[e = _program_ix -> -> 0 `i `c ]
+[; ;varinit.c: 113: ppshot_ix = 0;
+"113
+[e = _ppshot_ix -> -> 0 `i `c ]
+[; ;varinit.c: 114: ppparm_ix = 0;
+"114
+[e = _ppparm_ix -> -> 0 `i `c ]
+[; ;varinit.c: 115: lcd_changed = 0;
+"115
+[e = _lcd_changed -> -> 0 `i `uc ]
+[; ;varinit.c: 116: play_state = 2U;
+"116
+[e = _play_state -> -> 2 `ui `uc ]
+[; ;varinit.c: 117: lcd_updated = 0;
+"117
+[e = _lcd_updated -> -> 0 `i `uc ]
+[; ;varinit.c: 118: play_mode = 0;
+"118
+[e = _play_mode -> -> 0 `i `l ]
+[; ;varinit.c: 119: remote_enabled = 0;
+"119
+[e = _remote_enabled -> -> 0 `i `uc ]
+[; ;varinit.c: 120: lob_on=0;
+"120
+[e = _lob_on -> -> 0 `i `uc ]
+[; ;varinit.c: 129: man_parm = 0;
+"129
+[e = _man_parm -> -> 0 `i `uc ]
+[; ;varinit.c: 132: if (model_type == 0U || model_type == 1U)
+"132
+[e $ ! || == -> _model_type `ui -> 0 `ui == -> _model_type `ui -> 1 `ui 18  ]
+[; ;varinit.c: 133: preset_type = 0;
+"133
+[e = _preset_type -> -> 0 `i `uc ]
+[e $U 19  ]
+"136
+[e :U 18 ]
+[; ;varinit.c: 136: else preset_type = 16;
+[e = _preset_type -> -> 16 `i `uc ]
+[e :U 19 ]
+[; ;varinit.c: 145: preset_ix[0] = 6;
+"145
+[e = *U + &U _preset_ix * -> -> -> 0 `i `ui `ux -> -> # *U &U _preset_ix `ui `ux -> -> 6 `i `uc ]
+[; ;varinit.c: 146: preset_ix[1] = 7;
+"146
+[e = *U + &U _preset_ix * -> -> -> 1 `i `ui `ux -> -> # *U &U _preset_ix `ui `ux -> -> 7 `i `uc ]
+[; ;varinit.c: 147: preset_ix[2] = 8;
+"147
+[e = *U + &U _preset_ix * -> -> -> 2 `i `ui `ux -> -> # *U &U _preset_ix `ui `ux -> -> 8 `i `uc ]
+[; ;varinit.c: 148: preset_ix[3] = 0;
+"148
+[e = *U + &U _preset_ix * -> -> -> 3 `i `ui `ux -> -> # *U &U _preset_ix `ui `ux -> -> 0 `i `uc ]
+[; ;varinit.c: 173: idle_fpass = 1;
+"173
+[e = _idle_fpass -> -> 1 `i `uc ]
+[; ;varinit.c: 174: man1shot = 0;
+"174
+[e = _man1shot -> -> 0 `i `uc ]
+[; ;varinit.c: 175: dpb_thrash = 0;
+"175
+[e = _dpb_thrash -> -> 0 `i `us ]
+[; ;varinit.c: 176: memset((char*)&power,1,sizeof(power));
+"176
+[e ( _memset (3 , , -> -> &U _power `*uc `*v -> 1 `i -> # `VS15 `ui ]
+[; ;varinit.c: 177: power.count = 0;
+"177
+[e = . _power 0 -> -> 0 `i `uc ]
+[; ;varinit.c: 178: main_ostate = -1;
+"178
+[e = _main_ostate -U -> 1 `i ]
+[; ;varinit.c: 179: loaded_progno = 12;
+"179
+[e = _loaded_progno -> -> 12 `i `uc ]
+[; ;varinit.c: 180: home_ticks = 0;
+"180
+[e = _home_ticks -> -> -> 0 `i `l `ul ]
+[; ;varinit.c: 181: batt_ticks = 0;
+"181
+[e = _batt_ticks -> -> -> 0 `i `l `ul ]
+[; ;varinit.c: 182: batt_cnt = 0;
+"182
+[e = _batt_cnt -> -> 0 `i `uc ]
+[; ;varinit.c: 183: BatAvgCnt = 0;
+"183
+[e = _BatAvgCnt -> -> 0 `i `uc ]
+[; ;varinit.c: 184: homeshown = 0;
+"184
+[e = _homeshown -> -> 0 `i `uc ]
+[; ;varinit.c: 185: loop_delay = 0;
+"185
+[e = _loop_delay -> -> -> 0 `i `l `ul ]
+[; ;varinit.c: 189: for (i=0; i<18; i++) {
+"189
+{
+[e = _i -> 0 `i ]
+[e $ < _i -> 18 `i 20  ]
+[e $U 21  ]
+[e :U 20 ]
+{
+[; ;varinit.c: 190: locp = &court_locs[i][0];
+"190
+[e = _locp &U *U + &U *U + &U _court_locs * -> -> _i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux * -> -> -> 0 `i `ui `ux -> -> # *U &U *U + &U _court_locs * -> -> _i `ui `ux -> * -> # *U &U *U &U _court_locs `ui -> -> 50 `i `ui `ux `ui `ux ]
+[; ;varinit.c: 191: for (j=0; j<50; j++) {
+"191
+{
+[e = _j -> -> 0 `i `uc ]
+[e $ < -> _j `i -> 50 `i 23  ]
+[e $U 24  ]
+[e :U 23 ]
+{
+[; ;varinit.c: 192: if (locp->speed == 0U) {
+"192
+[e $ ! == -> . *U _locp 0 `ui -> 0 `ui 26  ]
+{
+[; ;varinit.c: 193: num_methods[i] = j;
+"193
+[e = *U + &U _num_methods * -> -> _i `ui `ux -> -> # *U &U _num_methods `ui `ux _j ]
+[; ;varinit.c: 194: break;
+"194
+[e $U 24  ]
+"195
+}
+[e :U 26 ]
+[; ;varinit.c: 195: }
+[; ;varinit.c: 196: locp++;
+"196
+[e ++ _locp * -> -> 1 `i `x -> -> # *U _locp `i `x ]
+"197
+}
+"191
+[e ++ _j -> -> 1 `i `uc ]
+[e $ < -> _j `i -> 50 `i 23  ]
+[e :U 24 ]
+"197
+}
+"198
+}
+"189
+[e ++ _i -> 1 `i ]
+[e $ < _i -> 18 `i 20  ]
+[e :U 21 ]
+"198
+}
+[; ;varinit.c: 197: }
+[; ;varinit.c: 198: }
+[; ;varinit.c: 212: keyhold = 0;
+"212
+[e = _keyhold -> -> 0 `i `us ]
+[; ;varinit.c: 213: repeat = 0;
+"213
+[e = _repeat -> -> -> 0 `i `l `ul ]
+[; ;varinit.c: 214: ee_progstart = sizeof(flash_header) + flash_header.ops_size;
+"214
+[e = _ee_progstart -> + -> # `CS12 `ui -> . _flash_header 1 `ui `ul ]
+[; ;varinit.c: 215: ee_progstart += flash_header.npresets * flash_header.parm_size;
+"215
+[e =+ _ee_progstart -> -> * -> . _flash_header 2 `i -> . _flash_header 3 `i `l `ul ]
+[; ;varinit.c: 218: RemotePgmMode = 0;
+"218
+[e = _RemotePgmMode -> -> 0 `i `ui ]
+[; ;varinit.c: 221: BatLevelDisplay = 0;
+"221
+[e = _BatLevelDisplay -> -> 0 `i `uc ]
+[; ;varinit.c: 222: BatLevelDisplayTmr = 0;;
+"222
+[e = _BatLevelDisplayTmr -> -> 0 `i `uc ]
+[; ;varinit.c: 223: BatPercent = 0;
+"223
+[e = _BatPercent -> 0 `i ]
+[; ;varinit.c: 224: PlayLEDPass = 0;
+"224
+[e = _PlayLEDPass -> -> 0 `i `uc ]
+[; ;varinit.c: 226: }
+"226
+[e :UE 17 ]
+}

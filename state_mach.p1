@@ -1,0 +1,440 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"15 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\state_mach.h
+[s S8 `*uc 1 `*uc 1 `*Cuc 1 `Cuc 1 ]
+[n S8 state_mach cur_state prev_state pxtbl state_ct ]
+"14 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\state_mach.c
+[v _lobmach `CS8 ~T0 @X0 0 e ]
+"15
+[v _lobmach_EL04 `CS8 ~T0 @X0 0 e ]
+"16
+[v _lobmach_EL05LE2 `CS8 ~T0 @X0 0 e ]
+[; ;types.h: 8: typedef unsigned char uchar;
+[; ;types.h: 9: typedef unsigned short ushort;
+[; ;types.h: 10: typedef unsigned long ulong;
+[; ;types.h: 44: typedef union sc {
+[; ;types.h: 45: char c[2];
+[; ;types.h: 46: uchar uc[2];
+[; ;types.h: 47: short s;
+[; ;types.h: 48: ushort us;
+[; ;types.h: 49: } mini_variant;
+[; ;types.h: 53: typedef union ulp {
+[; ;types.h: 54: char c[4];
+[; ;types.h: 55: uchar uc[4];
+[; ;types.h: 56: short s[2];
+[; ;types.h: 57: ushort us[2];
+[; ;types.h: 58: long l;
+[; ;types.h: 59: unsigned long ul;
+[; ;types.h: 60: void *vp;
+[; ;types.h: 61: const void *cvp;
+[; ;types.h: 62: volatile void *vvp;
+[; ;types.h: 63: char *cp;
+[; ;types.h: 64: const char *ccp;
+[; ;types.h: 65: uchar *ucp;
+[; ;types.h: 66: const uchar *cucp;
+[; ;types.h: 67: short *sp;
+[; ;types.h: 68: const short *csp;
+[; ;types.h: 69: ushort *usp;
+[; ;types.h: 70: const ushort *cusp;
+[; ;types.h: 71: long *lp;
+[; ;types.h: 72: const long *clp;
+[; ;types.h: 73: ulong *unlp;
+[; ;types.h: 74: const ulong *culp;
+[; ;types.h: 75: void (*func)();
+[; ;types.h: 76: } variant;
+[; ;types.h: 90: union parm {
+[; ;types.h: 96: signed char value[9];
+[; ;types.h: 100: struct {
+[; ;types.h: 101: uchar speed;
+[; ;types.h: 102: uchar elev;
+[; ;types.h: 106: signed char spin;
+[; ;types.h: 107: signed char horiz;
+[; ;types.h: 110: uchar twolnrw;
+[; ;types.h: 112: uchar feed;
+[; ;types.h: 120: uchar col;
+[; ;types.h: 121: uchar row;
+[; ;types.h: 123: uchar width;
+[; ;types.h: 124: };
+[; ;types.h: 125: };
+[; ;types.h: 142: struct limit {
+[; ;types.h: 143: signed char minimum;
+[; ;types.h: 144: signed char maximum;
+[; ;types.h: 145: signed char incr;
+[; ;types.h: 146: };
+[; ;types.h: 150: struct motor_status {
+[; ;types.h: 151: unsigned cap1:1;
+[; ;types.h: 152: unsigned cap2:1;
+[; ;types.h: 153: unsigned HaveCmd:1;
+[; ;types.h: 154: unsigned InCmd:1;
+[; ;types.h: 155: unsigned CmdErr:1;
+[; ;types.h: 156: unsigned TickInt:1;
+[; ;types.h: 157: unsigned WaitResp:1;
+[; ;types.h: 158: unsigned a2dStarted:1;
+[; ;types.h: 159: };
+[; ;types.h: 174: struct persprog {
+[; ;types.h: 178: signed char shot[30];
+[; ;types.h: 179: signed char method[30];
+[; ;types.h: 183: char feed[30];
+[; ;types.h: 185: char reserved;
+[; ;types.h: 186: };
+[; ;state_mach.h: 15: struct state_mach {
+[; ;state_mach.h: 16: uchar *cur_state;
+[; ;state_mach.h: 17: uchar *prev_state;
+[; ;state_mach.h: 20: const uchar *pxtbl;
+[; ;state_mach.h: 22: const uchar state_ct;
+[; ;state_mach.h: 23: };
+[; ;state_mach.h: 34: struct button_def {
+[; ;state_mach.h: 35: long style ;
+[; ;state_mach.h: 36: char *text ;
+[; ;state_mach.h: 37: int id;
+[; ;state_mach.h: 38: int x;
+[; ;state_mach.h: 39: int y;
+[; ;state_mach.h: 40: int w;
+[; ;state_mach.h: 41: int h;
+[; ;state_mach.h: 42: int flags;
+[; ;state_mach.h: 43: };
+[; ;lob.h: 7: far void show_lcd(void);
+[; ;lob.h: 8: void clear_lcd(char mask);
+[; ;lob.h: 9: void DisableSlaveSPI(void);
+[; ;lob.h: 10: void EnableSlaveSPI(void);
+[; ;lob.h: 11: char SEERead(unsigned int addr);
+[; ;lob.h: 12: void SEEWrite(unsigned int addr, char data);
+[; ;lob.h: 15: char save_prog(signed char progno, struct persprog* ppers);
+"417 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[v _RPM_NONE `Cui ~T0 @X0 1 s ]
+[i _RPM_NONE
+-> -> 0 `i `ui
+]
+[; ;lob.h: 417: static const unsigned int RPM_NONE = 0x0000;
+"418
+[v _RPM_START `Cui ~T0 @X0 1 s ]
+[i _RPM_START
+-> -> 1 `i `ui
+]
+[; ;lob.h: 418: static const unsigned int RPM_START = 0x0001;
+"419
+[v _RPM_SHOTNUM `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTNUM
+-> -> 2 `i `ui
+]
+[; ;lob.h: 419: static const unsigned int RPM_SHOTNUM = 0x0002;
+"420
+[v _RPM_SHOTLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTLOCN
+-> -> 4 `i `ui
+]
+[; ;lob.h: 420: static const unsigned int RPM_SHOTLOCN = 0x0004;
+"421
+[v _RPM_SHOTSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPEED
+-> -> 8 `i `ui
+]
+[; ;lob.h: 421: static const unsigned int RPM_SHOTSPEED = 0x0008;
+"422
+[v _RPM_SHOTSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPIN
+-> -> 16 `i `ui
+]
+[; ;lob.h: 422: static const unsigned int RPM_SHOTSPIN = 0x0010;
+"423
+[v _RPM_SHOTFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTFEED
+-> -> 32 `i `ui
+]
+[; ;lob.h: 423: static const unsigned int RPM_SHOTFEED = 0x0020;
+"424
+[v _RPM_EDITLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITLOCN
+-> -> 64 `i `ui
+]
+[; ;lob.h: 424: static const unsigned int RPM_EDITLOCN = 0x0040;
+"425
+[v _RPM_EDITSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPEED
+-> -> 128 `i `ui
+]
+[; ;lob.h: 425: static const unsigned int RPM_EDITSPEED = 0x0080;
+"426
+[v _RPM_EDITSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPIN
+-> -> 256 `i `ui
+]
+[; ;lob.h: 426: static const unsigned int RPM_EDITSPIN = 0x0100;
+"427
+[v _RPM_EDITFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITFEED
+-> -> 512 `i `ui
+]
+[; ;lob.h: 427: static const unsigned int RPM_EDITFEED = 0x0200;
+"428
+[v _RPM_SHOTTABLES `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTTABLES
+-> -> 1024 `i `ui
+]
+[; ;lob.h: 428: static const unsigned int RPM_SHOTTABLES = 0x0400;
+"431
+[v _RPM_DWNLDDRL `Cui ~T0 @X0 1 s ]
+[i _RPM_DWNLDDRL
+-> -> 2048 `i `ui
+]
+[; ;lob.h: 431: static const unsigned int RPM_DWNLDDRL = 0x0800;
+[; ;lob.h: 543: struct t_parm {
+[; ;lob.h: 544: const struct limit limits;
+[; ;lob.h: 545: const char** prompt;
+[; ;lob.h: 546: const char field_size;
+[; ;lob.h: 547: const char field_locn;
+[; ;lob.h: 548: const char text_size;
+[; ;lob.h: 549: const char text_start;
+[; ;lob.h: 550: const char line;
+[; ;lob.h: 551: };
+[; ;lob.h: 553: struct el04_loc {
+[; ;lob.h: 554: uchar speed;
+[; ;lob.h: 555: ushort top;
+[; ;lob.h: 556: ushort bottom;
+[; ;lob.h: 557: ushort elev;
+[; ;lob.h: 558: signed short sweep;
+[; ;lob.h: 559: signed char spin;
+[; ;lob.h: 560: };
+[; ;lob.h: 588: struct ee_hdr {
+[; ;lob.h: 589: char vers[8];
+[; ;lob.h: 590: ushort ops_size;
+[; ;lob.h: 591: char npresets;
+[; ;lob.h: 592: char parm_size;
+[; ;lob.h: 593: char npersprog;
+[; ;lob.h: 594: char pers_size;
+[; ;lob.h: 595: char num_methods;
+[; ;lob.h: 596: char num_locs;
+[; ;lob.h: 597: char additional_locs;
+[; ;lob.h: 598: char ndrills[3];
+[; ;lob.h: 601: ushort elev_correction;
+[; ;lob.h: 602: ushort sweep_correction;
+[; ;lob.h: 605: char rsrved[9];
+[; ;lob.h: 607: };
+[; ;lob.h: 610: struct shot {
+[; ;lob.h: 611: ushort top;
+[; ;lob.h: 612: ushort bot;
+[; ;lob.h: 613: ushort y;
+[; ;lob.h: 614: ushort x;
+[; ;lob.h: 615: ushort yLo;
+[; ;lob.h: 616: ushort xLeft;
+[; ;lob.h: 617: ushort feedrate;
+[; ;lob.h: 618: ushort sweeprate;
+[; ;lob.h: 619: };
+[; ;lob.h: 623: struct rand_info {
+[; ;lob.h: 624: char range;
+[; ;lob.h: 625: char incr;
+[; ;lob.h: 626: char start;
+[; ;lob.h: 627: char max;
+[; ;lob.h: 628: };
+[; ;lob.h: 738: struct power_button {
+[; ;lob.h: 739: uchar count;
+[; ;lob.h: 740: uchar previous;
+[; ;lob.h: 741: uchar current;
+[; ;lob.h: 742: uchar previous_debounced;
+[; ;lob.h: 743: uchar debounced;
+[; ;lob.h: 744: };
+[; ;lob.h: 775: struct moterr {
+[; ;lob.h: 776: unsigned LoBat:1;
+[; ;lob.h: 777: unsigned Reserved1:1;
+[; ;lob.h: 778: unsigned Reserved2:1;
+[; ;lob.h: 779: unsigned TopPeriod:1;
+[; ;lob.h: 780: unsigned BotPeriod:1;
+[; ;lob.h: 781: unsigned TopCurSense:1;
+[; ;lob.h: 782: unsigned BotCurSense:1;
+[; ;lob.h: 783: unsigned FeedCurSense:1;
+[; ;lob.h: 784: unsigned SweepCurSense:1;
+[; ;lob.h: 785: unsigned ElevCurSense:1;
+[; ;lob.h: 786: unsigned TopCnt:1;
+[; ;lob.h: 787: unsigned BotCnt:1;
+[; ;lob.h: 788: unsigned Reserved:1;
+[; ;lob.h: 789: unsigned SweepCnt:1;
+[; ;lob.h: 790: unsigned ElevCnt:1;
+[; ;lob.h: 791: };
+[; ;diag.h: 8: void dumprsDIAG(unsigned long ix, const char* cp);
+[; ;diag.h: 10: void dumpsDIAG(unsigned long ix,char* cp);
+[; ;diag.h: 13: void putrsDIAG(const char *data);
+[; ;diag.h: 15: void putsDIAG(char *data);
+[; ;diag.h: 16: void dumphex(unsigned char c);
+[; ;diag.h: 17: void dump2port(unsigned uc);
+[; ;diag.h: 18: void dumphex2port(unsigned char c);
+[; ;diag.h: 19: void dumpaddr(unsigned int addr);
+[; ;diag.h: 20: void dumplong(unsigned long addr);
+[; ;diag.h: 21: void dumpshort(unsigned long addr);
+[; ;diag.h: 22: unsigned long atoh(char *cptr);
+[; ;state_mach.c: 14: extern const struct state_mach lobmach;
+[; ;state_mach.c: 15: extern const struct state_mach lobmach_EL04;
+[; ;state_mach.c: 16: extern const struct state_mach lobmach_EL05LE2;
+[; ;state_mach.c: 17: extern const uchar xmsk[];
+"23 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\state_mach.c
+[v _sm_service `(v ~T0 @X0 1 ef1`us ]
+"24
+{
+[; ;state_mach.c: 23: void sm_service(ushort key)
+[; ;state_mach.c: 24: {
+[e :U _sm_service ]
+"23
+[v _key `us ~T0 @X0 1 r1 ]
+"24
+[f ]
+"25
+[v _state `uc ~T0 @X0 1 a ]
+[; ;state_mach.c: 25: uchar state = *lobmach.cur_state;
+[e = _state *U . _lobmach 0 ]
+[; ;state_mach.c: 27: if (state > lobmach.state_ct) {
+"27
+[e $ ! > -> _state `i -> . _lobmach 3 `i 18  ]
+{
+"28
+}
+[; ;state_mach.c: 28: } else if (key < (ushort)0x30) {
+[e $U 19  ]
+[e :U 18 ]
+[e $ ! < -> _key `ui -> -> -> 48 `i `us `ui 20  ]
+{
+[; ;state_mach.c: 29: ;
+[; ;state_mach.c: 30: ;
+[; ;state_mach.c: 31: ;
+[; ;state_mach.c: 32: ;
+[; ;state_mach.c: 33: *lobmach.cur_state = (ushort)((ushort)lobmach.pxtbl[state +
+[; ;state_mach.c: 34: (ushort)key * (ushort)lobmach.state_ct]);
+"34
+[e = *U . _lobmach 0 -> -> *U + . _lobmach 2 * -> + -> _state `ui * -> _key `ui -> -> . _lobmach 3 `us `ui `ux -> -> # *U . _lobmach 2 `ui `ux `us `uc ]
+[; ;state_mach.c: 35: *lobmach.prev_state = state;
+"35
+[e = *U . _lobmach 1 _state ]
+[; ;state_mach.c: 36: ;
+[; ;state_mach.c: 37: ;
+"38
+}
+[; ;state_mach.c: 38: } else {
+[e $U 21  ]
+[e :U 20 ]
+{
+[; ;state_mach.c: 39: *lobmach.cur_state = key >> 8;
+"39
+[e = *U . _lobmach 0 -> >> -> _key `ui -> 8 `i `uc ]
+"40
+}
+[e :U 21 ]
+[e :U 19 ]
+[; ;state_mach.c: 40: }
+[; ;state_mach.c: 41: ;
+[; ;state_mach.c: 42: }
+"42
+[e :UE 17 ]
+}
+"44
+[v _sm_service_EL04 `(v ~T0 @X0 1 ef1`us ]
+"45
+{
+[; ;state_mach.c: 44: void sm_service_EL04(ushort key)
+[; ;state_mach.c: 45: {
+[e :U _sm_service_EL04 ]
+"44
+[v _key `us ~T0 @X0 1 r1 ]
+"45
+[f ]
+"46
+[v _state `uc ~T0 @X0 1 a ]
+[; ;state_mach.c: 46: uchar state = *lobmach_EL04.cur_state;
+[e = _state *U . _lobmach_EL04 0 ]
+[; ;state_mach.c: 48: if (state > lobmach_EL04.state_ct) {
+"48
+[e $ ! > -> _state `i -> . _lobmach_EL04 3 `i 23  ]
+{
+"49
+}
+[; ;state_mach.c: 49: } else if (key < (ushort)0x30) {
+[e $U 24  ]
+[e :U 23 ]
+[e $ ! < -> _key `ui -> -> -> 48 `i `us `ui 25  ]
+{
+[; ;state_mach.c: 50: ;
+[; ;state_mach.c: 51: ;
+[; ;state_mach.c: 52: ;
+[; ;state_mach.c: 53: ;
+[; ;state_mach.c: 54: *lobmach_EL04.cur_state = (ushort)((ushort)lobmach_EL04.pxtbl[state +
+[; ;state_mach.c: 55: (ushort)key * (ushort)lobmach_EL04.state_ct]);
+"55
+[e = *U . _lobmach_EL04 0 -> -> *U + . _lobmach_EL04 2 * -> + -> _state `ui * -> _key `ui -> -> . _lobmach_EL04 3 `us `ui `ux -> -> # *U . _lobmach_EL04 2 `ui `ux `us `uc ]
+[; ;state_mach.c: 56: *lobmach_EL04.prev_state = state;
+"56
+[e = *U . _lobmach_EL04 1 _state ]
+[; ;state_mach.c: 57: ;
+[; ;state_mach.c: 58: ;
+"59
+}
+[; ;state_mach.c: 59: } else {
+[e $U 26  ]
+[e :U 25 ]
+{
+[; ;state_mach.c: 60: *lobmach_EL04.cur_state = key >> 8;
+"60
+[e = *U . _lobmach_EL04 0 -> >> -> _key `ui -> 8 `i `uc ]
+"61
+}
+[e :U 26 ]
+[e :U 24 ]
+[; ;state_mach.c: 61: }
+[; ;state_mach.c: 62: ;
+[; ;state_mach.c: 63: }
+"63
+[e :UE 22 ]
+}
+"66
+[v _sm_service_EL05LE2 `(v ~T0 @X0 1 ef1`us ]
+"67
+{
+[; ;state_mach.c: 66: void sm_service_EL05LE2(ushort key)
+[; ;state_mach.c: 67: {
+[e :U _sm_service_EL05LE2 ]
+"66
+[v _key `us ~T0 @X0 1 r1 ]
+"67
+[f ]
+"68
+[v _state `uc ~T0 @X0 1 a ]
+[; ;state_mach.c: 68: uchar state = *lobmach_EL05LE2.cur_state;
+[e = _state *U . _lobmach_EL05LE2 0 ]
+[; ;state_mach.c: 70: if (state > lobmach_EL05LE2.state_ct) {
+"70
+[e $ ! > -> _state `i -> . _lobmach_EL05LE2 3 `i 28  ]
+{
+"71
+}
+[; ;state_mach.c: 71: } else if (key < (ushort)0x30) {
+[e $U 29  ]
+[e :U 28 ]
+[e $ ! < -> _key `ui -> -> -> 48 `i `us `ui 30  ]
+{
+[; ;state_mach.c: 72: ;
+[; ;state_mach.c: 73: ;
+[; ;state_mach.c: 74: ;
+[; ;state_mach.c: 75: ;
+[; ;state_mach.c: 76: *lobmach_EL05LE2.cur_state = (ushort)((ushort)lobmach_EL05LE2.pxtbl[state +
+[; ;state_mach.c: 77: (ushort)key * (ushort)lobmach_EL05LE2.state_ct]);
+"77
+[e = *U . _lobmach_EL05LE2 0 -> -> *U + . _lobmach_EL05LE2 2 * -> + -> _state `ui * -> _key `ui -> -> . _lobmach_EL05LE2 3 `us `ui `ux -> -> # *U . _lobmach_EL05LE2 2 `ui `ux `us `uc ]
+[; ;state_mach.c: 78: *lobmach_EL05LE2.prev_state = state;
+"78
+[e = *U . _lobmach_EL05LE2 1 _state ]
+[; ;state_mach.c: 79: ;
+[; ;state_mach.c: 80: ;
+"81
+}
+[; ;state_mach.c: 81: } else {
+[e $U 31  ]
+[e :U 30 ]
+{
+[; ;state_mach.c: 82: *lobmach_EL05LE2.cur_state = key >> 8;
+"82
+[e = *U . _lobmach_EL05LE2 0 -> >> -> _key `ui -> 8 `i `uc ]
+"83
+}
+[e :U 31 ]
+[e :U 29 ]
+[; ;state_mach.c: 83: }
+[; ;state_mach.c: 84: ;
+[; ;state_mach.c: 85: }
+"85
+[e :UE 27 ]
+}

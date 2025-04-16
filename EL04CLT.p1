@@ -1,0 +1,7120 @@
+Version 3.2 HI-TECH Software Intermediate Code
+"588 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S10 `uc -> 8 `i `us 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc -> 3 `i `us 1 `us 1 `uc -> 9 `i ]
+[n S10 ee_hdr vers ops_size npresets parm_size npersprog pers_size num_methods num_locs additional_locs ndrills elev_correction sweep_correction rsrved ]
+"142 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\types.h
+[s S5 `c 1 `c 1 `c 1 ]
+[n S5 limit minimum maximum incr ]
+"100
+[s S4 `uc 1 `uc 1 `c 1 `c 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S4 . speed elev spin horiz twolnrw feed col row width ]
+"90
+[u S3 `c -> 9 `i `S4 1 ]
+[n S3 parm value . ]
+"174
+[s S7 `c -> 30 `i `c -> 30 `i `uc -> 30 `i `uc 1 ]
+[n S7 persprog shot method feed reserved ]
+"553 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[s S9 `uc 1 `us 1 `us 1 `us 1 `s 1 `c 1 ]
+[n S9 el04_loc speed top bottom elev sweep spin ]
+[; ;types.h: 8: typedef unsigned char uchar;
+[; ;types.h: 9: typedef unsigned short ushort;
+[; ;types.h: 10: typedef unsigned long ulong;
+[; ;types.h: 44: typedef union sc {
+[; ;types.h: 45: char c[2];
+[; ;types.h: 46: uchar uc[2];
+[; ;types.h: 47: short s;
+[; ;types.h: 48: ushort us;
+[; ;types.h: 49: } mini_variant;
+[; ;types.h: 53: typedef union ulp {
+[; ;types.h: 54: char c[4];
+[; ;types.h: 55: uchar uc[4];
+[; ;types.h: 56: short s[2];
+[; ;types.h: 57: ushort us[2];
+[; ;types.h: 58: long l;
+[; ;types.h: 59: unsigned long ul;
+[; ;types.h: 60: void *vp;
+[; ;types.h: 61: const void *cvp;
+[; ;types.h: 62: volatile void *vvp;
+[; ;types.h: 63: char *cp;
+[; ;types.h: 64: const char *ccp;
+[; ;types.h: 65: uchar *ucp;
+[; ;types.h: 66: const uchar *cucp;
+[; ;types.h: 67: short *sp;
+[; ;types.h: 68: const short *csp;
+[; ;types.h: 69: ushort *usp;
+[; ;types.h: 70: const ushort *cusp;
+[; ;types.h: 71: long *lp;
+[; ;types.h: 72: const long *clp;
+[; ;types.h: 73: ulong *unlp;
+[; ;types.h: 74: const ulong *culp;
+[; ;types.h: 75: void (*func)();
+[; ;types.h: 76: } variant;
+[; ;types.h: 90: union parm {
+[; ;types.h: 96: signed char value[9];
+[; ;types.h: 100: struct {
+[; ;types.h: 101: uchar speed;
+[; ;types.h: 102: uchar elev;
+[; ;types.h: 106: signed char spin;
+[; ;types.h: 107: signed char horiz;
+[; ;types.h: 110: uchar twolnrw;
+[; ;types.h: 112: uchar feed;
+[; ;types.h: 120: uchar col;
+[; ;types.h: 121: uchar row;
+[; ;types.h: 123: uchar width;
+[; ;types.h: 124: };
+[; ;types.h: 125: };
+[; ;types.h: 142: struct limit {
+[; ;types.h: 143: signed char minimum;
+[; ;types.h: 144: signed char maximum;
+[; ;types.h: 145: signed char incr;
+[; ;types.h: 146: };
+[; ;types.h: 150: struct motor_status {
+[; ;types.h: 151: unsigned cap1:1;
+[; ;types.h: 152: unsigned cap2:1;
+[; ;types.h: 153: unsigned HaveCmd:1;
+[; ;types.h: 154: unsigned InCmd:1;
+[; ;types.h: 155: unsigned CmdErr:1;
+[; ;types.h: 156: unsigned TickInt:1;
+[; ;types.h: 157: unsigned WaitResp:1;
+[; ;types.h: 158: unsigned a2dStarted:1;
+[; ;types.h: 159: };
+[; ;types.h: 174: struct persprog {
+[; ;types.h: 178: signed char shot[30];
+[; ;types.h: 179: signed char method[30];
+[; ;types.h: 183: char feed[30];
+[; ;types.h: 185: char reserved;
+[; ;types.h: 186: };
+[; ;lob.h: 7: far void show_lcd(void);
+[; ;lob.h: 8: void clear_lcd(char mask);
+[; ;lob.h: 9: void DisableSlaveSPI(void);
+[; ;lob.h: 10: void EnableSlaveSPI(void);
+[; ;lob.h: 11: char SEERead(unsigned int addr);
+[; ;lob.h: 12: void SEEWrite(unsigned int addr, char data);
+[; ;lob.h: 15: char save_prog(signed char progno, struct persprog* ppers);
+"417 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\lob.h
+[v _RPM_NONE `Cui ~T0 @X0 1 s ]
+[i _RPM_NONE
+-> -> 0 `i `ui
+]
+[; ;lob.h: 417: static const unsigned int RPM_NONE = 0x0000;
+"418
+[v _RPM_START `Cui ~T0 @X0 1 s ]
+[i _RPM_START
+-> -> 1 `i `ui
+]
+[; ;lob.h: 418: static const unsigned int RPM_START = 0x0001;
+"419
+[v _RPM_SHOTNUM `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTNUM
+-> -> 2 `i `ui
+]
+[; ;lob.h: 419: static const unsigned int RPM_SHOTNUM = 0x0002;
+"420
+[v _RPM_SHOTLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTLOCN
+-> -> 4 `i `ui
+]
+[; ;lob.h: 420: static const unsigned int RPM_SHOTLOCN = 0x0004;
+"421
+[v _RPM_SHOTSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPEED
+-> -> 8 `i `ui
+]
+[; ;lob.h: 421: static const unsigned int RPM_SHOTSPEED = 0x0008;
+"422
+[v _RPM_SHOTSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTSPIN
+-> -> 16 `i `ui
+]
+[; ;lob.h: 422: static const unsigned int RPM_SHOTSPIN = 0x0010;
+"423
+[v _RPM_SHOTFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTFEED
+-> -> 32 `i `ui
+]
+[; ;lob.h: 423: static const unsigned int RPM_SHOTFEED = 0x0020;
+"424
+[v _RPM_EDITLOCN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITLOCN
+-> -> 64 `i `ui
+]
+[; ;lob.h: 424: static const unsigned int RPM_EDITLOCN = 0x0040;
+"425
+[v _RPM_EDITSPEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPEED
+-> -> 128 `i `ui
+]
+[; ;lob.h: 425: static const unsigned int RPM_EDITSPEED = 0x0080;
+"426
+[v _RPM_EDITSPIN `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITSPIN
+-> -> 256 `i `ui
+]
+[; ;lob.h: 426: static const unsigned int RPM_EDITSPIN = 0x0100;
+"427
+[v _RPM_EDITFEED `Cui ~T0 @X0 1 s ]
+[i _RPM_EDITFEED
+-> -> 512 `i `ui
+]
+[; ;lob.h: 427: static const unsigned int RPM_EDITFEED = 0x0200;
+"428
+[v _RPM_SHOTTABLES `Cui ~T0 @X0 1 s ]
+[i _RPM_SHOTTABLES
+-> -> 1024 `i `ui
+]
+[; ;lob.h: 428: static const unsigned int RPM_SHOTTABLES = 0x0400;
+"431
+[v _RPM_DWNLDDRL `Cui ~T0 @X0 1 s ]
+[i _RPM_DWNLDDRL
+-> -> 2048 `i `ui
+]
+[; ;lob.h: 431: static const unsigned int RPM_DWNLDDRL = 0x0800;
+[; ;lob.h: 543: struct t_parm {
+[; ;lob.h: 544: const struct limit limits;
+[; ;lob.h: 545: const char** prompt;
+[; ;lob.h: 546: const char field_size;
+[; ;lob.h: 547: const char field_locn;
+[; ;lob.h: 548: const char text_size;
+[; ;lob.h: 549: const char text_start;
+[; ;lob.h: 550: const char line;
+[; ;lob.h: 551: };
+[; ;lob.h: 553: struct el04_loc {
+[; ;lob.h: 554: uchar speed;
+[; ;lob.h: 555: ushort top;
+[; ;lob.h: 556: ushort bottom;
+[; ;lob.h: 557: ushort elev;
+[; ;lob.h: 558: signed short sweep;
+[; ;lob.h: 559: signed char spin;
+[; ;lob.h: 560: };
+[; ;lob.h: 588: struct ee_hdr {
+[; ;lob.h: 589: char vers[8];
+[; ;lob.h: 590: ushort ops_size;
+[; ;lob.h: 591: char npresets;
+[; ;lob.h: 592: char parm_size;
+[; ;lob.h: 593: char npersprog;
+[; ;lob.h: 594: char pers_size;
+[; ;lob.h: 595: char num_methods;
+[; ;lob.h: 596: char num_locs;
+[; ;lob.h: 597: char additional_locs;
+[; ;lob.h: 598: char ndrills[3];
+[; ;lob.h: 601: ushort elev_correction;
+[; ;lob.h: 602: ushort sweep_correction;
+[; ;lob.h: 605: char rsrved[9];
+[; ;lob.h: 607: };
+[; ;lob.h: 610: struct shot {
+[; ;lob.h: 611: ushort top;
+[; ;lob.h: 612: ushort bot;
+[; ;lob.h: 613: ushort y;
+[; ;lob.h: 614: ushort x;
+[; ;lob.h: 615: ushort yLo;
+[; ;lob.h: 616: ushort xLeft;
+[; ;lob.h: 617: ushort feedrate;
+[; ;lob.h: 618: ushort sweeprate;
+[; ;lob.h: 619: };
+[; ;lob.h: 623: struct rand_info {
+[; ;lob.h: 624: char range;
+[; ;lob.h: 625: char incr;
+[; ;lob.h: 626: char start;
+[; ;lob.h: 627: char max;
+[; ;lob.h: 628: };
+[; ;lob.h: 738: struct power_button {
+[; ;lob.h: 739: uchar count;
+[; ;lob.h: 740: uchar previous;
+[; ;lob.h: 741: uchar current;
+[; ;lob.h: 742: uchar previous_debounced;
+[; ;lob.h: 743: uchar debounced;
+[; ;lob.h: 744: };
+[; ;lob.h: 775: struct moterr {
+[; ;lob.h: 776: unsigned LoBat:1;
+[; ;lob.h: 777: unsigned Reserved1:1;
+[; ;lob.h: 778: unsigned Reserved2:1;
+[; ;lob.h: 779: unsigned TopPeriod:1;
+[; ;lob.h: 780: unsigned BotPeriod:1;
+[; ;lob.h: 781: unsigned TopCurSense:1;
+[; ;lob.h: 782: unsigned BotCurSense:1;
+[; ;lob.h: 783: unsigned FeedCurSense:1;
+[; ;lob.h: 784: unsigned SweepCurSense:1;
+[; ;lob.h: 785: unsigned ElevCurSense:1;
+[; ;lob.h: 786: unsigned TopCnt:1;
+[; ;lob.h: 787: unsigned BotCnt:1;
+[; ;lob.h: 788: unsigned Reserved:1;
+[; ;lob.h: 789: unsigned SweepCnt:1;
+[; ;lob.h: 790: unsigned ElevCnt:1;
+[; ;lob.h: 791: };
+"6 D:\Users\MichaelZarling\Documents\Lobster\cs020_sw\Master_v1p226p34-XC8\EL04\main\EL04CLT.c
+[v _num_methods `uc ~T0 @X0 -> 18 `i e ]
+[; ;EL04CLT.c: 6: uchar num_methods[18];
+"20
+[v _flash_header `CS10 ~T0 @X0 1 e ]
+[i _flash_header
+:U ..
+:U ..
+:U ..
+-> 86 `c
+-> 49 `c
+-> 46 `c
+-> 48 `c
+-> 46 `c
+-> 51 `c
+-> 52 `c
+-> 0 `c
+..
+"24
+-> + + * * -> # `us `ui -> -> 16 `i `ui -> -> 2 `i `ui * -> # `S5 `ui -> -> 9 `i `ui * -> # `uc `ui -> -> 13 `i `ui `us
+"25
+-> -> 4 `i `uc
+"26
+-> -> # `S3 `ui `uc
+"27
+-> -> 30 `i `uc
+"28
+-> -> # `S7 `ui `uc
+"29
+-> -> 50 `i `uc
+"30
+-> -> 18 `i `uc
+"31
+-> -> 20 `i `uc
+:U ..
+"32
+-> -> 6 `i `uc
+"33
+-> -> 6 `i `uc
+"34
+-> -> 6 `i `uc
+..
+"35
+-> -> 48 `i `us
+"36
+-> -> 0 `i `us
+:U ..
+"39
+-> -> 6 `i `uc
+"40
+-> -> 6 `i `uc
+"41
+-> -> 6 `i `uc
+"42
+-> -> 6 `i `uc
+"43
+-> -> 6 `i `uc
+"44
+-> -> 6 `i `uc
+"45
+-> -> 6 `i `uc
+"46
+-> -> 6 `i `uc
+"49
+-> -> 6 `i `uc
+..
+..
+..
+]
+[; ;EL04CLT.c: 20: const struct ee_hdr flash_header = {
+[; ;EL04CLT.c: 23: "V1.0.34",
+[; ;EL04CLT.c: 24: sizeof(unsigned short)*16*2 + sizeof(struct limit)*9 + sizeof(char)*13,
+[; ;EL04CLT.c: 25: 4,
+[; ;EL04CLT.c: 26: sizeof(union parm),
+[; ;EL04CLT.c: 27: 30,
+[; ;EL04CLT.c: 28: sizeof (struct persprog),
+[; ;EL04CLT.c: 29: 50,
+[; ;EL04CLT.c: 30: 18,
+[; ;EL04CLT.c: 31: 20,
+[; ;EL04CLT.c: 32: 6,
+[; ;EL04CLT.c: 33: 6,
+[; ;EL04CLT.c: 34: 6,
+[; ;EL04CLT.c: 35: 0x30,
+[; ;EL04CLT.c: 36: 0,
+[; ;EL04CLT.c: 39: 6,
+[; ;EL04CLT.c: 40: 6,
+[; ;EL04CLT.c: 41: 6,
+[; ;EL04CLT.c: 42: 6,
+[; ;EL04CLT.c: 43: 6,
+[; ;EL04CLT.c: 44: 6,
+[; ;EL04CLT.c: 45: 6,
+[; ;EL04CLT.c: 46: 6,
+[; ;EL04CLT.c: 47: 6
+[; ;EL04CLT.c: 49: };
+[v F169 `Cus ~T0 @X0 -> 2 `i t ]
+"53
+[v _base_speeds `F169 ~T0 @X0 -> 16 `i e ]
+[i _base_speeds
+:U ..
+:U ..
+"56
+-> -> 28672 `i `us
+-> -> 28672 `i `us
+..
+:U ..
+"57
+-> -> 28672 `i `us
+-> -> 28672 `i `us
+..
+:U ..
+"58
+-> -> 28672 `i `us
+-> -> 28672 `i `us
+..
+:U ..
+"59
+-> -> 28672 `i `us
+-> -> 28672 `i `us
+..
+:U ..
+"60
+-> -> 24576 `i `us
+-> -> 24576 `i `us
+..
+:U ..
+"61
+-> -> 17664 `i `us
+-> -> 17664 `i `us
+..
+:U ..
+"62
+-> -> 16384 `i `us
+-> -> 12288 `i `us
+..
+:U ..
+"63
+-> -> 13824 `i `us
+-> -> 10240 `i `us
+..
+:U ..
+"64
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+..
+:U ..
+"65
+-> -> 10496 `i `us
+-> -> 8448 `i `us
+..
+:U ..
+"66
+-> -> 9984 `i `us
+-> -> 6656 `i `us
+..
+:U ..
+"67
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+..
+:U ..
+"68
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+..
+:U ..
+"69
+-> -> 8448 `i `us
+-> -> 6656 `i `us
+..
+:U ..
+"70
+-> -> 6656 `i `us
+-> -> 6656 `i `us
+..
+:U ..
+"71
+-> -> 6656 `i `us
+-> -> 6656 `i `us
+..
+..
+]
+[; ;EL04CLT.c: 53: const ushort base_speeds [16][2] = {
+[; ;EL04CLT.c: 56: { 0x7000, 0x7000, },
+[; ;EL04CLT.c: 57: { 0x7000, 0x7000, },
+[; ;EL04CLT.c: 58: { 0x7000, 0x7000, },
+[; ;EL04CLT.c: 59: { 0x7000, 0x7000, },
+[; ;EL04CLT.c: 60: { 0x6000, 0x6000, },
+[; ;EL04CLT.c: 61: { 0x4500, 0x4500, },
+[; ;EL04CLT.c: 62: { 0x4000, 0x3000, },
+[; ;EL04CLT.c: 63: { 0x3600, 0x2800, },
+[; ;EL04CLT.c: 64: { 0x3200, 0x2500, },
+[; ;EL04CLT.c: 65: { 0x2900, 0x2100, },
+[; ;EL04CLT.c: 66: { 0x2700, 0x1a00, },
+[; ;EL04CLT.c: 67: { 0x2500, 0x1a00, },
+[; ;EL04CLT.c: 68: { 0x2200, 0x1a00, },
+[; ;EL04CLT.c: 69: { 0x2100, 0x1a00, },
+[; ;EL04CLT.c: 70: { 0x1a00, 0x1a00, },
+[; ;EL04CLT.c: 71: { 0x1a00, 0x1a00, },
+[; ;EL04CLT.c: 72: };
+"80
+[v _parm_limits `CS5 ~T0 @X0 -> 9 `i e ]
+[i _parm_limits
+:U ..
+:U ..
+"83
+-> -> 25 `i `c
+-> -> 70 `i `c
+-> -> 5 `i `c
+..
+:U ..
+"84
+-> -> 2 `i `c
+-> -> 80 `i `c
+-> -> 1 `i `c
+..
+:U ..
+"85
+-> -U -> 3 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+:U ..
+"86
+-> -> 1 `i `c
+-> -> 9 `i `c
+-> -> 1 `i `c
+..
+:U ..
+"87
+-> -U -> 3 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+:U ..
+"88
+-> -> 0 `i `c
+-> -> 3 `i `c
+-> -> 1 `i `c
+..
+:U ..
+"89
+-> -> 0 `i `c
+-> -> 5 `i `c
+-> -> 1 `i `c
+..
+:U ..
+"90
+-> -> 0 `i `c
+-> -> 2 `i `c
+-> -> 1 `i `c
+..
+:U ..
+"91
+-> -> 0 `i `c
+-> -> 0 `i `c
+-> -> 0 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 80: const struct limit parm_limits[9] = {
+[; ;EL04CLT.c: 83: { 25, 70, 5 },
+[; ;EL04CLT.c: 84: { 2, 80, 1 },
+[; ;EL04CLT.c: 85: { -3, 3, 1 },
+[; ;EL04CLT.c: 86: { 1, 9, 1 },
+[; ;EL04CLT.c: 87: { -3, 3, 1 },
+[; ;EL04CLT.c: 88: { 0, 3, 1 },
+[; ;EL04CLT.c: 89: { 0, 5, 1 },
+[; ;EL04CLT.c: 90: { 0, 2, 1 },
+[; ;EL04CLT.c: 91: { 0, 0, 0 },
+[; ;EL04CLT.c: 92: };
+"103
+[v _reserved `Cuc ~T0 @X0 -> 13 `i e ]
+[i _reserved
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[; ;EL04CLT.c: 103: const char reserved[13];
+"104
+[v _padding `Cuc ~T0 @X0 -> 40 `i e ]
+[i _padding
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[; ;EL04CLT.c: 104: const char padding[40];
+"108
+[v _padthree `Cuc ~T0 @X0 -> 11 `i e ]
+[i _padthree
+:U ..
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+-> -> 0 `i `uc
+..
+]
+[; ;EL04CLT.c: 108: const char padthree[11];
+[v F175 `CS9 ~T0 @X0 -> 50 `i t ]
+"128
+[v _court_locs `F175 ~T0 @X0 -> 0 `x e ]
+[i _court_locs
+:U ..
+:U ..
+:U ..
+"134
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 860 `i `us
+-> -> 65216 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"135
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 580 `i `us
+-> -> 65216 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"136
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 410 `i `us
+-> -> 65216 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"137
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 460 `i `us
+-> -> 65216 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"138
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 280 `i `us
+-> -> 65216 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"139
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 240 `i `us
+-> -> 65216 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"140
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 170 `i `us
+-> -> 65216 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"141
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 820 `i `us
+-> -> 65216 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"142
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 580 `i `us
+-> -> 65216 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"143
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 360 `i `us
+-> -> 65216 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"144
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 300 `i `us
+-> -> 65216 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"145
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 260 `i `us
+-> -> 65216 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"146
+-> -> 65 `i `uc
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+-> -> 160 `i `us
+-> -> 65216 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"147
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 1060 `i `us
+-> -> 65216 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"148
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 480 `i `us
+-> -> 65216 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"149
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 360 `i `us
+-> -> 65216 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"150
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 300 `i `us
+-> -> 65216 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"151
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 200 `i `us
+-> -> 65216 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"152
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 160 `i `us
+-> -> 65216 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"153
+-> -> 70 `i `uc
+-> -> 6656 `i `us
+-> -> 6656 `i `us
+-> -> 110 `i `us
+-> -> 65216 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"154
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 980 `i `us
+-> -> 65216 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"155
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 720 `i `us
+-> -> 65216 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"156
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 380 `i `us
+-> -> 65216 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"157
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 300 `i `us
+-> -> 65216 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"158
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 200 `i `us
+-> -> 65216 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"159
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 120 `i `us
+-> -> 65216 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"160
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 660 `i `us
+-> -> 65216 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"161
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 320 `i `us
+-> -> 65216 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"162
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 240 `i `us
+-> -> 65216 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"163
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 160 `i `us
+-> -> 65216 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"164
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 640 `i `us
+-> -> 65216 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"165
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"170
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 850 `i `us
+-> -> 65344 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"171
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 570 `i `us
+-> -> 65344 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"172
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 400 `i `us
+-> -> 65344 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"173
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 450 `i `us
+-> -> 65344 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"174
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 270 `i `us
+-> -> 65344 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"175
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 230 `i `us
+-> -> 65344 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"176
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 160 `i `us
+-> -> 65344 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"177
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 810 `i `us
+-> -> 65344 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"178
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 570 `i `us
+-> -> 65344 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"179
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 350 `i `us
+-> -> 65344 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"180
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 290 `i `us
+-> -> 65344 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"181
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 250 `i `us
+-> -> 65344 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"182
+-> -> 65 `i `uc
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+-> -> 150 `i `us
+-> -> 65344 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"183
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 1050 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"184
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 470 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"185
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 350 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"186
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 290 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"187
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 190 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"188
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 150 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"189
+-> -> 70 `i `uc
+-> -> 6656 `i `us
+-> -> 6656 `i `us
+-> -> 105 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"190
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 970 `i `us
+-> -> 65344 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"191
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 710 `i `us
+-> -> 65344 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"192
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 370 `i `us
+-> -> 65344 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"193
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 290 `i `us
+-> -> 65344 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"194
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 190 `i `us
+-> -> 65344 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"195
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 110 `i `us
+-> -> 65344 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"196
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 650 `i `us
+-> -> 65344 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"197
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 310 `i `us
+-> -> 65344 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"198
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 230 `i `us
+-> -> 65344 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"199
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 150 `i `us
+-> -> 65344 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"200
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 630 `i `us
+-> -> 65344 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"201
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"207
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 840 `i `us
+-> -> 65476 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"208
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 560 `i `us
+-> -> 65476 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"209
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 390 `i `us
+-> -> 65476 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"210
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 440 `i `us
+-> -> 65476 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"211
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 260 `i `us
+-> -> 65476 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"212
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 220 `i `us
+-> -> 65476 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"213
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 150 `i `us
+-> -> 65476 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"214
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 800 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"215
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 560 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"216
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 340 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"217
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 280 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"218
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 240 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"219
+-> -> 65 `i `uc
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+-> -> 140 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"220
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 1040 `i `us
+-> -> 65476 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"221
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 460 `i `us
+-> -> 65476 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"222
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 340 `i `us
+-> -> 65476 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"223
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 280 `i `us
+-> -> 65476 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"224
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 180 `i `us
+-> -> 65476 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"225
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 140 `i `us
+-> -> 65476 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"226
+-> -> 70 `i `uc
+-> -> 6656 `i `us
+-> -> 6656 `i `us
+-> -> 100 `i `us
+-> -> 65476 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"227
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 960 `i `us
+-> -> 65476 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"228
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 700 `i `us
+-> -> 65476 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"229
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 360 `i `us
+-> -> 65476 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"230
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 280 `i `us
+-> -> 65476 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"231
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 180 `i `us
+-> -> 65476 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"232
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 100 `i `us
+-> -> 65476 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"233
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 640 `i `us
+-> -> 65476 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"234
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 300 `i `us
+-> -> 65476 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"235
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 220 `i `us
+-> -> 65476 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"236
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 140 `i `us
+-> -> 65476 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"237
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 620 `i `us
+-> -> 65476 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"238
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"244
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 840 `i `us
+-> -> 126 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"245
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 560 `i `us
+-> -> 126 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"246
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 390 `i `us
+-> -> 126 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"247
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 440 `i `us
+-> -> 126 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"248
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 260 `i `us
+-> -> 126 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"249
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 220 `i `us
+-> -> 126 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"250
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 150 `i `us
+-> -> 126 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"251
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 800 `i `us
+-> -> 126 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"252
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 560 `i `us
+-> -> 126 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"253
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 340 `i `us
+-> -> 126 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"254
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 280 `i `us
+-> -> 126 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"255
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 240 `i `us
+-> -> 126 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"256
+-> -> 65 `i `uc
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+-> -> 140 `i `us
+-> -> 126 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"257
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 1040 `i `us
+-> -> 126 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"258
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 460 `i `us
+-> -> 126 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"259
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 340 `i `us
+-> -> 126 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"260
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 280 `i `us
+-> -> 126 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"261
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 180 `i `us
+-> -> 126 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"262
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 140 `i `us
+-> -> 126 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"263
+-> -> 70 `i `uc
+-> -> 6656 `i `us
+-> -> 6656 `i `us
+-> -> 100 `i `us
+-> -> 126 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"264
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 960 `i `us
+-> -> 126 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"265
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 700 `i `us
+-> -> 126 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"266
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 360 `i `us
+-> -> 126 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"267
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 280 `i `us
+-> -> 126 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"268
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 180 `i `us
+-> -> 126 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"269
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 100 `i `us
+-> -> 126 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"270
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 640 `i `us
+-> -> 126 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"271
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 300 `i `us
+-> -> 126 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"272
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 220 `i `us
+-> -> 126 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"273
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 140 `i `us
+-> -> 126 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"274
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 620 `i `us
+-> -> 126 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"275
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"281
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 850 `i `us
+-> -> 256 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"282
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 570 `i `us
+-> -> 256 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"283
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 400 `i `us
+-> -> 256 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"284
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 450 `i `us
+-> -> 256 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"285
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 270 `i `us
+-> -> 256 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"286
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 230 `i `us
+-> -> 256 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"287
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 160 `i `us
+-> -> 256 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"288
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 810 `i `us
+-> -> 256 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"289
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 570 `i `us
+-> -> 256 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"290
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 350 `i `us
+-> -> 256 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"291
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 290 `i `us
+-> -> 256 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"292
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 250 `i `us
+-> -> 256 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"293
+-> -> 65 `i `uc
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+-> -> 150 `i `us
+-> -> 256 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"294
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 1050 `i `us
+-> -> 256 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"295
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 470 `i `us
+-> -> 256 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"296
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 350 `i `us
+-> -> 256 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"297
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 290 `i `us
+-> -> 256 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"298
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 190 `i `us
+-> -> 256 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"299
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 150 `i `us
+-> -> 256 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"300
+-> -> 70 `i `uc
+-> -> 6656 `i `us
+-> -> 6656 `i `us
+-> -> 105 `i `us
+-> -> 256 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"301
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 970 `i `us
+-> -> 256 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"302
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 710 `i `us
+-> -> 256 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"303
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 370 `i `us
+-> -> 256 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"304
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 290 `i `us
+-> -> 256 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"305
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 190 `i `us
+-> -> 256 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"306
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 110 `i `us
+-> -> 256 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"307
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 650 `i `us
+-> -> 256 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"308
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 310 `i `us
+-> -> 256 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"309
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 230 `i `us
+-> -> 256 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"310
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 150 `i `us
+-> -> 256 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"311
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 630 `i `us
+-> -> 256 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"312
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"318
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 860 `i `us
+-> -> 384 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"319
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 580 `i `us
+-> -> 384 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"320
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 410 `i `us
+-> -> 384 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"321
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 460 `i `us
+-> -> 384 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"322
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 280 `i `us
+-> -> 384 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"323
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 240 `i `us
+-> -> 384 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"324
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 170 `i `us
+-> -> 384 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"325
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 820 `i `us
+-> -> 384 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"326
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 580 `i `us
+-> -> 384 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"327
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 360 `i `us
+-> -> 384 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"328
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 300 `i `us
+-> -> 384 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"329
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 260 `i `us
+-> -> 384 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"330
+-> -> 65 `i `uc
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+-> -> 160 `i `us
+-> -> 384 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"331
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 1060 `i `us
+-> -> 384 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"332
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 480 `i `us
+-> -> 384 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"333
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 360 `i `us
+-> -> 384 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"334
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 300 `i `us
+-> -> 384 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"335
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 200 `i `us
+-> -> 384 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"336
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 160 `i `us
+-> -> 384 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"337
+-> -> 70 `i `uc
+-> -> 6656 `i `us
+-> -> 6656 `i `us
+-> -> 110 `i `us
+-> -> 384 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"338
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 980 `i `us
+-> -> 384 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"339
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 720 `i `us
+-> -> 384 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"340
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 380 `i `us
+-> -> 384 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"341
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 300 `i `us
+-> -> 384 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"342
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 200 `i `us
+-> -> 384 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"343
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 120 `i `us
+-> -> 384 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"344
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 660 `i `us
+-> -> 384 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"345
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 320 `i `us
+-> -> 384 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"346
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 240 `i `us
+-> -> 384 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"347
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 160 `i `us
+-> -> 384 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"348
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 640 `i `us
+-> -> 384 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"349
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"355
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 670 `i `us
+-> -> 65188 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"356
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 480 `i `us
+-> -> 65188 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"357
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 390 `i `us
+-> -> 65188 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"358
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 490 `i `us
+-> -> 65188 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"359
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 380 `i `us
+-> -> 65188 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"360
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 240 `i `us
+-> -> 65188 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"361
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 210 `i `us
+-> -> 65188 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"362
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 160 `i `us
+-> -> 65188 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"363
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 640 `i `us
+-> -> 65188 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"364
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 470 `i `us
+-> -> 65188 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"365
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 320 `i `us
+-> -> 65188 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"366
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 260 `i `us
+-> -> 65188 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"367
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 180 `i `us
+-> -> 65188 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"368
+-> -> 65 `i `uc
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+-> -> 140 `i `us
+-> -> 65188 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"369
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 920 `i `us
+-> -> 65188 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"370
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 420 `i `us
+-> -> 65188 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"371
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 310 `i `us
+-> -> 65188 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"372
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 240 `i `us
+-> -> 65188 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"373
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 160 `i `us
+-> -> 65188 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"374
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 140 `i `us
+-> -> 65188 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"375
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 840 `i `us
+-> -> 65188 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"376
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 640 `i `us
+-> -> 65188 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"377
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 320 `i `us
+-> -> 65188 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"378
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 220 `i `us
+-> -> 65188 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"379
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 160 `i `us
+-> -> 65188 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"380
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 140 `i `us
+-> -> 65188 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"381
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 780 `i `us
+-> -> 65188 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"382
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 580 `i `us
+-> -> 65188 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"383
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 260 `i `us
+-> -> 65188 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"384
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 180 `i `us
+-> -> 65188 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"385
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 140 `i `us
+-> -> 65188 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"386
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 920 `i `us
+-> -> 65188 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"387
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 520 `i `us
+-> -> 65188 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"388
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"394
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 470 `i `us
+-> -> 65328 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"395
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 380 `i `us
+-> -> 65328 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"396
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 480 `i `us
+-> -> 65328 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"397
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 370 `i `us
+-> -> 65328 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"398
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 230 `i `us
+-> -> 65328 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"399
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 200 `i `us
+-> -> 65328 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"400
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 150 `i `us
+-> -> 65328 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"401
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 630 `i `us
+-> -> 65328 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"402
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 460 `i `us
+-> -> 65328 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"403
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 310 `i `us
+-> -> 65328 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"404
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 250 `i `us
+-> -> 65328 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"405
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 170 `i `us
+-> -> 65328 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"406
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 910 `i `us
+-> -> 65328 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"407
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 410 `i `us
+-> -> 65328 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"408
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 300 `i `us
+-> -> 65328 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"409
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 230 `i `us
+-> -> 65328 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"410
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 150 `i `us
+-> -> 65328 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"411
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 130 `i `us
+-> -> 65328 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"412
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 830 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"413
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 630 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"414
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 310 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"415
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 210 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"416
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 150 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"417
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 130 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"418
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 770 `i `us
+-> -> 65328 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"419
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 570 `i `us
+-> -> 65328 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"420
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 250 `i `us
+-> -> 65328 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"421
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 170 `i `us
+-> -> 65328 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"422
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 130 `i `us
+-> -> 65328 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"423
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 910 `i `us
+-> -> 65328 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"424
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 510 `i `us
+-> -> 65328 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"425
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"431
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 460 `i `us
+-> -> 65468 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"432
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 370 `i `us
+-> -> 65468 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"433
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 470 `i `us
+-> -> 65468 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"434
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 360 `i `us
+-> -> 65468 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"435
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 220 `i `us
+-> -> 65468 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"436
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 190 `i `us
+-> -> 65468 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"437
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 140 `i `us
+-> -> 65468 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"438
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 620 `i `us
+-> -> 65468 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"439
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 450 `i `us
+-> -> 65468 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"440
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 300 `i `us
+-> -> 65468 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"441
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 240 `i `us
+-> -> 65468 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"442
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 160 `i `us
+-> -> 65468 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"443
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 900 `i `us
+-> -> 65468 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"444
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 400 `i `us
+-> -> 65468 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"445
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 290 `i `us
+-> -> 65468 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"446
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 220 `i `us
+-> -> 65468 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"447
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 140 `i `us
+-> -> 65468 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"448
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 120 `i `us
+-> -> 65468 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"449
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 820 `i `us
+-> -> 65468 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"450
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 620 `i `us
+-> -> 65468 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"451
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 300 `i `us
+-> -> 65468 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"452
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 200 `i `us
+-> -> 65468 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"453
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 140 `i `us
+-> -> 65468 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"454
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 120 `i `us
+-> -> 65468 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"455
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 760 `i `us
+-> -> 65468 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"456
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 560 `i `us
+-> -> 65468 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"457
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 240 `i `us
+-> -> 65468 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"458
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 160 `i `us
+-> -> 65468 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"459
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 120 `i `us
+-> -> 65468 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"460
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 900 `i `us
+-> -> 65468 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"461
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 500 `i `us
+-> -> 65468 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"462
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"468
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 460 `i `us
+-> -> 138 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"469
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 370 `i `us
+-> -> 138 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"470
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 470 `i `us
+-> -> 138 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"471
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 360 `i `us
+-> -> 138 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"472
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 220 `i `us
+-> -> 138 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"473
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 190 `i `us
+-> -> 138 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"474
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 140 `i `us
+-> -> 138 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"475
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 620 `i `us
+-> -> 138 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"476
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 450 `i `us
+-> -> 138 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"477
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 300 `i `us
+-> -> 138 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"478
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 240 `i `us
+-> -> 138 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"479
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 160 `i `us
+-> -> 138 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"480
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 900 `i `us
+-> -> 138 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"481
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 400 `i `us
+-> -> 138 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"482
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 290 `i `us
+-> -> 138 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"483
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 220 `i `us
+-> -> 138 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"484
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 140 `i `us
+-> -> 138 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"485
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 120 `i `us
+-> -> 138 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"486
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 820 `i `us
+-> -> 138 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"487
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 620 `i `us
+-> -> 138 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"488
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 300 `i `us
+-> -> 138 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"489
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 200 `i `us
+-> -> 138 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"490
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 140 `i `us
+-> -> 138 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"491
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 120 `i `us
+-> -> 138 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"492
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 760 `i `us
+-> -> 138 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"493
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 560 `i `us
+-> -> 138 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"494
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 240 `i `us
+-> -> 138 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"495
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 160 `i `us
+-> -> 138 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"496
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 120 `i `us
+-> -> 138 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"497
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 900 `i `us
+-> -> 138 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"498
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 500 `i `us
+-> -> 138 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"499
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"505
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 470 `i `us
+-> -> 278 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"506
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 380 `i `us
+-> -> 278 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"507
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 480 `i `us
+-> -> 278 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"508
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 370 `i `us
+-> -> 278 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"509
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 230 `i `us
+-> -> 278 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"510
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 200 `i `us
+-> -> 278 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"511
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 150 `i `us
+-> -> 278 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"512
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 630 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"513
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 460 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"514
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 310 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"515
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 250 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"516
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 170 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"517
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 910 `i `us
+-> -> 278 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"518
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 410 `i `us
+-> -> 278 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"519
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 300 `i `us
+-> -> 278 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"520
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 230 `i `us
+-> -> 278 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"521
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 150 `i `us
+-> -> 278 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"522
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 130 `i `us
+-> -> 278 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"523
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 830 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"524
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 630 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"525
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 310 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"526
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 210 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"527
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 150 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"528
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 130 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"529
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 770 `i `us
+-> -> 278 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"530
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 570 `i `us
+-> -> 278 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"531
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 250 `i `us
+-> -> 278 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"532
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 170 `i `us
+-> -> 278 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"533
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 130 `i `us
+-> -> 278 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"534
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 910 `i `us
+-> -> 278 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"535
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 510 `i `us
+-> -> 278 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"536
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"542
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 670 `i `us
+-> -> 418 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"543
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 480 `i `us
+-> -> 418 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"544
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 390 `i `us
+-> -> 418 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"545
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 490 `i `us
+-> -> 418 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"546
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 380 `i `us
+-> -> 418 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"547
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 240 `i `us
+-> -> 418 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"548
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 210 `i `us
+-> -> 418 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"549
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 160 `i `us
+-> -> 418 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"550
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 640 `i `us
+-> -> 418 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"551
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 470 `i `us
+-> -> 418 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"552
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 320 `i `us
+-> -> 418 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"553
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 260 `i `us
+-> -> 418 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"554
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 180 `i `us
+-> -> 418 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"555
+-> -> 65 `i `uc
+-> -> 8704 `i `us
+-> -> 6656 `i `us
+-> -> 140 `i `us
+-> -> 418 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"556
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 920 `i `us
+-> -> 418 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"557
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 420 `i `us
+-> -> 418 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"558
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 310 `i `us
+-> -> 418 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"559
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 240 `i `us
+-> -> 418 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"560
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 160 `i `us
+-> -> 418 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"561
+-> -> 65 `i `uc
+-> -> 8448 `i `us
+-> -> 8448 `i `us
+-> -> 140 `i `us
+-> -> 418 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"562
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 840 `i `us
+-> -> 418 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"563
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 640 `i `us
+-> -> 418 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"564
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 320 `i `us
+-> -> 418 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"565
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 220 `i `us
+-> -> 418 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"566
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 160 `i `us
+-> -> 418 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"567
+-> -> 65 `i `uc
+-> -> 6656 `i `us
+-> -> 8704 `i `us
+-> -> 140 `i `us
+-> -> 418 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"568
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 780 `i `us
+-> -> 418 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"569
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 580 `i `us
+-> -> 418 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"570
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 260 `i `us
+-> -> 418 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"571
+-> -> 55 `i `uc
+-> -> 8448 `i `us
+-> -> 9984 `i `us
+-> -> 180 `i `us
+-> -> 418 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"572
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 140 `i `us
+-> -> 418 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"573
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 920 `i `us
+-> -> 418 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"574
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 520 `i `us
+-> -> 418 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"575
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"581
+-> -> 35 `i `uc
+-> -> 24576 `i `us
+-> -> 10240 `i `us
+-> -> 800 `i `us
+-> -> 65156 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"582
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 480 `i `us
+-> -> 65156 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"583
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 380 `i `us
+-> -> 65156 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"584
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 380 `i `us
+-> -> 65156 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"585
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 10496 `i `us
+-> -> 520 `i `us
+-> -> 65156 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"586
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 400 `i `us
+-> -> 65156 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"587
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 300 `i `us
+-> -> 65156 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"588
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 12800 `i `us
+-> -> 1140 `i `us
+-> -> 65156 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"589
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 460 `i `us
+-> -> 65156 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"590
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 360 `i `us
+-> -> 65156 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"591
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 280 `i `us
+-> -> 65156 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"592
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 220 `i `us
+-> -> 65156 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"593
+-> -> 35 `i `uc
+-> -> 13824 `i `us
+-> -> 13824 `i `us
+-> -> 1060 `i `us
+-> -> 65156 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"594
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 780 `i `us
+-> -> 65156 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"595
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 360 `i `us
+-> -> 65156 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"596
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 260 `i `us
+-> -> 65156 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"597
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 180 `i `us
+-> -> 65156 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"598
+-> -> 35 `i `uc
+-> -> 12800 `i `us
+-> -> 16384 `i `us
+-> -> 1140 `i `us
+-> -> 65156 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"599
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 700 `i `us
+-> -> 65156 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"600
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 560 `i `us
+-> -> 65156 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"601
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 260 `i `us
+-> -> 65156 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"602
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 160 `i `us
+-> -> 65156 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"603
+-> -> 35 `i `uc
+-> -> 10496 `i `us
+-> -> 16384 `i `us
+-> -> 920 `i `us
+-> -> 65156 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"604
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 660 `i `us
+-> -> 65156 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"605
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 500 `i `us
+-> -> 65156 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"606
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 200 `i `us
+-> -> 65156 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"607
+-> -> 40 `i `uc
+-> -> 9472 `i `us
+-> -> 24576 `i `us
+-> -> 1080 `i `us
+-> -> 65156 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"608
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 740 `i `us
+-> -> 65156 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"609
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 400 `i `us
+-> -> 65156 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"610
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"616
+-> -> 35 `i `uc
+-> -> 24576 `i `us
+-> -> 10240 `i `us
+-> -> 790 `i `us
+-> -> 65308 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"617
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 470 `i `us
+-> -> 65308 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"618
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 370 `i `us
+-> -> 65308 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"619
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 370 `i `us
+-> -> 65308 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"620
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 10496 `i `us
+-> -> 510 `i `us
+-> -> 65308 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"621
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 390 `i `us
+-> -> 65308 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"622
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 290 `i `us
+-> -> 65308 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"623
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 210 `i `us
+-> -> 65308 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"624
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 12800 `i `us
+-> -> 1130 `i `us
+-> -> 65308 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"625
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 450 `i `us
+-> -> 65308 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"626
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 350 `i `us
+-> -> 65308 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"627
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 270 `i `us
+-> -> 65308 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"628
+-> -> 35 `i `uc
+-> -> 13824 `i `us
+-> -> 13824 `i `us
+-> -> 1050 `i `us
+-> -> 65308 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"629
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 770 `i `us
+-> -> 65308 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"630
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 350 `i `us
+-> -> 65308 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"631
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 250 `i `us
+-> -> 65308 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"632
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 170 `i `us
+-> -> 65308 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"633
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 690 `i `us
+-> -> 65308 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"634
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 550 `i `us
+-> -> 65308 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"635
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 250 `i `us
+-> -> 65308 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"636
+-> -> 35 `i `uc
+-> -> 10496 `i `us
+-> -> 16384 `i `us
+-> -> 910 `i `us
+-> -> 65308 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"637
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 650 `i `us
+-> -> 65308 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"638
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 490 `i `us
+-> -> 65308 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"639
+-> -> 35 `i `uc
+-> -> 10240 `i `us
+-> -> 24576 `i `us
+-> -> 1150 `i `us
+-> -> 65308 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"640
+-> -> 40 `i `uc
+-> -> 9472 `i `us
+-> -> 24576 `i `us
+-> -> 1070 `i `us
+-> -> 65308 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"641
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 730 `i `us
+-> -> 65308 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"642
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 390 `i `us
+-> -> 65308 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"643
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"649
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 460 `i `us
+-> -> 65464 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"650
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 360 `i `us
+-> -> 65464 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"651
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 360 `i `us
+-> -> 65464 `ui `s
+-> -U -> 3 `i `c
+..
+:U ..
+"652
+-> -> 40 `i `uc
+-> -> 17664 `i `us
+-> -> 10496 `i `us
+-> -> 380 `i `us
+-> -> 65464 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"653
+-> -> 45 `i `uc
+-> -> 16384 `i `us
+-> -> 9984 `i `us
+-> -> 280 `i `us
+-> -> 65464 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"654
+-> -> 50 `i `uc
+-> -> 13824 `i `us
+-> -> 9472 `i `us
+-> -> 200 `i `us
+-> -> 65464 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"655
+-> -> 55 `i `uc
+-> -> 12800 `i `us
+-> -> 8704 `i `us
+-> -> 180 `i `us
+-> -> 65464 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"656
+-> -> 35 `i `uc
+-> -> 17664 `i `us
+-> -> 12800 `i `us
+-> -> 1120 `i `us
+-> -> 65464 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"657
+-> -> 40 `i `uc
+-> -> 16384 `i `us
+-> -> 10496 `i `us
+-> -> 440 `i `us
+-> -> 65464 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"658
+-> -> 45 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 340 `i `us
+-> -> 65464 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"659
+-> -> 50 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 260 `i `us
+-> -> 65464 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"660
+-> -> 55 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 200 `i `us
+-> -> 65464 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"661
+-> -> 35 `i `uc
+-> -> 13824 `i `us
+-> -> 13824 `i `us
+-> -> 1040 `i `us
+-> -> 65464 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"662
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 760 `i `us
+-> -> 65464 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"663
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 340 `i `us
+-> -> 65464 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"664
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 240 `i `us
+-> -> 65464 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"665
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 160 `i `us
+-> -> 65464 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"666
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 16384 `i `us
+-> -> 680 `i `us
+-> -> 65464 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"667
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 540 `i `us
+-> -> 65464 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"668
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 240 `i `us
+-> -> 65464 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"669
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 140 `i `us
+-> -> 65464 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"670
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 640 `i `us
+-> -> 65464 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"671
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 16384 `i `us
+-> -> 480 `i `us
+-> -> 65464 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"672
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 13824 `i `us
+-> -> 180 `i `us
+-> -> 65464 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"673
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 12800 `i `us
+-> -> 120 `i `us
+-> -> 65464 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"674
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 380 `i `us
+-> -> 65464 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"675
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"681
+-> -> 35 `i `uc
+-> -> 24576 `i `us
+-> -> 10240 `i `us
+-> -> 780 `i `us
+-> -> 150 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"682
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 460 `i `us
+-> -> 150 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"683
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 360 `i `us
+-> -> 150 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"684
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 360 `i `us
+-> -> 150 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"685
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 10496 `i `us
+-> -> 500 `i `us
+-> -> 150 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"686
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 380 `i `us
+-> -> 150 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"687
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 280 `i `us
+-> -> 150 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"688
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 200 `i `us
+-> -> 150 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"689
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 12800 `i `us
+-> -> 1120 `i `us
+-> -> 150 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"690
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 440 `i `us
+-> -> 150 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"691
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 340 `i `us
+-> -> 150 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"692
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 260 `i `us
+-> -> 150 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"693
+-> -> 35 `i `uc
+-> -> 13824 `i `us
+-> -> 13824 `i `us
+-> -> 1040 `i `us
+-> -> 150 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"694
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 760 `i `us
+-> -> 150 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"695
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 340 `i `us
+-> -> 150 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"696
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 240 `i `us
+-> -> 150 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"697
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 160 `i `us
+-> -> 150 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"698
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 680 `i `us
+-> -> 150 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"699
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 540 `i `us
+-> -> 150 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"700
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 240 `i `us
+-> -> 150 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"701
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 140 `i `us
+-> -> 150 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"702
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 640 `i `us
+-> -> 150 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"703
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 480 `i `us
+-> -> 150 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"704
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 180 `i `us
+-> -> 150 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"705
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 720 `i `us
+-> -> 150 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"706
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 380 `i `us
+-> -> 150 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"707
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"713
+-> -> 35 `i `uc
+-> -> 24576 `i `us
+-> -> 10240 `i `us
+-> -> 790 `i `us
+-> -> 304 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"714
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 470 `i `us
+-> -> 304 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"715
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 370 `i `us
+-> -> 304 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"716
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 370 `i `us
+-> -> 304 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"717
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 10496 `i `us
+-> -> 510 `i `us
+-> -> 304 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"718
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 390 `i `us
+-> -> 304 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"719
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 290 `i `us
+-> -> 304 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"720
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 210 `i `us
+-> -> 304 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"721
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 12800 `i `us
+-> -> 1130 `i `us
+-> -> 304 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"722
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 450 `i `us
+-> -> 304 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"723
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 350 `i `us
+-> -> 304 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"724
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 270 `i `us
+-> -> 304 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"725
+-> -> 35 `i `uc
+-> -> 13824 `i `us
+-> -> 13824 `i `us
+-> -> 1050 `i `us
+-> -> 304 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"726
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 770 `i `us
+-> -> 304 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"727
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 350 `i `us
+-> -> 304 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"728
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 250 `i `us
+-> -> 304 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"729
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 170 `i `us
+-> -> 304 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"730
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 690 `i `us
+-> -> 304 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"731
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 550 `i `us
+-> -> 304 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"732
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 250 `i `us
+-> -> 304 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"733
+-> -> 35 `i `uc
+-> -> 10496 `i `us
+-> -> 16384 `i `us
+-> -> 910 `i `us
+-> -> 304 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"734
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 650 `i `us
+-> -> 304 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"735
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 490 `i `us
+-> -> 304 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"736
+-> -> 35 `i `uc
+-> -> 10240 `i `us
+-> -> 24576 `i `us
+-> -> 1150 `i `us
+-> -> 304 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"737
+-> -> 40 `i `uc
+-> -> 9472 `i `us
+-> -> 24576 `i `us
+-> -> 1070 `i `us
+-> -> 304 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"738
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 730 `i `us
+-> -> 304 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"739
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 390 `i `us
+-> -> 304 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"740
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+:U ..
+:U ..
+"746
+-> -> 35 `i `uc
+-> -> 24576 `i `us
+-> -> 10240 `i `us
+-> -> 800 `i `us
+-> -> 456 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"747
+-> -> 40 `i `uc
+-> -> 24576 `i `us
+-> -> 9472 `i `us
+-> -> 480 `i `us
+-> -> 456 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"748
+-> -> 45 `i `uc
+-> -> 24576 `i `us
+-> -> 8448 `i `us
+-> -> 380 `i `us
+-> -> 456 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"749
+-> -> 50 `i `uc
+-> -> 24576 `i `us
+-> -> 6656 `i `us
+-> -> 380 `i `us
+-> -> 456 `i `s
+-> -U -> 3 `i `c
+..
+:U ..
+"750
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 10496 `i `us
+-> -> 520 `i `us
+-> -> 456 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"751
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 9984 `i `us
+-> -> 400 `i `us
+-> -> 456 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"752
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 300 `i `us
+-> -> 456 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"753
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 12800 `i `us
+-> -> 1140 `i `us
+-> -> 456 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"754
+-> -> 40 `i `uc
+-> -> 13824 `i `us
+-> -> 10496 `i `us
+-> -> 460 `i `us
+-> -> 456 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"755
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 360 `i `us
+-> -> 456 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"756
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 280 `i `us
+-> -> 456 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"757
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 220 `i `us
+-> -> 456 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"758
+-> -> 35 `i `uc
+-> -> 13824 `i `us
+-> -> 13824 `i `us
+-> -> 1060 `i `us
+-> -> 456 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"759
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 780 `i `us
+-> -> 456 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"760
+-> -> 45 `i `uc
+-> -> 10496 `i `us
+-> -> 10496 `i `us
+-> -> 360 `i `us
+-> -> 456 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"761
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 260 `i `us
+-> -> 456 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"762
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 180 `i `us
+-> -> 456 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"763
+-> -> 35 `i `uc
+-> -> 12800 `i `us
+-> -> 16384 `i `us
+-> -> 1140 `i `us
+-> -> 456 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"764
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 700 `i `us
+-> -> 456 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"765
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 560 `i `us
+-> -> 456 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"766
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 260 `i `us
+-> -> 456 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"767
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 160 `i `us
+-> -> 456 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"768
+-> -> 35 `i `uc
+-> -> 10496 `i `us
+-> -> 16384 `i `us
+-> -> 920 `i `us
+-> -> 456 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"769
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 660 `i `us
+-> -> 456 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"770
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 500 `i `us
+-> -> 456 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"771
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 200 `i `us
+-> -> 456 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"772
+-> -> 40 `i `uc
+-> -> 9472 `i `us
+-> -> 24576 `i `us
+-> -> 1080 `i `us
+-> -> 456 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"773
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 740 `i `us
+-> -> 456 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"774
+-> -> 50 `i `uc
+-> -> 6656 `i `us
+-> -> 24576 `i `us
+-> -> 400 `i `us
+-> -> 456 `i `s
+-> -> 3 `i `c
+..
+:U ..
+"775
+-> -> 0 `i `uc
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `us
+-> -> 0 `i `s
+-> -> 0 `i `c
+..
+..
+..
+]
+[; ;EL04CLT.c: 128: const struct el04_loc court_locs[][50] = {
+[; ;EL04CLT.c: 133: {
+[; ;EL04CLT.c: 134: {40,0x6000,0x2500,0x35C,0xFEC0,-3},
+[; ;EL04CLT.c: 135: {45,0x6000,0x2100,0x244,0xFEC0,-3},
+[; ;EL04CLT.c: 136: {50,0x6000,0x1A00,0x19A,0xFEC0,-3},
+[; ;EL04CLT.c: 137: {45,0x3200,0x2500,0x1CC,0xFEC0,-2},
+[; ;EL04CLT.c: 138: {50,0x2900,0x2200,0x118,0xFEC0,-2},
+[; ;EL04CLT.c: 139: {55,0x2700,0x2100,0x0F0,0xFEC0,-2},
+[; ;EL04CLT.c: 140: {60,0x2500,0x1A00,0x0AA,0xFEC0,-2},
+[; ;EL04CLT.c: 141: {40,0x3600,0x2900,0x334,0xFEC0,-1},
+[; ;EL04CLT.c: 142: {45,0x3200,0x2700,0x244,0xFEC0,-1},
+[; ;EL04CLT.c: 143: {50,0x2900,0x2500,0x168,0xFEC0,-1},
+[; ;EL04CLT.c: 144: {55,0x2700,0x2200,0x12c,0xFEC0,-1},
+[; ;EL04CLT.c: 145: {60,0x2500,0x2100,0x104,0xFEC0,-1},
+[; ;EL04CLT.c: 146: {65,0x2200,0x1A00,0x0A0,0xFEC0,-1},
+[; ;EL04CLT.c: 147: {40,0x3200,0x3200,0x424,0xFEC0,0},
+[; ;EL04CLT.c: 148: {45,0x2900,0x2900,0x1E0,0xFEC0,0},
+[; ;EL04CLT.c: 149: {50,0x2700,0x2700,0x168,0xFEC0,0},
+[; ;EL04CLT.c: 150: {55,0x2500,0x2500,0x12C,0xFEC0,0},
+[; ;EL04CLT.c: 151: {60,0x2200,0x2200,0x0C8,0xFEC0,0},
+[; ;EL04CLT.c: 152: {65,0x2100,0x2100,0x0A0,0xFEC0,0},
+[; ;EL04CLT.c: 153: {70,0x1A00,0x1A00,0x06E,0xFEC0,0},
+[; ;EL04CLT.c: 154: {40,0x2900,0x3600,0x3D4,0xFEC0,1},
+[; ;EL04CLT.c: 155: {45,0x2700,0x3200,0x2D0,0xFEC0,1},
+[; ;EL04CLT.c: 156: {50,0x2500,0x2900,0x17C,0xFEC0,1},
+[; ;EL04CLT.c: 157: {55,0x2200,0x2700,0x12C,0xFEC0,1},
+[; ;EL04CLT.c: 158: {60,0x2100,0x2500,0x0C8,0xFEC0,1},
+[; ;EL04CLT.c: 159: {65,0x1A00,0x2200,0x078,0xFEC0,1},
+[; ;EL04CLT.c: 160: {45,0x2500,0x3200,0x294,0xFEC0,2},
+[; ;EL04CLT.c: 161: {50,0x2200,0x2900,0x140,0xFEC0,2},
+[; ;EL04CLT.c: 162: {55,0x2100,0x2700,0x0F0,0xFEC0,2},
+[; ;EL04CLT.c: 163: {60,0x1A00,0x2500,0x0A0,0xFEC0,2},
+[; ;EL04CLT.c: 164: {50,0x1A00,0x6000,0x280,0xFEC0,3},
+[; ;EL04CLT.c: 165: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 166: },
+[; ;EL04CLT.c: 169: {
+[; ;EL04CLT.c: 170: {40,0x6000,0x2500,0x352,0xFF40,-3},
+[; ;EL04CLT.c: 171: {45,0x6000,0x2100,0x23A,0xFF40,-3},
+[; ;EL04CLT.c: 172: {50,0x6000,0x1A00,0x190,0xFF40,-3},
+[; ;EL04CLT.c: 173: {45,0x3200,0x2500,0x1C2,0xFF40,-2},
+[; ;EL04CLT.c: 174: {50,0x2900,0x2200,0x10E,0xFF40,-2},
+[; ;EL04CLT.c: 175: {55,0x2700,0x2100,0x0E6,0xFF40,-2},
+[; ;EL04CLT.c: 176: {60,0x2500,0x1A00,0x0A0,0xFF40,-2},
+[; ;EL04CLT.c: 177: {40,0x3600,0x2900,0x32A,0xFF40,-1},
+[; ;EL04CLT.c: 178: {45,0x3200,0x2700,0x23A,0xFF40,-1},
+[; ;EL04CLT.c: 179: {50,0x2900,0x2500,0x15E,0xFF40,-1},
+[; ;EL04CLT.c: 180: {55,0x2700,0x2200,0x122,0xFF40,-1},
+[; ;EL04CLT.c: 181: {60,0x2500,0x2100,0x0FA,0xFF40,-1},
+[; ;EL04CLT.c: 182: {65,0x2200,0x1A00,0x096,0xFF40,-1},
+[; ;EL04CLT.c: 183: {40,0x3200,0x3200,0x41A,0xFF40,0},
+[; ;EL04CLT.c: 184: {45,0x2900,0x2900,0x1D6,0xFF40,0},
+[; ;EL04CLT.c: 185: {50,0x2700,0x2700,0x15E,0xFF40,0},
+[; ;EL04CLT.c: 186: {55,0x2500,0x2500,0x122,0xFF40,0},
+[; ;EL04CLT.c: 187: {60,0x2200,0x2200,0x0BE,0xFF40,0},
+[; ;EL04CLT.c: 188: {65,0x2100,0x2100,0x096,0xFF40,0},
+[; ;EL04CLT.c: 189: {70,0x1A00,0x1A00,0x069,0xFF40,0},
+[; ;EL04CLT.c: 190: {40,0x2900,0x3600,0x3CA,0xFF40,1},
+[; ;EL04CLT.c: 191: {45,0x2700,0x3200,0x2C6,0xFF40,1},
+[; ;EL04CLT.c: 192: {50,0x2500,0x2900,0x172,0xFF40,1},
+[; ;EL04CLT.c: 193: {55,0x2200,0x2700,0x122,0xFF40,1},
+[; ;EL04CLT.c: 194: {60,0x2100,0x2500,0x0BE,0xFF40,1},
+[; ;EL04CLT.c: 195: {65,0x1A00,0x2200,0x06E,0xFF40,1},
+[; ;EL04CLT.c: 196: {45,0x2500,0x3200,0x28A,0xFF40,2},
+[; ;EL04CLT.c: 197: {50,0x2200,0x2900,0x136,0xFF40,2},
+[; ;EL04CLT.c: 198: {55,0x2100,0x2700,0x0E6,0xFF40,2},
+[; ;EL04CLT.c: 199: {60,0x1A00,0x2500,0x096,0xFF40,2},
+[; ;EL04CLT.c: 200: {50,0x1A00,0x6000,0x276,0xFF40,3},
+[; ;EL04CLT.c: 201: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 202: },
+[; ;EL04CLT.c: 206: {
+[; ;EL04CLT.c: 207: {40,0x6000,0x2500,0x348,0xFFC4,-3},
+[; ;EL04CLT.c: 208: {45,0x6000,0x2100,0x230,0xFFC4,-3},
+[; ;EL04CLT.c: 209: {50,0x6000,0x1A00,0x186,0xFFC4,-3},
+[; ;EL04CLT.c: 210: {45,0x3200,0x2500,0x1B8,0xFFC4,-2},
+[; ;EL04CLT.c: 211: {50,0x2900,0x2200,0x104,0xFFC4,-2},
+[; ;EL04CLT.c: 212: {55,0x2700,0x2100,0x0DC,0xFFC4,-2},
+[; ;EL04CLT.c: 213: {60,0x2500,0x1A00,0x096,0xFFC4,-2},
+[; ;EL04CLT.c: 214: {40,0x3600,0x2900,0x320,0xFFC4,-1},
+[; ;EL04CLT.c: 215: {45,0x3200,0x2700,0x230,0xFFC4,-1},
+[; ;EL04CLT.c: 216: {50,0x2900,0x2500,0x154,0xFFC4,-1},
+[; ;EL04CLT.c: 217: {55,0x2700,0x2200,0x118,0xFFC4,-1},
+[; ;EL04CLT.c: 218: {60,0x2500,0x2100,0x0F0,0xFFC4,-1},
+[; ;EL04CLT.c: 219: {65,0x2200,0x1A00,0x08C,0xFFC4,-1},
+[; ;EL04CLT.c: 220: {40,0x3200,0x3200,0x410,0xFFC4,0},
+[; ;EL04CLT.c: 221: {45,0x2900,0x2900,0x1CC,0xFFC4,0},
+[; ;EL04CLT.c: 222: {50,0x2700,0x2700,0x154,0xFFC4,0},
+[; ;EL04CLT.c: 223: {55,0x2500,0x2500,0x118,0xFFC4,0},
+[; ;EL04CLT.c: 224: {60,0x2200,0x2200,0x0B4,0xFFC4,0},
+[; ;EL04CLT.c: 225: {65,0x2100,0x2100,0x08C,0xFFC4,0},
+[; ;EL04CLT.c: 226: {70,0x1A00,0x1A00,0x064,0xFFC4,0},
+[; ;EL04CLT.c: 227: {40,0x2900,0x3600,0x3C0,0xFFC4,1},
+[; ;EL04CLT.c: 228: {45,0x2700,0x3200,0x2BC,0xFFC4,1},
+[; ;EL04CLT.c: 229: {50,0x2500,0x2900,0x168,0xFFC4,1},
+[; ;EL04CLT.c: 230: {55,0x2200,0x2700,0x118,0xFFC4,1},
+[; ;EL04CLT.c: 231: {60,0x2100,0x2500,0x0B4,0xFFC4,1},
+[; ;EL04CLT.c: 232: {65,0x1A00,0x2200,0x064,0xFFC4,1},
+[; ;EL04CLT.c: 233: {45,0x2500,0x3200,0x280,0xFFC4,2},
+[; ;EL04CLT.c: 234: {50,0x2200,0x2900,0x12C,0xFFC4,2},
+[; ;EL04CLT.c: 235: {55,0x2100,0x2700,0x0DC,0xFFC4,2},
+[; ;EL04CLT.c: 236: {60,0x1A00,0x2500,0x08C,0xFFC4,2},
+[; ;EL04CLT.c: 237: {50,0x1A00,0x6000,0x26C,0xFFC4,3},
+[; ;EL04CLT.c: 238: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 239: },
+[; ;EL04CLT.c: 243: {
+[; ;EL04CLT.c: 244: {40,0x6000,0x2500,0x348,0x07E,-3},
+[; ;EL04CLT.c: 245: {45,0x6000,0x2100,0x230,0x07E,-3},
+[; ;EL04CLT.c: 246: {50,0x6000,0x1A00,0x186,0x07E,-3},
+[; ;EL04CLT.c: 247: {45,0x3200,0x2500,0x1B8,0x07E,-2},
+[; ;EL04CLT.c: 248: {50,0x2900,0x2200,0x104,0x07E,-2},
+[; ;EL04CLT.c: 249: {55,0x2700,0x2100,0x0DC,0x07E,-2},
+[; ;EL04CLT.c: 250: {60,0x2500,0x1A00,0x096,0x07E,-2},
+[; ;EL04CLT.c: 251: {40,0x3600,0x2900,0x320,0x07E,-1},
+[; ;EL04CLT.c: 252: {45,0x3200,0x2700,0x230,0x07E,-1},
+[; ;EL04CLT.c: 253: {50,0x2900,0x2500,0x154,0x07E,-1},
+[; ;EL04CLT.c: 254: {55,0x2700,0x2200,0x118,0x07E,-1},
+[; ;EL04CLT.c: 255: {60,0x2500,0x2100,0x0F0,0x07E,-1},
+[; ;EL04CLT.c: 256: {65,0x2200,0x1A00,0x08C,0x07E,-1},
+[; ;EL04CLT.c: 257: {40,0x3200,0x3200,0x410,0x07E,0},
+[; ;EL04CLT.c: 258: {45,0x2900,0x2900,0x1CC,0x07E,0},
+[; ;EL04CLT.c: 259: {50,0x2700,0x2700,0x154,0x07E,0},
+[; ;EL04CLT.c: 260: {55,0x2500,0x2500,0x118,0x07E,0},
+[; ;EL04CLT.c: 261: {60,0x2200,0x2200,0x0B4,0x07E,0},
+[; ;EL04CLT.c: 262: {65,0x2100,0x2100,0x08C,0x07E,0},
+[; ;EL04CLT.c: 263: {70,0x1A00,0x1A00,0x064,0x07E,0},
+[; ;EL04CLT.c: 264: {40,0x2900,0x3600,0x3c0,0x07E,1},
+[; ;EL04CLT.c: 265: {45,0x2700,0x3200,0x2BC,0x07E,1},
+[; ;EL04CLT.c: 266: {50,0x2500,0x2900,0x168,0x07E,1},
+[; ;EL04CLT.c: 267: {55,0x2200,0x2700,0x118,0x07E,1},
+[; ;EL04CLT.c: 268: {60,0x2100,0x2500,0x0B4,0x07E,1},
+[; ;EL04CLT.c: 269: {65,0x1A00,0x2200,0x064,0x07E,1},
+[; ;EL04CLT.c: 270: {45,0x2500,0x3200,0x280,0x07E,2},
+[; ;EL04CLT.c: 271: {50,0x2200,0x2900,0x12C,0x07E,2},
+[; ;EL04CLT.c: 272: {55,0x2100,0x2700,0x0DC,0x07E,2},
+[; ;EL04CLT.c: 273: {60,0x1A00,0x2500,0x08C,0x07E,2},
+[; ;EL04CLT.c: 274: {50,0x1A00,0x6000,0x26C,0x07E,3},
+[; ;EL04CLT.c: 275: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 276: },
+[; ;EL04CLT.c: 280: {
+[; ;EL04CLT.c: 281: {40,0x6000,0x2500,0x352,0x100,-3},
+[; ;EL04CLT.c: 282: {45,0x6000,0x2100,0x23A,0x100,-3},
+[; ;EL04CLT.c: 283: {50,0x6000,0x1A00,0x190,0x100,-3},
+[; ;EL04CLT.c: 284: {45,0x3200,0x2500,0x1C2,0x100,-2},
+[; ;EL04CLT.c: 285: {50,0x2900,0x2200,0x10E,0x100,-2},
+[; ;EL04CLT.c: 286: {55,0x2700,0x2100,0x0E6,0x100,-2},
+[; ;EL04CLT.c: 287: {60,0x2500,0x1A00,0x0A0,0x100,-2},
+[; ;EL04CLT.c: 288: {40,0x3600,0x2900,0x32A,0x100,-1},
+[; ;EL04CLT.c: 289: {45,0x3200,0x2700,0x23A,0x100,-1},
+[; ;EL04CLT.c: 290: {50,0x2900,0x2500,0x15E,0x100,-1},
+[; ;EL04CLT.c: 291: {55,0x2700,0x2200,0x122,0x100,-1},
+[; ;EL04CLT.c: 292: {60,0x2500,0x2100,0x0FA,0x100,-1},
+[; ;EL04CLT.c: 293: {65,0x2200,0x1A00,0x096,0x100,-1},
+[; ;EL04CLT.c: 294: {40,0x3200,0x3200,0x41A,0x100,0},
+[; ;EL04CLT.c: 295: {45,0x2900,0x2900,0x1D6,0x100,0},
+[; ;EL04CLT.c: 296: {50,0x2700,0x2700,0x15E,0x100,0},
+[; ;EL04CLT.c: 297: {55,0x2500,0x2500,0x122,0x100,0},
+[; ;EL04CLT.c: 298: {60,0x2200,0x2200,0x0BE,0x100,0},
+[; ;EL04CLT.c: 299: {65,0x2100,0x2100,0x096,0x100,0},
+[; ;EL04CLT.c: 300: {70,0x1A00,0x1A00,0x069,0x100,0},
+[; ;EL04CLT.c: 301: {40,0x2900,0x3600,0x3CA,0x100,1},
+[; ;EL04CLT.c: 302: {45,0x2700,0x3200,0x2C6,0x100,1},
+[; ;EL04CLT.c: 303: {50,0x2500,0x2900,0x172,0x100,1},
+[; ;EL04CLT.c: 304: {55,0x2200,0x2700,0x122,0x100,1},
+[; ;EL04CLT.c: 305: {60,0x2100,0x2500,0x0BE,0x100,1},
+[; ;EL04CLT.c: 306: {65,0x1A00,0x2200,0x06E,0x100,1},
+[; ;EL04CLT.c: 307: {45,0x2500,0x3200,0x28A,0x100,2},
+[; ;EL04CLT.c: 308: {50,0x2200,0x2900,0x136,0x100,2},
+[; ;EL04CLT.c: 309: {55,0x2100,0x2700,0x0E6,0x100,2},
+[; ;EL04CLT.c: 310: {60,0x1A00,0x2500,0x096,0x100,2},
+[; ;EL04CLT.c: 311: {50,0x1A00,0x6000,0x276,0x100,3},
+[; ;EL04CLT.c: 312: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 313: },
+[; ;EL04CLT.c: 317: {
+[; ;EL04CLT.c: 318: {40,0x6000,0x2500,0x35C,0x180,-3},
+[; ;EL04CLT.c: 319: {45,0x6000,0x2100,0x244,0x180,-3},
+[; ;EL04CLT.c: 320: {50,0x6000,0x1A00,0x19A,0x180,-3},
+[; ;EL04CLT.c: 321: {45,0x3200,0x2500,0x1CC,0x180,-2},
+[; ;EL04CLT.c: 322: {50,0x2900,0x2200,0x118,0x180,-2},
+[; ;EL04CLT.c: 323: {55,0x2700,0x2100,0x0F0,0x180,-2},
+[; ;EL04CLT.c: 324: {60,0x2500,0x1A00,0x0AA,0x180,-2},
+[; ;EL04CLT.c: 325: {40,0x3600,0x2900,0x334,0x180,-1},
+[; ;EL04CLT.c: 326: {45,0x3200,0x2700,0x244,0x180,-1},
+[; ;EL04CLT.c: 327: {50,0x2900,0x2500,0x168,0x180,-1},
+[; ;EL04CLT.c: 328: {55,0x2700,0x2200,0x12C,0x180,-1},
+[; ;EL04CLT.c: 329: {60,0x2500,0x2100,0x104,0x180,-1},
+[; ;EL04CLT.c: 330: {65,0x2200,0x1A00,0x0A0,0x180,-1},
+[; ;EL04CLT.c: 331: {40,0x3200,0x3200,0x424,0x180,0},
+[; ;EL04CLT.c: 332: {45,0x2900,0x2900,0x1E0,0x180,0},
+[; ;EL04CLT.c: 333: {50,0x2700,0x2700,0x168,0x180,0},
+[; ;EL04CLT.c: 334: {55,0x2500,0x2500,0x12C,0x180,0},
+[; ;EL04CLT.c: 335: {60,0x2200,0x2200,0x0C8,0x180,0},
+[; ;EL04CLT.c: 336: {65,0x2100,0x2100,0x0A0,0x180,0},
+[; ;EL04CLT.c: 337: {70,0x1A00,0x1A00,0x06E,0x180,0},
+[; ;EL04CLT.c: 338: {40,0x2900,0x3600,0x3D4,0x180,1},
+[; ;EL04CLT.c: 339: {45,0x2700,0x3200,0x2D0,0x180,1},
+[; ;EL04CLT.c: 340: {50,0x2500,0x2900,0x17C,0x180,1},
+[; ;EL04CLT.c: 341: {55,0x2200,0x2700,0x12C,0x180,1},
+[; ;EL04CLT.c: 342: {60,0x2100,0x2500,0x0C8,0x180,1},
+[; ;EL04CLT.c: 343: {65,0x1A00,0x2200,0x078,0x180,1},
+[; ;EL04CLT.c: 344: {45,0x2500,0x3200,0x294,0x180,2},
+[; ;EL04CLT.c: 345: {50,0x2200,0x2900,0x140,0x180,2},
+[; ;EL04CLT.c: 346: {55,0x2100,0x2700,0x0F0,0x180,2},
+[; ;EL04CLT.c: 347: {60,0x1A00,0x2500,0x0A0,0x180,2},
+[; ;EL04CLT.c: 348: {50,0x1A00,0x6000,0x280,0x180,3},
+[; ;EL04CLT.c: 349: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 350: },
+[; ;EL04CLT.c: 354: {
+[; ;EL04CLT.c: 355: {40,0x6000,0x2500,0x29E,0xFEA4,-3},
+[; ;EL04CLT.c: 356: {45,0x6000,0x2100,0x1E0,0xFEA4,-3},
+[; ;EL04CLT.c: 357: {50,0x6000,0x1A00,0x186,0xFEA4,-3},
+[; ;EL04CLT.c: 358: {40,0x3600,0x2700,0x1EA,0xFEA4,-2},
+[; ;EL04CLT.c: 359: {45,0x3200,0x2500,0x17C,0xFEA4,-2},
+[; ;EL04CLT.c: 360: {50,0x2900,0x2200,0x0F0,0xFEA4,-2},
+[; ;EL04CLT.c: 361: {55,0x2700,0x2100,0x0D2,0xFEA4,-2},
+[; ;EL04CLT.c: 362: {60,0x2500,0x1A00,0x0A0,0xFEA4,-2},
+[; ;EL04CLT.c: 363: {40,0x3600,0x2900,0x280,0xFEA4,-1},
+[; ;EL04CLT.c: 364: {45,0x3200,0x2700,0x1D6,0xFEA4,-1},
+[; ;EL04CLT.c: 365: {50,0x2900,0x2500,0x140,0xFEA4,-1},
+[; ;EL04CLT.c: 366: {55,0x2700,0x2200,0x104,0xFEA4,-1},
+[; ;EL04CLT.c: 367: {60,0x2500,0x2100,0x0B4,0xFEA4,-1},
+[; ;EL04CLT.c: 368: {65,0x2200,0x1A00,0x08C,0xFEA4,-1},
+[; ;EL04CLT.c: 369: {40,0x3200,0x3200,0x398,0xFEA4,0},
+[; ;EL04CLT.c: 370: {45,0x2900,0x2900,0x1A4,0xFEA4,0},
+[; ;EL04CLT.c: 371: {50,0x2700,0x2700,0x136,0xFEA4,0},
+[; ;EL04CLT.c: 372: {55,0x2500,0x2500,0x0F0,0xFEA4,0},
+[; ;EL04CLT.c: 373: {60,0x2200,0x2200,0x0A0,0xFEA4,0},
+[; ;EL04CLT.c: 374: {65,0x2100,0x2100,0x08C,0xFEA4,0},
+[; ;EL04CLT.c: 375: {40,0x2900,0x3600,0x348,0xFEA4,1},
+[; ;EL04CLT.c: 376: {45,0x2700,0x3200,0x280,0xFEA4,1},
+[; ;EL04CLT.c: 377: {50,0x2500,0x2900,0x140,0xFEA4,1},
+[; ;EL04CLT.c: 378: {55,0x2200,0x2700,0x0DC,0xFEA4,1},
+[; ;EL04CLT.c: 379: {60,0x2100,0x2500,0x0A0,0xFEA4,1},
+[; ;EL04CLT.c: 380: {65,0x1A00,0x2200,0x08C,0xFEA4,1},
+[; ;EL04CLT.c: 381: {40,0x2700,0x3600,0x30C,0xFEA4,2},
+[; ;EL04CLT.c: 382: {45,0x2500,0x3200,0x244,0xFEA4,2},
+[; ;EL04CLT.c: 383: {50,0x2200,0x2900,0x104,0xFEA4,2},
+[; ;EL04CLT.c: 384: {55,0x2100,0x2700,0x0B4,0xFEA4,2},
+[; ;EL04CLT.c: 385: {60,0x1A00,0x2500,0x08C,0xFEA4,2},
+[; ;EL04CLT.c: 386: {45,0x2100,0x6000,0x398,0xFEA4,3},
+[; ;EL04CLT.c: 387: {50,0x1A00,0x6000,0x208,0xFEA4,3},
+[; ;EL04CLT.c: 388: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 389: },
+[; ;EL04CLT.c: 393: {
+[; ;EL04CLT.c: 394: {45,0x6000,0x2100,0x1D6,0xFF30,-3},
+[; ;EL04CLT.c: 395: {50,0x6000,0x1A00,0x17C,0xFF30,-3},
+[; ;EL04CLT.c: 396: {40,0x3600,0x2700,0x1E0,0xFF30,-2},
+[; ;EL04CLT.c: 397: {45,0x3200,0x2500,0x172,0xFF30,-2},
+[; ;EL04CLT.c: 398: {50,0x2900,0x2200,0x0E6,0xFF30,-2},
+[; ;EL04CLT.c: 399: {55,0x2700,0x2100,0x0C8,0xFF30,-2},
+[; ;EL04CLT.c: 400: {60,0x2500,0x1A00,0x096,0xFF30,-2},
+[; ;EL04CLT.c: 401: {40,0x3600,0x2900,0x276,0xFF30,-1},
+[; ;EL04CLT.c: 402: {45,0x3200,0x2700,0x1CC,0xFF30,-1},
+[; ;EL04CLT.c: 403: {50,0x2900,0x2500,0x136,0xFF30,-1},
+[; ;EL04CLT.c: 404: {55,0x2700,0x2200,0x0FA,0xFF30,-1},
+[; ;EL04CLT.c: 405: {60,0x2500,0x2100,0x0AA,0xFF30,-1},
+[; ;EL04CLT.c: 406: {40,0x3200,0x3200,0x38E,0xFF30,0},
+[; ;EL04CLT.c: 407: {45,0x2900,0x2900,0x19A,0xFF30,0},
+[; ;EL04CLT.c: 408: {50,0x2700,0x2700,0x12C,0xFF30,0},
+[; ;EL04CLT.c: 409: {55,0x2500,0x2500,0x0E6,0xFF30,0},
+[; ;EL04CLT.c: 410: {60,0x2200,0x2200,0x096,0xFF30,0},
+[; ;EL04CLT.c: 411: {65,0x2100,0x2100,0x082,0xFF30,0},
+[; ;EL04CLT.c: 412: {40,0x2900,0x3600,0x33E,0xFF30,1},
+[; ;EL04CLT.c: 413: {45,0x2700,0x3200,0x276,0xFF30,1},
+[; ;EL04CLT.c: 414: {50,0x2500,0x2900,0x136,0xFF30,1},
+[; ;EL04CLT.c: 415: {55,0x2200,0x2700,0x0D2,0xFF30,1},
+[; ;EL04CLT.c: 416: {60,0x2100,0x2500,0x096,0xFF30,1},
+[; ;EL04CLT.c: 417: {65,0x1A00,0x2200,0x082,0xFF30,1},
+[; ;EL04CLT.c: 418: {40,0x2700,0x3600,0x302,0xFF30,2},
+[; ;EL04CLT.c: 419: {45,0x2500,0x3200,0x23A,0xFF30,2},
+[; ;EL04CLT.c: 420: {50,0x2200,0x2900,0x0FA,0xFF30,2},
+[; ;EL04CLT.c: 421: {55,0x2100,0x2700,0x0AA,0xFF30,2},
+[; ;EL04CLT.c: 422: {60,0x1A00,0x2500,0x082,0xFF30,2},
+[; ;EL04CLT.c: 423: {45,0x2100,0x6000,0x38E,0xFF30,3},
+[; ;EL04CLT.c: 424: {50,0x1A00,0x6000,0x1FE,0xFF30,3},
+[; ;EL04CLT.c: 425: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 426: },
+[; ;EL04CLT.c: 430: {
+[; ;EL04CLT.c: 431: {45,0x6000,0x2100,0x1CC,0xFFBC,-3},
+[; ;EL04CLT.c: 432: {50,0x6000,0x1A00,0x172,0xFFBC,-3},
+[; ;EL04CLT.c: 433: {40,0x3600,0x2700,0x1D6,0xFFBC,-2},
+[; ;EL04CLT.c: 434: {45,0x3200,0x2500,0x168,0xFFBC,-2},
+[; ;EL04CLT.c: 435: {50,0x2900,0x2200,0x0DC,0xFFBC,-2},
+[; ;EL04CLT.c: 436: {55,0x2700,0x2100,0x0BE,0xFFBC,-2},
+[; ;EL04CLT.c: 437: {60,0x2500,0x1A00,0x08C,0xFFBC,-2},
+[; ;EL04CLT.c: 438: {40,0x3600,0x2900,0x26C,0xFFBC,-1},
+[; ;EL04CLT.c: 439: {45,0x3200,0x2700,0x1C2,0xFFBC,-1},
+[; ;EL04CLT.c: 440: {50,0x2900,0x2500,0x12C,0xFFBC,-1},
+[; ;EL04CLT.c: 441: {55,0x2700,0x2200,0x0F0,0xFFBC,-1},
+[; ;EL04CLT.c: 442: {60,0x2500,0x2100,0x0A0,0xFFBC,-1},
+[; ;EL04CLT.c: 443: {40,0x3200,0x3200,0x384,0xFFBC,0},
+[; ;EL04CLT.c: 444: {45,0x2900,0x2900,0x190,0xFFBC,0},
+[; ;EL04CLT.c: 445: {50,0x2700,0x2700,0x122,0xFFBC,0},
+[; ;EL04CLT.c: 446: {55,0x2500,0x2500,0x0DC,0xFFBC,0},
+[; ;EL04CLT.c: 447: {60,0x2200,0x2200,0x08C,0xFFBC,0},
+[; ;EL04CLT.c: 448: {65,0x2100,0x2100,0x078,0xFFBC,0},
+[; ;EL04CLT.c: 449: {40,0x2900,0x3600,0x334,0xFFBC,1},
+[; ;EL04CLT.c: 450: {45,0x2700,0x3200,0x26C,0xFFBC,1},
+[; ;EL04CLT.c: 451: {50,0x2500,0x2900,0x12C,0xFFBC,1},
+[; ;EL04CLT.c: 452: {55,0x2200,0x2700,0x0C8,0xFFBC,1},
+[; ;EL04CLT.c: 453: {60,0x2100,0x2500,0x08C,0xFFBC,1},
+[; ;EL04CLT.c: 454: {65,0x1A00,0x2200,0x078,0xFFBC,1},
+[; ;EL04CLT.c: 455: {40,0x2700,0x3600,0x2F8,0xFFBC,2},
+[; ;EL04CLT.c: 456: {45,0x2500,0x3200,0x230,0xFFBC,2},
+[; ;EL04CLT.c: 457: {50,0x2200,0x2900,0x0F0,0xFFBC,2},
+[; ;EL04CLT.c: 458: {55,0x2100,0x2700,0x0A0,0xFFBC,2},
+[; ;EL04CLT.c: 459: {60,0x1A00,0x2500,0x078,0xFFBC,2},
+[; ;EL04CLT.c: 460: {45,0x2100,0x6000,0x384,0xFFBC,3},
+[; ;EL04CLT.c: 461: {50,0x1A00,0x6000,0x1F4,0xFFBC,3},
+[; ;EL04CLT.c: 462: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 463: },
+[; ;EL04CLT.c: 467: {
+[; ;EL04CLT.c: 468: {45,0x6000,0x2100,0x1CC,0x08A,-3},
+[; ;EL04CLT.c: 469: {50,0x6000,0x1A00,0x172,0x08A,-3},
+[; ;EL04CLT.c: 470: {40,0x3600,0x2700,0x1D6,0x08A,-2},
+[; ;EL04CLT.c: 471: {45,0x3200,0x2500,0x168,0x08A,-2},
+[; ;EL04CLT.c: 472: {50,0x2900,0x2200,0x0DC,0x08A,-2},
+[; ;EL04CLT.c: 473: {55,0x2700,0x2100,0x0BE,0x08A,-2},
+[; ;EL04CLT.c: 474: {60,0x2500,0x1A00,0x08C,0x08A,-2},
+[; ;EL04CLT.c: 475: {40,0x3600,0x2900,0x26C,0x08A,-1},
+[; ;EL04CLT.c: 476: {45,0x3200,0x2700,0x1C2,0x08A,-1},
+[; ;EL04CLT.c: 477: {50,0x2900,0x2500,0x12C,0x08A,-1},
+[; ;EL04CLT.c: 478: {55,0x2700,0x2200,0x0F0,0x08A,-1},
+[; ;EL04CLT.c: 479: {60,0x2500,0x2100,0x0A0,0x08A,-1},
+[; ;EL04CLT.c: 480: {40,0x3200,0x3200,0x384,0x08A,0},
+[; ;EL04CLT.c: 481: {45,0x2900,0x2900,0x190,0x08A,0},
+[; ;EL04CLT.c: 482: {50,0x2700,0x2700,0x122,0x08A,0},
+[; ;EL04CLT.c: 483: {55,0x2500,0x2500,0x0DC,0x08A,0},
+[; ;EL04CLT.c: 484: {60,0x2200,0x2200,0x08C,0x08A,0},
+[; ;EL04CLT.c: 485: {65,0x2100,0x2100,0x078,0x08A,0},
+[; ;EL04CLT.c: 486: {40,0x2900,0x3600,0x334,0x08A,1},
+[; ;EL04CLT.c: 487: {45,0x2700,0x3200,0x26C,0x08A,1},
+[; ;EL04CLT.c: 488: {50,0x2500,0x2900,0x12C,0x08A,1},
+[; ;EL04CLT.c: 489: {55,0x2200,0x2700,0x0C8,0x08A,1},
+[; ;EL04CLT.c: 490: {60,0x2100,0x2500,0x08C,0x08A,1},
+[; ;EL04CLT.c: 491: {65,0x1A00,0x2200,0x078,0x08A,1},
+[; ;EL04CLT.c: 492: {40,0x2700,0x3600,0x2F8,0x08A,2},
+[; ;EL04CLT.c: 493: {45,0x2500,0x3200,0x230,0x08A,2},
+[; ;EL04CLT.c: 494: {50,0x2200,0x2900,0x0F0,0x08A,2},
+[; ;EL04CLT.c: 495: {55,0x2100,0x2700,0x0A0,0x08A,2},
+[; ;EL04CLT.c: 496: {60,0x1A00,0x2500,0x078,0x08A,2},
+[; ;EL04CLT.c: 497: {45,0x2100,0x6000,0x384,0x08A,3},
+[; ;EL04CLT.c: 498: {50,0x1A00,0x6000,0x1F4,0x08A,3},
+[; ;EL04CLT.c: 499: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 500: },
+[; ;EL04CLT.c: 504: {
+[; ;EL04CLT.c: 505: {45,0x6000,0x2100,0x1D6,0x116,-3},
+[; ;EL04CLT.c: 506: {50,0x6000,0x1A00,0x17C,0x116,-3},
+[; ;EL04CLT.c: 507: {40,0x3600,0x2700,0x1E0,0x116,-2},
+[; ;EL04CLT.c: 508: {45,0x3200,0x2500,0x172,0x116,-2},
+[; ;EL04CLT.c: 509: {50,0x2900,0x2200,0x0E6,0x116,-2},
+[; ;EL04CLT.c: 510: {55,0x2700,0x2100,0x0C8,0x116,-2},
+[; ;EL04CLT.c: 511: {60,0x2500,0x1A00,0x096,0x116,-2},
+[; ;EL04CLT.c: 512: {40,0x3600,0x2900,0x276,0x116,-1},
+[; ;EL04CLT.c: 513: {45,0x3200,0x2700,0x1CC,0x116,-1},
+[; ;EL04CLT.c: 514: {50,0x2900,0x2500,0x136,0x116,-1},
+[; ;EL04CLT.c: 515: {55,0x2700,0x2200,0x0FA,0x116,-1},
+[; ;EL04CLT.c: 516: {60,0x2500,0x2100,0x0AA,0x116,-1},
+[; ;EL04CLT.c: 517: {40,0x3200,0x3200,0x38E,0x116,0},
+[; ;EL04CLT.c: 518: {45,0x2900,0x2900,0x19A,0x116,0},
+[; ;EL04CLT.c: 519: {50,0x2700,0x2700,0x12C,0x116,0},
+[; ;EL04CLT.c: 520: {55,0x2500,0x2500,0x0E6,0x116,0},
+[; ;EL04CLT.c: 521: {60,0x2200,0x2200,0x096,0x116,0},
+[; ;EL04CLT.c: 522: {65,0x2100,0x2100,0x082,0x116,0},
+[; ;EL04CLT.c: 523: {40,0x2900,0x3600,0x33E,0x116,1},
+[; ;EL04CLT.c: 524: {45,0x2700,0x3200,0x276,0x116,1},
+[; ;EL04CLT.c: 525: {50,0x2500,0x2900,0x136,0x116,1},
+[; ;EL04CLT.c: 526: {55,0x2200,0x2700,0x0D2,0x116,1},
+[; ;EL04CLT.c: 527: {60,0x2100,0x2500,0x096,0x116,1},
+[; ;EL04CLT.c: 528: {65,0x1A00,0x2200,0x082,0x116,1},
+[; ;EL04CLT.c: 529: {40,0x2700,0x3600,0x302,0x116,2},
+[; ;EL04CLT.c: 530: {45,0x2500,0x3200,0x23A,0x116,2},
+[; ;EL04CLT.c: 531: {50,0x2200,0x2900,0x0FA,0x116,2},
+[; ;EL04CLT.c: 532: {55,0x2100,0x2700,0x0AA,0x116,2},
+[; ;EL04CLT.c: 533: {60,0x1A00,0x2500,0x082,0x116,2},
+[; ;EL04CLT.c: 534: {45,0x2100,0x6000,0x38E,0x116,3},
+[; ;EL04CLT.c: 535: {50,0x1A00,0x6000,0x1FE,0x116,3},
+[; ;EL04CLT.c: 536: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 537: },
+[; ;EL04CLT.c: 541: {
+[; ;EL04CLT.c: 542: {40,0x6000,0x2500,0x29E,0x1A2,-3},
+[; ;EL04CLT.c: 543: {45,0x6000,0x2100,0x1E0,0x1A2,-3},
+[; ;EL04CLT.c: 544: {50,0x6000,0x1A00,0x186,0x1A2,-3},
+[; ;EL04CLT.c: 545: {40,0x3600,0x2700,0x1EA,0x1A2,-2},
+[; ;EL04CLT.c: 546: {45,0x3200,0x2500,0x17C,0x1A2,-2},
+[; ;EL04CLT.c: 547: {50,0x2900,0x2200,0x0F0,0x1A2,-2},
+[; ;EL04CLT.c: 548: {55,0x2700,0x2100,0x0D2,0x1A2,-2},
+[; ;EL04CLT.c: 549: {60,0x2500,0x1A00,0x0A0,0x1A2,-2},
+[; ;EL04CLT.c: 550: {40,0x3600,0x2900,0x280,0x1A2,-1},
+[; ;EL04CLT.c: 551: {45,0x3200,0x2700,0x1D6,0x1A2,-1},
+[; ;EL04CLT.c: 552: {50,0x2900,0x2500,0x140,0x1A2,-1},
+[; ;EL04CLT.c: 553: {55,0x2700,0x2200,0x104,0x1A2,-1},
+[; ;EL04CLT.c: 554: {60,0x2500,0x2100,0x0B4,0x1A2,-1},
+[; ;EL04CLT.c: 555: {65,0x2200,0x1A00,0x08C,0x1A2,-1},
+[; ;EL04CLT.c: 556: {40,0x3200,0x3200,0x398,0x1A2,0},
+[; ;EL04CLT.c: 557: {45,0x2900,0x2900,0x1A4,0x1A2,0},
+[; ;EL04CLT.c: 558: {50,0x2700,0x2700,0x136,0x1A2,0},
+[; ;EL04CLT.c: 559: {55,0x2500,0x2500,0x0F0,0x1A2,0},
+[; ;EL04CLT.c: 560: {60,0x2200,0x2200,0x0A0,0x1A2,0},
+[; ;EL04CLT.c: 561: {65,0x2100,0x2100,0x08C,0x1A2,0},
+[; ;EL04CLT.c: 562: {40,0x2900,0x3600,0x348,0x1A2,1},
+[; ;EL04CLT.c: 563: {45,0x2700,0x3200,0x280,0x1A2,1},
+[; ;EL04CLT.c: 564: {50,0x2500,0x2900,0x140,0x1A2,1},
+[; ;EL04CLT.c: 565: {55,0x2200,0x2700,0x0DC,0x1A2,1},
+[; ;EL04CLT.c: 566: {60,0x2100,0x2500,0x0A0,0x1A2,1},
+[; ;EL04CLT.c: 567: {65,0x1A00,0x2200,0x08C,0x1A2,1},
+[; ;EL04CLT.c: 568: {40,0x2700,0x3600,0x30C,0x1A2,2},
+[; ;EL04CLT.c: 569: {45,0x2500,0x3200,0x244,0x1A2,2},
+[; ;EL04CLT.c: 570: {50,0x2200,0x2900,0x104,0x1A2,2},
+[; ;EL04CLT.c: 571: {55,0x2100,0x2700,0x0B4,0x1A2,2},
+[; ;EL04CLT.c: 572: {60,0x1A00,0x2500,0x08C,0x1A2,2},
+[; ;EL04CLT.c: 573: {45,0x2100,0x6000,0x398,0x1A2,3},
+[; ;EL04CLT.c: 574: {50,0x1A00,0x6000,0x208,0x1A2,3},
+[; ;EL04CLT.c: 575: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 576: },
+[; ;EL04CLT.c: 580: {
+[; ;EL04CLT.c: 581: {35,0x6000,0x2800,0x320,0xFE84,-3},
+[; ;EL04CLT.c: 582: {40,0x6000,0x2500,0x1E0,0xFE84,-3},
+[; ;EL04CLT.c: 583: {45,0x6000,0x2100,0x17C,0xFE84,-3},
+[; ;EL04CLT.c: 584: {50,0x6000,0x1A00,0x17C,0xFE84,-3},
+[; ;EL04CLT.c: 585: {35,0x4000,0x2900,0x208,0xFE84,-2},
+[; ;EL04CLT.c: 586: {40,0x3600,0x2700,0x190,0xFE84,-2},
+[; ;EL04CLT.c: 587: {45,0x3200,0x2500,0x12C,0xFE84,-2},
+[; ;EL04CLT.c: 588: {35,0x4000,0x3200,0x474,0xFE84,-1},
+[; ;EL04CLT.c: 589: {40,0x3600,0x2900,0x1CC,0xFE84,-1},
+[; ;EL04CLT.c: 590: {45,0x3200,0x2700,0x168,0xFE84,-1},
+[; ;EL04CLT.c: 591: {50,0x2900,0x2500,0x118,0xFE84,-1},
+[; ;EL04CLT.c: 592: {55,0x2700,0x2200,0x0DC,0xFE84,-1},
+[; ;EL04CLT.c: 593: {35,0x3600,0x3600,0x424,0xFE84,0},
+[; ;EL04CLT.c: 594: {40,0x3200,0x3200,0x30C,0xFE84,0},
+[; ;EL04CLT.c: 595: {45,0x2900,0x2900,0x168,0xFE84,0},
+[; ;EL04CLT.c: 596: {50,0x2700,0x2700,0x104,0xFE84,0},
+[; ;EL04CLT.c: 597: {55,0x2500,0x2500,0x0B4,0xFE84,0},
+[; ;EL04CLT.c: 598: {35,0x3200,0x4000,0x474,0xFE84,1},
+[; ;EL04CLT.c: 599: {40,0x2900,0x3600,0x2BC,0xFE84,1},
+[; ;EL04CLT.c: 600: {45,0x2700,0x3200,0x230,0xFE84,1},
+[; ;EL04CLT.c: 601: {50,0x2500,0x2900,0x104,0xFE84,1},
+[; ;EL04CLT.c: 602: {55,0x2200,0x2700,0x0A0,0xFE84,1},
+[; ;EL04CLT.c: 603: {35,0x2900,0x4000,0x398,0xFE84,2},
+[; ;EL04CLT.c: 604: {40,0x2700,0x3600,0x294,0xFE84,2},
+[; ;EL04CLT.c: 605: {45,0x2500,0x3200,0x1F4,0xFE84,2},
+[; ;EL04CLT.c: 606: {50,0x2200,0x2900,0x0C8,0xFE84,2},
+[; ;EL04CLT.c: 607: {40,0x2500,0x6000,0x438,0xFE84,3},
+[; ;EL04CLT.c: 608: {45,0x2100,0x6000,0x2E4,0xFE84,3},
+[; ;EL04CLT.c: 609: {50,0x1A00,0x6000,0x190,0xFE84,3},
+[; ;EL04CLT.c: 610: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 611: },
+[; ;EL04CLT.c: 615: {
+[; ;EL04CLT.c: 616: {35,0x6000,0x2800,0x316,0xFF1C,-3},
+[; ;EL04CLT.c: 617: {40,0x6000,0x2500,0x1D6,0xFF1C,-3},
+[; ;EL04CLT.c: 618: {45,0x6000,0x2100,0x172,0xFF1C,-3},
+[; ;EL04CLT.c: 619: {50,0x6000,0x1A00,0x172,0xFF1C,-3},
+[; ;EL04CLT.c: 620: {35,0x4000,0x2900,0x1FE,0xFF1C,-2},
+[; ;EL04CLT.c: 621: {40,0x3600,0x2700,0x186,0xFF1C,-2},
+[; ;EL04CLT.c: 622: {45,0x3200,0x2500,0x122,0xFF1C,-2},
+[; ;EL04CLT.c: 623: {50,0x2900,0x2200,0x0D2,0xFF1C,-2},
+[; ;EL04CLT.c: 624: {35,0x4000,0x3200,0x46A,0xFF1C,-1},
+[; ;EL04CLT.c: 625: {40,0x3600,0x2900,0x1C2,0xFF1C,-1},
+[; ;EL04CLT.c: 626: {45,0x3200,0x2700,0x15E,0xFF1C,-1},
+[; ;EL04CLT.c: 627: {50,0x2900,0x2500,0x10E,0xFF1C,-1},
+[; ;EL04CLT.c: 628: {35,0x3600,0x3600,0x41A,0xFF1C,0},
+[; ;EL04CLT.c: 629: {40,0x3200,0x3200,0x302,0xFF1C,0},
+[; ;EL04CLT.c: 630: {45,0x2900,0x2900,0x15E,0xFF1C,0},
+[; ;EL04CLT.c: 631: {50,0x2700,0x2700,0x0FA,0xFF1C,0},
+[; ;EL04CLT.c: 632: {55,0x2500,0x2500,0x0AA,0xFF1C,0},
+[; ;EL04CLT.c: 633: {40,0x2900,0x3600,0x2B2,0xFF1C,1},
+[; ;EL04CLT.c: 634: {45,0x2700,0x3200,0x226,0xFF1C,1},
+[; ;EL04CLT.c: 635: {50,0x2500,0x2900,0x0FA,0xFF1C,1},
+[; ;EL04CLT.c: 636: {35,0x2900,0x4000,0x38E,0xFF1C,2},
+[; ;EL04CLT.c: 637: {40,0x2700,0x3600,0x28A,0xFF1C,2},
+[; ;EL04CLT.c: 638: {45,0x2500,0x3200,0x1EA,0xFF1C,2},
+[; ;EL04CLT.c: 639: {35,0x2800,0x6000,0x47E,0xFF1C,3},
+[; ;EL04CLT.c: 640: {40,0x2500,0x6000,0x42E,0xFF1C,3},
+[; ;EL04CLT.c: 641: {45,0x2100,0x6000,0x2DA,0xFF1C,3},
+[; ;EL04CLT.c: 642: {50,0x1A00,0x6000,0x186,0xFF1C,3},
+[; ;EL04CLT.c: 643: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 644: },
+[; ;EL04CLT.c: 648: {
+[; ;EL04CLT.c: 649: {40,0x6000,0x2500,0x1CC,0xFFB8,-3},
+[; ;EL04CLT.c: 650: {45,0x6000,0x2100,0x168,0xFFB8,-3},
+[; ;EL04CLT.c: 651: {50,0x6000,0x1A00,0x168,0xFFB8,-3},
+[; ;EL04CLT.c: 652: {40,0x4500,0x2900,0x17C,0xFFB8,-2},
+[; ;EL04CLT.c: 653: {45,0x4000,0x2700,0x118,0xFFB8,-2},
+[; ;EL04CLT.c: 654: {50,0x3600,0x2500,0x0C8,0xFFB8,-2},
+[; ;EL04CLT.c: 655: {55,0x3200,0x2200,0x0B4,0xFFB8,-2},
+[; ;EL04CLT.c: 656: {35,0x4500,0x3200,0x460,0xFFB8,-1},
+[; ;EL04CLT.c: 657: {40,0x4000,0x2900,0x1B8,0xFFB8,-1},
+[; ;EL04CLT.c: 658: {45,0x3600,0x2700,0x154,0xFFB8,-1},
+[; ;EL04CLT.c: 659: {50,0x3200,0x2500,0x104,0xFFB8,-1},
+[; ;EL04CLT.c: 660: {55,0x2900,0x2200,0x0C8,0xFFB8,-1},
+[; ;EL04CLT.c: 661: {35,0x3600,0x3600,0x410,0xFFB8,0},
+[; ;EL04CLT.c: 662: {40,0x3200,0x3200,0x2F8,0xFFB8,0},
+[; ;EL04CLT.c: 663: {45,0x2900,0x2900,0x154,0xFFB8,0},
+[; ;EL04CLT.c: 664: {50,0x2700,0x2700,0x0F0,0xFFB8,0},
+[; ;EL04CLT.c: 665: {55,0x2500,0x2500,0x0A0,0xFFB8,0},
+[; ;EL04CLT.c: 666: {40,0x2900,0x4000,0x2A8,0xFFB8,1},
+[; ;EL04CLT.c: 667: {45,0x2700,0x3600,0x21C,0xFFB8,1},
+[; ;EL04CLT.c: 668: {50,0x2500,0x3200,0x0F0,0xFFB8,1},
+[; ;EL04CLT.c: 669: {55,0x2200,0x2900,0x08C,0xFFB8,1},
+[; ;EL04CLT.c: 670: {40,0x2700,0x3600,0x280,0xFFB8,2},
+[; ;EL04CLT.c: 671: {45,0x2700,0x4000,0x1E0,0xFFB8,2},
+[; ;EL04CLT.c: 672: {50,0x2500,0x3600,0x0B4,0xFFB8,2},
+[; ;EL04CLT.c: 673: {55,0x2200,0x3200,0x078,0xFFB8,2},
+[; ;EL04CLT.c: 674: {50,0x1A00,0x6000,0x17C,0xFFB8,3},
+[; ;EL04CLT.c: 675: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 676: },
+[; ;EL04CLT.c: 680: {
+[; ;EL04CLT.c: 681: {35,0x6000,0x2800,0x30C,0x096,-3},
+[; ;EL04CLT.c: 682: {40,0x6000,0x2500,0x1CC,0x096,-3},
+[; ;EL04CLT.c: 683: {45,0x6000,0x2100,0x168,0x096,-3},
+[; ;EL04CLT.c: 684: {50,0x6000,0x1A00,0x168,0x096,-3},
+[; ;EL04CLT.c: 685: {35,0x4000,0x2900,0x1F4,0x096,-2},
+[; ;EL04CLT.c: 686: {40,0x3600,0x2700,0x17C,0x096,-2},
+[; ;EL04CLT.c: 687: {45,0x3200,0x2500,0x118,0x096,-2},
+[; ;EL04CLT.c: 688: {50,0x2900,0x2200,0x0C8,0x096,-2},
+[; ;EL04CLT.c: 689: {35,0x4000,0x3200,0x460,0x096,-1},
+[; ;EL04CLT.c: 690: {40,0x3600,0x2900,0x1B8,0x096,-1},
+[; ;EL04CLT.c: 691: {45,0x3200,0x2700,0x154,0x096,-1},
+[; ;EL04CLT.c: 692: {50,0x2900,0x2500,0x104,0x096,-1},
+[; ;EL04CLT.c: 693: {35,0x3600,0x3600,0x410,0x096,0},
+[; ;EL04CLT.c: 694: {40,0x3200,0x3200,0x2F8,0x096,0},
+[; ;EL04CLT.c: 695: {45,0x2900,0x2900,0x154,0x096,0},
+[; ;EL04CLT.c: 696: {50,0x2700,0x2700,0x0F0,0x096,0},
+[; ;EL04CLT.c: 697: {55,0x2500,0x2500,0x0A0,0x096,0},
+[; ;EL04CLT.c: 698: {40,0x2900,0x3600,0x2A8,0x096,1},
+[; ;EL04CLT.c: 699: {45,0x2700,0x3200,0x21C,0x096,1},
+[; ;EL04CLT.c: 700: {50,0x2500,0x2900,0x0F0,0x096,1},
+[; ;EL04CLT.c: 701: {55,0x2200,0x2700,0x08C,0x096,1},
+[; ;EL04CLT.c: 702: {40,0x2700,0x3600,0x280,0x096,2},
+[; ;EL04CLT.c: 703: {45,0x2500,0x3200,0x1E0,0x096,2},
+[; ;EL04CLT.c: 704: {50,0x2200,0x2900,0x0B4,0x096,2},
+[; ;EL04CLT.c: 705: {45,0x2100,0x6000,0x2D0,0x096,3},
+[; ;EL04CLT.c: 706: {50,0x1A00,0x6000,0x17C,0x096,3},
+[; ;EL04CLT.c: 707: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 708: },
+[; ;EL04CLT.c: 712: {
+[; ;EL04CLT.c: 713: {35,0x6000,0x2800,0x316,0x130,-3},
+[; ;EL04CLT.c: 714: {40,0x6000,0x2500,0x1D6,0x130,-3},
+[; ;EL04CLT.c: 715: {45,0x6000,0x2100,0x172,0x130,-3},
+[; ;EL04CLT.c: 716: {50,0x6000,0x1A00,0x172,0x130,-3},
+[; ;EL04CLT.c: 717: {35,0x4000,0x2900,0x1FE,0x130,-2},
+[; ;EL04CLT.c: 718: {40,0x3600,0x2700,0x186,0x130,-2},
+[; ;EL04CLT.c: 719: {45,0x3200,0x2500,0x122,0x130,-2},
+[; ;EL04CLT.c: 720: {50,0x2900,0x2200,0x0D2,0x130,-2},
+[; ;EL04CLT.c: 721: {35,0x4000,0x3200,0x46A,0x130,-1},
+[; ;EL04CLT.c: 722: {40,0x3600,0x2900,0x1C2,0x130,-1},
+[; ;EL04CLT.c: 723: {45,0x3200,0x2700,0x15E,0x130,-1},
+[; ;EL04CLT.c: 724: {50,0x2900,0x2500,0x10E,0x130,-1},
+[; ;EL04CLT.c: 725: {35,0x3600,0x3600,0x41A,0x130,0},
+[; ;EL04CLT.c: 726: {40,0x3200,0x3200,0x302,0x130,0},
+[; ;EL04CLT.c: 727: {45,0x2900,0x2900,0x15E,0x130,0},
+[; ;EL04CLT.c: 728: {50,0x2700,0x2700,0x0FA,0x130,0},
+[; ;EL04CLT.c: 729: {55,0x2500,0x2500,0x0AA,0x130,0},
+[; ;EL04CLT.c: 730: {40,0x2900,0x3600,0x2B2,0x130,1},
+[; ;EL04CLT.c: 731: {45,0x2700,0x3200,0x226,0x130,1},
+[; ;EL04CLT.c: 732: {50,0x2500,0x2900,0x0FA,0x130,1},
+[; ;EL04CLT.c: 733: {35,0x2900,0x4000,0x38E,0x130,2},
+[; ;EL04CLT.c: 734: {40,0x2700,0x3600,0x28A,0x130,2},
+[; ;EL04CLT.c: 735: {45,0x2500,0x3200,0x1EA,0x130,2},
+[; ;EL04CLT.c: 736: {35,0x2800,0x6000,0x47E,0x130,3},
+[; ;EL04CLT.c: 737: {40,0x2500,0x6000,0x42E,0x130,3},
+[; ;EL04CLT.c: 738: {45,0x2100,0x6000,0x2DA,0x130,3},
+[; ;EL04CLT.c: 739: {50,0x1A00,0x6000,0x186,0x130,3},
+[; ;EL04CLT.c: 740: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 741: },
+[; ;EL04CLT.c: 745: {
+[; ;EL04CLT.c: 746: {35,0x6000,0x2800,0x320,0x1C8,-3},
+[; ;EL04CLT.c: 747: {40,0x6000,0x2500,0x1E0,0x1C8,-3},
+[; ;EL04CLT.c: 748: {45,0x6000,0x2100,0x17C,0x1C8,-3},
+[; ;EL04CLT.c: 749: {50,0x6000,0x1A00,0x17C,0x1C8,-3},
+[; ;EL04CLT.c: 750: {35,0x4000,0x2900,0x208,0x1C8,-2},
+[; ;EL04CLT.c: 751: {40,0x3600,0x2700,0x190,0x1C8,-2},
+[; ;EL04CLT.c: 752: {45,0x3200,0x2500,0x12C,0x1C8,-2},
+[; ;EL04CLT.c: 753: {35,0x4000,0x3200,0x474,0x1C8,-1},
+[; ;EL04CLT.c: 754: {40,0x3600,0x2900,0x1CC,0x1C8,-1},
+[; ;EL04CLT.c: 755: {45,0x3200,0x2700,0x168,0x1C8,-1},
+[; ;EL04CLT.c: 756: {50,0x2900,0x2500,0x118,0x1C8,-1},
+[; ;EL04CLT.c: 757: {55,0x2700,0x2200,0x0DC,0x1C8,-1},
+[; ;EL04CLT.c: 758: {35,0x3600,0x3600,0x424,0x1C8,0},
+[; ;EL04CLT.c: 759: {40,0x3200,0x3200,0x30C,0x1C8,0},
+[; ;EL04CLT.c: 760: {45,0x2900,0x2900,0x168,0x1C8,0},
+[; ;EL04CLT.c: 761: {50,0x2700,0x2700,0x104,0x1C8,0},
+[; ;EL04CLT.c: 762: {55,0x2500,0x2500,0x0B4,0x1C8,0},
+[; ;EL04CLT.c: 763: {35,0x3200,0x4000,0x474,0x1C8,1},
+[; ;EL04CLT.c: 764: {40,0x2900,0x3600,0x2BC,0x1C8,1},
+[; ;EL04CLT.c: 765: {45,0x2700,0x3200,0x230,0x1C8,1},
+[; ;EL04CLT.c: 766: {50,0x2500,0x2900,0x104,0x1C8,1},
+[; ;EL04CLT.c: 767: {55,0x2200,0x2700,0x0A0,0x1C8,1},
+[; ;EL04CLT.c: 768: {35,0x2900,0x4000,0x398,0x1C8,2},
+[; ;EL04CLT.c: 769: {40,0x2700,0x3600,0x294,0x1C8,2},
+[; ;EL04CLT.c: 770: {45,0x2500,0x3200,0x1F4,0x1C8,2},
+[; ;EL04CLT.c: 771: {50,0x2200,0x2900,0x0C8,0x1C8,2},
+[; ;EL04CLT.c: 772: {40,0x2500,0x6000,0x438,0x1C8,3},
+[; ;EL04CLT.c: 773: {45,0x2100,0x6000,0x2E4,0x1C8,3},
+[; ;EL04CLT.c: 774: {50,0x1A00,0x6000,0x190,0x1C8,3},
+[; ;EL04CLT.c: 775: {0,0,0,0,0,0},
+[; ;EL04CLT.c: 776: },
+[; ;EL04CLT.c: 777: };
+"788
+[v _grinder_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _grinder_locs
+:U ..
+:U ..
+"792
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 770 `i `us
+-> -> 65328 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"793
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 770 `i `us
+-> -> 278 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"794
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 770 `i `us
+-> -> 65328 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"795
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 640 `i `us
+-> -> 126 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"796
+-> -> 45 `i `uc
+-> -> 9984 `i `us
+-> -> 12800 `i `us
+-> -> 720 `i `us
+-> -> 384 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"797
+-> -> 35 `i `uc
+-> -> 13824 `i `us
+-> -> 13824 `i `us
+-> -> 1060 `i `us
+-> -> 65156 `ui `s
+-> -> 0 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 788: const struct el04_loc grinder_locs[] = {
+[; ;EL04CLT.c: 792: {40,0x2700,0x3600,0x302,0xFF30,2},
+[; ;EL04CLT.c: 793: {40,0x2700,0x3600,0x302,0x116,2},
+[; ;EL04CLT.c: 794: {40,0x2700,0x3600,0x302,0xFF30,2},
+[; ;EL04CLT.c: 795: {45,0x2500,0x3200,0x280,0x07E,2},
+[; ;EL04CLT.c: 796: {45,0x2700,0x3200,0x2D0,0x180,1},
+[; ;EL04CLT.c: 797: {35,0x3600,0x3600,0x424,0xFE84,0},
+[; ;EL04CLT.c: 798: };
+"802
+[v _power_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _power_locs
+:U ..
+:U ..
+"805
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 280 `i `us
+-> -> 65476 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"806
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 210 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"807
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 280 `i `us
+-> -> 126 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"808
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 310 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"809
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 350 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"810
+-> -> 35 `i `uc
+-> -> 13824 `i `us
+-> -> 13824 `i `us
+-> -> 740 `i `us
+-> -> 456 `i `s
+-> -> 0 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 802: const struct el04_loc power_locs[] = {
+[; ;EL04CLT.c: 805: {55,0x2200,0x2700,0x118,0xFFC4,1},
+[; ;EL04CLT.c: 806: {55,0x2200,0x2700,0x0D2,0xFF30,1},
+[; ;EL04CLT.c: 807: {55,0x2200,0x2700,0x118,0x007E,1},
+[; ;EL04CLT.c: 808: {50,0x2500,0x2900,0x136,0x116,1},
+[; ;EL04CLT.c: 809: {50,0x2700,0x2700,0x15E,0xFF40,0},
+[; ;EL04CLT.c: 810: {35,0x3600,0x3600,0x2E4,0x1C8,0},
+[; ;EL04CLT.c: 811: };
+"815
+[v _allcourt_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _allcourt_locs
+:U ..
+:U ..
+"818
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 280 `i `us
+-> -> 126 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"819
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 250 `i `us
+-> -> 278 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"820
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 340 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"821
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 400 `i `us
+-> -> 65344 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"822
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 10496 `i `us
+-> -> 520 `i `us
+-> -> 456 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"823
+-> -> 35 `i `uc
+-> -> 16384 `i `us
+-> -> 12800 `i `us
+-> -> 1120 `i `us
+-> -> 150 `i `s
+-> -U -> 1 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 815: const struct el04_loc allcourt_locs[] = {
+[; ;EL04CLT.c: 818: {55,0x2700,0x2200,0x118,0x07E,-1},
+[; ;EL04CLT.c: 819: {50,0x2200,0x2900,0x0FA,0x116,2},
+[; ;EL04CLT.c: 820: {50,0x2900,0x2500,0x154,0xFFC4,-1},
+[; ;EL04CLT.c: 821: {45,0x2500,0x3200,0x190,0xFF40,2},
+[; ;EL04CLT.c: 822: {35,0x4000,0x2900,0x208,0x1C8,-2},
+[; ;EL04CLT.c: 823: {35,0x4000,0x3200,0x460,0x096,-1},
+[; ;EL04CLT.c: 824: };
+"829
+[v _test_loc `CS9 ~T0 @X0 1 e ]
+[i _test_loc
+:U ..
+:U ..
+"832
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 665 `i `us
+-> -> 0 `i `s
+"833
+-> -> 0 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 829: const struct el04_loc test_loc = {
+[; ;EL04CLT.c: 832: 40,0x3200,0x3200,0x299,0x000,0
+[; ;EL04CLT.c: 833: };
+"837
+[v _home_loc `CS9 ~T0 @X0 1 e ]
+[i _home_loc
+:U ..
+:U ..
+"846
+-> -> 40 `i `uc
+-> -> 12800 `i `us
+-> -> 12800 `i `us
+-> -> 200 `i `us
+-> -> 0 `i `s
+"847
+-> -> 0 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 837: const struct el04_loc home_loc = {
+[; ;EL04CLT.c: 846: 40,0x3200,0x3200,200,0,0
+[; ;EL04CLT.c: 847: };
+"852
+[v _transition_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _transition_locs
+:U ..
+:U ..
+"855
+-> -> 60 `i `uc
+-> -> 6656 `i `us
+-> -> 9472 `i `us
+-> -> 160 `i `us
+-> -> 65230 `ui `s
+-> -> 2 `i `c
+..
+:U ..
+"856
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 330 `i `us
+-> -> 65344 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"857
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 260 `i `us
+-> -> 65308 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"858
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 260 `i `us
+-> -> 65216 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"859
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 220 `i `us
+-> -> 418 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"860
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 310 `i `us
+-> -> 256 `i `s
+-> -U -> 2 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 852: const struct el04_loc transition_locs[] = {
+[; ;EL04CLT.c: 855: {60,0x1A00,0x2500,0x00A0,0xFECE,2},
+[; ;EL04CLT.c: 856: {50,0x2500,0x2900,0x014A,0xFF40,1},
+[; ;EL04CLT.c: 857: {50,0x2700,0x2700,0x0104,0xFF1C,0},
+[; ;EL04CLT.c: 858: {60,0x2500,0x2100,0x0104,0xFEC0,-1},
+[; ;EL04CLT.c: 859: {55,0x2700,0x2100,0x00DC,0x01A2,-2},
+[; ;EL04CLT.c: 860: {50,0x2900,0x2200,0x0136,0x0100,-2},
+[; ;EL04CLT.c: 861: };
+"865
+[v _attdef_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _attdef_locs
+:U ..
+:U ..
+"868
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 230 `i `us
+-> -> 65188 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"869
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 200 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"870
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 350 `i `us
+-> -> 65344 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"871
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 260 `i `us
+-> -> 65308 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"872
+-> -> 55 `i `uc
+-> -> 9472 `i `us
+-> -> 9472 `i `us
+-> -> 290 `i `us
+-> -> 256 `i `s
+-> -> 0 `i `c
+..
+:U ..
+"873
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 480 `i `us
+-> -> 304 `i `s
+-> -> 2 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 865: const struct el04_loc attdef_locs[] = {
+[; ;EL04CLT.c: 868: {55,0x2700,0x2100,0x00E6,0xFEA4,-2},
+[; ;EL04CLT.c: 869: {60,0x2500,0x2100,0x00C8,0x0116,-1},
+[; ;EL04CLT.c: 870: {50,0x2700,0x2700,0x015E,0xFF40,0},
+[; ;EL04CLT.c: 871: {50,0x2500,0x2900,0x0104,0xFF1C,1},
+[; ;EL04CLT.c: 872: {55,0x2500,0x2500,0x0122,0x0100,0},
+[; ;EL04CLT.c: 873: {45,0x2500,0x3200,0x01E0,0x0130,2},
+[; ;EL04CLT.c: 874: };
+"878
+[v _foreonly_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _foreonly_locs
+:U ..
+:U ..
+"881
+-> -> 60 `i `uc
+-> -> 8704 `i `us
+-> -> 8704 `i `us
+-> -> 200 `i `us
+-> -> 65216 `ui `s
+-> -> 0 `i `c
+..
+:U ..
+"882
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 180 `i `us
+-> -> 65328 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"883
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8448 `i `us
+-> -> 211 `i `us
+-> -> 278 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"884
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 6656 `i `us
+-> -> 200 `i `us
+-> -> 65328 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"885
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 290 `i `us
+-> -> 65344 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"886
+-> -> 50 `i `uc
+-> -> 9984 `i `us
+-> -> 9984 `i `us
+-> -> 260 `i `us
+-> -> 304 `i `s
+-> -> 0 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 878: const struct el04_loc foreonly_locs[] = {
+[; ;EL04CLT.c: 881: {60,0x2200,0x2200,0x00C8,0xFEC0,0},
+[; ;EL04CLT.c: 882: {60,0x2500,0x2100,0x00B4,0xFF30,-1},
+[; ;EL04CLT.c: 883: {55,0x2700,0x2100,0x00D3,0x0116,-2},
+[; ;EL04CLT.c: 884: {60,0x2500,0x1A00,0x00C8,0xFF30,-2},
+[; ;EL04CLT.c: 885: {55,0x2700,0x2200,0x0122,0xFF40,-1},
+[; ;EL04CLT.c: 886: {50,0x2700,0x2700,0x0104,0x0130,0},
+[; ;EL04CLT.c: 887: };
+"913
+[v _Beginner_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _Beginner_locs
+:U ..
+:U ..
+"916
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 680 `i `us
+-> -> 150 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"917
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 830 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"918
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 680 `i `us
+-> -> 150 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"919
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 680 `i `us
+-> -> 65464 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"920
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 820 `i `us
+-> -> 65468 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"921
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 820 `i `us
+-> -> 138 `i `s
+-> -> 1 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 913: const struct el04_loc Beginner_locs[] = {
+[; ;EL04CLT.c: 916: {40,0x2900,0x3600,0x2A8,0x096,1},
+[; ;EL04CLT.c: 917: {40,0x2900,0x3600,0x33E,0x116,1},
+[; ;EL04CLT.c: 918: {40,0x2900,0x3600,0x2A8,0x096,1},
+[; ;EL04CLT.c: 919: {40,0x2900,0x3600,0x2A8,0xFFB8,1},
+[; ;EL04CLT.c: 920: {40,0x2900,0x3600,0x334,0xFFBC,1},
+[; ;EL04CLT.c: 921: {40,0x2900,0x3600,0x334,0x08A,1},
+[; ;EL04CLT.c: 922: };
+"987
+[v _Intermediate_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _Intermediate_locs
+:U ..
+:U ..
+"990
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 270 `i `us
+-> -> 65476 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"991
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 240 `i `us
+-> -> 65308 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"992
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 260 `i `us
+-> -> 126 `i `s
+-> -U -> 2 `i `c
+..
+:U ..
+"993
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 230 `i `us
+-> -> 304 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"994
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 220 `i `us
+-> -> 65328 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"995
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 240 `i `us
+-> -> 278 `i `s
+-> -U -> 2 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 987: const struct el04_loc Intermediate_locs[] = {
+[; ;EL04CLT.c: 990: {50,0x2900,0x2200,0x10E,0xFFC4,-2},
+[; ;EL04CLT.c: 991: {50,0x2900,0x2500,0x0F0,0xFF1C,-1},
+[; ;EL04CLT.c: 992: {50,0x2900,0x2200,0x104,0x07E,-2},
+[; ;EL04CLT.c: 993: {50,0x2900,0x2500,0x0E6,0x130,-1},
+[; ;EL04CLT.c: 994: {50,0x2900,0x2200,0x0DC,0xFF30,-2},
+[; ;EL04CLT.c: 995: {50,0x2900,0x2200,0x0F0,0x116,-2},
+[; ;EL04CLT.c: 996: };
+"1061
+[v _Advanced_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _Advanced_locs
+:U ..
+:U ..
+"1064
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 660 `i `us
+-> -> 384 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"1065
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 230 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1066
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 260 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1067
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 290 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"1068
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 290 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1069
+-> -> 50 `i `uc
+-> -> 9472 `i `us
+-> -> 10496 `i `us
+-> -> 250 `i `us
+-> -> 65156 `ui `s
+-> -> 1 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 1061: const struct el04_loc Advanced_locs[] = {
+[; ;EL04CLT.c: 1064: {45,0x2500,0x3200,0x294,0x180,2},
+[; ;EL04CLT.c: 1065: {55,0x2700,0x2200,0x0E6,0x116,-1},
+[; ;EL04CLT.c: 1066: {55,0x2700,0x2200,0x104,0xFFC4,-1},
+[; ;EL04CLT.c: 1067: {50,0x2500,0x2900,0x122,0xFF30,1},
+[; ;EL04CLT.c: 1068: {50,0x2900,0x2500,0x122,0x116,-1},
+[; ;EL04CLT.c: 1069: {50,0x2500,0x2900,0x0FA,0xFE84,1},
+[; ;EL04CLT.c: 1070: };
+"1155
+[v _Moonballer_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _Moonballer_locs
+:U ..
+:U ..
+"1158
+-> -> 45 `i `uc
+-> -> 8448 `i `us
+-> -> 24576 `i `us
+-> -> 960 `i `us
+-> -> 65328 `ui `s
+-> -> 3 `i `c
+..
+:U ..
+"1159
+-> -> 40 `i `uc
+-> -> 9984 `i `us
+-> -> 13824 `i `us
+-> -> 770 `i `us
+-> -> 278 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"1160
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 830 `i `us
+-> -> 65328 `ui `s
+-> -> 1 `i `c
+..
+:U ..
+"1161
+-> -> 45 `i `uc
+-> -> 9472 `i `us
+-> -> 12800 `i `us
+-> -> 620 `i `us
+-> -> 126 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"1162
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 970 `i `us
+-> -> 384 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"1163
+-> -> 40 `i `uc
+-> -> 10496 `i `us
+-> -> 13824 `i `us
+-> -> 810 `i `us
+-> -> 138 `i `s
+-> -> 1 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 1155: const struct el04_loc Moonballer_locs[] = {
+[; ;EL04CLT.c: 1158: {45,0x2100,0x6000,0x3C0,0xFF30,3},
+[; ;EL04CLT.c: 1159: {40,0x2700,0x3600,0x302,0x116,2},
+[; ;EL04CLT.c: 1160: {40,0x2900,0x3600,0x33E,0xFF30,1},
+[; ;EL04CLT.c: 1161: {45,0x2500,0x3200,0x26C,0x07E,2},
+[; ;EL04CLT.c: 1162: {40,0x2900,0x3600,0x3CA,0x180,1},
+[; ;EL04CLT.c: 1163: {40,0x2900,0x3600,0x32A,0x08A,1},
+[; ;EL04CLT.c: 1164: };
+"1229
+[v _Slicer_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _Slicer_locs
+:U ..
+:U ..
+"1232
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 8704 `i `us
+-> -> 270 `i `us
+-> -> 65476 `ui `s
+-> -U -> 2 `i `c
+..
+:U ..
+"1233
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 220 `i `us
+-> -> 65328 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1234
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 210 `i `us
+-> -> 126 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1235
+-> -> 60 `i `uc
+-> -> 9472 `i `us
+-> -> 8448 `i `us
+-> -> 180 `i `us
+-> -> 278 `i `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1236
+-> -> 50 `i `uc
+-> -> 10496 `i `us
+-> -> 9472 `i `us
+-> -> 230 `i `us
+-> -> 65308 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1237
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9472 `i `us
+-> -> 250 `i `us
+-> -> 456 `i `s
+-> -U -> 2 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 1229: const struct el04_loc Slicer_locs[] = {
+[; ;EL04CLT.c: 1232: {50,0x2900,0x2200,0x10E,0xFFC4,-2},
+[; ;EL04CLT.c: 1233: {55,0x2700,0x2200,0x0DC,0xFF30,-1},
+[; ;EL04CLT.c: 1234: {60,0x2500,0x2100,0x0D2,0x07E,-1},
+[; ;EL04CLT.c: 1235: {60,0x2500,0x2100,0x0B4,0x116,-1},
+[; ;EL04CLT.c: 1236: {50,0x2900,0x2500,0x0E6,0xFF1C,-1},
+[; ;EL04CLT.c: 1237: {45,0x3200,0x2500,0x0FA,0x1C8,-2},
+[; ;EL04CLT.c: 1238: };
+"1312
+[v _Lefty_locs `CS9 ~T0 @X0 -> 0 `x e ]
+[i _Lefty_locs
+:U ..
+:U ..
+"1315
+-> -> 50 `i `uc
+-> -> 8704 `i `us
+-> -> 10496 `i `us
+-> -> 270 `i `us
+-> -> 384 `i `s
+-> -> 2 `i `c
+..
+:U ..
+"1316
+-> -> 55 `i `uc
+-> -> 8704 `i `us
+-> -> 9984 `i `us
+-> -> 150 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"1317
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 254 `i `us
+-> -> 65476 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1318
+-> -> 55 `i `uc
+-> -> 9984 `i `us
+-> -> 8704 `i `us
+-> -> 220 `i `us
+-> -> 65328 `ui `s
+-> -U -> 1 `i `c
+..
+:U ..
+"1319
+-> -> 60 `i `uc
+-> -> 8448 `i `us
+-> -> 9472 `i `us
+-> -> 120 `i `us
+-> -> 278 `i `s
+-> -> 1 `i `c
+..
+:U ..
+"1320
+-> -> 45 `i `uc
+-> -> 12800 `i `us
+-> -> 9984 `i `us
+-> -> 290 `i `us
+-> -> 65156 `ui `s
+-> -U -> 1 `i `c
+..
+..
+]
+[; ;EL04CLT.c: 1312: const struct el04_loc Lefty_locs[] = {
+[; ;EL04CLT.c: 1315: {50,0x2200,0x2900,0x10E,0x180,2},
+[; ;EL04CLT.c: 1316: {55,0x2200,0x2700,0x096,0x116,1},
+[; ;EL04CLT.c: 1317: {55,0x2700,0x2200,0x0FE,0xFFC4,-1},
+[; ;EL04CLT.c: 1318: {55,0x2700,0x2200,0x0DC,0xFF30,-1},
+[; ;EL04CLT.c: 1319: {60,0x2100,0x2500,0x078,0x116,1},
+[; ;EL04CLT.c: 1320: {45,0x3200,0x2700,0x122,0xFE84,-1},
+[; ;EL04CLT.c: 1321: };
+"1327
+[v _endofrom `Cuc ~T0 @X0 1 e ]
+[i _endofrom
+-> -> 0 `i `uc
+]
+[; ;EL04CLT.c: 1327: const char endofrom;

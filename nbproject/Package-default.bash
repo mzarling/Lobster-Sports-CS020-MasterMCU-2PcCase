@@ -10,9 +10,9 @@ CND_CONF=default
 CND_DISTDIR=dist
 TMPDIR=build/${CND_CONF}/${IMAGE_TYPE}/tmp-packaging
 TMPDIRNAME=tmp-packaging
-OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-OUTPUT_BASENAME=main.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
-PACKAGE_TOP_DIR=main/
+OUTPUT_PATH=dist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+OUTPUT_BASENAME=CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+PACKAGE_TOP_DIR=cs020mastermcu2pccase.x/
 
 # Functions
 function checkReturnCode
@@ -57,15 +57,15 @@ mkdir -p ${TMPDIR}
 
 # Copy files and create directories and links
 cd "${TOP}"
-makeDirectory ${TMPDIR}/main/bin
+makeDirectory ${TMPDIR}/cs020mastermcu2pccase.x/bin
 copyFileToTmpDir "${OUTPUT_PATH}" "${TMPDIR}/${PACKAGE_TOP_DIR}bin/${OUTPUT_BASENAME}" 0755
 
 
 # Generate tar file
 cd "${TOP}"
-rm -f ${CND_DISTDIR}/${CND_CONF}/package/main.tar
+rm -f ${CND_DISTDIR}/${CND_CONF}/package/cs020mastermcu2pccase.x.tar
 cd ${TMPDIR}
-tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/main.tar *
+tar -vcf ../../../../${CND_DISTDIR}/${CND_CONF}/package/cs020mastermcu2pccase.x.tar *
 checkReturnCode
 
 # Cleanup

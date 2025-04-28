@@ -10932,7 +10932,7 @@ else model_type = 2U;
 
 # 3593
 if (model_type == 2U) {
-lob_model = " ELITE GRAND IV ";
+lob_model = " ELITE GRAND 4  ";
 pp_maxloc = 0;
 lowbatt_msg = "Battery Depleted";
 lob_version = "Version 1.226.00";
@@ -10948,7 +10948,7 @@ BDM_TripPoint[0] = 393;
 
 }
 else if (model_type == 0U) {
-lob_model = " ELITE GRAND V  ";
+lob_model = " ELITE GRAND 5  ";
 pp_maxloc = 6;
 lowbatt_msg = "Battery Depleted";
 lob_version = "Version 1.226.00";
@@ -10964,7 +10964,7 @@ BDM_TripPoint[0] = 393;
 
 }
 else if (model_type == 1U) {
-lob_model = "ELITE GRAND V LE";
+lob_model = "ELITE GRAND 5 LE";
 pp_maxloc = 18;
 lowbatt_msg = "Battery Depleted";
 lob_version = "Version 1.226.00";
@@ -11015,7 +11015,7 @@ BDM_TripPoint[0] = 655;
 }
 
 else if (model_type == 4U) {
-lob_model = "ELITE GRAND V LE";
+lob_model = "ELITE GRAND 5 LE";
 pp_maxloc = 18;
 lowbatt_msg = "Battery Depleted";
 lob_version = "Version 1.226.00";

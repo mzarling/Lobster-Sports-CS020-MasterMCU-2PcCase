@@ -15227,7 +15227,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 "3593
 [e $ ! == -> _model_type `ui -> 2 `ui 1307  ]
 {
-[; ;master.c: 3594: lob_model = " ELITE GRAND IV ";
+[; ;master.c: 3594: lob_model = " ELITE GRAND 4  ";
 "3594
 [e = _lob_model :s 13C ]
 [; ;master.c: 3595: pp_maxloc = 0;
@@ -15260,7 +15260,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;master.c: 3609: else if (model_type == 0U) {
 [e $ ! == -> _model_type `ui -> 0 `ui 1309  ]
 {
-[; ;master.c: 3610: lob_model = " ELITE GRAND V  ";
+[; ;master.c: 3610: lob_model = " ELITE GRAND 5  ";
 "3610
 [e = _lob_model :s 16C ]
 [; ;master.c: 3611: pp_maxloc = 6;
@@ -15293,7 +15293,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;master.c: 3625: else if (model_type == 1U) {
 [e $ ! == -> _model_type `ui -> 1 `ui 1311  ]
 {
-[; ;master.c: 3626: lob_model = "ELITE GRAND V LE";
+[; ;master.c: 3626: lob_model = "ELITE GRAND 5 LE";
 "3626
 [e = _lob_model :s 19C ]
 [; ;master.c: 3627: pp_maxloc = 18;
@@ -15392,7 +15392,7 @@ Version 3.2 HI-TECH Software Intermediate Code
 [; ;master.c: 3688: else if (model_type == 4U) {
 [e $ ! == -> _model_type `ui -> 4 `ui 1317  ]
 {
-[; ;master.c: 3689: lob_model = "ELITE GRAND V LE";
+[; ;master.c: 3689: lob_model = "ELITE GRAND 5 LE";
 "3689
 [e = _lob_model :s 28C ]
 [; ;master.c: 3690: pp_maxloc = 18;
@@ -28141,8 +28141,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 45C 83 104 111 116 32 83 101 108 101 99 116 101 100 0 ]
 [a 144C 10 13 83 116 97 114 116 70 101 101 100 0 ]
 [a 142C 10 78 65 75 0 ]
-[a 19C 69 76 73 84 69 32 71 82 65 78 68 32 86 32 76 69 0 ]
-[a 28C 69 76 73 84 69 32 71 82 65 78 68 32 86 32 76 69 0 ]
+[a 19C 69 76 73 84 69 32 71 82 65 78 68 32 53 32 76 69 0 ]
+[a 28C 69 76 73 84 69 32 71 82 65 78 68 32 53 32 76 69 0 ]
 [a 58C 67 0 ]
 [a 108C 67 0 ]
 [a 113C 67 0 ]
@@ -28193,7 +28193,6 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 5C 10 13 66 117 105 108 100 67 109 100 40 83 67 95 88 49 41 0 ]
 [a 40C 76 111 119 33 0 ]
 [a 44C 67 117 115 116 111 109 32 68 114 105 108 108 32 0 ]
-[a 13C 32 69 76 73 84 69 32 71 82 65 78 68 32 73 86 32 0 ]
 [a 36C 10 13 87 97 107 101 85 112 32 101 108 101 118 95 99 111 114 114 46 115 32 61 32 0 ]
 [a 8C 10 13 97 114 103 32 61 32 0 ]
 [a 145C 10 13 98 97 108 108 95 102 101 101 100 32 61 32 0 ]
@@ -28223,7 +28222,8 @@ Version 3.2 HI-TECH Software Intermediate Code
 [a 103C 70 101 101 100 58 32 0 ]
 [a 23C 32 80 111 119 101 114 32 80 114 111 98 108 101 109 32 32 0 ]
 [a 26C 32 80 111 119 101 114 32 80 114 111 98 108 101 109 32 32 0 ]
-[a 16C 32 69 76 73 84 69 32 71 82 65 78 68 32 86 32 32 0 ]
+[a 16C 32 69 76 73 84 69 32 71 82 65 78 68 32 53 32 32 0 ]
+[a 13C 32 69 76 73 84 69 32 71 82 65 78 68 32 52 32 32 0 ]
 [a 25C 32 32 32 32 80 72 69 78 79 77 32 50 32 32 32 32 0 ]
 [a 22C 32 32 32 32 80 72 69 78 79 77 32 49 32 32 32 32 0 ]
 [a 141C 10 13 87 82 73 84 69 32 67 79 76 76 73 83 73 79 78 10 13 0 ]

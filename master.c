@@ -3591,7 +3591,7 @@ void main(void)
 
 // v1.185 start
 	if (model_type == EL04) {
-		lob_model = " ELITE GRAND IV ";
+		lob_model = " ELITE GRAND 4  ";
 		pp_maxloc = 0;
 		lowbatt_msg = "Battery Depleted";
 		lob_version	= "Version 1.226.00";	// Do not change this format or smartphone apps will not receive correct machine firmware version.
@@ -3607,7 +3607,7 @@ void main(void)
 // v1.216 end
 	}
 	else if (model_type == EL05) {
-		lob_model = " ELITE GRAND V  ";
+		lob_model = " ELITE GRAND 5  ";
 		pp_maxloc = 6; 
 		lowbatt_msg = "Battery Depleted";
 		lob_version	= "Version 1.226.00";	// Do not change this format or smartphone apps will not receive correct machine firmware version.
@@ -3623,7 +3623,7 @@ void main(void)
 // v1.216 end
 	}
 	else if (model_type == EL05LE) {
-		lob_model = "ELITE GRAND V LE";
+		lob_model = "ELITE GRAND 5 LE";
 		pp_maxloc = 18;
 		lowbatt_msg = "Battery Depleted";
 		lob_version	= "Version 1.226.00";	// Do not change this format or smartphone apps will not receive correct machine firmware version.
@@ -3686,7 +3686,7 @@ void main(void)
 	}
 // v1.199 end
 	else if (model_type == EL05LE2) {
-		lob_model = "ELITE GRAND V LE";
+		lob_model = "ELITE GRAND 5 LE";
 		pp_maxloc = 18;
 		lowbatt_msg = "Battery Depleted";
 		lob_version	= "Version 1.226.00";	// Do not change this format or smartphone apps will not receive correct machine firmware version.

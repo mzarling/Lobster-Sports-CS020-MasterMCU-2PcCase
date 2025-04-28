@@ -30,12 +30,12 @@ ifeq ($(TYPE_IMAGE), DEBUG_RUN)
 IMAGE_TYPE=debug
 OUTPUT_SUFFIX=elf
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 else
 IMAGE_TYPE=production
 OUTPUT_SUFFIX=hex
 DEBUGGABLE_SUFFIX=elf
-FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+FINAL_IMAGE=dist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 endif
 
 ifeq ($(COMPARE_BUILD), true)
@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=master.c lobstate.c keypad.c loblcd.c lobmain.c state_mach.c lobeeprom.c lobprog.c varinit.c lobparm.c lobpre.c diag.c loberr.c EL04CLT.c ringbuf.c ../xlcd/busyxlcd.c ../xlcd/openxlcd.c ../xlcd/putrxlcd.c ../xlcd/putsxlcd.c ../xlcd/readaddr.c ../xlcd/readdata.c ../xlcd/setcgram.c ../xlcd/setddram.c ../xlcd/wcmdxlcd.c ../xlcd/writdata.c
+SOURCEFILES_QUOTED_IF_SPACED=master.c lobstate.c keypad.c loblcd.c lobmain.c state_mach.c lobeeprom.c lobprog.c varinit.c lobparm.c lobpre.c diag.c loberr.c EL04CLT.c ringbuf.c ../CS020_MasterMCU/EL04/xlcd/busyxlcd.c ../CS020_MasterMCU/EL04/xlcd/openxlcd.c ../CS020_MasterMCU/EL04/xlcd/putrxlcd.c ../CS020_MasterMCU/EL04/xlcd/putsxlcd.c ../CS020_MasterMCU/EL04/xlcd/readaddr.c ../CS020_MasterMCU/EL04/xlcd/readdata.c ../CS020_MasterMCU/EL04/xlcd/setcgram.c ../CS020_MasterMCU/EL04/xlcd/setddram.c ../CS020_MasterMCU/EL04/xlcd/wcmdxlcd.c ../CS020_MasterMCU/EL04/xlcd/writdata.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/master.p1 ${OBJECTDIR}/lobstate.p1 ${OBJECTDIR}/keypad.p1 ${OBJECTDIR}/loblcd.p1 ${OBJECTDIR}/lobmain.p1 ${OBJECTDIR}/state_mach.p1 ${OBJECTDIR}/lobeeprom.p1 ${OBJECTDIR}/lobprog.p1 ${OBJECTDIR}/varinit.p1 ${OBJECTDIR}/lobparm.p1 ${OBJECTDIR}/lobpre.p1 ${OBJECTDIR}/diag.p1 ${OBJECTDIR}/loberr.p1 ${OBJECTDIR}/EL04CLT.p1 ${OBJECTDIR}/ringbuf.p1 ${OBJECTDIR}/_ext/760475324/busyxlcd.p1 ${OBJECTDIR}/_ext/760475324/openxlcd.p1 ${OBJECTDIR}/_ext/760475324/putrxlcd.p1 ${OBJECTDIR}/_ext/760475324/putsxlcd.p1 ${OBJECTDIR}/_ext/760475324/readaddr.p1 ${OBJECTDIR}/_ext/760475324/readdata.p1 ${OBJECTDIR}/_ext/760475324/setcgram.p1 ${OBJECTDIR}/_ext/760475324/setddram.p1 ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1 ${OBJECTDIR}/_ext/760475324/writdata.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/master.p1.d ${OBJECTDIR}/lobstate.p1.d ${OBJECTDIR}/keypad.p1.d ${OBJECTDIR}/loblcd.p1.d ${OBJECTDIR}/lobmain.p1.d ${OBJECTDIR}/state_mach.p1.d ${OBJECTDIR}/lobeeprom.p1.d ${OBJECTDIR}/lobprog.p1.d ${OBJECTDIR}/varinit.p1.d ${OBJECTDIR}/lobparm.p1.d ${OBJECTDIR}/lobpre.p1.d ${OBJECTDIR}/diag.p1.d ${OBJECTDIR}/loberr.p1.d ${OBJECTDIR}/EL04CLT.p1.d ${OBJECTDIR}/ringbuf.p1.d ${OBJECTDIR}/_ext/760475324/busyxlcd.p1.d ${OBJECTDIR}/_ext/760475324/openxlcd.p1.d ${OBJECTDIR}/_ext/760475324/putrxlcd.p1.d ${OBJECTDIR}/_ext/760475324/putsxlcd.p1.d ${OBJECTDIR}/_ext/760475324/readaddr.p1.d ${OBJECTDIR}/_ext/760475324/readdata.p1.d ${OBJECTDIR}/_ext/760475324/setcgram.p1.d ${OBJECTDIR}/_ext/760475324/setddram.p1.d ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1.d ${OBJECTDIR}/_ext/760475324/writdata.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/master.p1 ${OBJECTDIR}/lobstate.p1 ${OBJECTDIR}/keypad.p1 ${OBJECTDIR}/loblcd.p1 ${OBJECTDIR}/lobmain.p1 ${OBJECTDIR}/state_mach.p1 ${OBJECTDIR}/lobeeprom.p1 ${OBJECTDIR}/lobprog.p1 ${OBJECTDIR}/varinit.p1 ${OBJECTDIR}/lobparm.p1 ${OBJECTDIR}/lobpre.p1 ${OBJECTDIR}/diag.p1 ${OBJECTDIR}/loberr.p1 ${OBJECTDIR}/EL04CLT.p1 ${OBJECTDIR}/ringbuf.p1 ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1 ${OBJECTDIR}/_ext/1477896233/openxlcd.p1 ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1 ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1 ${OBJECTDIR}/_ext/1477896233/readaddr.p1 ${OBJECTDIR}/_ext/1477896233/readdata.p1 ${OBJECTDIR}/_ext/1477896233/setcgram.p1 ${OBJECTDIR}/_ext/1477896233/setddram.p1 ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1 ${OBJECTDIR}/_ext/1477896233/writdata.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/master.p1.d ${OBJECTDIR}/lobstate.p1.d ${OBJECTDIR}/keypad.p1.d ${OBJECTDIR}/loblcd.p1.d ${OBJECTDIR}/lobmain.p1.d ${OBJECTDIR}/state_mach.p1.d ${OBJECTDIR}/lobeeprom.p1.d ${OBJECTDIR}/lobprog.p1.d ${OBJECTDIR}/varinit.p1.d ${OBJECTDIR}/lobparm.p1.d ${OBJECTDIR}/lobpre.p1.d ${OBJECTDIR}/diag.p1.d ${OBJECTDIR}/loberr.p1.d ${OBJECTDIR}/EL04CLT.p1.d ${OBJECTDIR}/ringbuf.p1.d ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1.d ${OBJECTDIR}/_ext/1477896233/openxlcd.p1.d ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1.d ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1.d ${OBJECTDIR}/_ext/1477896233/readaddr.p1.d ${OBJECTDIR}/_ext/1477896233/readdata.p1.d ${OBJECTDIR}/_ext/1477896233/setcgram.p1.d ${OBJECTDIR}/_ext/1477896233/setddram.p1.d ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1.d ${OBJECTDIR}/_ext/1477896233/writdata.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/master.p1 ${OBJECTDIR}/lobstate.p1 ${OBJECTDIR}/keypad.p1 ${OBJECTDIR}/loblcd.p1 ${OBJECTDIR}/lobmain.p1 ${OBJECTDIR}/state_mach.p1 ${OBJECTDIR}/lobeeprom.p1 ${OBJECTDIR}/lobprog.p1 ${OBJECTDIR}/varinit.p1 ${OBJECTDIR}/lobparm.p1 ${OBJECTDIR}/lobpre.p1 ${OBJECTDIR}/diag.p1 ${OBJECTDIR}/loberr.p1 ${OBJECTDIR}/EL04CLT.p1 ${OBJECTDIR}/ringbuf.p1 ${OBJECTDIR}/_ext/760475324/busyxlcd.p1 ${OBJECTDIR}/_ext/760475324/openxlcd.p1 ${OBJECTDIR}/_ext/760475324/putrxlcd.p1 ${OBJECTDIR}/_ext/760475324/putsxlcd.p1 ${OBJECTDIR}/_ext/760475324/readaddr.p1 ${OBJECTDIR}/_ext/760475324/readdata.p1 ${OBJECTDIR}/_ext/760475324/setcgram.p1 ${OBJECTDIR}/_ext/760475324/setddram.p1 ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1 ${OBJECTDIR}/_ext/760475324/writdata.p1
+OBJECTFILES=${OBJECTDIR}/master.p1 ${OBJECTDIR}/lobstate.p1 ${OBJECTDIR}/keypad.p1 ${OBJECTDIR}/loblcd.p1 ${OBJECTDIR}/lobmain.p1 ${OBJECTDIR}/state_mach.p1 ${OBJECTDIR}/lobeeprom.p1 ${OBJECTDIR}/lobprog.p1 ${OBJECTDIR}/varinit.p1 ${OBJECTDIR}/lobparm.p1 ${OBJECTDIR}/lobpre.p1 ${OBJECTDIR}/diag.p1 ${OBJECTDIR}/loberr.p1 ${OBJECTDIR}/EL04CLT.p1 ${OBJECTDIR}/ringbuf.p1 ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1 ${OBJECTDIR}/_ext/1477896233/openxlcd.p1 ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1 ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1 ${OBJECTDIR}/_ext/1477896233/readaddr.p1 ${OBJECTDIR}/_ext/1477896233/readdata.p1 ${OBJECTDIR}/_ext/1477896233/setcgram.p1 ${OBJECTDIR}/_ext/1477896233/setddram.p1 ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1 ${OBJECTDIR}/_ext/1477896233/writdata.p1
 
 # Source Files
-SOURCEFILES=master.c lobstate.c keypad.c loblcd.c lobmain.c state_mach.c lobeeprom.c lobprog.c varinit.c lobparm.c lobpre.c diag.c loberr.c EL04CLT.c ringbuf.c ../xlcd/busyxlcd.c ../xlcd/openxlcd.c ../xlcd/putrxlcd.c ../xlcd/putsxlcd.c ../xlcd/readaddr.c ../xlcd/readdata.c ../xlcd/setcgram.c ../xlcd/setddram.c ../xlcd/wcmdxlcd.c ../xlcd/writdata.c
+SOURCEFILES=master.c lobstate.c keypad.c loblcd.c lobmain.c state_mach.c lobeeprom.c lobprog.c varinit.c lobparm.c lobpre.c diag.c loberr.c EL04CLT.c ringbuf.c ../CS020_MasterMCU/EL04/xlcd/busyxlcd.c ../CS020_MasterMCU/EL04/xlcd/openxlcd.c ../CS020_MasterMCU/EL04/xlcd/putrxlcd.c ../CS020_MasterMCU/EL04/xlcd/putsxlcd.c ../CS020_MasterMCU/EL04/xlcd/readaddr.c ../CS020_MasterMCU/EL04/xlcd/readdata.c ../CS020_MasterMCU/EL04/xlcd/setcgram.c ../CS020_MasterMCU/EL04/xlcd/setddram.c ../CS020_MasterMCU/EL04/xlcd/wcmdxlcd.c ../CS020_MasterMCU/EL04/xlcd/writdata.c
 
 
 
@@ -88,7 +88,7 @@ FIXDEPS=fixDeps
 ifneq ($(INFORMATION_MESSAGE), )
 	@echo $(INFORMATION_MESSAGE)
 endif
-	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
+	${MAKE}  -f nbproject/Makefile-default.mk dist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}
 
 MP_PROCESSOR_OPTION=18F6722
 # ------------------------------------------------------------------------------------
@@ -214,85 +214,85 @@ ${OBJECTDIR}/ringbuf.p1: ringbuf.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/ringbuf.d ${OBJECTDIR}/ringbuf.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ringbuf.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/busyxlcd.p1: ../xlcd/busyxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/busyxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/busyxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/busyxlcd.p1 ../xlcd/busyxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/busyxlcd.d ${OBJECTDIR}/_ext/760475324/busyxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/busyxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/busyxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/busyxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/busyxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/busyxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/busyxlcd.d ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/openxlcd.p1: ../xlcd/openxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/openxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/openxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/openxlcd.p1 ../xlcd/openxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/openxlcd.d ${OBJECTDIR}/_ext/760475324/openxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/openxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/openxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/openxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/openxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/openxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/openxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/openxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/openxlcd.d ${OBJECTDIR}/_ext/1477896233/openxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/openxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/putrxlcd.p1: ../xlcd/putrxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/putrxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/putrxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/putrxlcd.p1 ../xlcd/putrxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/putrxlcd.d ${OBJECTDIR}/_ext/760475324/putrxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/putrxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/putrxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/putrxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/putrxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/putrxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/putrxlcd.d ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/putsxlcd.p1: ../xlcd/putsxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/putsxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/putsxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/putsxlcd.p1 ../xlcd/putsxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/putsxlcd.d ${OBJECTDIR}/_ext/760475324/putsxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/putsxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/putsxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/putsxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/putsxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/putsxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/putsxlcd.d ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/readaddr.p1: ../xlcd/readaddr.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/readaddr.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/readaddr.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/readaddr.p1 ../xlcd/readaddr.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/readaddr.d ${OBJECTDIR}/_ext/760475324/readaddr.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/readaddr.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/readaddr.p1: ../CS020_MasterMCU/EL04/xlcd/readaddr.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/readaddr.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/readaddr.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/readaddr.p1 ../CS020_MasterMCU/EL04/xlcd/readaddr.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/readaddr.d ${OBJECTDIR}/_ext/1477896233/readaddr.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/readaddr.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/readdata.p1: ../xlcd/readdata.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/readdata.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/readdata.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/readdata.p1 ../xlcd/readdata.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/readdata.d ${OBJECTDIR}/_ext/760475324/readdata.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/readdata.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/readdata.p1: ../CS020_MasterMCU/EL04/xlcd/readdata.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/readdata.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/readdata.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/readdata.p1 ../CS020_MasterMCU/EL04/xlcd/readdata.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/readdata.d ${OBJECTDIR}/_ext/1477896233/readdata.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/readdata.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/setcgram.p1: ../xlcd/setcgram.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/setcgram.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/setcgram.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/setcgram.p1 ../xlcd/setcgram.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/setcgram.d ${OBJECTDIR}/_ext/760475324/setcgram.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/setcgram.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/setcgram.p1: ../CS020_MasterMCU/EL04/xlcd/setcgram.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/setcgram.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/setcgram.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/setcgram.p1 ../CS020_MasterMCU/EL04/xlcd/setcgram.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/setcgram.d ${OBJECTDIR}/_ext/1477896233/setcgram.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/setcgram.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/setddram.p1: ../xlcd/setddram.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/setddram.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/setddram.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/setddram.p1 ../xlcd/setddram.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/setddram.d ${OBJECTDIR}/_ext/760475324/setddram.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/setddram.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/setddram.p1: ../CS020_MasterMCU/EL04/xlcd/setddram.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/setddram.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/setddram.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/setddram.p1 ../CS020_MasterMCU/EL04/xlcd/setddram.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/setddram.d ${OBJECTDIR}/_ext/1477896233/setddram.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/setddram.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1: ../xlcd/wcmdxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1 ../xlcd/wcmdxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/wcmdxlcd.d ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/wcmdxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/wcmdxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.d ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/writdata.p1: ../xlcd/writdata.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/writdata.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/writdata.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=24 --float=24 --emi=wordwrite --opt=+asm,-asmfile,+speed,-space,-debug --addrqual=ignore --mode=pro -P -N255 -I"../../../../cs020_sw/Master_v1p224p34-XC8/EL04/main" -I"C:/Program Files (x86)/Microchip/xc8/v1.31/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.31/include/plib" -I"." --warn=0 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/writdata.p1 ../xlcd/writdata.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/writdata.d ${OBJECTDIR}/_ext/760475324/writdata.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/writdata.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/writdata.p1: ../CS020_MasterMCU/EL04/xlcd/writdata.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/writdata.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/writdata.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G  -D__DEBUG=1  --debugger=none    --double=24 --float=24 --emi=wordwrite --opt=+asm,-asmfile,+speed,-space,-debug --addrqual=ignore --mode=pro -P -N255 -I"../../../../cs020_sw/Master_v1p224p34-XC8/EL04/main" -I"C:/Program Files (x86)/Microchip/xc8/v1.31/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.31/include/plib" -I"." --warn=0 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/writdata.p1 ../CS020_MasterMCU/EL04/xlcd/writdata.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/writdata.d ${OBJECTDIR}/_ext/1477896233/writdata.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/writdata.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 else
 ${OBJECTDIR}/master.p1: master.c  nbproject/Makefile-${CND_CONF}.mk 
@@ -415,85 +415,85 @@ ${OBJECTDIR}/ringbuf.p1: ringbuf.c  nbproject/Makefile-${CND_CONF}.mk
 	@-${MV} ${OBJECTDIR}/ringbuf.d ${OBJECTDIR}/ringbuf.p1.d 
 	@${FIXDEPS} ${OBJECTDIR}/ringbuf.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/busyxlcd.p1: ../xlcd/busyxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/busyxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/busyxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/busyxlcd.p1 ../xlcd/busyxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/busyxlcd.d ${OBJECTDIR}/_ext/760475324/busyxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/busyxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/busyxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/busyxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/busyxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/busyxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/busyxlcd.d ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/busyxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/openxlcd.p1: ../xlcd/openxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/openxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/openxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/openxlcd.p1 ../xlcd/openxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/openxlcd.d ${OBJECTDIR}/_ext/760475324/openxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/openxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/openxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/openxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/openxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/openxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/openxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/openxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/openxlcd.d ${OBJECTDIR}/_ext/1477896233/openxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/openxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/putrxlcd.p1: ../xlcd/putrxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/putrxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/putrxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/putrxlcd.p1 ../xlcd/putrxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/putrxlcd.d ${OBJECTDIR}/_ext/760475324/putrxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/putrxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/putrxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/putrxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/putrxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/putrxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/putrxlcd.d ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/putrxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/putsxlcd.p1: ../xlcd/putsxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/putsxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/putsxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/putsxlcd.p1 ../xlcd/putsxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/putsxlcd.d ${OBJECTDIR}/_ext/760475324/putsxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/putsxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/putsxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/putsxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/putsxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/putsxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/putsxlcd.d ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/putsxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/readaddr.p1: ../xlcd/readaddr.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/readaddr.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/readaddr.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/readaddr.p1 ../xlcd/readaddr.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/readaddr.d ${OBJECTDIR}/_ext/760475324/readaddr.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/readaddr.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/readaddr.p1: ../CS020_MasterMCU/EL04/xlcd/readaddr.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/readaddr.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/readaddr.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/readaddr.p1 ../CS020_MasterMCU/EL04/xlcd/readaddr.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/readaddr.d ${OBJECTDIR}/_ext/1477896233/readaddr.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/readaddr.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/readdata.p1: ../xlcd/readdata.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/readdata.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/readdata.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/readdata.p1 ../xlcd/readdata.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/readdata.d ${OBJECTDIR}/_ext/760475324/readdata.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/readdata.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/readdata.p1: ../CS020_MasterMCU/EL04/xlcd/readdata.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/readdata.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/readdata.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/readdata.p1 ../CS020_MasterMCU/EL04/xlcd/readdata.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/readdata.d ${OBJECTDIR}/_ext/1477896233/readdata.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/readdata.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/setcgram.p1: ../xlcd/setcgram.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/setcgram.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/setcgram.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/setcgram.p1 ../xlcd/setcgram.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/setcgram.d ${OBJECTDIR}/_ext/760475324/setcgram.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/setcgram.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/setcgram.p1: ../CS020_MasterMCU/EL04/xlcd/setcgram.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/setcgram.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/setcgram.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/setcgram.p1 ../CS020_MasterMCU/EL04/xlcd/setcgram.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/setcgram.d ${OBJECTDIR}/_ext/1477896233/setcgram.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/setcgram.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/setddram.p1: ../xlcd/setddram.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/setddram.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/setddram.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/setddram.p1 ../xlcd/setddram.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/setddram.d ${OBJECTDIR}/_ext/760475324/setddram.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/setddram.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/setddram.p1: ../CS020_MasterMCU/EL04/xlcd/setddram.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/setddram.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/setddram.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/setddram.p1 ../CS020_MasterMCU/EL04/xlcd/setddram.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/setddram.d ${OBJECTDIR}/_ext/1477896233/setddram.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/setddram.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1: ../xlcd/wcmdxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1 ../xlcd/wcmdxlcd.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/wcmdxlcd.d ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/wcmdxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1: ../CS020_MasterMCU/EL04/xlcd/wcmdxlcd.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1 ../CS020_MasterMCU/EL04/xlcd/wcmdxlcd.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.d ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/wcmdxlcd.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
-${OBJECTDIR}/_ext/760475324/writdata.p1: ../xlcd/writdata.c  nbproject/Makefile-${CND_CONF}.mk 
-	@${MKDIR} "${OBJECTDIR}/_ext/760475324" 
-	@${RM} ${OBJECTDIR}/_ext/760475324/writdata.p1.d 
-	@${RM} ${OBJECTDIR}/_ext/760475324/writdata.p1 
-	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=24 --float=24 --emi=wordwrite --opt=+asm,-asmfile,+speed,-space,-debug --addrqual=ignore --mode=pro -P -N255 -I"../../../../cs020_sw/Master_v1p224p34-XC8/EL04/main" -I"C:/Program Files (x86)/Microchip/xc8/v1.31/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.31/include/plib" -I"." --warn=0 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/760475324/writdata.p1 ../xlcd/writdata.c 
-	@-${MV} ${OBJECTDIR}/_ext/760475324/writdata.d ${OBJECTDIR}/_ext/760475324/writdata.p1.d 
-	@${FIXDEPS} ${OBJECTDIR}/_ext/760475324/writdata.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+${OBJECTDIR}/_ext/1477896233/writdata.p1: ../CS020_MasterMCU/EL04/xlcd/writdata.c  nbproject/Makefile-${CND_CONF}.mk 
+	@${MKDIR} "${OBJECTDIR}/_ext/1477896233" 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/writdata.p1.d 
+	@${RM} ${OBJECTDIR}/_ext/1477896233/writdata.p1 
+	${MP_CC} --pass1 $(MP_EXTRA_CC_PRE) --chip=$(MP_PROCESSOR_OPTION) -Q -G    --double=24 --float=24 --emi=wordwrite --opt=+asm,-asmfile,+speed,-space,-debug --addrqual=ignore --mode=pro -P -N255 -I"../../../../cs020_sw/Master_v1p224p34-XC8/EL04/main" -I"C:/Program Files (x86)/Microchip/xc8/v1.31/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.31/include/plib" -I"." --warn=0 --asmlist -DXPRJ_default=$(CND_CONF)  --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,+config,+clib,+plib $(COMPARISON_BUILD)  --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     -o${OBJECTDIR}/_ext/1477896233/writdata.p1 ../CS020_MasterMCU/EL04/xlcd/writdata.c 
+	@-${MV} ${OBJECTDIR}/_ext/1477896233/writdata.d ${OBJECTDIR}/_ext/1477896233/writdata.p1.d 
+	@${FIXDEPS} ${OBJECTDIR}/_ext/1477896233/writdata.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
@@ -506,15 +506,15 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: link
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-dist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
+dist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk    
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.map  -D__DEBUG=1  --debugger=none  -DXPRJ_default=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"        $(COMPARISON_BUILD)  -odist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
-	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.hex 
+	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.map  -D__DEBUG=1  --debugger=none  -DXPRJ_default=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"        $(COMPARISON_BUILD)  -odist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	@${RM} dist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.hex 
 	
 else
-dist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
+dist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${OUTPUT_SUFFIX}: ${OBJECTFILES}  nbproject/Makefile-${CND_CONF}.mk   
 	@${MKDIR} dist/${CND_CONF}/${IMAGE_TYPE} 
-	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     $(COMPARISON_BUILD)  -odist/${CND_CONF}/${IMAGE_TYPE}/main.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
+	${MP_CC} $(MP_EXTRA_LD_PRE) --chip=$(MP_PROCESSOR_OPTION) -G -mdist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.map  -DXPRJ_default=$(CND_CONF)    --double=32 --float=32 --emi=wordwrite --opt=+asm,-asmfile,-speed,+space,-debug --addrqual=ignore --mode=pro -DJS -P -N255 -I"." -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include" -I"C:/Program Files (x86)/Microchip/xc8/v1.33/include/plib" --warn=-1 --asmlist --summary=default,-psect,-class,+mem,-hex,-file --output=default,-inhx032 --runtime=default,+clear,+init,-keep,-no_startup,-download,-config,+clib,+plib --output=-mcof,+elf --stack=compiled "--errformat=%f:%l: error: (%n) %s" "--warnformat=%f:%l: warning: (%n) %s" "--msgformat=%f:%l: advisory: (%n) %s"     $(COMPARISON_BUILD)  -odist/${CND_CONF}/${IMAGE_TYPE}/CS020_MasterMCU_2PcCase.X.${IMAGE_TYPE}.${DEBUGGABLE_SUFFIX}  ${OBJECTFILES_QUOTED_IF_SPACED}     
 	
 endif
 
